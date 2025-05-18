@@ -21,7 +21,25 @@
             justify-content: left;
             }
             
-        
+        .fixedheader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10vh; /* Adjust height as needed */
+            display: flex;
+            justify-content: left; /* Center horizontally */
+            align-items: left; /* Center vertically */
+            z-index: 1000; /* Ensure it stays on top */
+        }
+        .fixedheader h1 {
+            font-size: 0.8em;
+            width: 10vh; /* Adjust the size of the image as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-left: 1.5%; /* Add space between the image and text */
+            margin-top: 1%;
+            color: #e00000;
+        }
         .header {
             position: relative;
             top: 0;
@@ -378,6 +396,14 @@
         <link rel="stylesheet" href="styles.css"> <!-- Link to your external stylesheet -->
     </head>
     <body>
+        <div class="fixedheader">
+        <h1> 
+                <a href="bibliography.html" class="clickable" style="text-decoration: none; color: #c30000;" 
+                onmouseover="this.style.color='black';" 
+                onmouseout="this.style.color='#e00000';">
+                bibliography</a>
+        </h1>
+        </div>
         <div class="header">
             <h1>3. interaction with
             </h1>
@@ -471,13 +497,13 @@
             </div>
         </div>
         <div class="footer">
-            <a href="2.Humidity.html" 
+            <a href="2.html" 
      style="text-decoration: none; color: black;" 
      onmouseover="this.style.color='white';" 
      onmouseout="this.style.color='black';">
      <img src="back.png" alt="Footer Image">
     </a> 
-        <a href="4.myislandlikeborder.html" 
+        <a href="4.html" 
         style="text-decoration: none; color: black;" 
         onmouseover="this.style.color='white';" 
         onmouseout="this.style.color='black';">

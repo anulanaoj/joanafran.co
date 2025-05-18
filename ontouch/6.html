@@ -18,6 +18,25 @@
             box-sizing: border-box;
             background-color: #ffffffde;
         }
+        .fixedheader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10vh; /* Adjust height as needed */
+            display: flex;
+            justify-content: left; /* Center horizontally */
+            align-items: left; /* Center vertically */
+            z-index: 1000; /* Ensure it stays on top */
+        }
+        .fixedheader h1 {
+            font-size: 0.8em;
+            width: 10vh; /* Adjust the size of the image as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-left: 1.5%; /* Add space between the image and text */
+            margin-top: 1%;
+            color: #e00000;
+        }
         .header {
             position: relative;
             display: flex;
@@ -315,6 +334,14 @@
         </style>
 </head>
 <body>
+    <div class="fixedheader">
+        <h1> 
+                <a href="bibliography.html" class="clickable" style="text-decoration: none; color: #c30000;" 
+                onmouseover="this.style.color='black';" 
+                onmouseout="this.style.color='#e00000';">
+                bibliography</a>
+        </h1>
+        </div>
     <div class="header">
         <h1>6.Outlines</h1>
     </div>
@@ -397,7 +424,7 @@
         </p>
     </div>
     <div class="footer">
-        <a href="5.theline.html" 
+        <a href="5.html" 
      style="text-decoration: none; color: black;" 
      onmouseover="this.style.color='white';" 
      onmouseout="this.style.color='black';">
