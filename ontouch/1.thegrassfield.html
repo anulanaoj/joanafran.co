@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.thegrassfield</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-width: 100vw; /* Ensure the body takes up the full width */
+            height: auto; /* Ensure the body takes up the full height */
+            font-family: 'Century Schoolbook', serif;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            
+            
+        }
+        .header {
+            font-size: 1.5em;
+            color: #000000;
+            text-decoration: none;
+            text-align: left;
+            padding-left: 0%;
+            margin-top: 0%;
+            z-index: 2;
+            position: relative; /* Change to relative to avoid overlap */
+            height: 100%; /* Allow the height to adjust to content */
+            width: 100vw;
+            padding-bottom: 5% ;
+            
+            
+        }
+        .header h1 {
+            font-size: 1em;
+            color: #333;
+            text-align: justify;
+            margin-top: 5%;
+            left: 25%;
+            position: relative;
+            font-weight: lighter;
+
+        }
+        .header img {
+            width: 50vw; /* Make the image take up the full width of the container */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 0px; /* Add spacing between the image and text */
+            display: flex;
+            position: relative;
+            margin-bottom: 10%;
+            left: 25%;
+            padding: 0%;
+            object-fit: cover;
+            clip-path: inset(0 0 0 0); /* Ensures the image is clipped to the container */
+            overflow: hidden; /* Hides any part of the image outside the container */
+            z-index: 1;
+            border: #90e034 solid 0.5px;
+        }
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            padding: 0%;
+            margin-bottom: 5%; /* Add spacing below */
+            margin-left: 15%;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            justify-content: left;
+            align-items: left;
+        }
+        .imagecolumn {
+            display: flex;
+            flex-direction: column;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 50%;
+            height: auto;
+            padding-left: 0%;
+            align-items: left;
+        }
+        .imagecolumn img {
+            width: 100vw;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 0%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #90e034 solid 0.5px;
+        }
+        .textcolumn {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+            padding-left: 10%;
+            max-width: 100%;
+            height: auto;
+        }
+        .textcolumn p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #1d1d1d;
+            background-color: #ffffff;
+            text-align: justify;
+            z-index: 2;
+        }
+        .textcolumn img {
+            width: 50%;
+            height: auto;
+            margin-left: 0%;
+            margin-top: 5%;
+            margin-bottom: 0%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #90e034 solid 0.5px;
+        }
+        .textcolumnwcolor {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+            padding-left: 0%;
+            max-width: 100%;
+            height: auto;
+        }
+        .textcolumnwcolor p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #1d1d1d;
+            background-color: #e7ffab;
+            text-align: justify;
+            z-index: 2;
+        }
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+            z-index: 1000;
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 8vh; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+        .images {
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            justify-content: left;
+            align-items: left;
+            padding-left:25%;
+            max-width: 100%;
+            height: auto;
+        }
+        .images img {
+            width: 60%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #90e034 solid 0.5px;
+        }
+    .hover-box {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9; /* Ensure consistent background color */
+        padding: 1%; /* Add padding for better spacing */
+        z-index: 10;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: none; /* Remove the width constraint */
+        word-wrap: break-word; /* Ensure text wraps properly */
+        overflow: visible; /* Ensure the hover box is not clipped */
+    }
+    .hover-trigger:hover .hover-box {
+        display: block; /* Ensure hover behavior works */
+    }
+    .hover-trigger {
+        position: relative;
+        display: inline-block;
+    }
+            .hover-box img {
+                width: 100%; /* Ensure the image does not exceed the container width */
+                height: auto; /* Maintain the aspect ratio of the image */
+                display: block; /* Remove inline spacing below the image */
+                overflow: visible;
+            }
+            .hover-boxtext {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                border: 1px solid #ffffff7b;
+                padding: 10px;
+                z-index: 10;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                width: 40vw;
+
+            }
+
+            .hover-trigger:hover .hover-boxtext {
+                display: block;
+            }
+            .hover-text:hover + .hover-box {
+            display: block;
+            }
+            .clickable {
+                    cursor: url(click.png), pointer; /* Custom pointer for specific elements */
+                }
+            .special {
+                background-color: #e7ffab;
+            }
+    </style>
+</head>
+<body>  
+    
+    <div class="header">
+       <h1>1. the grass field</h1>
+        <img src="1/1.field-01.jpg" alt="">
+    </div>
+    <div class="container">
+        
+        <div class="textcolumn">
+        <p>With friends in a green car, moving through green <span style="font-style: italic;">relvados   
+        </span>(fields),<span style="color: rgb(51, 196, 14);" class="hover-trigger">parting green
+        <span class="hover-boxtext">“It is from this lawn before me that I think I catch sight of the impact of the green on the vision of another.” <i>Merleau-Ponty, Maurice. The Visible and the Invisible, Northwestern University Press, 1968, 11</i></span>
+        </span>. Coming from Caldeira Velha, hot springs, once private, now on reservation and crowded. One body becomes many, dots for heads, sticks for arms. We move slow, on our way to eat <span style="position: relative; cursor: pointer; color: rgb(89, 197, 7);" class="hover-trigger">fresh seafood
+            <span class="hover-box">
+                <img src="1/PXL_20241228_191442106.jpg" alt="Fresh seafood">
+            </span>
+        </span>. Fish soup for four people, three euro, yes. We move slow, able to see without the usual dragging of eyes fast, from corner to corner. <span style="position: relative; cursor: pointer; color: rgb(58, 160, 17);" class="hover-trigger"> Reminded of parts
+            <span class="hover-box">
+                <img src="1/PXL_20241219_155209260~2.jpg" alt="Cows">
+            </span>
+        </span> when seeing cows munching the postcards. Black and white animals hugged by grass, shy and curious they are.<br>
+        <br></p>
+    </div>
+    <br><br><br><br><br>
+    </div>
+        <div class="container">
+        <div class="textcolumn">
+            
+        <p><span class="special">The car had stopped, I believe some soundtrack was to change. I recommend you leave the car when it does so. I did so, company stayed. The field next to us was an empty one, empty postcard to be sent. I’ll go in turn of the cow.<i> I am not shy but curious to take the place.</i> Gave my camera, a pocket one, to my friend in the backseat, still seated, looking from behind the open window, inside.
+        <br>
+        </span></p>
+            
+        <img src="1/1.field-02.jpg" alt="running uneasily through the field" class="clickable-image, clickable">
+        <p>Running uneasily through the field, humidity makes the green greener – possibility to slip is eminent – <i>and I stop</i>, informed by the image of my body being a small element inside the square photograph. This within imagination.<br/><br/>
+            Once there, stayed with my back turned to the car. Not to remember where I had come from. Assuming this position, I turned from the lens to the landscape that brought me in to begin with. Once you reach the landscape, its whole is separated into parts. Ones as you are. The mountains were closer, but still further than an arms distance. Not to touch, to see. I understood their shape as my own. 
+            <br><br>They are tall from where they look, but short from where I do. I became lower, can I appear through the grass as the mountains are covered with trees at their bottom? Only when coming closer you are under the tree. Stood up to hunch the spine. I imitate their round tops, I go along with the play with the horizon. <br>
+            <br> Not flat. Again, I am you. <br>
+            <br>And I move, unsure if the outline of my back will match that of the mountains, but having the sensation it does. Lastly, to form with my body formal disruption to the images, I went with my arms up, perpendicular to the horizon, arms copying the upright position of the torso. <br>
+            <br> Stand up with your arms. Glue yourself to the world.
+            <br><br>In this scenario, I play as so to enter this place, mine, and yours. And I do so to enter and be welcomed. I go there, I mimic and I counterpose, stapling through tension points.
+        </p>
+        </div>
+    </div>
+        <div class="images">
+            <div>
+            <img src="1/1.field-04.jpg" alt="Once there, stayed with my back turned to the car." class="clickable" data-description="This is a beautiful green field.">
+            <img src="1/1.field-05.jpg" alt="I turned from the lens to the landscape that brought me in to begin with." class="clickable" data-description="A serene mountain landscape with trees.">
+            <img src="1/1.field-11.jpg" alt="I understood their shape as my own." class="clickable" data-description="A vibrant meadow with colorful flowers.">
+            </div>
+            <div>
+            <img src="1/1.field-07.jpg" alt="can I appear through the grass as the mountains are covered with trees at their bottom?" class="clickable" data-description="Rolling hills under a clear blue sky.">
+            <img src="1/1.field-09.jpg" alt="Stood up to hunch the spine." class="clickable" data-description="A peaceful valley surrounded by mountains.">
+            <img src="1/1.field-08.jpg" alt="I went with my arms up" class="clickable" data-description="A lush forest with tall trees.">
+            </div>
+        </div>
+        
+        <div class="container">
+        <div class="textcolumn">
+            <p> The actions were a mix of instinct influenced by what I rationalized to be the eye of the beholder, my friend and the camera she held. But this eye that is far sees not what I see from the inherent first-person perspective. I do not see me as I do not see the bottom of the far away trees, which the camera doesn’t see the tops of. I don’t see but I act. Sight is limited to the space inside my eyes, limited to my own movement. 
+                <br><br>When lower, I see the below what I do when I stand. When the neck is upright, I see all which surrounds me, I see the whole. The opposite when I crouch with a guarded head, I see my interior space, the body which is a part, as its own environment. I see then the dark tone of my clothing and the grass poking through it, touching my ankles. Movement is, in this closed position, informed by the memory of what I saw when in an open position.
+                <br><br>Seeing the images after making the movement, it is clear what was in my sight is not what was in the camera’s. There is distinction between the first and third person sights. The mountains I described are not visible with a different perspective than mine. What has influenced the movement acted was unseeable – this made my body a prominent element of the scene, certainly detectable. 
+                <br><br>Coincidences as the hands becoming trees and the body a stone where they grow from. The attempts at being perpendicular so to join the landscape I feel are successful. It is the tension points that confirm my being in, in relation to the land. They glue me to the world and make me part of it. Small movements mimic those of the grass moving with the wind. My movements affected by the grass affected by the wind. I see as I look at the images, an attempt to not be recognized as a body, I want to camouflage myself with the surroundings. The way of doing so, my own instinct I find funny, to curl the body as a stone, make my torso be my body as if I was immovable, grabbable and coming from having fallen off some cliff, with fear my limbs will give my humanity away.
+              </p>
+            </div>
+        </div>
+
+    <div id="fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 1000;">
+        <img id="popup-image" src="" alt="Fullscreen Image" style="max-width: 90%; max-height: 80%; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); border: 1px solid black;">
+        <div id="popup-description" style="position: absolute; top: 92%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; font-size: 1em; color: black;">
+            <!-- Description will be dynamically added here -->
+        </div>
+        <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
+        <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+    </div>
+
+    <div class="footer">
+        <a href="On Touch.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="back.png" alt="Footer Image">
+       </a> 
+           <a href="2.Humidity.html" 
+           style="text-decoration: none; color: black;" 
+           onmouseover="this.style.color='white';" 
+           onmouseout="this.style.color='black';">
+           <img src="next.png" alt="Footer Image">
+        </a>
+    </div>
+    
+    <script>
+        // JavaScript for handling the fullscreen popup and navigation
+        document.addEventListener("DOMContentLoaded", () => {
+            const popup = document.getElementById("fullscreen-popup");
+            const popupImage = document.getElementById("popup-image");
+            const popupDescription = document.getElementById("popup-description");
+            const prevImage = document.getElementById("prev-image");
+            const nextImage = document.getElementById("next-image");
+            const closePopup = document.getElementById("close-popup");
+            const images = Array.from(document.querySelectorAll(".clickable"));
+            const footer = document.querySelector('.footer');
+            let currentIndex = -1;
+
+            // Open popup when an image is clicked
+            images.forEach((image, index) => {
+                image.addEventListener("click", () => {
+                    currentIndex = index;
+                    showImage();
+                    if (footer) footer.style.display = "none"; // Hide footer
+                });
+            });
+
+            // Show the current image and description in the popup
+            function showImage() {
+                if (currentIndex >= 0 && currentIndex < images.length) {
+                    popup.style.display = "block";
+                    popupImage.src = images[currentIndex].src;
+                    popupDescription.textContent = images[currentIndex].alt || "No description available";
+                }
+            }
+
+            // Navigate to the previous image
+            prevImage.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    showImage();
+                }
+            });
+
+            // Navigate to the next image
+            nextImage.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (currentIndex < images.length - 1) {
+                    currentIndex++;
+                    showImage();
+                }
+            });
+
+            // Close popup when clicking the close button
+            closePopup.addEventListener("click", (e) => {
+                e.stopPropagation();
+                popup.style.display = "none";
+                if (footer) footer.style.display = "flex"; // Show footer again
+            });
+
+            // Close popup when clicking on the white background
+            popup.addEventListener("click", (e) => {
+                if (e.target === popup) {
+                    popup.style.display = "none";
+                    if (footer) footer.style.display = "flex"; // Show footer again
+                }
+            });
+        });
+    </script>
+        
+    </body>
+    </html>
+

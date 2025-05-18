@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>3. Interaction with</title>
+        <link rel="stylesheet" href="styles.css"> <!-- Link to your external stylesheet -->
+        <style>
+            /* General styles */
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Century Schoolbook', serif;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            text-align: left;
+            justify-content: left;
+            }
+            
+        
+        .header {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff; /* Dark grey background */
+            color: rgb(0, 0, 0); /* White text */
+            display: flex;
+            
+        }
+        .header h1 {
+            font-size: 1.5em;
+            text-align: center;
+            margin: 0;
+            z-index: 2;
+            top: 40%;
+            left: 45%;
+            position: relative;
+            font-weight: lighter;
+            
+            
+        }
+        .header img {
+            max-width: 50%;
+            height: auto;
+            position: absolute;
+            z-index: 1;
+            left: 25%;
+            top: 10%;
+            border: #000000 solid 1px;
+        }
+        .container {
+            
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            padding: 0%;
+            margin-bottom: 0%; /* Add spacing below */
+            margin-left: 0%;
+            width: 100vw;
+            height: auto;
+            justify-content: left;
+            align-items: left;
+        }
+        .images {
+            display: flex;
+            flex-direction: row;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 100vw;
+            height: auto;
+            padding-left: 0%;
+            align-items: center;
+            justify-content: center;
+        }
+        .images img {
+            width: 16.5%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            margin-top: 5%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #000000 solid 1px;
+        }
+        .image {
+            display: flex;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 100%;
+            height: auto;
+            padding-left: 0%;
+            align-items: center;
+            justify-content: center;
+        }
+        .image img {
+            width: 65%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 1%;
+            margin-top: 1%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #000000 solid 1px;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0%;
+            max-width: 100%;
+            height: auto;
+        }
+        .text p {
+            width: 50%;
+            height: auto;
+            padding-top: 5%;
+            padding-bottom:5% ;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
+        .special {
+            position: relative;
+            display: grid;
+            flex-direction: row;
+            justify-content: left;
+            align-items: left;
+            max-width: 100%;
+            height: auto;
+        }
+        .special p {
+            width: 40%;
+            height: auto;
+            padding: 0%;
+            padding-left: 25%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #0f0f0f;
+            text-align: justify;
+            z-index: 2;
+            margin-top: 2%;
+        }
+        .special img {
+            width: 20vw;
+            height: 100%;
+            padding: 0%;
+            margin-bottom: 0%;
+            margin-top: 0%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #000000 solid 1px;
+            margin-left: 25%;
+        }
+        .special1 {
+            position: relative;
+            display: grid;
+            flex-direction: row;
+            justify-content: left;
+            align-items: left;
+            max-width: 100%;
+            height: auto;
+        }
+        .special1 p {
+            width: 40%;
+            height: auto;
+            padding: 4%;
+            padding-left: 25%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #6a8726;
+            text-align: justify;
+            z-index: 2;
+            margin-top: 2%;
+        }
+        .lines {
+            position: relative;
+            display: flex;
+            
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+            height: auto;
+        }
+        .lines p {
+            width: 50%;
+            height: auto;
+            padding-top: 10%;
+            padding-left: 15%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
+        .threeimages {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            max-width: 40%;
+            height: 30vh;
+            margin-left: 30%;
+            margin-bottom: 10%;
+        }
+        .threeimages img {
+            width: 100%;
+            height: auto;
+            padding: 0%;
+        }
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 8vh; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+        span {
+        position: relative; /* Make the span the reference point for the popup */
+        cursor: pointer; /* Change the mouse cursor to a pointer */
+    }
+    
+    .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 10;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-trigger:hover .hover-box {
+            display: block;
+            }
+            .hover-trigger {
+            position: relative;
+            display: inline-block;
+            }
+            .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 10;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-text:hover + .hover-box {
+            display: block;
+            }
+        #hover-image-1, #hover-image-2 {
+            display: none;
+            position: absolute;
+            width: 20vw;
+            height: auto;
+            max-width: 50vw;
+            margin-left: 5vw;
+            margin-top: 20vh;
+            z-index: 10;
+        }
+        /* Show the image when hovering over the paragraph */
+        #hover-text:hover + #hover-image-1,
+        #hover-text:hover + #hover-image-2 {
+            display: block;
+        }  
+        /* Responsive design for touch screens */
+        @media (max-width: 768px) {
+            #hover-image {
+                width: 80vw; /* Adjust width for smaller screens */
+            }
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 30vw;
+            cursor: pointer; /* Add cursor pointer to indicate interactivity */
+            
+        }
+        .slideshow-container img {
+            width: 30%;
+            height: auto;
+            
+        }
+        .slide {
+            display: none;
+        }
+        .image-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+}
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    margin: 0px; /* Space between images */
+    
+}
+.image-wrapper {
+    position: relative;
+    margin: 0px; /* Space between images */
+    
+    
+}
+
+.base-image {
+    display: block;
+    width: 12vw;
+    height: auto;
+    
+}
+
+.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12vw;
+    height: auto;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.1s ease-in-out ; /* Smooth transition */
+}
+        .slideshow-container2 {
+            z-index: 1;
+            position: relative;
+            max-width: 50%;
+            margin: auto;
+            padding-left: 0%;	
+            display: flex;
+            justify-content: left;
+            padding: 0%;
+            cursor: url('click.png'), auto; /* Replace with your image path */
+            padding-left: 0%;
+            margin-bottom: 10%;
+        }
+        .slideshow-container2 img {
+            padding: 0%;
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s; /* Animation for zoom effect */
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+            border: #000000 solid 0.5px;
+        }
+        .clickable {
+            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+        .clickable1 {
+            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+        .clickabletwo {
+            cursor: url('click2.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+        .hoverable {
+            cursor: url('hover.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+    </style>
+        <link rel="stylesheet" href="styles.css"> <!-- Link to your external stylesheet -->
+    </head>
+    <body>
+        <div class="header">
+            <h1>3. interaction with
+            </h1>
+        <a href="3.1.html">
+            <img src="3/IMG_0484.jpg" alt="" class="clickabletwo">
+        </a>
+    </div>
+        <div class="container">
+            <div class="text">
+                <div class="special">
+                    <img src="3/PXL_20240727_173826963.jpg" alt="Since a few years ago, certain parts of Lagoa do Fogo are closed to visitors. Some have died."class="clickable-image, clickable">
+            <p>
+                Landscape is a selected area —an object— of land that one looks at, not something, by designation, that one is part of. In the context of a landscape, a postcard, there is distance between person and place; it is a term that differentiates person, <i>looker</i>, from place, <i>look-ee</i>.<br><br>
+            </p>
+        </div>
+               
+                    <p>Acts of interaction with these settings are meant to facilitate a conscious embodiment of the body itself, in order to take a step inside this landscape. It is by assuming the position of yourself within your borders that they dissipate and you become free to start touching the world. I propose the subject to come nearer to the object surrounding them, on the same plane. 
+                        <br><br>If you put yourself on a different plane, you can’t touch the original one. We do not walk on nature, we walk in nature.  Acts done in the purview of this research, be them done in the island or in the studio, call for this merging of parts. A conciliation of the physical with the felt in efforts to shorten the distance with what is perceived (what is there) and what is felt (what is sensed).
+                    </p>
+                    <div class="special">
+                        <img src="3/01.01.25.jpg" alt="Dancing with the Atlantic on the first day of 2025." class="clickable-image, clickable">
+
+            </div>
+                    <p>
+                        <br><br>Applying formal visual exercises as interactions with the world is a method of engaging. Interaction is a way of returning to what is there. This makes things in the world be closer to us, as well as allowing for a dialogue with it. <br>
+                        <br> <i>You hear what is said to you, you acknowledge and participate.</i> <br>
+                        <br>These happenings are opportunities for letting go of any hesitation involving contact with an exterior element. Fear of contact reinforces separation between self and world. But to make the external internal and the internal external, is to practice mutual transformation. By embracing interaction as a means of return, we allow ourselves to be shaped just as much as we shape what we encounter. The act of moving within the landscape, embodying it rather than observing, leads to a reconsideration of the boundaries that separate body and place. 
+                        <br><br>If landscape is traditionally conceived as something to be looked at—a scene arranged before the viewer—then acts of insertion and interaction challenge this dynamic. In seeking conciliation between physical presence and affect, the distinction between what is perceived and what is felt begins to blur.
+                        <br><br>This blurring extends to the notion of borders themselves. The body's perceived boundary shapes its relationship to the world.
+                </p>
+            </div>
+        </div>
+            <div class="threeimages">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="3/Scanned_20250424-0954-03.jpg" alt="Image 1" class="base-image">
+                        <img src="3/07.01.24. Furnas-04.jpg" alt="Hover Image 1" class="hover-image">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="3/Scanned_20250424-0954-02.jpg" alt="Image 2" class="base-image">
+                        <img src="3/07.01.24. Furnas-05.jpg" alt="Hover Image 2" class="hover-image">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="3/Scanned_20250424-0954-01.jpg" alt="Image 3" class="base-image">
+                        <img src="3/07.01.24. Furnas-06.jpg" alt="Hover Image 3" class="hover-image">
+                    </div>
+                </div>
+            </div>
+        <div class="container">
+            <div class="image">
+                <img src="3/I think out loud with lines in the ground.jpg" alt="In a parking lot in Sweeden, I gave way to my desire to touch the floor with no shame." class="clickable-image, clickable">
+            </div>
+            <div class="text">
+            <div class="lines">
+            <p>I think out loud with painted lines on the ground, for their immediate appearance as lines and their proportion to our shared scale, they can be seen as bodies next to ours. They delineate space, instruct us on movement. The lines are of communication. The curiosity lies in how this interaction affects our perception of, and movement within space; in how these lines transform the aesthetic of our days. They are often not seen, for it is expected they would be there anyways, but there is rhythm in a cross path. It is a structural visual language built on our behaviour. It is either parallel or perpendicular to intuitive movement. It is parallel as an arrow indicating the way; Perpendicular, referencing either the implied restriction of movement to a certain area, or the visual contrast (texture) created by signifying lines, as for cut lines indicating parking spaces. It is with these collaborations in mind that I interact with the lines on the floor.
+            </p> 
+            </div>
+        </div>
+        </div>
+        <div class="container">
+            <div class="text">
+                <div class="special1">
+                <p> 
+        <span class="hover-trigger" >“My body as a visible thing is contained within the full spectacle. But my seeing body subtends this visible body, and all the visibles with it. There is reciprocal insertion and intertwining of one in the other. Or rather, if, as once again we must, we eschew the thinking by planes and perspectives, there are two circles, or two vortexes, or two spheres, concentric when I live naively, and as soon as I question myself, the one slightly decentered with respect to the other. . . .”
+            <span class="hover-box"> Merleau-Ponty, Maurice. The Visible and the Invisible, Northwestern University Press, 1968. 138</span>
+        </p>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            
+            <div class="slideshow-container2">
+                <img id="slideshow-image" class="clickable1" src="5/integrating1-1.jpg" alt="Slideshow Image">
+            </div>
+            <div class="text">
+            <p>What is thought through the instrumental lines on the floor, a pretext, can be applied to thinking of an interaction between yourself and the counter-parts of the whole around. Seeing the elements which surround you in a specific environment, as possible interlocutors, is allowing for integration within this setting. It is a levelling of parts to the same plane, and a recognition of importance of both yourself, the object you interact with, and the environment that surrounds all of you. <br>
+                <br> More fun is to be had in places you feel you belong to.<br> 
+            <br>The sense of belonging to the world is one I am chasing with my actions, some exemplify the idea, others apply it casually. As a re-occurrent character in my practice, I use my body as an example, or as a suggestion for movement and interaction. 
+                <br><br>I’ve been dancing in the supermarket. A meeting point. I feel more welcome to do so, no more strictness. I think of the public space, and how it is a shared one, where we are all invited to be but not to belong. Self-confinement looks a lot like a delineated space with a ‘no entry’ signalling. A little bit as having the space around you removed, you become a .png put on another layer of the landscape, be it in nature or an interior one, a public toilet. 
+                <br><br><br><br><i>I ease myself into the world, and wish you do as well</i> , it is not so hard. <br>
+            </p>
+                </div>
+                
+            <div class="container">
+                <div class="text">
+                    <p>As I enter my bed, I leave my house in the morning. And I convince you and me I belong inside these sheets. 
+                    </p>
+            </div>
+            <div class="slideshow-container2">
+                <img id="slideshow-image" class="clickable1" src="3/IMG_20250130_194445.jpg" alt="Slideshow Image">
+            </div>
+        </div>
+        <div class="footer">
+            <a href="2.Humidity.html" 
+     style="text-decoration: none; color: black;" 
+     onmouseover="this.style.color='white';" 
+     onmouseout="this.style.color='black';">
+     <img src="back.png" alt="Footer Image">
+    </a> 
+        <a href="4.myislandlikeborder.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="next.png" alt="Footer Image">
+     </a>
+          </div>
+           <div id="fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 1000;">
+        <img id="popup-image" src="" alt="Fullscreen Image" style="max-width: 90%; max-height: 80%; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); border: 1px solid black;">
+        <div id="popup-description" style="position: absolute; top: 92%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; font-size: 1em; color: black;">
+            <!-- Description will be dynamically added here -->
+        </div>
+        <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
+        <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+    </div>
+        </body>
+        <script>
+            const slideshowImages1 = [
+                "5/integrating1-1.jpg",
+                "5/integrating1-2.jpg",
+                "5/integrating1-3.jpg",
+                "5/integrating1-4.jpg",
+                "5/integrating1-5.jpg",
+                "5/integrating1-6.jpg",
+                "5/integrating1-7.jpg",
+                "5/integrating1-8.jpg"
+            ];
+            let currentIndex1 = 0;
+
+            const slideshowImage1 = document.querySelectorAll(".slideshow-container2 img")[0];
+
+            slideshowImage1.addEventListener("click", () => {
+                currentIndex1 = (currentIndex1 + 1) % slideshowImages1.length;
+                slideshowImage1.src = slideshowImages1[currentIndex1];
+            });
+
+            // Second slideshow
+            const slideshowImages2 = [
+                "3/IMG_20250130_194445.jpg",
+                "3/IMG_20250130_194612.jpg",
+                "3/IMG_20250130_194642.jpg"
+            ];
+            let currentIndex2 = 0;
+
+            const slideshowImage2 = document.querySelectorAll(".slideshow-container2 img")[1];
+
+            slideshowImage2.addEventListener("click", () => {
+                currentIndex2 = (currentIndex2 + 1) % slideshowImages2.length;
+                slideshowImage2.src = slideshowImages2[currentIndex2];
+            });
+            const imageWrappers = document.querySelectorAll('.image-wrapper');
+
+                    imageWrappers.forEach(wrapper => {
+                        const baseImage = wrapper.querySelector('.base-image');
+                        const hoverImage = wrapper.querySelector('.hover-image');
+
+                        wrapper.addEventListener('mouseover', () => {
+                            hoverImage.style.opacity = 1;
+                        });
+
+                        wrapper.addEventListener('mouseout', () => {
+                            hoverImage.style.opacity = 0;
+                        });
+                    });
+        
+        </script>
+        <script src="popup.js"></script>
+    </body>
+    </html>

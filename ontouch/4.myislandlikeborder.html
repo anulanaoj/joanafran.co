@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My island like border</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Century Schoolbook', serif;
+            background-color: lch(100% 0.01 296.81);
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        .spacing {
+            height: 30vh; /* Adjust the height as needed */
+            background-color: lch(100% 0.01 296.81);
+        }
+        .header {
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            background-color: #ffffff;
+            position: relative;
+            flex-direction: row;
+            height: 15vh;
+            width: 100vw;
+            
+        }
+
+        .header h1 {
+            position: relative;
+            top: 25%;
+            left: 53%;
+            font-size: 1.5em;
+            color: #000000;
+            z-index: 2;
+            font-weight: lighter;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            padding: 0%;
+            margin-bottom: 5%; /* Add spacing below */
+            margin-left: 15%;
+            width: 100%;
+            height: auto;
+            justify-content: left;
+            align-items: left;
+        }
+        .image {
+            display: flex;
+            flex-direction: column;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 50%;
+            height: auto;
+            padding-left: 10%;
+            align-items: left;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+        }
+        .image img {
+            width: 45vw;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            border: #000000 solid 0.5px;
+        }
+        .image1 {
+            display: flex;
+            flex-direction: column;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 45%;
+            height: auto;
+            padding-left: 10%;
+            align-items: left;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+        }
+        .image1 img {
+            width: 45vw;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            justify-content: left;
+            align-items: left;
+            padding-left: 10%;
+            max-width: 100%;
+            height: auto;
+        }
+        .text p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
+
+
+                .hover-container {
+                    position:static;
+                    top: 0%;
+                    left: 0%;
+                    width: 80vw; /* Adjust width */
+                    height: 25vh; /* Adjust height */
+                }
+
+                .hover-container .hover-image {
+                    position: absolute;
+                    top: 50%;
+                    left: 40%;
+                    width: 50vw; /* Adjust width */
+                    height: auto; /* Maintain aspect ratio */
+                    object-fit: cover;
+                    display: none; /* Initially hidden */
+                    z-index: 1; /* Set z-index to 0 to place it under the text */
+                    transform: translate(-50%, -50%); /* Center the image */
+                }
+
+                .hover-container:hover .hover-image {
+                    display: block; /* Show on hover */
+                    z-index: 1;
+                }
+    
+                .container:nth-child(odd) {
+            background-color: #ffffff;
+            }
+
+                .container:nth-child(even) {
+            background-color: #ffffff;
+            }
+
+        @media (max-width: 768px) {
+            .image-one, .image-two, .image-three {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 8vh; /* Maintain aspect ratio */
+            margin-right: 5%; /* Add space between the image and text */
+        }
+        .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #ffffff00;
+            border: 1px solid #ffffff;
+            padding: 0px;
+            z-index: 10;
+            max-width: auto;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-trigger:hover .hover-box {
+            display: block;
+            }
+            .hover-trigger {
+            position: relative;
+            display: inline-block;
+            }
+            .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ffffff7b;
+            padding: 0px;
+            z-index: 10;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            
+            }
+            .hover-box img {
+                max-width: 25vw; /* Make the image take up the full width of the container */
+                height: auto; /* Maintain aspect ratio */
+                margin-bottom: 20px; /* Add spacing between the image and text */
+                display: flex;
+                position: relative;
+                margin: 0;
+                padding: 0%;
+                object-fit: cover;
+                clip-path: inset(0 0 0 0); /* Ensures the image is clipped to the container */
+                
+                z-index: 10;
+            }
+            .hover-boxtext {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                border: 1px solid #ffffff7b;
+                padding: 10px;
+                z-index: 10;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                width: 40vw;
+            }
+
+            .hover-trigger:hover .hover-boxtext {
+                display: block;
+            }
+            .hover-text:hover + .hover-box {
+            display: block;
+            }
+            .clickable {
+            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+        .clickabletwo {
+            cursor: url('click2.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>4. My island like border</h1>
+    </header>
+    <div class="container">
+        <div class="text">
+            <p><span style="font-size: 1.2em"> This body is like all others,</span> <br>
+            <br>it is there, even if not seen or felt, it is there. The idea that I am not within the boundaries of my body had to be felt not as an idea but as a sensation. Which led me to believe there is an unseen border between us and the other(s). 
+            <br><br>This border I look at much like that of an island. An island has its own land, land above water and land underneath the water. The “bodily” border of it would be where it meets the ocean, the felt border outside of the body would be all its unseeable space held underneath, where there is both land and water.
+        </p>
+            </div>
+            <div class="image1">	
+                <img src="4/ilheu.png" alt="from an old map of Ilhéu da Vila Franca do Campo, where we go in the summer by boat to swim and get sunburnt." class="clickable-image, clickable">
+            </div>
+            <div class="text">
+            <p> 
+            </p>
+                <p><span style=" cursor: pointer; color: rgb(7, 32, 197);" class="hover-trigger">Between walkable land and the next foreseeable land there is water
+                    <span class="hover-box">
+                        <img src="4/PXL_20240719_145348278.jpg" alt="Fresh seafood">
+                    </span>
+                </span>, we can choose to see it as something which links the two pieces of terrain, or as a separator of the two. It is possible to face our body as that of an island, one moving with a tide. There is a similar reduction to be made, that of the body, that of the space around the body, and that of the place where it is situated. <br>
+                <br>A relationship between these three notions is to be understood as one, as you and myself, as they are. In the same manner water reflects on to the land, our environment is reflected on to us, through our bodies. 
+            </p>
+        </div>
+    </div>
+    <div class="container"> 
+        <div class="image">
+        <a href="4.1.html">
+            <img src="4/islandness.jpg" alt="Deliniating my space at the beach." class="clickabletwo">
+        </a>
+    </div>
+        
+        <div class="text">
+            <p>I’ve grown affected by the restrictions of the island, delineated by a thick blue line. A solid appearance, as that of the land. (water is just fluid land). The sense of distance towards the world is an always present one, 
+                <span style="color: rgb(45, 72, 206);" class="hover-trigger">one starts to see the body as the island itself
+                <span class="hover-boxtext">“The visible about us seems to rest in itself. It is as though our vision were formed in the heart of the visible, or as though there were between it and us an intimacy as close as between the sea and the strand. And yet it is not possible that we blend into it, nor that it passes into us, for then the "vision would vanish at the moment of formation, by disappearance of the seer or of the visible.” Merleau-Ponty, Maurice. The Visible and the Invisible, Northwestern University Press, 1968 131
+                </span></span>- a dissociative state towards the world, its farness, seems to belong to islanders especially. It becomes more than a condition, it is a singular perspective I am grateful to share with my fellow islanders. But this is a double-sided perspective. On one hand, as described, we feel secluded from the world<span style="font-style: italic;"> lá fora</span> (out there) on the other the opposite is perceived. Being in a place that is of itself welcomes a sense of belonging and inter-connectedness both with the land, a huge backyard, and the people that share this experience with you, your neighbours. <br>
+                <br>Being “closed” within physical boundaries forces people to appreciate and embed this space as it embeds you. You can either see it as being stuck or being liberated. The sensation of distinction contrasted with that of insertion.<br/>  </span>
+            <br></p>
+        </div>
+            <div class="image1">
+                <img src="4/crab.jpg" alt="A piece of machine-sewn cloth embedded in latex." class="clickable-image, clickable">
+            </div>
+            <div class="text">
+            <p>
+            <br>The border I’ve described, where the two meet, where the fish are separated from the humans, is 
+            <span style="position: relative; cursor: pointer; color: rgb(7, 32, 197);" class="hover-trigger">where the crab lives its life. 
+            
+            <span class="hover-box">
+                <img src="4/PXL_20240719_144449336.jpg" alt="border where crab lives">
+            </span>
+        </span> 
+        Dictated by the contrast, and change of planes, it sheds its skin as to adapt. Its shell hard, has been soft and moulded by its movement within the world. A solidified proof of exchange, made to be again replaced and left at the shore as one more swap in the site.
+        <br><br>Site which surrounds our appearance in the world. The middle ground between our body and the world, a personal shoreline where some is given and othersome taken.
+        </p>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="3.interactionwith.html" 
+     style="text-decoration: none; color: black;" 
+     onmouseover="this.style.color='white';" 
+     onmouseout="this.style.color='black';">
+     <img src="back.png" alt="Footer Image">
+    </a> 
+        <a href="5.theline.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="next.png" alt="Footer Image">
+     </a>
+      </div>
+       <div id="fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 1000;">
+        <img id="popup-image" src="" alt="Fullscreen Image" style="max-width: 90%; max-height: 80%; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); border: 1px solid black;">
+        <div id="popup-description" style="position: absolute; top: 92%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; font-size: 1em; color: black;">
+            <!-- Description will be dynamically added here -->
+        </div>
+        <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
+        <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+    </div>
+    <script>
+        const slides = document.querySelectorAll('.slides a img');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Change slide every 3 seconds
+        setInterval(nextSlide, 3000);
+
+        // Show the first slide initially
+        showSlide(currentSlide);
+    </script>
+    <script src="popup.js"></script>
+</body>
+</html>
+
+
+        

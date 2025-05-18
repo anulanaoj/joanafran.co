@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.My island like border in the sand</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: auto; 
+            overflow-y: hidden; /* Prevent vertical scrolling */
+            height: 100vh;
+            font-family: 'Century Schoolbook', serif;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+            grid-auto-flow: column; /* Arrange items in a horizontal row */
+            grid-template-rows: 1fr;
+            overflow-x: scroll; /* Enable horizontal scrolling */
+            white-space: nowrap;
+            align-items: center; /* Center images vertically */
+            justify-content: flex-start;
+            height: 100svh;
+            width: auto;
+            padding: 0;
+            font-size: 0;
+        }
+        .container img {
+            width: auto;
+            height: 100%;
+        }
+        
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 8vh; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="5.1/line entering-01.jpg" alt="image 1">
+        <img src="5.1/line entering-02.jpg" alt="image 2">
+        <img src="5.1/line entering-03.jpg" alt="image 3">
+        <img src="5.1/line entering-04.jpg" alt="image 4">
+        <img src="5.1/line entering-05.jpg" alt="image 5">
+        <img src="5.1/line entering-07.jpg" alt="image 7">
+        <img src="5.1/line entering-09.jpg" alt="image 9">
+        <img src="5.1/line entering-10.jpg" alt="image 10">
+        <img src="5.1/line entering-11.jpg" alt="image 11">
+        <img src="5.1/line entering-12.jpg" alt="image 12">
+        <img src="5.1/line entering-13.jpg" alt="image 13">
+        <img src="5.1/line entering-14.jpg" alt="image 14">
+        <img src="5.1/line entering-15.jpg" alt="image 15">
+        <img src="5.1/line entering-16.jpg" alt="image 16">
+        <img src="5.1/line entering-17.jpg" alt="image 17">
+        <img src="5.1/line entering-18.jpg" alt="image 18">
+        <img src="5.1/line entering-19.jpg" alt="image 19">
+        <img src="5.1/line entering-20.jpg" alt="image 20">
+        <img src="5.1/line entering-21.jpg" alt="image 21">
+        <img src="5.1/line entering-22.jpg" alt="image 22">
+        <img src="5.1/line entering-23.jpg" alt="image 23">
+        <img src="5.1/line entering-24.jpg" alt="image 24">
+        <img src="5.1/line entering-25.jpg" alt="image 25">
+        <img src="5.1/line entering-26.jpg" alt="image 26">
+        <img src="5.1/line entering-27.jpg" alt="image 27">
+        <img src="5.1/line entering-28.jpg" alt="image 28">
+        <img src="5.1/line entering-29.jpg" alt="image 29">
+        <img src="5.1/line entering-30.jpg" alt="image 30">
+    </div>
+    <div class="footer">
+        <a href="5.theline.html" 
+ style="text-decoration: none; color: black;" 
+ onmouseover="this.style.color='white';" 
+ onmouseout="this.style.color='black';">
+ <img src="back.png" alt="Footer Image">
+</a> </div>
+</body>
+</html>

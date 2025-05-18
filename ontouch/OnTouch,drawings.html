@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10.Drawings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Century Schoolbook', serif;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        .spacing {
+            position: relative;
+            height: 20vh;
+            width: 100vw; /* Adjust the height as needed */
+            background-color: lch(100% 0.01 296.81);
+        }
+        .header {
+            position: relative;
+            display: flex;
+            align-items: left;
+            height: 10vh;
+            width: 100vw; /* Adjust the height as needed */
+            color: #000000;
+            padding-left: 0;
+            padding-top: 0;
+            
+        }
+        .header h1 {
+            font-size: 1em;
+            color: #000000;
+            text-align: left;
+            padding-left: 20%;
+            margin-top: 1%;
+            z-index: 2;
+            position: absolute;
+            width: 100%;
+            font-weight: lighter;
+        }
+        
+        .container {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 0%;
+            margin: 0%;
+            height: 210vh;
+            width: 100vw; /* Adjust the height as needed */;
+            align-items: flex-start;
+            justify-content: flex-start;
+            background-color: lch(100% 0.01 296.81);
+        }
+        .container img {
+            width: 20vw;
+            height: auto;
+            
+            object-fit: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .footer {
+            background-color: #ffffff;
+            text-align: right;
+            padding: 0%;
+            position: relative; /* Change to relative to avoid overlap */
+            width: auto;
+            bottom: 0;
+            max-height: 10vh; /* Allow the height to adjust to content */
+            margin-top: 20px; /* Add space above the footer */
+            padding-right: 5%;
+            padding-bottom: 5%;
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 10vh; /* Maintain aspect ratio */
+            vertical-align: middle; /* Align the image vertically with the text */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+        </style>
+</head>
+<body>
+    <div class="header">
+<h1>On Touch</h1>
+
+    </div>
+    <div class="container">
+    <img src="10/drawingsthesis.2-01 copy.jpg" alt="Image 1">
+    <img src="10/drawingsthesis.2-02 copy.jpg" alt="Image 2">
+    <img src="10/drawingsthesis.2-03 copy.jpg" alt="Image 3">
+    <img src="10/drawingsthesis.2-04 copy.jpg" alt="Image 4">
+    <img src="10/drawingsthesis.2-05 copy.jpg" alt="Image 15">
+    <img src="10/drawingsthesis.2-15 copy.jpg" alt="Image 5">
+    <img src="10/drawingsthesis.2-16 copy.jpg" alt="Image 6">
+    <img src="10/drawingsthesis.2-17 copy.jpg">
+    <img src="10/drawingsthesis.2-11 copy.jpg" alt="Image 11">
+    <img src="10/drawingsthesis.2-12 copy.jpg" alt="Image 12">
+    <img src="10/drawingsthesis.2-13 copy.jpg" alt="Image 13">
+    <img src="10/drawingsthesis.2-14 copy.jpg" alt="Image 14">
+    <img src="10/drawingsthesis.2-07 copy.jpg" alt="Image 7">
+    <img src="10/drawingsthesis.2-06 copy.jpg" alt="Image 16">
+    
+    </div>
+
+ 
+
+    <div class="footer">
+        <a href="chapters.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="next.png" alt="Footer Image">
+     </a>
+    </div>
+
+
+</body>
+</html>

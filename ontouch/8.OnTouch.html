@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.On Touch,</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Century Schoolbook', serif;
+            overflow-x: hidden;
+            height: 100%; /* Ensure the body takes the full height of the viewport */
+            justify-content: left; /* Center horizontally */
+            align-items: left; /* Center vertically */
+        }
+        .header {
+            position: relative;
+            display: flex;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: auto; /* Full height of the viewport */
+            z-index: 1; /* Behind the text */
+            padding: 2%;
+        }
+        .header h1 {
+            position: relative;
+            display: flex;
+            margin-top: 5%;
+            left: 10%;
+            font-size: 2em; /* Adjust font size as needed */
+            color: rgb(0, 0, 0); /* Text color */
+            text-align: left; /* Center the text */
+            font-weight: lighter;
+        }
+
+
+        .container {
+            position: relative;
+            display: grid;
+            flex-direction: column;
+            grid-template-columns: 1fr 1fr;
+            z-index: 1; /* Ensure the text is above the video */
+            padding: 2%;
+            max-width: 100vw;
+            max-height: auto;
+            margin: 0 auto;
+            line-height: 1.6;
+            align-items: left;
+            
+
+        }
+
+        .container p {
+            margin-bottom: 0.5em; /* Space between paragraphs */
+            font-size: 1em; /* Adjust font size for better readability */
+            margin-left: 20%;
+            color: rgb(0, 0, 0);
+            padding-right: 5%;
+            padding-bottom: 10%;
+            text-align: left;
+            text-align: justify;
+            width: 80%;
+            height: auto;
+            font-weight:lighter;
+
+
+        }
+        .container video{
+            width: 40%;
+            padding-left: 5%;
+            height: auto;
+            margin: 0 auto; /* Center the video horizontally */
+            display: block; /* Ensure the video is treated as a block element */
+            position: fixed;
+           
+        }
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+            z-index: 100;
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 10vh; /* Maintain aspect ratio */
+            vertical-align: middle; /* Align the image vertically with the text */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+        .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 10;
+            width: auto;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-trigger:hover .hover-box {
+            display: block;
+            }
+            .hover-trigger {
+            position: relative;
+            display: inline-block;
+            color: seagreen;
+            }
+            .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 1%;
+            z-index: 10;
+            width: 100%;
+            
+            }
+            .hover-text:hover + .hover-box {
+            display: block;
+            }
+            .clickable {
+            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>8.On Touch,</h1>
+    </div>
+    <div class="container">
+        <div>
+        <p>
+        <span class="hover-trigger">
+        toca-te a ti eu toquei-me, toco-me<br>
+        em vez de ti. dou-te tudo menos o toque. esse é meu e é denso e é verdade.<br>
+        a verdade é ver, o toque é nosso.
+            <span class="hover-box">
+            you touch yourself i touched me, i touch me/instead of you. i give you everything minus the touch. that one is mine and it is dense and it is true./ the truth is seeing, the touch is ours.
+            </span>
+        </span><br>
+        touch appears to lose boundaries when not seen.<br>
+        touch touch touch much better when not seen.<br>
+        stop looking where you are going !! touch the gum on the floor,<br>
+        you would only do it once anyways<br>
+        there is need in needing,<br>
+        but needing is not self-explanatory. not a gratuitous concept.<br>
+        i need i need i need<br>
+        i will count the i's in this text i consider prose,<br>
+        and turn them to you.<br>
+        would you sit in the same position if it brought you something you didn't know before.<br>
+        have you seen the wall next to you it wants some contact.<br>
+        leaning on a wall is safer than sitting on a chair.<br>
+        when you read 'i need' i wonder what you think.<br>
+        what do you not need i ask as well.<br>
+        negatives carry more weight than positives.<br>
+        cut yourself away from the image you'll see how lighter it feels.<br>
+        but i do not suggest,<br>
+        i give you my hand, yours won't be taken away if you hold on. (and i selfishly let you in)<br>
+        i eat the hand. it is mine now (no punctuation)<br>
+        ive used agency there for the first time,<br>
+        agency is to not be paper, but putting on paper is a different story.<br>
+        becoming the paper while having agency is the desire.<br>
+        one on one perfect fit,<br>
+        if you were a cup, and your insides would be water, do you think if someone poured you out,<br>
+        when you'd come in again there would be enough space for the now two of you?<br>
+        i touch myself as<br>
+        i touch you<br>
+        come inside, your fingers carry weight.<br>
+        one finger is a body but you are as well<br>
+        i give you mine<br>
+        cut them off<br>
+        no thought of touch without the means.<br>
+        retract the means you'll find the end somehow.<br>
+        i've reached it, with this document i retract.<br>
+        i go backwards.<br>
+        i find the means<br>
+        touch touch touch<br>
+        <br>
+        <br>
+        what is the point of contact if there is any at all<br>
+        i ask. i ask you.<br>
+        i have no answer for this, for the one i find is not bringing me pleasure.<br>
+        i want the pleasure i seek to come from you.<br>
+        too much work for it to be for me ( and it isn't i tell you)<br>
+        <span class="hover-trigger">toca-me, toco-te eu a ti em vez<br>
+                <span class="hover-box">
+                touch me, i touch you and i to you instead
+                </span>
+            </span>
+        in turn of the other i will step<br>
+        no one comes forward<br>
+        (really no one comes forward)<br>
+        i will take your turn<br>
+        i will be the weight and the paper<br>
+        <br>
+        </p>
+    </div>
+    <div>
+        <video autoplay loop muted class="clickable-video clickable" data-video-src="7.mp4" >
+            <source src="7.mp4" type="video/mp4">
+        </video>
+    </div>
+    </div>
+    <div class="footer">
+        <a href="7.Ienteryou.html" 
+     style="text-decoration: none; color: black;" 
+     onmouseover="this.style.color='white';" 
+     onmouseout="this.style.color='black';">
+     <img src="back.png" alt="Footer Image">
+    </a> 
+        <a href="end.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="next.png" alt="Footer Image">
+     </a>
+    </div>
+    <div id="fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 1000;">
+        <video id="popup-video" controls style="max-width: 90%; max-height: 80%; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); border: 1px solid black;">
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("fullscreen-popup");
+    const popupVideo = document.getElementById("popup-video");
+    const popupDescription = document.getElementById("popup-description");
+    const videos = Array.from(document.querySelectorAll(".clickable-video"));
+
+    // Open popup when a video is clicked
+    videos.forEach((video) => {
+        video.addEventListener("click", () => {
+            const videoSrc = video.getAttribute("data-video-src");
+            const videoDescription = video.getAttribute("data-description") || "No description available";
+
+            popup.style.display = "block";
+            popupVideo.querySelector("source").src = videoSrc;
+            popupVideo.load(); // Reload the video with the new source
+            popupDescription.textContent = videoDescription;
+        });
+    });
+
+    // Close popup when clicking on the white background
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            popup.style.display = "none";
+            popupVideo.pause(); // Pause the video when the popup is closed
+        }
+    });
+});
+    </script>
+</body>
+</html>

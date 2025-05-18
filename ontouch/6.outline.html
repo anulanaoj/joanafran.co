@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.Outlines</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Century Schoolbook', serif;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            background-color: #ffffffde;
+        }
+        .header {
+            position: relative;
+            display: flex;
+            align-items: left;
+            height: 15vh;
+            width: 100%; /* Adjust the height as needed */
+            color: #000000;
+            padding-left: 0;
+            padding-top: 0;
+            
+        }
+        .header h1 {
+            font-size: 1.5em;
+            color: #000000;
+            text-align: left;
+            margin-left: 25%;
+            padding-top: 3%;
+            margin-top: 0%;
+            z-index: 2;
+            position: absolute;
+            width: 100%;
+            font-weight: lighter;
+        }
+        
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            padding: 0%;
+            margin-bottom: 5%; /* Add spacing below */
+            margin-left: 15%;
+            width: 100%;
+            height: auto;
+            justify-content: left;
+            align-items: left;
+        }
+        .containerx {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 5%;
+            margin-top: 5%; /* Add spacing above */
+            width: 100%;
+            height: auto;
+            background-color: lch(100% 0.01 296.81);
+            overflow: hidden;
+        }
+        .containerx p {
+            position: relative;
+            max-width: 40%;
+            height: auto;
+            margin: 0;
+            padding-left: 35%;
+            padding-top: 0%;
+            font-size: 1em;
+            color: #333;
+            text-align: justify;
+            z-index: 2;;
+        }
+        .image {
+            display: flex;
+            flex-direction: column;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 50bw;
+            height: auto;
+            padding-left: 10%;
+            align-items: left;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+        }
+        .image img {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            border: #a30000 solid 0.5px;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            justify-content: left;
+            align-items: left;
+            padding-left: 10%;
+            max-width: 100%;
+            height: auto;
+        }
+        .text p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
+        .specialtext {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+            padding-left: 30%;
+            max-width: 50%;
+            height: auto;
+        }  
+        .specialtext p {
+            width: 40%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #212121;
+            text-align: justify;
+            z-index: 2;
+        }
+        .image1 {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            max-width: 50vw;
+            height: auto;
+            padding-left: 0%;
+            align-items: center;
+            justify-content: center;
+        }
+        .image1 img {
+            width: 70%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            margin-top: 5%;
+            margin-left: 10%;
+        }
+        .textbody {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+            padding-left: 10%;
+            max-width: 50%;
+            height: auto;
+            margin-bottom: 10%;
+        }
+        .textbody p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color:#6a8726 ;
+            text-align: justify;
+            z-index: 2;
+        }
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+        }
+        .footer img {
+            height: 7vh; /* Maintain aspect ratio */
+            width: auto; /* Adjust width automatically */
+        }
+
+
+        .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            
+            z-index: 10;
+            width: 45%;
+            }
+            .hover-trigger:hover .hover-box {
+            display: block;
+            }
+            .hover-trigger {
+            position: relative;
+            display: inline-block;
+            }
+            .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #ffffff00;
+            z-index: 10;
+            width: 100%;
+            margin-top: 10%;
+
+            
+            }
+            .hover-text:hover + .hover-box {
+            display: block;
+            }
+
+            .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 80%;
+            height: 80%;
+            overflow: auto;
+            background-color: rgba(255, 255, 255, 0); /* Black background with opacity */
+            padding-top: 05%;
+
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border: 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 5%;
+            right: 20%;
+            color: rgb(160, 51, 51);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .clickable {
+        
+            transition: transform 0.2s; /* Animation for zoom effect */
+            cursor: url('./click.png'), auto; /* Ensure the file is in the same directory as the HTML file */
+
+        }
+
+        .slideshow-container {
+            z-index: 1;
+            position: relative;
+            max-width: 60%;
+            margin: auto;
+            padding-left: 10%;	
+            display: flex;
+            justify-content: left;
+            padding: 0%;
+            cursor: url('click.png'), auto; /* Replace with your image path */
+        }
+        .slideshow-container img {
+            padding: 0%;
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s; /* Animation for zoom effect */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Stack content vertically */
+            }
+
+            .containerx {
+                padding: 10%; /* Adjust padding for smaller screens */
+            }
+        }
+        .spacing {
+            display: inline-block;
+            width: 100%;
+            height: 20%;
+            margin: 0;
+            padding: 0;
+        }
+        .clickable {
+            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+        </style>
+</head>
+<body>
+    <div class="header">
+        <h1>6.Outlines</h1>
+    </div>
+    <div class="container">
+        
+               
+           <div class="text">
+        <p>As I feel a tingling in my right arm, </p><br>
+           </div>
+            <div class ="image">
+                <img src="6/outline-2.jpg" alt="150x200cm, body in movement deliniated with a permanent marker on cotton"  class="clickable-image, clickable">
+                </div>
+           <div class="text">
+        <p>unsure if some illness has reached me, if I am more awake to bodily sensations or if my mind copes with some external nuisance not yet recognized. <br>
+            <br>It is an ant farm sensation, I worry of my circulation. 
+        <br><br></p>
+           </div>
+    </div>
+           <div class="container"> 
+           <div class="text">
+        <p>Efforts in the studio. <br><br> What I will call, for now, exercises of delineating oneself on a surface, as a form of direct reflection – as a shadow is – that makes possible the seeing of the body as a space occupying form, outside of the unforgiving first person perspective. To see yourself from outside through a delineating of your physical body is never to see yourself from outside, but it certainly gives clues to it. 
+        </p>
+        </div>
+           </div>
+    </div>
+    <div class="container">
+        <div class="image">
+            <img src="6/outline-3.jpg" alt="150x200cm, body deliniated and transferred with a soft pastel on cotton" class="clickable-image, clickable">
+        </div>
+        <div class="text">
+            <p>As a motivating factor I give you my own memory of when I was seeing the world with a horizon at one meter twenty or so. <br>
+                <br>I would sit down on a chair and try to understand how much space I am occupying by feeling the edges of my body touch the chair, as well as seeing others around me with a similar size as reference for my understanding. It brought me a sense of materiality I could trust, some self-comforting reached. I’d stand up and look at the chair and imagine the negative space of the body there. Now, my memory is that of a chair but I notice it is a re-occurring processing – it happens as I stand in a room, 
+            <br><br><br>
+            </p>
+        </div>
+        </div>
+        <div class="container">
+        <div class="specialtext">
+            <p> you can calculate your measurements by noticing your distance from the walls and ceiling, you can do it walking in the street by looking at your shadow, and you can, as I show you, trace your body as it is on a surface and step away from it.
+            </p>
+        </div>
+    </div>
+        <div class="container">
+            <div class="image">
+                <img src="6/outline-5.jpg" alt="150x170cm, two still bodies deliniated with a soft pastel on cotton" class="clickable-image, clickable">
+            </div>
+            <div class="text">
+                <p>The process of these outlines is a literal one, that searches for the middle point of view between the <i>as it is</i> and the <i>as it is perceived</i> through the flattening of volume. The outlines delineate space, and simplify it in this way. They are reductions and traces of volume. At the same time, they are lines – directly related to touch.
+                <br><br>When making the work I stand on the canvas which rests on the floor. The first instinct is to join its rest and feel my body as I feel the woven-ness of the fabric. Something tight which lets air go through it. We are impermeable as a rain coat unless we consider our entrances as such. There is a procession letting the environment touch us from the inside. <br>
+                <br> Air has its way of entering us and I search for a way to do the same. As if oxygen would go anywhere but the lungs, that is how it feels. Organs touch each other, organs share space which I tend to feel. Overwhelmingness which forces me to stop the outside and continue on the inside. I feel them be when I cannot feel my hands anymore.
+                </p>
+            </div>
+            <div class="image1">
+                <img src="6/touch.jpg">
+            </div>
+            <div class="textbody">
+                <p class="hover-text">
+                    <span class="hover-trigger">
+                        “It is the body and it alone, because it is a two-dimensional being, that can bring us to the things themselves, which are themselves not flat beings but beings in depth, inaccessible to a subject that would survey them from above, open to him alone that, if it be possible, would coexist with them in the same world.”
+                        <span class="hover-box">
+                            Merleau-Ponty, Maurice. The Visible and the Invisible, Northwestern University Press, 1968. 136</span>
+                    </span>
+                </p>
+                </div>
+            <div class="text">
+                <p>
+                The acts are attempts of sensing the edges of the body. <br>
+                <br> If felt, they make apparent through contrast, the difference between the body and its environment. The difference <i>is</i> the space between the two. The space which I have reduced to a line. The line is, in this document, a reduced interpretation of the space that outlines characters of/and the world. Its application in the drawings comes in sizes proportional to the hand or to the body, firstly as a tracing of investigatory movements and poses, and afterwards as assumed lines, thought of and chosen. Often chosen by re-assuming the traced position and sensing points of bodily tension. 
+                </p>
+        </div>
+        </div>
+    
+    <div class="containerx">
+        <p>
+            <a href="6..Transcript.html" style="text-decoration: none; color: #c12300;" class="clickable"
+               onmouseover="this.style.color='black';" 
+               onmouseout="this.style.color='#bdc63b';">
+                With intentions of holding my own hand during the tracing actions, I have recorded myself doing so, or recorded my thoughts, spoken, on my movements. The one shown to you has a duration of forty three minutes and goes through my instinctual movements, as well as thought-of ones, my choices and points of interest while delineating myself. It is added to this document as elucidating material on my approach to seeing the line as such.
+            </a>
+        </p>
+    </div>
+    <div class="footer">
+        <a href="5.theline.html" 
+     style="text-decoration: none; color: black;" 
+     onmouseover="this.style.color='white';" 
+     onmouseout="this.style.color='black';">
+     <img src="back.png" alt="Footer Image">
+    </a> 
+        <a href="0.OnTouch.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="next.png" alt="Footer Image">
+     </a>
+      </div>
+       <div id="fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 1000;">
+        <img id="popup-image" src="" alt="Fullscreen Image" style="max-width: 90%; max-height: 80%; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); border: 1px solid black;">
+        <div id="popup-description" style="position: absolute; top: 92%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; font-size: 1em; color: black;">
+            <!-- Description will be dynamically added here -->
+        </div>
+        <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
+        <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+    </div>
+      <script src="popup.js"></script>
+</body>
+</html>
+``` 

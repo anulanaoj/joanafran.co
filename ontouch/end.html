@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <title>On Touch, </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>   
+        <style>
+             * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html, body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Century Schoolbook', serif;
+                overflow-x: hidden;
+                height: 100%; /* Ensure the body takes the full height of the viewport */
+                display: flex; /* Enable flexbox */
+                flex-direction: column; /* Stack items vertically */
+                justify-content: flex-start; /* Align items to the top */
+                align-items: left; /* Center horizontally */
+            }
+
+            .container {
+                position: relative; /* Make container relative for absolute positioning of text */
+                display: flex;
+                justify-content: center; /* Center images horizontally */
+                align-items: center; /* Center images vertically */
+                padding: 0;
+                max-height: 100vh; /* Full height of the viewport */
+                max-width: 100vw; /* Full width of the viewport */
+                box-sizing: border-box;
+            }
+        .container img {
+            width: 65%; /* Adjust the size of the image as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-right:0; /* Add space between the image and text */
+        }
+
+        .footer {
+            background-color: #ffffff;
+            text-align: right;
+            position: fixed;
+            padding: 0%;
+            position: relative; /* Change to relative to avoid overlap */
+            width: auto;
+            bottom: 0;
+            max-height: 10vh; /* Allow the height to adjust to content */
+            margin-top: 0; /* Add space above the footer */
+            padding-right: 5%;
+            padding-bottom: 5%;
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 10vh; /* Maintain aspect ratio */
+            vertical-align: middle; /* Align the image vertically with the text */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <img src="end.jpg" alt="">
+
+    </div>
+
+
+
+    <div class="footer">
+        <a href="index.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="back.png" alt="Footer Image">
+       </a> 
+    </div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.Interaction in Tenerife</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: auto; 
+            overflow-y: hidden; /* Prevent vertical scrolling */
+            height: 100vh;
+            font-family: 'Century Schoolbook', serif;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+            grid-auto-flow: column; /* Arrange items in a horizontal row */
+            grid-template-rows: 1fr;
+            overflow-x: scroll; /* Enable horizontal scrolling */
+            white-space: nowrap;
+            align-items: center; /* Center images vertically */
+            justify-content: flex-start;
+            height: 100svh;
+            width: auto;
+            padding: 0;
+            font-size: 0;
+        }
+        .container img {
+            width: auto; /* Set image width to 80% */
+            height: 100%;
+        }
+        
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 8vh; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="3.1/interacting trf-01.jpg">
+        <img src="3.1/interacting trf-02.jpg">
+        <img src="3.1/interacting trf-03.jpg">
+        <img src="3.1/interacting trf-04.jpg">
+        <img src="3.1/interacting trf-05.jpg">
+        <img src="3.1/interacting trf-06.jpg">
+        <img src="3.1/interacting trf-07.jpg">
+        <img src="3.1/interacting trf-08.jpg">
+        <img src="3.1/interacting trf-09.jpg">
+        <img src="3.1/interacting trf-10.jpg">
+        <img src="3.1/interacting trf-11.jpg">
+        <img src="3.1/interacting trf-12.jpg">
+        <img src="3.1/interacting trf-13.jpg">
+        <img src="3.1/interacting trf-14.jpg">
+        <img src="3.1/interacting trf-15.jpg">
+        <img src="3.1/interacting trf-16.jpg">
+        <img src="3.1/interacting trf-17.jpg">
+        <img src="3.1/interacting trf-18.jpg">
+        <img src="3.1/interacting trf-19.jpg">
+    </div>
+    <div class="footer">
+        <a href="3.interactionwith.html" 
+ style="text-decoration: none; color: black;" 
+ onmouseover="this.style.color='white';" 
+ onmouseout="this.style.color='black';">
+ <img src="back.png" alt="Footer Image">
+</a> </div>
+</body>
+</html>

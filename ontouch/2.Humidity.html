@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. humidity</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Century Schoolbook', serif;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            background-color: rgb(255, 255, 255);
+        }
+        .header {
+            position: relative;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            height: 100%; /* Adjust the height as needed */
+            background-color: lch(100% 0.01 296.81 / 0);
+            display: flex;
+            z-index: 1;
+            overflow:hidden;
+            padding-bottom: 20%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            
+        }
+        .header h1 {
+            font-size: 1.5em;
+            color: #000000;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            margin-right:20%;	
+            padding-top: 5%;
+            font-weight: 10;
+            position: relative;
+            z-index: 2;
+            font-weight: lighter;
+        }
+        .header img {
+            max-width: 50%; /* Ensure the image doesn't exceed the container width */
+            height: auto;
+            padding: 0%;
+            overflow: hidden;
+            box-sizing: border-box;
+            z-index: 1;
+            position: relative;
+            border: #000000 0.5px solid;
+            
+        }
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            padding: 0%;
+            margin-bottom: 5%; /* Add spacing below */
+            margin-left: 0%;
+            width: 100vw;
+            height: auto;
+            overflow: hidden;
+            justify-content: left;
+            align-items: left;
+        }
+        .image {
+            width: 100vw;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 0%;
+            margin-top: 0%;
+        }
+        .image img {
+            width: 35%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            margin-top: 0%;
+            margin-left: 25%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #000000 0.5px solid;
+        }
+        .images {
+            display: flex;
+            flex-direction: row;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 100vw;
+            height: auto;
+            padding-left: 0%;
+            align-items: center;
+            justify-content: center;
+        }
+        .images img {
+            width: 16.5%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 10%;
+            margin-top: 2%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #000000 0.5px solid;
+        }
+        .images2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            margin: 0 auto; /* Center the grid horizontally */
+            padding-top: 0%;
+            max-width: 50vw;
+            height: auto;
+            padding-left: 0%;
+            align-items: center;
+            justify-items: center; /* Center images within the grid */
+            margin-bottom: 3%;
+            column-gap: 0; /* Remove space between columns */
+        }
+        .images2 img {
+            width: 100%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 0%;
+            margin-top: 0%;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+            border: #000000 0.5px solid;
+        }
+        
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0%;
+            max-width: 100%;
+            height: auto;
+        }
+        .text p {
+            width: 40%;
+            height: auto;
+            padding: 0%;
+            padding-left: 10%;
+            margin-bottom: 5%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
+        .textlast {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0%;
+            max-width: 100%;
+            height: auto;
+            
+        }
+        .textlast p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin-bottom: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+            border: #000000 0.5px solid;
+        }
+        .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 10;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-trigger:hover .hover-box {
+            display: block;
+            }
+            .hover-trigger {
+            position: relative;
+            display: inline-block;
+            cursor: pointer; /* Change the cursor to a pointer on hover */
+            }
+            .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 10;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-text:hover + .hover-box {
+            display: block;
+            }
+                .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+            z-index: 1000;
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 8vh; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+                .slideshow {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    margin-top: 0%;
+                    margin-bottom: 10%;
+                    margin-left: 20%; /* Move container to the right */
+                    
+                    
+                }
+                .slideshow img {
+                    max-width: 100%;
+                    height: auto;
+                    margin: 0 10px; /* Space between images */
+                    padding: 0;
+                    object-fit:scale-down;
+                    clip-path: inset(0 0 0 0);
+                    overflow: hidden;
+                    box-sizing: border-box;
+                }
+                .clickable {
+                    cursor: url(click.png), pointer; /* Custom pointer for specific elements */
+                }
+                
+    </style>
+</head>
+<body>
+     <div id="fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 1000;">
+        <img id="popup-image" src="" alt="Fullscreen Image" style="max-width: 90%; max-height: 80%; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); border: 1px solid black;">
+        <div id="popup-description" style="position: absolute; top: 92%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; font-size: 1em; color: black;">
+            <!-- Description will be dynamically added here -->
+        </div>
+        <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
+        <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+    </div>
+    <div class="header">
+        <h1> 
+            2.Humidity</a>
+        </h1>
+        <img src="2/humidity head.jpg" alt="Second Image">
+    </div>
+        <div class="container">
+            <div class="textlast">
+                <p style="font-size: 0.95em;"> Travelling to school, I saw landscapes while inside the closed car with the glass of the window as a separator of us both.
+                    </p>
+                </div>
+           <div class="images">
+                    <img src="2/10143879964_9ea91dd450_o.jpg" alt="sometime during middleschool,"class="clickable-image, clickable">
+                    <img src="2/10144103803_c24aa8587c_o.jpg" alt="I would take images with my first phone,"class="clickable-image, clickable">
+                    <img src="2/10144097293_56e2e068c7_o.jpg" alt="inside my mom's moving car."class="clickable-image, clickable">
+                    </div>
+        </div>
+                    
+            <div class="container">
+                <div class="image">
+                    <img src="2/road.jpg" alt="So much green you forget there is a sky." class="clickable-image, clickable">
+                </div>
+            <div class="text">
+                <p>The landscape is made of, in the first plane, just the road, grey and strict. It then contrasts with the remaining planes- of grass, trees and mountains, green that can make you think you are predestined to only see one colour for the rest of your days. So much green you forget there is a sky.
+            The sky is usually grey. The island welcomes an agglomerate of clouds which sometimes come down to say <br>
+            <br> hello <br>
+            <br>and confirm themselves by touching us in the skin. I’ve always had the desire to escape the car, open the door unharmed and <i> go go go </i> to the mountains. They appear closer than they are. Wanting to go and hug the grass face down and breathe in the remaining drops left by humidity of the previous day’s rain.
+            The feeling of embeddedness is translatable to that of the characteristic humidity of the island <br>
+            <br>– orange is everywhere.
+                </p>
+                <div class="image">
+                    <img src="2/orange.jpg" alt="orange is everywhere"class="clickable-image, clickable">
+                </div>
+                <p>
+                Humidity affects our sense-hood, ingrains itself in our bones, gives us headaches. It is as some entity has entered us. It is as glue which un-differentiates the body from its surroundings. It limits felt distance to the environment because it embeds itself on anything inserted in said environment. <br>
+                <br>A homogeneous being it is.
+                </p>
+            </div>
+            
+            </div>
+            <div class="container">
+            <div class="images2">
+                <img src="2/PXL_20240721_151934678.jpg" alt="in the heart of the island," class="clickable-image, clickable" >
+                <img src="2/PXL_20240721_152259032.jpg" alt="where they used to extract our sparkling water," class="clickable-image, clickable">
+                <img src="2/PXL_20240721_153344577.jpg" alt="I soaked my symbolic head"class="clickable-image, clickable">
+                <img src="2/PXL_20240721_153341866.jpg" alt="and thought of leaving it there," class="clickable-image, clickable">
+                <img src="2/PXL_20240721_153715675.jpg" alt="but decided against it, as the color might remain the same when dry." class="clickable-image, clickable">
+                <img src="2/PXL_20240721_153906343.jpg" alt="it didn't." class="clickable-image, clickable">
+</div>
+                <div class="textlast">
+                    <p>This object is my sibling, made for my head from cotton. It is a hat which covers the face. I’ve soaked it with means of having some visualization of an environment entering a body. I’ve found this way by putting aside my own desire to be this hood, out of convenience. But there is the fear of copying, even though I would only do Ana Mendieta a continuation of her action, if I enter this stream it would take me too far without taking the slow steps you see in this document.
+                        <br><br>Slow steps so you notice how one becomes two, which really just means that two become one. (It is both at once). And this integration of movement, I see slowed down by dense atmospheres. As are the ones solidified by humidity. Humidity which makes the cold colder and the warm insufferable, it is tension you cut with the knife, without any discomfort. This is tension that secures you, hugs you so surely sometimes it enters you, you breath slow. You smell it enter you.  
+                        <br><br>What goes through us does so through walls. And you do smell it enter  the wall you touch and feel wet. And clean your fingers on your already damp shirt. Your clothes merge with you, and you do so with the walls.
+                    </p>
+                    </div>
+            </div>
+            
+                        
+                
+                
+           
+           
+            
+    
+           <div class="footer">
+            <a href="1.thegrassfield.html" 
+     style="text-decoration: none; color: black;" 
+     onmouseover="this.style.color='white';" 
+     onmouseout="this.style.color='black';">
+     <img src="back.png" alt="Footer Image">
+    </a> 
+        <a href="3.interactionwith.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="next.png" alt="Footer Image">
+     </a>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joana Franco</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-width: 100vw; /* Ensure the body takes up the full width */
+            height: auto; /* Ensure the body takes up the full height */
+            font-family: Archivo, sans-serif;
+            box-sizing: border-box;
+            
+            
+        }
+        .container {
+            max-width: 100%;
+            height: auto;
+            position: relative;
+            background: white;
+            overflow: hidden;
+            display: grid;
+            flex-direction: column;
+            grid-template-columns: 1fr 2fr;
+            align-items: start;
+            justify-content: start;
+        }
+        .container img {
+            position: relative;
+            max-width: auto; /* Allow the image to scale properly */
+            max-height: 85vh; /* Maintain aspect ratio */
+            z-index: 0; /* Ensure the image is not hidden behind other elements */
+            margin: 0 ; /* Center the image horizontally */
+            padding: 0; /* Remove unnecessary padding */
+            margin-top: 5%;
+            margin-left: 10%;
+            
+        }
+        .container p {
+            position: relative;
+            max-width: 50%;
+            z-index: 1; /* Ensure the text is above the image */
+            color: black;
+            font-size: 0.9em;
+            margin-top: 20%;
+            padding-left: 50%;
+            font-weight: lighter;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <p>Joana Franco<br/>2001 <br/>maker and doer<br/><br/><a href="cv.html" style="text-decoration: none;">cv</a><br/>contact.joanafranco@gmail.com<br/>
+        <br><br><br><br>
+        <a href="On Touch.html" style="text-decoration: none;">On Touch,</a>
+        
+        
+        
+            </p></div>
+        <div>
+        <img src="outline-2.jpg" alt="outlinen3">
+        </div>
+    </div>
+        
+    
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.The line</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Century Schoolbook', serif;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            
+        }
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: left;
+            height: 100%;
+            width: 100%; /* Adjust the height as needed */
+            color: #000000;
+            padding-left: 0;
+            padding-top: 0;
+            
+        }
+        .header h1 {
+            font-size: 2em;
+            text-align: left;
+            padding-left: 21%;
+            margin-top: 21%;
+            z-index: 2;
+            position: absolute;
+            width: 50vw;
+            font-weight: lighter;
+        }
+        .header img {
+            max-width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 5%;
+            object-fit: cover;
+            clip-path: inset(0 0 0 0); /* Ensures the image is clipped to the container */
+            overflow: hidden; /* Hides any part of the image outside the container */
+            
+        }
+        .container {
+            position: relative;
+            display: grid;
+            flex-direction: column;
+            padding: 0%;
+            margin-bottom: 1%; /* Add spacing below */
+            margin-left: 15%;
+            width: 100vw;
+            height: auto;
+            justify-content: left;
+            align-items: left;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+            padding-left: 0%;
+            max-width: 100%;
+            height: auto;
+        }
+        .text p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-bottom: 5%;
+            padding-left: 0%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
+        .firsttext {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+            padding-left: 0%;
+            max-width: 100%;
+            height: auto;
+        }  
+        .firsttext p {
+            width: 35%;
+            height: auto;
+            padding: 0%;
+            padding-left: 15%;
+            margin: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
+        .firstimage {
+            display: flex;
+            position: relative;
+            margin: 0%;
+            padding-top: 1%;
+            max-width: 50%;
+            height: auto;
+            padding-left: 0%;
+            align-items: left;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            margin-top: 0%;
+        }
+        .firstimage img {
+            width: 100%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+        }
+        .image {
+            display: flex;
+            position: relative;
+            margin: 0%;
+            padding-top: 1%;
+            max-width: 50%;
+            height: auto;
+            padding-left: 0%;
+            align-items: left;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            margin-top: 0%;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            border: #000000 solid 0.5px;
+        }
+        .imagered {
+            display: flex;
+            position: relative;
+            margin: 0%;
+            padding-top: 0%;
+            max-width: 50%;
+            height: auto;
+            padding-left: 0%;
+            align-items: left;
+            grid-template-columns: 1fr 2fr; /* Two columns */
+            margin-top: 0%;
+        }
+        .imagered img {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            margin-bottom: 5%;
+            border: #000000 solid 0.5px;
+        }
+        .images4 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 0%;
+            max-width: 50%;
+            height: auto; /* Adjust the height as needed */
+            margin-left: 0%;
+            margin-bottom: 5%;
+            gap: 1%; 
+        }
+        .images4 img {
+            max-width: 100%;
+            height: auto; /* Adjust the height as needed */
+            overflow: hidden; /* Hides any part of the image outside the container */
+            border: #000000 solid 0.5px;
+        }
+        .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 10;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-trigger:hover .hover-box {
+            display: block;
+            }
+            .hover-trigger {
+            position: relative;
+            display: inline-block;
+            }
+            .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 10;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hover-text:hover + .hover-box {
+            display: block;
+            }
+
+        .footer {
+            background-color: #f8f8f800;
+            display: flex;
+            justify-content: space-between; /* Align items to opposite sides */
+            align-items: center; /* Vertically center the content */
+            position: fixed;
+            width: 99%; /* Ensure the footer spans the full width */
+            bottom: 0;
+            padding: 1%; /* Add some horizontal padding */
+            max-height: 8vh; /* Adjust height as needed */
+        }
+        .footer img {
+            width: auto; /* Adjust the size of the image as needed */
+            height: 8vh; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between the image and text */
+        }
+        .clickable {
+            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+        .clickabletwo {
+            cursor: url('click2.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
+     </style>
+</head>
+<body>
+    <div class="header">
+        <h1>5. The line</h1>
+        <img src="5/line intro.jpg" alt="">
+    </div>
+    <div class="container">
+        <div class="text">
+            <div class="firsttext">
+            <p>When I close my eyes and focus on my body, when I focus on my fingertips, on my nails, on the space between my fingers, when I think of my wrists, I feel the blood flowing through them. I feel my arms and I feel where my lower arm touches my upper arm. I feel where this upper arm touches my shoulder and so on. I close my eyes, but I see my body. I feel my body and I perceive the edges of it as I perceive where it touches itself. Where it touches itself, there are tension points which make the physicality of my own body apparent to me. 
+            </p></div>
+        </div>
+        <div class="firstimage">
+        <img src="5/apparent.jpg" alt="Three A6 drawings coming from a day of introspection." class="clickable-image, clickable">
+        </div>
+
+        <div class="text">
+            <p><br><br>I urge you to do the same. Close your eyes. <br><br> And feel your skin. If you feel your skin, you can trace your volume in your head. You can identify the space you occupy, and if you open your eyes, you can put it in relation to the space you don't occupy. In this way, you gather some sensibility on your self-perception and the perception that you have of the world. When doing this exercise, you are not closed to the world, you still feel the air around you. You may hear some noise outside. But your range is very limited. And when it's not limited, it's mostly imagination that the sounds or smells suggest.
+            <br><br><br><br><br> <i>To self-ingrain. Is to wear yourself like a glove. And feel its material touch you.</i>
+            <br><br><br><br>The skin hugs our body and makes itself present through external objects. <i>I exist when I have touched.</i> If you right now go touch a wall, it is touched, but you remain feeling your skin touching the wall. The impressions that this wall leaves, give you the information that it is something outside of you that comes into contact. This contact is as a negative of a photograph is. So we perceive this object in front of us through its delineation. I speak of delineation as an outline. <br>
+            <br> What separates a cup from a lagoon. <br>
+            <br>These defining lines are central to our perception of the world. There would be no object as we know it otherwise, no character in the world. Form instructs our behaviour. In the same way, we don't know experience without a body. 
+            </p>
+        </div>
+        </div>
+        <div class="container">
+        <div class="firsttext">
+            <p>The body delineated by itself creates a barrier which would be impenetrable if not for the senses and the ability to move. These allow the barriers to be penetrable, transformed into bridges between you and all other yous around. <br>
+                <br>Our outline is the field where things touch, affect each other.
+            </p>
+        </div>
+        <div class="image">
+        <img src="5/5.2..jpg" alt="100x70cm, four arms deliniated with charchoal." class="clickable-image, clickable">
+        </div>
+    </div>
+    
+        
+   
+    <div class="container">
+        <div class="text">
+        <p class="hover-text">
+        As I drink from a mug, I touch it once when to hold it, touch it twice with my lips. But only when I drink from it there is a sensible interaction. Although it is not the mug that goes inside of me, it is what informs the sensation to be. Between the drink and my body there is the mug. I put weight on this act due to feeling the cold drink telling the shape of my own oesophagus, and then of whatever follows. This happens because of the interaction  between the drink and my body. And gain a sense of my internal composition, as a drawing, through its felt outlining. The (out/in)line is felt through contrast.
+        <br><br>My body is warm and the drink is cold. Putting yourself in contrast with another is a way of delineating yourself, noticing the differences, similarities between the two. Swimming in cold water makes the body feel itself as it is. <br>
+        <br><br> To self-ingrain is to touch yourself from the inside,<br><i>as if you were the beddings you sleep in.</i><br><br>
+        <br>The act of ingraining is one of entrenchment. To enter oneself -<i> self-embodiment is to feel the body from the inside</i> – to be able to feel your body as the hand feels a glove. This is not a desire to, however, be wrapped in latex. It is a call to be conscious to touch, to (inter)act. It is through ingraining your body that you ingrain the world.
+        <br><br>I propose, as Merleau-Ponty does, to see this contrasting outline as an interacting field. A no-mans-land, shared by yourself and the world. Imagine it as a line put under a microscope. As you walk closer to the horizon you notice the ocean is no longer a horizontal line but 
+            <span class="hover-trigger" style="color: rgb(74, 124, 17);">
+                a plane of itself.
+                <span class="hover-box">
+                   “The spreading out, especially in the case of a short, straight line, bears a relation to the growing point. Here, too, the question "When does the line as such die out, and at what moment is a plane born?", remains without a definite answer. How shall the question "Where does the river stop and the sea begin?", be answered?” Kandinsky, Wassily.  Point and Line to Plane, Cranbrook Press, 1947. 90
+                </span>
+            </span> <br>
+            <br><br>The line is only known when entered as a space with its own delineation.
+            </p>
+        </div>
+        </div>
+        <div class="container">
+            <div class="image">
+        <img src="5/background image.jpg" alt="The line is only known when entered as a space with its own delineation." class="clickable-image, clickable">
+            </div> 
+        </div> 
+        <div class="container"> 
+            <div class="text">
+            <p>As our line is, I believe so to be Merleau-Ponty’s concept of the <i>flesh</i>, defending undifferentiation of object and subject. In his later work, <i>The Visible and the Invisible</i>, he introduces flesh as an elemental fabric that precedes and enables perception. Flesh is neither just subjective or objective but constitutes the medium through which the world and the perceiving body meet and exchange. It is this exchange that allows visibility and tactility to be shared, forming a structure where seeing and being seen, touching and being touched, collapse into each other. This collapse constitutes what Merleau-Ponty refers to as the <i>chiasm</i> – a crisscrossing of experience where the boundaries between us and world, subject and object, dissolve into a field of reciprocal perception. 
+            <br><br>The flesh is the intertwining of the sensible and the sentient, the place where the body does not simply observe the world from a detached position but is felt within it.
+        </p>
+        </div>
+        </div>
+        <div class="container">
+    <div class="images4">
+        <a href="5.1.html">
+           <img src="5/integrating-1.jpg" alt="In this intertwining we are both within" class="clickabletwo">
+            <img src="5/integrating-2.jpg" alt="and outside ourselves," class="clickabletwo">
+        </a>
+            
+        </div> 
+    </div>
+    <div class="container">
+        
+        <div class="text">
+        <p>In this intertwining we are both within and outside ourselves, in dialogue with the world. Any idea of object as something separate from the subject is re-written from a monologue to dialogue; the two share each other, become constituted by each other. Self-ingraining—the act of feeling oneself from inside—is not a separatory act but one that asks for a way in, integration with the flesh. 
+        </p></div>
+        <div class ="imagered">
+            <img src="5/trees.jpg" alt="A3, one hand in movement deliniated with a ballpoint pen." class="clickable-image, clickable">
+        </div>
+        <div class="text">
+        <p><br>This was shown to me while in the car, my eyes stuck on the top of naked trees. The clouds touched them without overlapping the defined upright lines coming from their torsos. I had the impression these lines were soft, like cotton, and if I brushed my face against them it would be as eyelashes are in a butterfly kiss. Softness was a sensation felt. I felt the brushing of the tops of the trees on the air, with the fast pace of the car. The trees continued and transformed into a concise line. It may have been by some absolute want that I felt the trees touch wind, or the car tires touching cement, but the feeling was felt regardless. To inhabit one's flesh is to go exist within the chiasm. <br>
+            <br>The call to be conscious of touch, to interact, is a call to acknowledge sensation. The flesh, as the site of this interaction, does not belong to the individual alone; it is the medium through which the world manifests itself. To touch oneself is to touch the world, and to touch the world is, inevitably, to be touched in return.
+        </p>
+        </div>
+    </div>
+    
+    
+        <div class="footer">
+            <a href="4.myislandlikeborder.html" 
+     style="text-decoration: none; color: black;" 
+     onmouseover="this.style.color='white';" 
+     onmouseout="this.style.color='black';">
+     <img src="back.png" alt="Footer Image">
+    </a> 
+        <a href="6.outline.html" 
+        style="text-decoration: none; color: black;" 
+        onmouseover="this.style.color='white';" 
+        onmouseout="this.style.color='black';">
+        <img src="next.png" alt="Footer Image">
+     </a>
+            
+          </div>
+         <div id="fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 1000;">
+        <img id="popup-image" src="" alt="Fullscreen Image" style="max-width: 90%; max-height: 80%; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); border: 1px solid black;">
+        <div id="popup-description" style="position: absolute; top: 92%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; font-size: 1em; color: black;">
+            <!-- Description will be dynamically added here -->
+        </div>
+        <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
+        <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+    </div>
+    <script>
+        // JavaScript for handling the modal functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("image-modal");
+            const modalImage = document.getElementById("modal-image");
+            const closeModal = document.querySelector(".close");
+            const images = document.querySelectorAll(".clickable-image");
+
+            // Open modal when an image is clicked
+            images.forEach(image => {
+                image.addEventListener("click", () => {
+                    modal.style.display = "block";
+                    modalImage.src = image.src;
+                });
+            });
+
+            // Close modal when the close button is clicked
+            closeModal.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            // Close modal when clicking outside the image
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            
+        });
+    </script>
+<script src="popup.js"></script>
+</body>
+</html>
