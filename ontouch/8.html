@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8.On Touch,</title>
+    <title>8.</title>
     <style>
         * {
             margin: 0;
@@ -33,16 +33,14 @@
         .header h1 {
             position: relative;
             display: flex;
-            margin-top: 5%;
+            margin-top: 0%;
             left: 10%;
             font-size: 2em; /* Adjust font size as needed */
             color: rgb(0, 0, 0); /* Text color */
             text-align: left; /* Center the text */
             font-weight: lighter;
         }
-
-
-        .container {
+       .container {
             position: relative;
             display: grid;
             flex-direction: column;
@@ -72,16 +70,8 @@
 
 
         }
-        .container video{
-            width: 40%;
-            padding-left: 5%;
-            height: auto;
-            margin: 0 auto; /* Center the video horizontally */
-            display: block; /* Ensure the video is treated as a block element */
-            position: fixed;
-           
-        }
         .footer {
+            background-color: #f8f8f800;
             display: flex;
             justify-content: space-between; /* Align items to opposite sides */
             align-items: center; /* Vertically center the content */
@@ -90,12 +80,11 @@
             bottom: 0;
             padding: 1%; /* Add some horizontal padding */
             max-height: 8vh; /* Adjust height as needed */
-            z-index: 100;
+            z-index: 100; /* Ensure the footer is above other content */
         }
         .footer img {
             width: auto; /* Adjust the size of the image as needed */
-            height: 10vh; /* Maintain aspect ratio */
-            vertical-align: middle; /* Align the image vertically with the text */
+            height: 8vh; /* Maintain aspect ratio */
             margin-right: 10px; /* Add space between the image and text */
         }
         .hover-box {
@@ -129,23 +118,6 @@
             .hover-text:hover + .hover-box {
             display: block;
             }
-            .clickable {
-            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
-        }
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            min-width: 100vw;
-            min-height: 100vh;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: 0;
-            pointer-events: none; /* So clicks pass through */
-        }
-
-        /* Accessible styles for screens <= 600px */
         @media (max-width: 600px) {
             html, body {
                 font-size: 1.1em;
@@ -182,6 +154,7 @@
             .footer {
                 padding: 2%;
                 max-height: 10vh;
+                z-index: 100;
             }
             .footer img {
                 height: 8vh;
@@ -190,6 +163,18 @@
                 width: 90vw; /* Adjust width for smaller screens */
             }
         }
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none; /* So clicks pass through */
+        }
     </style>
 </head>
 <body>
@@ -197,7 +182,7 @@
         <source src="7.mp4" type="video/mp4">
     </video>
     <div class="header">
-        <h1>8.On Touch,</h1>
+        <h1>8.</h1>
     </div>
     <div class="container">
         <div>

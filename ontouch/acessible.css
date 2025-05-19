@@ -1,0 +1,95 @@
+/* Accessible CSS for screens up to 600px wide */
+
+@media (max-width: 600px) {
+    body {
+        font-size: 1em;
+        line-height: 1.5;
+        background: #fff;
+        color: #222;
+        margin: 0;
+        padding: 0em;
+    }
+
+    a, button {
+        color: #005fcc;
+        background: none;
+        border: none;
+        text-decoration: underline;
+        font-size: 1em;
+        cursor: pointer;
+        padding: 0.5em 0;
+    }
+
+    a:focus, button:focus {
+        outline: 3px solid #ffbf47;
+        outline-offset: 2px;
+        background: #eaf6ff;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+        margin-top: 1.2em;
+        margin-bottom: 0.5em;
+        color: #111;
+    }
+
+    nav, header, main, footer {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0.5em 0;
+    }
+
+    nav a {
+        display: block;
+        padding: 0.75em 0;
+        font-size: 1.1em;
+    }
+
+    ul, ol {
+        padding-left: 1.5em;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1em 0;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.3em;
+        font-weight: 600;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        font-size: 1em;
+        padding: 0.5em;
+        margin-bottom: 1em;
+        border: 2px solid #bbb;
+        border-radius: 4px;
+        background: #fafafa;
+        color: #222;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #005fcc;
+        outline: 2px solid #ffbf47;
+        background: #eaf6ff;
+    }
+
+    /* Ensure sufficient contrast for disabled elements */
+    input[disabled], button[disabled] {
+        background: #eee;
+        color: #888;
+        border-color: #ccc;
+    }
+
+    /* Larger tap targets for touch accessibility */
+    button, input[type="button"], input[type="submit"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
