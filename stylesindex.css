@@ -196,7 +196,7 @@ body {
     .main-flex-container {
         flex-direction: column;
     }
-    .sidebar-box, {
+    .sidebar-box {
         width: 80%;
         min-width: 0;
         padding: 0;
