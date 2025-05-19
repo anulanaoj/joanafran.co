@@ -281,14 +281,15 @@
         <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
         <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
     </div>
-    <div class="fixedheader">
-        <h1> 
-                <a href="bibliography.html" class="clickable" style="text-decoration: none; color: #c30000;" 
-                onmouseover="this.style.color='black';" 
+   <div class="fixedheader">
+        <h1>
+            <span id="open-biblio" style="text-decoration: none; color: #c30000; cursor:pointer;"
+                onmouseover="this.style.color='black';"
                 onmouseout="this.style.color='#e00000';">
-                bibliography</a>
+                bibliography
+            </span>
         </h1>
-        </div>
+    </div>
     <div class="header">
         <h1> 
             2.Humidity</a>
@@ -359,7 +360,13 @@
         <img src="next.png" alt="Footer Image">
      </a>
     </div>
+    
+       <div id="biblio-popup" style="display:none; position:fixed; bottom:40px; right:40px; width:400px; height:300px; background:white; border:1px solid #ccc; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:4000;">
+        <button id="close-biblio" style="position:absolute; top:5px; right:5px; background:none; border:none; font-size:1.2em; cursor:pointer;">✕</button>
+        <iframe src="bibliography.html" style="width:100%; height:100%; border:none;"></iframe>
+    </div>
     <script src="popup.js"></script>
+    <script src="popup1.js"></script>
 </body>
 </html>
 
