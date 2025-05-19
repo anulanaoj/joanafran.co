@@ -28,7 +28,7 @@
             display: flex;
             justify-content: left; /* Center horizontally */
             align-items: left; /* Center vertically */
-            z-index: 1000; /* Ensure it stays on top */
+            z-index: 100; /* Ensure it stays on top */
         }
         .fixedheader h1 {
             font-size: 0.8em;
@@ -173,6 +173,28 @@
             text-align: justify;
             z-index: 2;
         }
+        .textfirst {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0%;
+            max-width: 100%;
+            height: auto;
+            
+        }
+        .textfirst p {
+            width: 50%;
+            height: auto;
+            padding: 0%;
+            padding-left: 0%;
+            margin-bottom: 0%;
+            font-size: 1.1em;
+            font-weight: lighter;
+            color: #333;
+            text-align: justify;
+            z-index: 2;
+        }
         .textlast {
             display: flex;
             flex-direction: column;
@@ -269,6 +291,38 @@
                     cursor: url(click.png), pointer; /* Custom pointer for specific elements */
                 }
                 
+        #biblio-popup {
+            display: none;
+            position: fixed;
+            bottom: 10%;
+            right: 10%;
+            width: 30%;
+            height: 40%;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 4000;
+        }
+        #biblio-popup iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #close-biblio {
+            position: fixed;
+            right: 10%;
+            color: #e00000;
+            font-size: 1em;
+            font-family: inherit;
+            text-decoration: none;
+            z-index: 5000;
+            cursor: pointer;
+            display: none;
+            /* Place exactly at the top edge of the popup */
+            bottom: calc(40% + 10%);
+            /* Optional: add a little padding if you want space */
+            /* padding-bottom: 2px; */
+        }
     </style>
 </head>
 <body>
@@ -279,7 +333,7 @@
         </div>
         <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
         <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
-        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 5%; font-size: 0.8em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">close</span>
     </div>
    <div class="fixedheader">
         <h1>
@@ -297,7 +351,7 @@
         <img src="2/humidity head.jpg" alt="Second Image">
     </div>
         <div class="container">
-            <div class="textlast">
+            <div class="textfirst">
                 <p style="font-size: 0.95em;"> Travelling to school, I saw landscapes while inside the closed car with the glass of the window as a separator of us both.
                     </p>
                 </div>
@@ -315,10 +369,10 @@
             <div class="text">
                 <p>The landscape is made of, in the first plane, just the road, grey and strict. It then contrasts with the remaining planes- of grass, trees and mountains, green that can make you think you are predestined to only see one colour for the rest of your days. So much green you forget there is a sky.
             The sky is usually grey. The island welcomes an agglomerate of clouds which sometimes come down to say <br>
-            <br> hello <br>
+            <br> <span class="special"> hello </span><br>
             <br>and confirm themselves by touching us in the skin. I’ve always had the desire to escape the car, open the door unharmed and <i> go go go </i> to the mountains. They appear closer than they are. Wanting to go and hug the grass face down and breathe in the remaining drops left by humidity of the previous day’s rain.
-            The feeling of embeddedness is translatable to that of the characteristic humidity of the island <br>
-            <br>– orange is everywhere.
+            The feeling of embeddedness is translatable to that of the characteristic humidity of the island. <br>
+            <br><span class="special"> orange is everywhere.</span>
                 </p>
                 <div class="image">
                     <img src="2/orange.jpg" alt="orange is everywhere"class="clickable-image, clickable">
@@ -338,35 +392,56 @@
                 <img src="2/PXL_20240721_153341866.jpg" alt="and thought of leaving it there," class="clickable-image, clickable">
                 <img src="2/PXL_20240721_153715675.jpg" alt="but decided against it, as the color might remain the same when dry." class="clickable-image, clickable">
                 <img src="2/PXL_20240721_153906343.jpg" alt="it didn't." class="clickable-image, clickable">
-            </div>
+</div>
                 <div class="textlast">
                     <p>This object is my sibling, made for my head from cotton. It is a hat which covers the face. I’ve soaked it with means of having some visualization of an environment entering a body. I’ve found this way by putting aside my own desire to be this hood, out of convenience. But there is the fear of copying, even though I would only do Ana Mendieta a continuation of her action, if I enter this stream it would take me too far without taking the slow steps you see in this document.
                         <br><br>Slow steps so you notice how one becomes two, which really just means that two become one. (It is both at once). And this integration of movement, I see slowed down by dense atmospheres. As are the ones solidified by humidity. Humidity which makes the cold colder and the warm insufferable, it is tension you cut with the knife, without any discomfort. This is tension that secures you, hugs you so surely sometimes it enters you, you breath slow. You smell it enter you.  
                         <br><br>What goes through us does so through walls. And you do smell it enter  the wall you touch and feel wet. And clean your fingers on your already damp shirt. Your clothes merge with you, and you do so with the walls.
                     </p>
                     </div>
+                    <div>
+            </div>           
             </div>
-           <div class="footer">
-            <a href="1.html" 
+
+    </div>
+    <div class="footer">
+            <a href="2.html" 
      style="text-decoration: none; color: black;" 
      onmouseover="this.style.color='white';" 
      onmouseout="this.style.color='black';">
      <img src="back.png" alt="Footer Image">
     </a> 
-        <a href="3.html" 
+        <a href="4.html" 
         style="text-decoration: none; color: black;" 
         onmouseover="this.style.color='white';" 
         onmouseout="this.style.color='black';">
         <img src="next.png" alt="Footer Image">
      </a>
+          </div>
+            
+       <div id="biblio-popup">
+        <iframe src="bibliography.html"></iframe>
     </div>
-    
-       <div id="biblio-popup" style="display:none; position:fixed; bottom:40px; right:40px; width:400px; height:300px; background:white; border:1px solid #ccc; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:4000;">
-        <button id="close-biblio" style="position:absolute; top:5px; right:5px; background:none; border:none; font-size:1.2em; cursor:pointer;">✕</button>
-        <iframe src="bibliography.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
+    <a id="close-biblio">close</a>
     <script src="popup.js"></script>
-    <script src="popup1.js"></script>
+    <script>        
+            e.stopPropagation();                
+            document.getElementById('biblio-popup').style.display = 'block';        
+        document.getElementById('close-biblio').onclick = function(e) {
+            e.stopPropagation();
+            document.getElementById('biblio-popup').style.display = 'none';
+            document.getElementById('close-biblio').style.display = 'none';
+        };
+        document.getElementById('close-biblio').style.display = 'none';
+        window.addEventListener('click', function(e) {
+            const popup = document.getElementById('biblio-popup');
+            const close = document.getElementById('close-biblio');
+            if (popup.style.display === 'block' && !popup.contains(e.target) && e.target.id !== 'open-biblio' && e.target.id !== 'close-biblio') {
+                popup.style.display = 'none';
+                close.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
 

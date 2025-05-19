@@ -254,17 +254,51 @@
         .clickabletwo {
             cursor: url('click2.png'), pointer; /* Use custom cursor and fallback to pointer */
         }
+        #biblio-popup {
+            display: none;
+            position: fixed;
+            bottom: 10%;
+            right: 10%;
+            width: 30%;
+            height: 40%;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 4000;
+        }
+        #biblio-popup iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #close-biblio {
+            position: fixed;
+            right: 10%;
+            color: #e00000;
+            font-size: 1em;
+            font-family: inherit;
+            text-decoration: none;
+            z-index: 4100;
+            cursor: pointer;
+            display: none;
+            /* Place exactly at the top edge of the popup */
+            bottom: calc(40% + 10%);
+            /* Optional: add a little padding if you want space */
+            /* padding-bottom: 2px; */
+        }
     </style>
 </head>
 <body>
+    
     <div class="fixedheader">
-        <h1> 
-                <a href="bibliography.html" class="clickable" style="text-decoration: none; color: #c30000;" 
-                onmouseover="this.style.color='black';" 
+        <h1>
+            <span id="open-biblio" style="text-decoration: none; color: #c30000; cursor:pointer;"
+                onmouseover="this.style.color='black';"
                 onmouseout="this.style.color='#e00000';">
-                bibliography</a>
+                bibliography
+            </span>
         </h1>
-        </div>
+    </div>
     <header class="header">
         <h1>4. My island like border</h1>
     </header>
@@ -343,7 +377,11 @@
         </div>
         <span id="prev-image" style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8592;</span>
         <span id="next-image" style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 2em; color: black; cursor: pointer;">&#8594;</span>
-        <span id="close-popup" style="position: absolute; top: 2%; right: 3%; font-size: 2em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">&times;</span>
+        <span id="close-popup" style="position: absolute; top: 2%; right: 5%; font-size: 0.8em; color: rgb(231, 0, 0); cursor: pointer; font-weight: bold; z-index: 1100;">close</span>
+    </div>
+    <div id="biblio-popup" style="display:none; position:fixed; bottom:40px; right:40px; width:400px; height:300px; background:white; border:1px solid #ccc; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:4000;">
+        <button id="close-biblio" style="position:absolute; top:5px; right:5px; background:none; border:none; font-size:1.2em; cursor:pointer;">✕</button>
+        <iframe src="bibliography.html" style="width:100%; height:100%; border:none;"></iframe>
     </div>
     <script>
         const slides = document.querySelectorAll('.slides a img');
@@ -365,10 +403,30 @@
 
         // Show the first slide initially
         showSlide(currentSlide);
+
+        document.getElementById('open-biblio').onclick = function(e) {
+            e.stopPropagation();
+            document.getElementById('biblio-popup').style.display = 'block';
+            document.getElementById('close-biblio').style.display = 'block';
+        };
+        document.getElementById('close-biblio').onclick = function(e) {
+            e.stopPropagation();
+            document.getElementById('biblio-popup').style.display = 'none';
+            document.getElementById('close-biblio').style.display = 'none';
+        };
+        document.getElementById('close-biblio').style.display = 'none';
+        window.addEventListener('click', function(e) {
+            const popup = document.getElementById('biblio-popup');
+            const close = document.getElementById('close-biblio');
+            if (popup.style.display === 'block' && !popup.contains(e.target) && e.target.id !== 'open-biblio' && e.target.id !== 'close-biblio') {
+                popup.style.display = 'none';
+                close.style.display = 'none';
+            }
+        });
     </script>
     <script src="popup.js"></script>
 </body>
 </html>
 
 
-        
+
