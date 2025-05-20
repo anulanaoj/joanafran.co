@@ -76,9 +76,27 @@
             .clickable {
                 cursor: url(click.png), pointer; /* Use custom cursor and fallback to pointer */
             }
+            .return-btn {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                color: #000000;
+                border: none;
+                padding: 10px 24px;
+                font-size: 1em;
+                font-family: inherit;
+                text-decoration: none;
+                z-index: 10;
+                cursor: pointer;
+                transition: background 0.1s;
+            }
+            .return-btn:hover {
+                background: #d90000;
+            }
         </style>
     </head>
     <body>
+        <a href="../index.html" class="return-btn">return</a>
         <div class="container">
             <a href="i.html" style="text-decoration: none; color: inherit;">
                 <p class="clickable">On Touch,</p>
