@@ -69,7 +69,7 @@
             grid-template-columns: 1fr 2fr; /* Two columns */
             padding: 0%;
             margin-bottom: 5%; /* Add spacing below */
-            margin-left: 15%;
+            margin-left: 5%;
             width: 100%;
             height: auto;
             justify-content: left;
@@ -94,7 +94,7 @@
             padding-left: 35%;
             padding-top: 0%;
             font-size: 1em;
-            color: #333;
+            color: #000000;
             text-align: justify;
             z-index: 2;;
         }
@@ -103,18 +103,18 @@
             flex-direction: column;
             margin: 0%;
             padding-top: 0%;
-            max-width: 50bw;
+            max-width: 100vw;
             height: auto;
-            padding-left: 10%;
+            padding-left: 0%;
             align-items: left;
             grid-template-columns: 1fr 2fr; /* Two columns */
         }
         .image img {
-            width: 50%;
+            width: 80%;
             height: auto;
             padding: 0%;
             margin-bottom: 5%;
-            border: #a30000 solid 0.5px;
+            border: #a30000 solid 1px;
         }
         .text {
             display: flex;
@@ -134,7 +134,7 @@
             margin: 0%;
             font-size: 1.1em;
             font-weight: lighter;
-            color: #333;
+            color: #000000;
             text-align: justify;
             z-index: 2;
         }
@@ -144,19 +144,19 @@
             flex-direction: column;
             justify-content: left;
             align-items: left;
-            padding-left: 30%;
-            max-width: 50%;
+            padding-left: 10%;
+            max-width: 100%;
             height: auto;
         }  
         .specialtext p {
-            width: 40%;
+            max-width: 50%;
             height: auto;
             padding: 0%;
             padding-left: 0%;
             margin: 0%;
             font-size: 1.1em;
             font-weight: lighter;
-            color: #212121;
+            color: #151414;
             text-align: justify;
             z-index: 2;
         }
@@ -197,7 +197,7 @@
             margin: 0%;
             font-size: 1.1em;
             font-weight: lighter;
-            color:#6a8726 ;
+            color:#f42715 ;
             text-align: justify;
             z-index: 2;
         }
@@ -238,7 +238,7 @@
             .hover-box {
             display: none;
             position: absolute;
-            background-color: #ffffff00;
+            background-color: #ffffff;
             z-index: 10;
             width: 100%;
             margin-top: 10%;
@@ -333,6 +333,9 @@
         .clickable {
             cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
         }
+        .clickable2 {
+            cursor: url('click.png'), pointer; /* Use custom cursor and fallback to pointer */
+        }
 
         #biblio-popup {
             display: none;
@@ -361,17 +364,45 @@
             z-index: 4100;
             cursor: pointer;
             display: none;
-            /* Place exactly at the top edge of the popup */
             bottom: calc(40% + 10%);
-            /* Optional: add a little padding if you want space */
-            /* padding-bottom: 2px; */
+        }
+
+        /* Tracing popup: match biblio-popup style */
+        #tracing-popup {
+            display: none;
+            position: fixed;
+            bottom: 10%;
+            right: 10%;
+            width: 30%;
+            height: 40%;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 4000;    
+        }
+        #tracing-popup iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #close-tracing {
+            position: fixed;
+            right: 10%;
+            color: #e00000;
+            font-size: 1em;
+            font-family: inherit;
+            text-decoration: none;
+            z-index: 4100;
+            cursor: pointer;
+            display: none;
+            bottom: calc(40% + 10%);
         }
     </style>
 </head>
 <body>
-    <div id="biblio-popup" style="display:none; position:fixed; bottom:40px; right:40px; width:400px; height:300px; background:white; border:1px solid #ccc; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:4000;">
-        <button id="close-biblio" style="position:absolute; top:5px; right:5px; background:none; border:none; font-size:1.2em; cursor:pointer;">✕</button>
-        <iframe src="bibliography.html" style="width:100%; height:100%; border:none;"></iframe>
+    <div id="biblio-popup" class="custom-popup">
+        <button id="close-biblio" class="close-biblio">close</button>
+        <iframe src="bibliography.html"></iframe>
     </div>
     <div class="fixedheader">
         <h1>
@@ -418,13 +449,7 @@
         <div class="text">
             <p>As a motivating factor I give you my own memory of when I was seeing the world with a horizon at one meter twenty or so. <br>
                 <br>I would sit down on a chair and try to understand how much space I am occupying by feeling the edges of my body touch the chair, as well as seeing others around me with a similar size as reference for my understanding. It brought me a sense of materiality I could trust, some self-comforting reached. I’d stand up and look at the chair and imagine the negative space of the body there. Now, my memory is that of a chair but I notice it is a re-occurring processing – it happens as I stand in a room, 
-            <br><br><br>
-            </p>
-        </div>
-        </div>
-        <div class="container">
-        <div class="specialtext">
-            <p> you can calculate your measurements by noticing your distance from the walls and ceiling, you can do it walking in the street by looking at your shadow, and you can, as I show you, trace your body as it is on a surface and step away from it.
+            <br><br>you can calculate your measurements by noticing your distance from the walls and ceiling, you can do it walking in the street by looking at your shadow, and you can, as I show you, trace your body as it is on a surface and step away from it.
             </p>
         </div>
     </div>
@@ -460,13 +485,17 @@
     
     <div class="containerx">
         <p>
-            <a href="6.0.html" style="text-decoration: none; color: #c12300;" class="clickable"
-               onmouseover="this.style.color='black';" 
-               onmouseout="this.style.color='#bdc63b';">
+            <span id="open-tracing" class="clickable2">
                 With intentions of holding my own hand during the tracing actions, I have recorded myself doing so, or recorded my thoughts, spoken, on my movements. The one shown to you has a duration of forty three minutes and goes through my instinctual movements, as well as thought-of ones, my choices and points of interest while delineating myself. It is added to this document as elucidating material on my approach to seeing the line as such.
-            </a>
+            </span>
         </p>
     </div>
+    <!-- Tracing popup -->
+    <div id="tracing-popup" class="custom-popup">
+        <button id="close-tracing" class="close-biblio">close</button>
+        <iframe src="6.0.html"></iframe>
+    </div>
+
     <div class="footer">
         <a href="5.html" 
      style="text-decoration: none; color: black;" 
@@ -508,6 +537,27 @@
         const popup = document.getElementById('biblio-popup');
         const close = document.getElementById('close-biblio');
         if (popup.style.display === 'block' && !popup.contains(e.target) && e.target.id !== 'open-biblio' && e.target.id !== 'close-biblio') {
+            popup.style.display = 'none';
+            close.style.display = 'none';
+        }
+    });
+
+    // Tracing popup logic
+    document.getElementById('open-tracing').onclick = function(e) {
+        e.stopPropagation();
+        document.getElementById('tracing-popup').style.display = 'block';
+        document.getElementById('close-tracing').style.display = 'block';
+    };
+    document.getElementById('close-tracing').onclick = function(e) {
+        e.stopPropagation();
+        document.getElementById('tracing-popup').style.display = 'none';
+        document.getElementById('close-tracing').style.display = 'none';
+    };
+    document.getElementById('close-tracing').style.display = 'none';
+    window.addEventListener('click', function(e) {
+        const popup = document.getElementById('tracing-popup');
+        const close = document.getElementById('close-tracing');
+        if (popup.style.display === 'block' && !popup.contains(e.target) && e.target.id !== 'open-tracing' && e.target.id !== 'close-tracing') {
             popup.style.display = 'none';
             close.style.display = 'none';
         }
