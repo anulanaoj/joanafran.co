@@ -424,14 +424,16 @@
     <a id="close-biblio">close</a>
     <script src="popup.js"></script>
     <script>        
-            e.stopPropagation();                
-            document.getElementById('biblio-popup').style.display = 'block';        
+        document.getElementById('open-biblio').onclick = function(e) {
+            e.stopPropagation();
+            document.getElementById('biblio-popup').style.display = 'block';
+            document.getElementById('close-biblio').style.display = 'block';
+        };
         document.getElementById('close-biblio').onclick = function(e) {
             e.stopPropagation();
             document.getElementById('biblio-popup').style.display = 'none';
             document.getElementById('close-biblio').style.display = 'none';
         };
-        document.getElementById('close-biblio').style.display = 'none';
         window.addEventListener('click', function(e) {
             const popup = document.getElementById('biblio-popup');
             const close = document.getElementById('close-biblio');

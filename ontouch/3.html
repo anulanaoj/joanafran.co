@@ -430,17 +430,18 @@
     </head>
     <body>
         
-        <div class="fixedheader">
-        <h1> 
-                <span id="open-biblio" style="text-decoration: none; color: #c30000; cursor:pointer;" 
-                onmouseover="this.style.color='black';" 
-                onmouseout="this.style.color='#e00000';">
-                bibliography</span>
-        </h1>
+        <div id="biblio-popup">
+            <iframe src="bibliography.html"></iframe>
         </div>
-        <div id="biblio-popup" style="display:none; position:fixed; bottom:40px; right:40px; width:400px; height:300px; background:white; border:1px solid #ccc; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:4000;">
-        <button id="close-biblio" style="position:absolute; top:5px; right:5px; background:none; border:none; font-size:1.2em; cursor:pointer;">✕</button>
-        <iframe src="bibliography.html" style="width:100%; height:100%; border:none;"></iframe>
+        <a id="close-biblio">close</a>
+        <div class="fixedheader">
+            <h1> 
+                <span id="open-biblio" style="text-decoration: none; color: #c30000; cursor:pointer;" 
+                    onmouseover="this.style.color='black';" 
+                    onmouseout="this.style.color='#e00000';">
+                    bibliography
+                </span>
+            </h1>
         </div>
         <div class="header">
             <h1>3. interaction with
