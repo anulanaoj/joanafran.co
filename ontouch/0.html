@@ -36,7 +36,7 @@
             padding: 0; /* Add some padding for spacing */
             color: #333; /* Text color */
             font-weight: lighter;
-            margin-left: 20%;
+            margin-left: 15%;
             margin-top: 5%;
         }
         .container {
@@ -49,15 +49,15 @@
             padding: 0; /* Add some padding around the content */
         }
         .container p {
-            max-width: 40%; /* Full width of the viewport */
+            max-width: 55%; /* Full width of the viewport */
             margin: 0; /* Remove default margin */
             padding: 0; /* Add some padding for spacing */
             font-size: 1em; /* Adjust font size as needed */
             line-height: 1.5; /* Adjust line height for readability */
-            color: #333; /* Text color */
+            color: #000000; /* Text color */
             font-weight: lighter;
             text-align: justify;
-            margin-left: 20%;
+            margin-left: 15%;
             margin-bottom: 8%;
         }
         .container img {
@@ -66,6 +66,26 @@
             margin-left: 20%;
             margin-top: 0%;
             margin-bottom: 0%;
+        }
+        .quote {
+            position: relative; /* Position text on top of images */
+            text-align: left; /* Center text horizontally */
+            z-index: 1; /* Place text above images */
+            margin: 0; /* Remove default margin */
+            left: 0%; /* Align to the left */
+            top: 0%; /* Position below the main text */
+            width: 100vw; /* Full width of the viewport */
+        }
+        .quote p {
+            margin: 0%; /* Remove default margin */
+            padding: 0%; /* Remove default padding */
+            font-size: 1em; /* Adjust font size for better readability */
+            font-weight: lighter;
+            text-align: justify;
+            margin-left: 15%;
+            margin-bottom: 8%;
+            max-width: 55%;
+            color: #000000;
         }
         .footer {
             background-color: #f8f8f800;
@@ -77,17 +97,68 @@
             bottom: 0;
             padding: 1%; /* Add some horizontal padding */
             max-height: 8vh; /* Adjust height as needed */
+            z-index: 200;
         }
         .footer img {
             width: auto; /* Adjust the size of the image as needed */
             height: 8vh; /* Maintain aspect ratio */
             margin-right: 10px; /* Add space between the image and text */
         }
+        .hover-box {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9; /* Ensure consistent background color */
+            padding: 1%; /* Add padding for better spacing */
+            z-index: 10;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: none; /* Remove the width constraint */
+            word-wrap: break-word; /* Ensure text wraps properly */
+            overflow: visible; /* Ensure the hover box is not clipped */
+            
+        }
+        .hover-trigger:hover .hover-box {
+            display: block; /* Ensure hover behavior works */
+        }
+        .hover-trigger {
+            position: relative;
+            display: inline-block;
+        }
+        .hover-box img {
+            width: 100%; /* Ensure the image does not exceed the container width */
+            height: auto; /* Maintain the aspect ratio of the image */
+            display: block; /* Remove inline spacing below the image */
+            overflow: visible;
+        }
+        .hover-boxtext {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ffffff7b;
+            padding: 10px;
+            z-index: 10;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 30vw;
+            left: 100%; /* Position to the right of the trigger */
+            top: 0;     /* Align with the top of the trigger */
+            margin-left: -50px; /* Add some space between text and box */
+        }
+        .hover-trigger:hover .hover-boxtext {
+            display: block;
+        }
+        .hover-text:hover + .hover-box {
+            display: block;
+        }
         </style>
 </head>
 <body>
     <div class="header">
         <h1>0.</h1>
+    </div>
+    <div class="quote">
+        <p><span class="hover-trigger">
+           “The environment is the soul of things. Each thing has its own expression and this expression comes from outside it. Each thing is the intersection of three lines, and these three lines form the thing: a certain quantity of material, the way in which we interpret it, and the environment it’s in. This table on which I’m writing is a block of wood, it’s the table, and it’s a piece of furniture among others in the room. My impression of this table, if I wish to transcribe it, will be composed of the notions that it is made of wood, that I call it a table and attribute certain uses to it, and that it receives, reflects and is transformed by the objects placed on top of it, in whose juxtaposition it has an external soul. And its very colour, the fading of that colour, its spots and cracks – all came from outside it, and this (more than its wooden essence) is what gives it its soul. And the core of that soul, its being a table, also came from the outside, which is its personality. I consider it neither a human nor a literary error to attribute a soul to the things we call inanimate. To be a thing is to be the object of an attribution. It may be erroneous to say that a tree feels, that a river runs, that a sunset is sad or that the calm ocean (blue from the sky it doesn’t have) smiles (from the sun outside it). But it’s every bit as erroneous to attribute beauty to things. It’s every bit as erroneous to say that things possess colour, form, perhaps even being. This ocean is saltwater. This sunset is the initial diminishing of sunlight in this particular latitude and longitude. This little boy playing next to me is an intellectual mass of cells – better yet, he’s a clockwork of subatomic movements, a strange electrical conglomeration of millions of solar systems in miniature. Everything comes from outside, and the human soul itself may be no more than the ray of sunlight that shines and isolates from the soil the pile of dung that’s the body. In these considerations there may be an entire philosophy for someone with the strength to draw conclusions. It won’t be me. Lucid vague thoughts and logical possibilities occur to me, but they all dim in the vision of a ray of sunlight that gilds a pile of dung like wetly squished dark straw, on the almost black soil next to a stone wall. That’s how I am. When I want to think, I look. When I want to descend into my soul, I suddenly freeze, oblivious, at the top of the long spiral staircase, looking through the upper-storey window at the sun that bathes the sprawling mass of rooftops in a tawny farewell.”
+             <span class="hover-boxtext">Pessoa, Fernando. The Book of Disquiet Fernando Pessoa; Edited and Translated by Richard Zenith. Penguin Books, 2002. 58,58</span>
+        </span></p>
     </div>
     <div class="container">
         <p> The process of writing this document was established through its making. Acts that led me nose first, leaving thoughts for the second plane. Plans previously made went away once it was understood what I set myself to do, was a re-embodiment of myself. Now, looking at the work, I see it grew legs to continue and hold my hand through what it gives.
@@ -102,12 +173,13 @@
 
 
             <p>
-            <br><br>I am now at the airport. Waiting for my turn to be some sardine. I see those in that condition, leaving their plane. Lines, many heads becoming one, different colours, become undistinguishable, as they are many. Something about this document makes me want to take a step towards people and become aligned as well. I must let myself hug and be hugged so I can hug myself.
+            <br><br>I am now at the airport. Waiting for my turn to be some sardine. I see those in that condition, leaving their plane. Lines, many heads becoming one, different colours, become undistinguishable, as they are many. This document made me want to take a step towards people and become aligned as well. I must let myself hug and be hugged so I can hug myself.
             <br><br>Seems fair. I hope you understand what I urge you to do. The document is almost as a plea for contact, for touch. And this that I tell you comes when seeing the contradictions I practice so well. I told you of interconnectedness and interaction. But I focus on my experience as a closed space. My movements stays still here.
             <br><br>And it is as a personal struggle heightened by these results I show you that come to tell me it is time I consider people as an integrant part of my work and myself, even if not depicted. My peers, friends, family, and people that pass by all that teach me to interact if I let them. 
             <br><br>In the same way I am a stone, I am you.
           </p>
     </div>
+    
 
 
     <div class="footer">
