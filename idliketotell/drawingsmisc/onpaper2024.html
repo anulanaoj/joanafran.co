@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2024 physical archive</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2vw;
+            background: #fafafa;
+            overflow: hidden; /* Prevent scrolling due to zoom */
+        }
+        .header {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 2vw;
+            margin-bottom: 2vw;
+        }
+        .header p {
+            margin: 0;
+            padding: 0;
+            font-size: 1em;
+            font-weight: lighter;
+            color: rgb(201, 201, 201);
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0vw;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100vw;
+            height: auto;
+        }
+        .grid img {
+            width: 20vw;
+            height: auto;
+            display: block;
+            cursor: grab;
+            position: absolute;
+            left: 10vw; /* Position images on the left */
+        }
+        .grid img:active {
+            cursor: grabbing;
+        }
+        .back-btn {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            font-size: 1.2em; /* smaller */
+            color: #da3d15;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 2000;
+            padding: 0;
+            line-height: 1;
+            background-color: transparent;
+            width: 1.2em;
+            height: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-btn:focus {
+            outline: none;
+        }
+        @media (max-width: 900px) {
+            .back-btn {
+                top: 10px;
+                left: 10px;
+                font-size: 1em;
+                width: 1em;
+                height: 1em;
+            }
+        }
+        @media (max-width: 600px) {
+            .back-btn {
+                top: 6px;
+                left: 6px;
+                font-size: 0.9em;
+                width: 0.9em;
+                height: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="back-btn" onclick="window.history.back()">&lt;</button>
+    <div class="header">
+        <p>i'd like to tell, on paper</p>
+    </div>
+    <div class="grid" id="grid"></div>
+    <script>
+        // List all image filenames in the folder
+        const images = [
+            "2024onpaper-01.png",
+            "2024onpaper-02.png",
+            "2024onpaper-03.png",
+            "2024onpaper-04.png",
+            "2024onpaper-05.png",
+            "2024onpaper-06.png",
+            "2024onpaper-07.png",
+            "2024onpaper-08.png",
+            "2024onpaper-09.png",
+            "2024onpaper-10.png",
+            "2024onpaper-11.png",
+            "2024onpaper-12.png",
+            "2024onpaper-13.png",
+            "2024onpaper-14.png",
+            "2024onpaper-15.png",
+            "2024onpaper-16.png",
+            "2024onpaper-18.png",
+            "2024onpaper-19.png",
+            "2024onpaper-20.png",
+            "2024onpaper-21.png",
+            "2024onpaper-22.png",
+            "2024onpaper-23.png",
+            "2024onpaper-24.png",
+            "2024onpaper-25.png",
+            "2024onpaper-26.png",
+            "2024onpaper-27.png",
+            "2024onpaper-28.png",
+            "2024onpaper-29.png",
+            "2024onpaper-30.png",
+            "2024onpaper-31.png",
+            "2024onpaper-32.png",
+            "2024onpaper-33.png",
+            "2024onpaper-34.png",
+            "2024onpaper-35.png",
+            "2024onpaper-36.png",
+            "2024onpaper-37.png",
+            "2024onpaper-38.png",
+            "2024onpaper-39.png",
+            "2024onpaper-40.png",
+            "2024onpaper-41.png",
+            "2024onpaper-42.png",
+            "2024onpaper-43.png",
+            "2024onpaper-44.png",
+            "2024onpaper-45.png"
+        ];
+
+        // Shuffle array (Fisher-Yates)
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        const grid = document.getElementById('grid');
+        // Disable page zoom
+        document.addEventListener('wheel', (e) => {
+            if (!e.target.closest('.grid img')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Track the highest z-index
+        let topZ = 1000;
+
+        // Allow free movement within the page while ensuring higher z-index after dragging
+        shuffle(images).forEach(filename => {
+            const img = document.createElement('img');
+            img.src = filename;
+            img.alt = filename;
+
+            let isDragging = false;
+            let startX, startY, currentX = 0, currentY = 0, scale = 1;
+
+            img.style.transform = `translate(0px, ${currentY}px) scale(${scale})`; // Align to the left initially
+            img.style.zIndex = 1000; // Initial z-index
+
+            img.addEventListener('dragstart', (e) => e.preventDefault()); // Disable default drag behavior
+
+            img.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX - currentX;
+                startY = e.clientY - currentY;
+                topZ += 1;
+                img.style.zIndex = topZ; // Bring to front
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const rect = img.getBoundingClientRect();
+                const pageWidth = window.innerWidth;
+                const pageHeight = window.innerHeight;
+
+                currentX = Math.max(Math.min(e.clientX - startX, pageWidth - rect.width), 0);
+                currentY = Math.max(Math.min(e.clientY - startY, pageHeight - rect.height), 0);
+
+                img.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            img.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                scale += e.deltaY > 0 ? -0.1 : 0.1; // Zoom in/out
+                scale = Math.max(0.5, Math.min(scale, 3)); // Limit zoom scale
+                img.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
+            });
+
+            grid.appendChild(img);
+        });
+    </script>
+</body>
+</html>
