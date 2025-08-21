@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Images</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: auto;
+            width: 100vw;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        .main-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(20vh, 1fr));
+            grid-gap: 0; /* Remove both horizontal and vertical spacing */
+            height: auto;
+            width: auto;
+            align-items: flex-start;
+            justify-content: flex-start;
+            position: relative;
+            background: #f0f0f000;
+        }
+        img {
+            height: auto; /* Set a fixed height for all images */
+            width: 20vw; /* Width adjusts automatically */
+            object-fit: cover;
+            cursor: pointer; /* Change cursor to pointer for click interaction */
+        }
+        .preview-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80%; /* Increase width of the preview container */
+            height: auto;
+            background: #fff;
+            display: none; /* Hide the preview container initially */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .preview-container img {
+            height: 100vh; /* Increase height of the preview image */
+            width: auto; /* Width adjusts automatically */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+      <img src="21.05.2025 room-01.jpg" alt="Room Image 1">
+      <img src="21.05.2025 room-02.jpg" alt="Room Image 2">
+      <img src="21.05.2025 room-03.jpg" alt="Room Image 3">
+      <img src="21.05.2025 room-04.jpg" alt="Room Image 4">
+      <img src="21.05.2025 room-05.jpg" alt="Room Image 5">
+      <img src="21.05.2025 room-06.jpg" alt="Room Image 6">
+      <img src="21.05.2025 room-07.jpg" alt="Room Image 7">
+      <img src="21.05.2025 room-08.jpg" alt="Room Image 8">
+      <img src="21.05.2025 room-09.jpg" alt="Room Image 9">
+      <img src="21.05.2025 room-10.jpg" alt="Room Image 10">
+      <img src="28.03.2024 room-1.jpg" alt="Room Image 11">
+      <img src="28.03.2024 room-2.jpg" alt="Room Image 12">
+      <img src="28.03.2024 room-3.jpg" alt="Room Image 13">
+      <img src="28.03.2024 room-4.jpg" alt="Room Image 14">
+      <img src="28.03.2024 room-5.jpg" alt="Room Image 15">
+      <img src="11.01.2024 room neck-01.jpg" alt="Room Image 16">
+      <img src="11.01.2024 room neck-02.jpg" alt="Room Image 17">
+      <img src="11.01.2024 room neck-03.jpg" alt="Room Image 18">
+      <img src="11.01.2024 room neck-04.jpg" alt="Room Image 19">
+      <img src="11.01.2024 room neck-05.jpg" alt="Room Image 20">
+      <img src="11.01.2024 room neck-06.jpg" alt="Room Image 21">
+      <img src="11.01.2024 room neck-07.jpg" alt="Room Image 22">
+      <img src="11.01.2024 room neck-08.jpg" alt="Room Image 23">
+      <img src="11.01.2024 room neck-09.jpg" alt="Room Image 24">
+      <img src="11.01.2024 room neck-10.jpg" alt="Room Image 25">
+      <img src="11.01.2024 room neck-11.jpg" alt="Room Image 26">
+      <img src="11.01.2024 room neck-12.jpg" alt="Room Image 27">
+    </div>
+    <div class="preview-container">
+      <img src="" alt="Preview Image">
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.main-container img');
+        const previewContainer = document.querySelector('.preview-container');
+        const previewImage = document.querySelector('.preview-container img');
+
+        images.forEach((img) => {
+          img.addEventListener('click', () => {
+            previewImage.src = img.src;
+            previewImage.alt = img.alt;
+            previewContainer.style.display = 'flex'; // Show the preview container on image click
+          });
+        });
+      });
+    </script>
+</body>
+</html>
