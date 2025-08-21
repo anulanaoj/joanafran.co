@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shouffle me</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .fixed-text {
+            position: fixed;
+            top: 0;
+            left: 20vw;
+            width: 60vw;
+            height: 60px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            font-family: sans-serif;
+            pointer-events: none;
+        }
+        .image-container {
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: visible;
+            touch-action: none;
+        }
+        .draggable-img {
+            position: absolute;
+            width: 8vw;   /* Smaller on desktop */
+            height: auto;
+            cursor: grab;
+            touch-action: none;
+            user-select: none;
+            z-index: 1;
+        }
+        .draggable-img.dragging {
+            z-index: 1000;
+        }
+        @media (max-width: 600px) {
+            .fixed-text {
+                font-size: 1.4em;
+                height: 80px;
+                left: 5vw;
+                width: 90vw;
+            }
+            .draggable-img {
+                width: 35vw;      /* Keep as before on phones */
+                /* Remove min-width/max-width for full effect */
+            }
+            .image-container {
+                touch-action: none;
+            }
+            body, html {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed-text" aria-label="Information text">shouffle-me
+    </div>
+    <div id="background-zoom" style="position:absolute;top:0;left:0;width:100vw;height:100vh;overflow:visible;z-index:0; background:#fff;">
+        <div style="position:absolute;top:70px;left:50%;transform:translateX(-50%);font-size:2em;font-family:sans-serif;color:#222;pointer-events:none;z-index:10;">
+        </div>
+        <div class="image-container" id="image-container"></div>
+    </div>
+    <script>
+        
+        const images = [
+            "armcomposition 1 (2).png",
+            "armcomposition 1 (1).png",
+            "armcomposition 1 (3).png",
+            "armcomposition 1 (4).png",
+            "armcomposition 1 (5).png",
+            "armcomposition 1 (6).png",
+            "armcomposition 1 (7).png",
+            "armcomposition 1 (8).png",
+            "armcomposition 1 (9).png",
+            "armcomposition 1 (10).png",
+            "armcomposition 1 (11).png",
+            "armcomposition 1 (12).png",
+            "armcomposition 1 (13).png",
+            "armcomposition 1 (14).png",
+            "armcomposition 1 (15).png",
+            "armcomposition 1 (16).png",
+            "armcomposition 1 (17).png",
+            "armcomposition 1 (18).png",
+            "armcomposition 1 (19).png",
+            "armcomposition 1 (20).png",
+            "armcomposition 1 (21).png",
+            "armcomposition 1 (22).png",
+            "armcomposition 1 (23).png",
+            "armcomposition 1 (24).png",
+            "armcomposition 1 (25).png",
+            "armcomposition 1 (26).png",
+            "armcomposition 1 (27).png",
+            "armcomposition 1 (28).png",
+            "armcomposition 1 (29).png",
+            "armcomposition 1 (30).png",
+            "armcomposition 1 (31).png",
+            "armcomposition 1 (32).png",
+            "armcomposition 1 (33).png",
+            "armcomposition 1 (34).png",
+            "armcomposition 1 (35).png",
+            "armcomposition 1 (36).png",
+            "armcomposition 1 (37).png",
+            "armcomposition 1 (38).png",
+            "armcomposition 1 (39).png",
+            "armcomposition 1 (40).png",
+            "armcomposition 1 (41).png",
+            "armcomposition 1 (42).png",
+            "armcomposition 1 (43).png",
+            "armcomposition 1 (44).png",
+            "armcomposition 1 (45).png",
+            "armcomposition 1 (46).png",
+            "armcomposition 1 (47).png",
+            "armcomposition 1 (48).png",
+            "armcomposition 1 (49).png",
+            "armcomposition 1 (50).png",
+            "armcomposition 1 (51).png",
+            "armcomposition 1 (52).png"
+        ];
+
+        const container = document.getElementById('image-container');
+        const isMobile = window.innerWidth <= 600;
+        const vw = window.innerWidth, vh = window.innerHeight;
+        // Match CSS: 35vw on mobile, 8vw on desktop
+        const imgWidth = isMobile ? vw * 0.35 : vw * 0.08;
+        const imgHeight = imgWidth; // assume square for simplicity
+
+        // --- Mobile: two rows, grouped and overlapping ---
+        function getMobileGroupedPositions(imageCount) {
+            const positions = [];
+            const rowCount = 2;
+            const imagesPerRow = Math.ceil(imageCount / rowCount);
+            const overlap = 0.55; // 55% overlap
+            const yStart = 90; // below fixed text
+            const rowGap = 10;
+            for (let idx = 0; idx < imageCount; idx++) {
+                const row = Math.floor(idx / imagesPerRow);
+                const col = idx % imagesPerRow;
+                // Overlap by shifting left
+                const x = (vw - (imgWidth * (1 - overlap) * imagesPerRow)) / 2 + col * imgWidth * (1 - overlap);
+                const y = yStart + row * (imgHeight + rowGap);
+                positions.push([x, y]);
+            }
+            return positions;
+        }
+
+        // --- Desktop: random positions, allow overlap ---
+        function getRandomPositions(imageCount) {
+            const positions = [];
+            for (let idx = 0; idx < imageCount; idx++) {
+                const x = Math.random() * (vw - imgWidth);
+                const y = 80 + Math.random() * (vh - imgHeight - 80);
+                positions.push([x, y]);
+            }
+            return positions;
+        }
+
+        // Store per-image scale
+        const imageScales = [];
+
+        // Choose positions based on device
+        const positions = isMobile
+            ? getMobileGroupedPositions(images.length)
+            : getRandomPositions(images.length);
+
+        // Remove all images before adding (avoid duplicates on reload)
+        container.innerHTML = "";
+
+        // Create and position images
+        images.forEach((src, idx) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `Image ${idx+1}`;
+            img.className = 'draggable-img';
+            img.setAttribute('draggable', 'false');
+            const [x, y] = positions[idx];
+            img.style.left = x + 'px';
+            img.style.top = y + 'px';
+            img.dataset.idx = idx;
+            img.dataset.scale = 1;
+            imageScales[idx] = 1;
+            container.appendChild(img);
+
+            // Only enable zoom on desktop
+            if (!isMobile) {
+                // Individual image zoom (mouse wheel)
+                img.addEventListener('wheel', function(e) {
+                    e.preventDefault();
+                    let scale = parseFloat(img.dataset.scale) || 1;
+                    const delta = e.deltaY < 0 ? 0.1 : -0.1;
+                    // Allow larger zoom
+                    scale = Math.max(0.3, Math.min(8, scale + delta));
+                    img.dataset.scale = scale;
+                    img.style.transform = `scale(${scale})`;
+                });
+
+                // Individual image pinch zoom (touch)
+                let imgPinchStartDist = null, imgLastScale = 1;
+                img.addEventListener('touchstart', function(e) {
+                    if (e.touches.length === 2) {
+                        imgPinchStartDist = Math.hypot(
+                            e.touches[0].clientX - e.touches[1].clientX,
+                            e.touches[0].clientY - e.touches[1].clientY
+                        );
+                        imgLastScale = parseFloat(img.dataset.scale) || 1;
+                    }
+                }, {passive: false});
+                img.addEventListener('touchmove', function(e) {
+                    if (e.touches.length === 2 && imgPinchStartDist) {
+                        const newDist = Math.hypot(
+                            e.touches[0].clientX - e.touches[1].clientX,
+                            e.touches[0].clientY - e.touches[1].clientY
+                        );
+                        let scale = imgLastScale * (newDist / imgPinchStartDist);
+                        // Allow larger zoom
+                        scale = Math.max(0.3, Math.min(8, scale));
+                        img.dataset.scale = scale;
+                        img.style.transform = `scale(${scale})`;
+                        e.preventDefault();
+                    }
+                }, {passive: false});
+                img.addEventListener('touchend', function(e) {
+                    if (e.touches.length < 2) imgPinchStartDist = null;
+                });
+            }
+        });
+
+        // Drag and drop logic for mouse and touch
+        let draggingImg = null, offsetX = 0, offsetY = 0, startX = 0, startY = 0;
+        const DRAG_SPEED = 1.7; // Increase for faster drag
+
+        function onPointerDown(e) {
+            const img = e.target.closest('.draggable-img');
+            if (!img) return;
+            draggingImg = img;
+            draggingImg.classList.add('dragging');
+            draggingImg.style.zIndex = 1000;
+            // Use offset from pointer to image's current position (relative to parent container), accounting for scale
+            const containerRect = container.getBoundingClientRect();
+            const imgRect = img.getBoundingClientRect();
+            const scale = parseFloat(img.dataset.scale) || 1;
+            const imgLeft = parseFloat(img.style.left) || 0;
+            const imgTop = parseFloat(img.style.top) || 0;
+            // Calculate the offset inside the scaled image
+            let pointerX, pointerY;
+            if (e.type.startsWith('touch')) {
+                pointerX = e.touches[0].clientX;
+                pointerY = e.touches[0].clientY;
+            } else {
+                pointerX = e.clientX;
+                pointerY = e.clientY;
+            }
+            // Find the offset inside the scaled image
+            const offsetInsideImgX = (pointerX - containerRect.left - imgLeft) / scale;
+            const offsetInsideImgY = (pointerY - containerRect.top - imgTop) / scale;
+            offsetX = offsetInsideImgX;
+            offsetY = offsetInsideImgY;
+            e.preventDefault();
+        }
+
+        function onPointerMove(e) {
+            if (!draggingImg) return;
+            let clientX, clientY;
+            if (e.type.startsWith('touch')) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            const containerRect = container.getBoundingClientRect();
+            const scale = parseFloat(draggingImg.dataset.scale) || 1;
+            // Adjust position so the pointer stays at the same relative spot inside the scaled image
+            let x = clientX - containerRect.left - offsetX * scale;
+            let y = clientY - containerRect.top - offsetY * scale;
+            draggingImg.style.left = x + 'px';
+            draggingImg.style.top = y + 'px';
+            e.preventDefault();
+        }
+
+        function onPointerUp(e) {
+            if (draggingImg) {
+                draggingImg.classList.remove('dragging');
+                // Find the highest z-index among all images
+                let maxZ = 1;
+                document.querySelectorAll('.draggable-img').forEach(img => {
+                    const z = parseInt(img.style.zIndex) || 1;
+                    if (z > maxZ) maxZ = z;
+                });
+                draggingImg.style.zIndex = maxZ + 1;
+                draggingImg = null;
+            }
+        }
+
+        // Mouse events
+        container.addEventListener('mousedown', onPointerDown);
+        window.addEventListener('mousemove', onPointerMove);
+        window.addEventListener('mouseup', onPointerUp);
+
+        // Touch events
+        container.addEventListener('touchstart', onPointerDown, {passive: false});
+        window.addEventListener('touchmove', onPointerMove, {passive: false});
+        window.addEventListener('touchend', onPointerUp);
+
+        // Responsive: reposition images on resize
+        window.addEventListener('resize', () => {
+            // Optionally, reposition or resize images if needed
+        });
+    </script>
+</body>
+</html>
