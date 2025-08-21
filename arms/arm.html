@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arms, leg and hand | 30.05.25</title>
+    <style>
+        /* Simple grid styling for images */
+        .image-grid {
+            position: relative;
+            display: block;
+            width: 50vw;
+            height: 100vh;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+            left: 0;
+            right: 0;
+            top: 20vh; /* Move grid 20% down */
+        }
+        .image-grid img {
+            position: absolute;
+            /* width/height set by JS */
+            object-fit: contain;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            background: none;
+            display: block;
+            transition: transform 0.2s;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            background-color: rgba(255, 255, 255, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: #333;
+            z-index: 10;
+        }
+        .header p {
+            margin: 0;
+            padding: 0 2vw;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        @media (max-width: 900px) {
+            .image-grid {
+                width: 100vw;
+            }
+            .header {
+                font-size: 1.2em;
+                height: 12vh;
+            }
+        }
+        @media (max-width: 600px) {
+            html, body {
+                font-size: 18px;
+                width: 100vw;
+                height: 100vh;
+                overflow-x: hidden;
+            }
+            .image-grid {
+                width: 100vw;
+                height: 85vh;
+                min-height: 85vh;
+                margin-top: 15vh;
+                /* Ensure grid is below header */
+            }
+            .image-grid img {
+                /* width/height set by JS */
+                touch-action: manipulation;
+                outline: 2px solid transparent;
+            }
+            .header {
+                font-size: 1em;
+                height: 15vh;
+                min-height: 60px;
+                background-color: #ffffff00;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 0;
+            }
+            .header p {
+                font-size: 1em;
+                padding: 0 4vw;
+                z-index: 0;
+            }
+        }
+        /* Make images easier to tap */
+        .image-grid img {
+            min-width: 32px;
+            min-height: 32px;
+        }
+        .header, .header p, body, .image-grid, .image-grid img {
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+        }
+        .image-grid img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class ='header' role="banner" aria-label="Page header">
+        <p>arms, leg and hand</p>
+    </div>
+    <div class="image-grid" id="image-grid" role="list" aria-label="Image grid"></div>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        // List all image filenames in the folder
+        const images = [
+            // Remove folder prefix, just use filenames if images are in the same folder as this HTML
+            'arm1_1 png.png',
+            'arm1_2 png.png',
+            'arm1_3 png.png',
+            'arm1_4 png.png',
+            'arm2_1 png.png',
+            'arm2_2 png.png',
+            'arm2_4 png.png',
+            'hand1_1 png.png',
+            'leg1_1 png.png',
+            'leg1_2 png.png',
+            'leg1_3 png.png',
+            'leg1_4 png.png'
+        ];
+        // Insert all images into the grid
+        const grid = document.getElementById('image-grid');
+        // Shuffle images array for random order
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        shuffle(images);
+
+        // Place images at random positions within the grid container
+        const gridRect = grid.getBoundingClientRect();
+        const gridW = grid.offsetWidth || (window.innerWidth * 0.5);
+        const gridH = window.innerHeight;
+        // Calculate image size so all images fit inside the screen without overlap
+        const totalImages = images.length;
+        // Try to make a nearly square grid
+        let cols = Math.ceil(Math.sqrt(totalImages * gridW / gridH));
+        let rows = Math.ceil(totalImages / cols);
+        // Calculate max image width/height in px, then convert to percent and make 10% smaller
+        let imgW = (gridW / cols) * 0.9;
+        let imgH = (gridH / rows) * 0.9;
+        // Use the smaller of the two to keep images square and inside the screen
+        let imgSize = Math.floor(Math.min(imgW, imgH));
+        // Calculate as percent of grid width/height
+        let imgSizeVW = (imgSize / gridW) * 100;
+        let imgSizeVH = (imgSize / gridH) * 100;
+
+        images.forEach((src, idx) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = src.split('/').pop().replace(/_/g, ' ').replace(/\.png$/i, '');
+            img.loading = 'lazy';
+            img.tabIndex = 0;
+            img.setAttribute('role', 'listitem');
+            img.setAttribute('aria-label', img.alt);
+            img.setAttribute('draggable', 'false'); // Prevent drag
+            img.style.width = imgSizeVW + '%';
+            img.style.height = imgSizeVH + 'vh';
+            img.style.transition = 'none';
+            img.style.transformOrigin = 'center center';
+            // Add click-to-rotate logic, and support keyboard (Enter/Space)
+            let rotation = 0;
+            function rotateImg() {
+                rotation = (rotation + 90) % 360;
+                img.style.transform = `rotate(${rotation}deg)`;
+            }
+            img.addEventListener('click', rotateImg);
+            img.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    rotateImg();
+                    e.preventDefault();
+                }
+            });
+            // Place in grid (no overlap, all visible)
+            const col = idx % cols;
+            const row = Math.floor(idx / cols);
+            img.style.left = (col * imgSizeVW) + '%';
+            img.style.top = (row * imgSizeVH) + 'vh';
+            grid.appendChild(img);
+        });
+    });
+    </script>
+</body>
+</html>
