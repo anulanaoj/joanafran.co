@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>untitled</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Google+Sans+Code:ital,wght@0,787;1,787&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,opsz,wdth,wght@0,18..144,106,300..900;1,18..144,106,300..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wdth,wght,GRAD@0,8..144,103.3,406,-50;1,8..144,103.3,406,-50&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head> 
+ <style>
+    body {
+            background-color: #ffffff;
+        }
+        .menu-item-year {
+            position: absolute;
+            right: 0.4em;
+            bottom: 0.2em;
+            font-size: 1em;
+            color: var(--menu-color-light);
+            pointer-events: none;
+        }
+        .menu-item {
+            position: relative;
+        }
+       :root {
+            --menu-width: 10vw;
+            --menu-height:auto;
+            --menu-font-size: 0.7em;
+            --menu-font-family:"Rubik", sans-serif;
+            --menu-color: #8f3434;
+            --menu-color-light: #b6b6b6;
+            --menu-color-black: #7e7e7e;
+        }
+        .fixed-menu {
+            position: fixed;
+            top: 2%;
+            left: 1%;
+            width: var(--menu-width);
+            height: var(--menu-height);
+            background: transparent;
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: 10vw ;
+            grid-template-rows: repeat(20, 1fr);
+            gap: 0;
+            align-items:flex-start;
+        }
+        .fixed-menu .menu-item {
+            color: var(--menu-color);
+            font-size: var(--menu-font-size);
+            font-family: var(--menu-font-family);
+            font-weight: 400;
+            cursor: pointer;
+            background: transparent;
+            transition: color 0.2s;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            margin-top: 0em;
+        }
+        .fixed-menu  {
+            color: var(--menu-color-light);
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-right: 0%;
+            margin-top: 0em;
+        }
+        .menu-item.light {
+            color: var(--menu-color-light);
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-right: 0%;
+            margin-top: -0.5em;
+            padding-top: 0;
+            pointer-events: none;
+            font-size: 0.5em;
+        }
+        .fixed-menu .menu-item:focus,
+        .fixed-menu .menu-item[style*="grid-column: 1;"] {
+            color: #973e3e;
+        }
+        .fixed-menu .menu-item:hover:not(.light),
+        .fixed-menu .menu-item:focus:not(.light) {
+            color: #222;
+            outline: 1px dotted #aaa;
+        }
+        .continuous-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 30%;
+            padding: 0em;
+            margin-top: 1vh;
+            margin-left: 20%;
+            float: left;
+            margin-bottom: 10%;
+        }
+        .continuous-column img {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 0em;
+            cursor: pointer;
+        }
+        #enlarged-image-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 5%;
+            width: 50vw;
+            height: 100vh;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none; /* Prevent blocking clicks when not active */
+        }
+        #enlarged-image-popup.active {
+            display: flex;
+            pointer-events: auto; /* Allow interaction when active */
+        }
+        #enlarged-image-popup .popup-content {
+            position: relative;
+            padding: 0;
+            width: 48vw;
+            height: 96vh;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #enlarged-image-popup img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            margin: 0 auto;
+            cursor: grab;
+            user-select: none;
+        }
+        #enlarged-image-popup img.zoomed {
+            max-width: none;
+            max-height: none;
+            width: auto;
+            height: auto;
+            cursor: grab;
+        }
+        #enlarged-image-popup .close-btn {
+            position: absolute;
+            top: 0.5em;
+            right: 0.7em;
+            font-size: 2em;
+            color: #333;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .text-column {  
+            position: fixed;
+            float: left;
+            width: 30vw;
+            min-height: 0vh;
+            margin-top: 0%;
+            margin-left: 50vw;
+            font-family:"Rubik", sans-serif;
+            font-size: 0.7em;
+            color: #2f2f2f;
+            z-index: 2;
+        }
+        .text-column a {
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            color: black;
+                        font-family:"Rubik", sans-serif;
+
+            text-decoration: none;
+        }
+        @media (max-width: 900px) {
+            .fixed-menu {
+                display: grid !important;
+                position: relative;
+                width: 90vw;
+                min-width: 0;
+                height: auto;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 1fr);
+                font-size: 1.2em;
+                margin-left: 0;
+                column-gap: 1%;
+            }
+            .fixed-menu.menu-open {
+                display: grid !important;
+            }
+            /* Hide all menu items except the show button when closed */
+            .fixed-menu:not(.menu-open) .menu-item:not(#menu-show-btn) {
+                display: none !important;
+            }
+            .fixed-menu:not(.menu-open) .menu-item#menu-show-btn {
+                display: flex !important;
+                cursor: pointer;
+            }
+        }
+        @media (max-width: 600px) {
+            .fixed-menu {
+                display: grid !important;
+                position: relative;
+                width: 90vw;
+                min-width: 0;
+                height: auto;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 1fr);
+                font-size: 1.2em;
+                margin-left: 0;
+                column-gap: 1%;
+                margin-bottom: 5vh;
+            }
+            .fixed-menu.menu-open {
+                display: grid !important;
+            }
+            .fixed-menu:not(.menu-open) .menu-item:not(#menu-show-btn) {
+                display: none !important;
+            }
+            .fixed-menu:not(.menu-open) .menu-item#menu-show-btn {
+                display: flex !important;
+                cursor: pointer;
+            }
+            .continuous-column {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 0vh;
+            }
+            .text-column {
+                position: relative;
+                width: 70vw;
+                height: auto;
+                min-height: 0vh;
+                margin-top: 0vh;
+                margin-bottom: 5vh;
+                margin-left: 10vw;
+                font-size: 0.8em;
+                z-index: 1000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="fixed-menu" id="main-menu">
+        <a class="menu-item" id="menu-show-btn" style="grid-row: 1; grid-column: 1; cursor:pointer;" href="index.html">joana franco</a>
+        <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="bodyoutilned.html">outlined bodies</a>
+        <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
+        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="interactingwithcotton.html">interacting with cotton</a>
+        <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="lines.html">with lines on the floor</a>
+        <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="perceivedbodysand.html">perceived outline on sand</a>
+        <div class="menu-item light" style="grid-row: 7; grid-column: 1;">25</div>
+        <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="idliketotell.html">id like to tell</a>
+        <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="asabody.html">as a body</a>
+        <a class="menu-item" style="grid-row: 10; grid-column: 1;" href="makingpart24.html">with and in stone</a>
+        <a class="menu-item" style="grid-row: 11; grid-column: 1;" href="studionotes.html">studio notes</a>
+        <div class="menu-item light" style="grid-row: 12; grid-column: 1;">24</div>
+        <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
+        <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="makingpart23.html">untitled</a>
+        <a class="menu-item" style="grid-row: 15; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
+        <a class="menu-item" style="grid-row: 16; grid-column: 1;" href="square_habited.html">square_habited</a>
+        <div class="menu-item light" style="grid-row: 17; grid-column: 1;">23</div>
+        <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="ofinsideof.html">of inside of</a>
+        <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="makingpart21.html">making part</a>
+        <div class="menu-item light" style="grid-row: 20; grid-column: 1;">21</div>
+    </nav>   
+        <div class="continuous-column">
+<img src="makingpart23/makingpart.2023-6.jpg" alt="">
+<img src="makingpart23/makingpart.2023-7.jpg" alt="">
+</div>
+<div class="text-column">
+    <p><i>(untitled)</i> <br>in são miguel island <br> standing inside a circle, following its edge 
+    
+    </p>
+</div>
+        
+</div>
+        <div id="enlarged-image-popup">
+            <div class="popup-content">
+                <button class="close-btn" aria-label="Close">&times;</button>
+                <img src="" alt="Enlarged" id="enlarged-img">
+            </div>
+        </div>
+            
+        </div>
+
+    <script>
+    // Show enlarged image as popup overlay with smooth zoom and pan inside a 50vw x 100vh box
+    document.addEventListener('DOMContentLoaded', function() {
+        const thumbs = document.querySelectorAll('.continuous-column img');
+        const popup = document.getElementById('enlarged-image-popup');
+        const popupImg = document.getElementById('enlarged-img');
+        const closeBtn = document.querySelector('#enlarged-image-popup .close-btn');
+        let zoom = 1;
+        // Prevent default browser drag on popup image
+        popupImg.addEventListener('dragstart', function(e) { e.preventDefault(); });
+        let minZoom = 1;
+        let maxZoom = 6;
+        let imgX = 0, imgY = 0;
+        let isDragging = false, startX = 0, startY = 0;
+
+        function setTransform() {
+            popupImg.style.transform = `translate(${imgX}px,${imgY}px) scale(${zoom})`;
+        }
+        function resetZoom() {
+            zoom = 1;
+            imgX = 0;
+            imgY = 0;
+            setTransform();
+        }
+        function clampPan() {
+            // Clamp panning so image stays inside the box
+            const box = popupImg.parentElement.getBoundingClientRect();
+            const imgRect = popupImg.getBoundingClientRect();
+            const scaledWidth = popupImg.naturalWidth * zoom;
+            const scaledHeight = popupImg.naturalHeight * zoom;
+            const maxX = Math.max(0, (scaledWidth - box.width) / 2);
+            const maxY = Math.max(0, (scaledHeight - box.height) / 2);
+            imgX = Math.max(-maxX, Math.min(maxX, imgX));
+            imgY = Math.max(-maxY, Math.min(maxY, imgY));
+        }
+
+        thumbs.forEach(img => {
+            img.addEventListener('click', function() {
+                popupImg.src = img.src;
+                popupImg.alt = img.alt;
+                resetZoom();
+                popup.classList.add('active');
+            });
+        });
+        closeBtn.addEventListener('click', function() {
+            popup.classList.remove('active');
+            popupImg.src = '';
+            resetZoom();
+        });
+        // Close popup when clicking outside the image
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+                popupImg.src = '';
+                resetZoom();
+            }
+        });
+        // Smooth zoom with mouse wheel
+        popupImg.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            let delta = e.deltaY < 0 ? 0.15 : -0.15;
+            let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom + delta));
+            // Zoom to mouse position
+            const rect = popupImg.getBoundingClientRect();
+            const offsetX = e.clientX - rect.left - rect.width / 2;
+            const offsetY = e.clientY - rect.top - rect.height / 2;
+            if (newZoom !== zoom) {
+                imgX = (imgX - offsetX) * (newZoom / zoom) + offsetX;
+                imgY = (imgY - offsetY) * (newZoom / zoom) + offsetY;
+                zoom = newZoom;
+                clampPan();
+                setTransform();
+            }
+        });
+        // Double click to reset zoom
+        popupImg.addEventListener('dblclick', function(e) {
+            e.stopPropagation();
+            resetZoom();
+        });
+        // Drag to pan
+        popupImg.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            startX = e.clientX - imgX;
+            startY = e.clientY - imgY;
+            popupImg.style.cursor = 'grabbing';
+        });
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            imgX = e.clientX - startX;
+            imgY = e.clientY - startY;
+            clampPan();
+            setTransform();
+        });
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                popupImg.style.cursor = 'grab';
+            }
+        });
+        // Touch support for pinch zoom and pan
+        let lastTouchDist = null, lastTouchMid = null;
+        popupImg.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 2) {
+                lastTouchDist = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                lastTouchMid = {
+                    x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+                    y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+                };
+            }
+        });
+        popupImg.addEventListener('touchmove', function(e) {
+            if (e.touches.length === 2 && lastTouchDist !== null) {
+                let newDist = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                let mid = {
+                    x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+                    y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+                };
+                let scaleChange = newDist / lastTouchDist;
+                let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom * scaleChange));
+                // Zoom to midpoint
+                const rect = popupImg.getBoundingClientRect();
+                const offsetX = mid.x - rect.left - rect.width / 2;
+                const offsetY = mid.y - rect.top - rect.height / 2;
+                imgX = (imgX - offsetX) * (newZoom / zoom) + offsetX;
+                imgY = (imgY - offsetY) * (newZoom / zoom) + offsetY;
+                zoom = newZoom;
+                clampPan();
+                setTransform();
+                lastTouchDist = newDist;
+                lastTouchMid = mid;
+                e.preventDefault();
+            } else if (e.touches.length === 1 && isDragging) {
+                imgX = e.touches[0].clientX - startX;
+                imgY = e.touches[0].clientY - startY;
+                clampPan();
+                setTransform();
+            }
+        }, { passive: false });
+        popupImg.addEventListener('touchend', function(e) {
+            if (e.touches.length < 2) {
+                lastTouchDist = null;
+                lastTouchMid = null;
+            }
+            isDragging = false;
+            popupImg.style.cursor = 'grab';
+        });
+    });
+    // Hamburger menu toggle for mobile (use first menu item as button)
+    document.addEventListener('DOMContentLoaded', function() {
+        var menu = document.getElementById('main-menu');
+        var menuShowBtn = document.getElementById('menu-show-btn');
+        // Hide menu by default on mobile
+        function updateMenuVisibility() {
+            if (window.innerWidth <= 900) {
+                menu.classList.remove('menu-open');
+            } else {
+                menu.classList.add('menu-open');
+            }
+        }
+        updateMenuVisibility();
+        window.addEventListener('resize', updateMenuVisibility);
+
+        if (menuShowBtn && menu) {
+            menuShowBtn.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    menu.classList.toggle('menu-open');
+                }
+            });
+        }
+    });
+    </script>
+
+</body>
+</body>
+</html>

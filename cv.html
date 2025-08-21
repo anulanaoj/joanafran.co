@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cv</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-width: 100vw; /* Ensure the body takes up the full width */
+            height: auto; /* Ensure the body takes up the full height */
+            font-family: Archivo, sans-serif;
+            box-sizing: border-box;
+            
+            
+        }
+        .container {
+            max-width: 100vw;
+            height: auto;
+            position: relative;
+            background: white;
+            overflow: hidden;
+            display: grid;
+            flex-direction: column;
+            align-items: start;
+            justify-content: start;
+        }
+        .container p {
+            position: relative;
+            max-width: 100%;
+            z-index: 1; /* Ensure the text is above the image */
+            color: black;
+            font-size: 0.5em;
+            margin-top: 1%;
+            padding-left: 05%;
+            font-weight: normal;
+            
+        }
+        @media (max-width: 900px) {
+            .fixed-menu {
+                display: grid !important;
+                position: relative;
+                width: 90vw;
+                min-width: 0;
+                height: auto;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 1fr);
+                font-size: 1.2em;
+                margin-left: 0;
+                column-gap: 1%;
+            }
+            .fixed-menu.menu-open {
+                display: grid !important;
+            }
+            /* Hide all menu items except the show button when closed */
+            .fixed-menu:not(.menu-open) .menu-item:not(#menu-show-btn) {
+                display: none !important;
+            }
+            .fixed-menu:not(.menu-open) .menu-item#menu-show-btn {
+                display: flex !important;
+                cursor: pointer;
+            }
+        }
+        @media (max-width: 600px) {
+            .fixed-menu {
+                display: grid !important;
+                position: relative;
+                width: 90vw;
+                min-width: 0;
+                height: auto;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 1fr);
+                font-size: 1.2em;
+                margin-left: 0;
+                column-gap: 1%;
+                margin-bottom: 5vh;
+            }
+            .fixed-menu.menu-open {
+                display: grid !important;
+            }
+            .fixed-menu:not(.menu-open) .menu-item:not(#menu-show-btn) {
+                display: none !important;
+            }
+            .fixed-menu:not(.menu-open) .menu-item#menu-show-btn {
+                display: flex !important;
+                cursor: pointer;
+            }
+            .continuous-column {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 0vh;
+            }
+            .text-column {
+                position: relative;
+                width: 70vw;
+                height: auto;
+                min-height: 0vh;
+                margin-top: 0vh;
+                margin-bottom: 5vh;
+                margin-left: 10vw;
+                font-size: 0.8em;
+                z-index: 1000;
+            }
+        }
+            </style>
+        </head>
+        <body>
+                    <div class="container">
+                    <div>
+                    <p>
+                        <strong>Education</strong><br><br>
+                        2019-2021. Royal Academy of Art, The Hague<br>
+                        2021-2023. AkiArtez Academy of Art and Design, Enschede<br>
+                        2023-2025. Frank Mohr Institute, Groningen<br><br>
+                        <strong>Exhibitions</strong><br><br>
+                        <em>Individual</em><br>
+                        2021. Of Inside Of, Cultural Institute of Ponta Delgada, Açores<br><br>
+                        <em>Collective</em><br>
+                        2025. MAFAD final exhibition, NP3 . Re:Search:Gallery, Groningen <br>
+                        2025. RE:Store #4, NP3 . Re:Search:Gallery, Groningen <br>
+                        2025. RE:Store #3, NP3 . Re:Search:Gallery, Groningen <br>
+                        2025. RE:Store #1, NP3 . Re:Search:Gallery, Groningen <br>
+                        2024. Sometimes It Snows in April, Galerie Pouloeuff, Naarden<br>
+                        2023. Alter House Opening, I’m Studio, Amsterdam<br>
+                        2023. Fresh Cacao, De Cacao Fabriek, Helmond<br>
+                        2023. Bachelor's graduation ('Assuming Material Form'), AKI ArtEZ, Enschede<br>
+                        2023. RMTxAKI, Rijksmuseum Twenthe, Enschede<br>
+                        2021. Wind Polinators, SoZa, The Hague<br>
+                        2020. We Never Say Never, VAGA, Ponta Delgada<br>
+                        <br>       
+                        <strong>Publications</strong><br>
+                        2024. Liter 112, Maarten Buser - <a href="https://leesliter.nl/2024/05/08/liter-112/" target="_blank" style="color: grey;">https://leesliter.nl/2024/05/08/liter-112/</a><br>
+                        2024. De Lage Landen, Maarten Buser - <a href="https://www.de-lage-landen.com/article/joana-franco-wil-de-afstand-tussen-de-wereld-en-haar-lichaam-opheffen/" target="_blank" style="color: grey;">https://www.de-lage-landen.com/article/joana-franco-wil-de-afstand-tussen-de-wereld-en-haar-lichaam-opheffen/</a><br><br>                        
+                        <strong>Awards</strong><br>
+                        2019. (Residency) Young Creators Award 2020, Walk&Talk Azores<br>
+                        2023. Nominated Carat Lucas Gassel-Prijs<br>
+                    </p></div>
+                    
+                </div>
+            </div>
+                
+                   
+                </div>
+           
+  
