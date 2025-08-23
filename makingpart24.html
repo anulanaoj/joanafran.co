@@ -77,7 +77,7 @@
         }
         .fixed-menu .menu-item:focus,
         .fixed-menu .menu-item[style*="grid-column: 1;"] {
-            color: #973e3e;
+            color: #322d2d;
         }
         .fixed-menu .menu-item:hover:not(.light),
         .fixed-menu .menu-item:focus:not(.light) {
@@ -215,7 +215,7 @@
                 min-width: 0;
                 height: auto;
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 1fr);
+                grid-template-rows: repeat(20, 1fr);
                 font-size: 1.2em;
                 margin-left: 0;
                 column-gap: 1%;
@@ -231,6 +231,12 @@
                 display: flex !important;
                 cursor: pointer;
             }
+            #menu-retract-btn {
+        display: inline-block !important;
+    }
+    .fixed-menu:not(.menu-open) #menu-retract-btn {
+        display: none !important;
+    }
         }
         @media (max-width: 600px) {
             .fixed-menu {
@@ -240,11 +246,11 @@
                 min-width: 0;
                 height: auto;
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 1fr);
+                grid-template-rows: repeat(20, 1fr);
                 font-size: 1.2em;
                 margin-left: 0;
-                column-gap: 1%;
-                margin-bottom: 5vh;
+                column-gap: 0%;
+                margin-bottom: 0vh;
             }
             .fixed-menu.menu-open {
                 display: grid !important;
@@ -277,7 +283,12 @@
 </head>
 <body>
     <nav class="fixed-menu" id="main-menu">
-        <a class="menu-item" id="menu-show-btn" style="grid-row: 1; grid-column: 1; cursor:pointer;" href="index.html">joana franco</a>
+        <div style="display: flex; align-items: center; grid-row: 1; grid-column: 1;">
+        <a class="menu-item" id="menu-show-btn" href="index.html" style="cursor:pointer; flex: 1 1 auto;">joana franco</a>
+        <button id="menu-retract-btn" aria-label="Retract menu" style="display:none; background:none; border:none; font-size:1.5em; cursor:pointer; margin-left:0.3em; color:var(--menu-color);">
+            &#8592;
+        </button>
+    </div>
         <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="bodyoutilned.html">outlined bodies</a>
         <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
         <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="interactingwithcotton.html">interacting with cotton</a>
@@ -297,7 +308,7 @@
         <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="ofinsideof.html">of inside of</a>
         <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="makingpart21.html">making part</a>
         <div class="menu-item light" style="grid-row: 20; grid-column: 1;">21</div>
-    </nav>   
+    </nav>    
     <div class="text-column">
     <p><i>with and in stone</i> <br>in tenerife island, august/november 2024 <br>
         <br> a natural progression of <i>making part</i>, this time wanting to come closer to the stone, rock, looking for some lost vulnerability.
@@ -505,16 +516,20 @@
         }
         setupImagePopup();
     });
+    
     // Hamburger menu toggle for mobile (use first menu item as button)
     document.addEventListener('DOMContentLoaded', function() {
         var menu = document.getElementById('main-menu');
         var menuShowBtn = document.getElementById('menu-show-btn');
+        var menuRetractBtn = document.getElementById('menu-retract-btn');
         // Hide menu by default on mobile
         function updateMenuVisibility() {
             if (window.innerWidth <= 900) {
                 menu.classList.remove('menu-open');
+                if (menuRetractBtn) menuRetractBtn.style.display = 'inline-block';
             } else {
                 menu.classList.add('menu-open');
+                if (menuRetractBtn) menuRetractBtn.style.display = 'none';
             }
         }
         updateMenuVisibility();
@@ -523,8 +538,20 @@
         if (menuShowBtn && menu) {
             menuShowBtn.addEventListener('click', function(e) {
                 if (window.innerWidth <= 900) {
+                    // Only open menu if closed; do not retract if open
+                    if (!menu.classList.contains('menu-open')) {
+                        e.preventDefault();
+                        menu.classList.add('menu-open');
+                    }
+                    // If already open, allow navigation to href
+                }
+            });
+        }
+        if (menuRetractBtn && menu) {
+            menuRetractBtn.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
                     e.preventDefault();
-                    menu.classList.toggle('menu-open');
+                    menu.classList.remove('menu-open');
                 }
             });
         }

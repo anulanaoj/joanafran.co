@@ -52,7 +52,7 @@
                 min-width: 0;
                 height: auto;
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 1fr);
+                grid-template-rows: repeat(20, 1fr);
                 font-size: 1.2em;
                 margin-left: 0;
                 column-gap: 1%;
@@ -68,6 +68,12 @@
                 display: flex !important;
                 cursor: pointer;
             }
+            #menu-retract-btn {
+        display: inline-block !important;
+    }
+    .fixed-menu:not(.menu-open) #menu-retract-btn {
+        display: none !important;
+    }
         }
         @media (max-width: 600px) {
             .fixed-menu {
@@ -77,11 +83,11 @@
                 min-width: 0;
                 height: auto;
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 1fr);
+                grid-template-rows: repeat(20, 1fr);
                 font-size: 1.2em;
                 margin-left: 0;
-                column-gap: 1%;
-                margin-bottom: 5vh;
+                column-gap: 0%;
+                margin-bottom: 0vh;
             }
             .fixed-menu.menu-open {
                 display: grid !important;

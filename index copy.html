@@ -250,7 +250,12 @@ html, body {
 </head>
 <body>
    <nav class="fixed-menu" id="main-menu">
-        <a class="menu-item" id="menu-show-btn" style="grid-row: 1; grid-column: 1; cursor:pointer;" href="index.html">joana franco</a>
+        <div style="display: flex; align-items: center; grid-row: 1; grid-column: 1;">
+        <a class="menu-item" id="menu-show-btn" href="index.html" style="cursor:pointer; flex: 1 1 auto;">joana franco</a>
+        <button id="menu-retract-btn" aria-label="Retract menu" style="display:none; background:none; border:none; font-size:1.5em; cursor:pointer; margin-left:0.3em; color:var(--menu-color);">
+            &#8592;
+        </button>
+    </div>
         <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="bodyoutilned.html">outlined bodies</a>
         <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
         <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="interactingwithcotton.html">interacting with cotton</a>
@@ -270,7 +275,7 @@ html, body {
         <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="ofinsideof.html">of inside of</a>
         <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="makingpart21.html">making part</a>
         <div class="menu-item light" style="grid-row: 20; grid-column: 1;">21</div>
-    </nav>
+    </nav> 
             <div class="text-column">
                 <p> pt-nl, 2001<br>
                     contact.joanafranco@gmail.com <br>
