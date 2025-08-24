@@ -284,7 +284,7 @@
     </div>
         <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="bodyoutilned.html">outlined bodies</a>
         <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
-        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="interactingwithcotton.html">i give myself space</a>
+        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
         <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="lines.html">with lines on the floor</a>
         <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="ireflect.html">i reflect</a>
         <div class="menu-item light" style="grid-row: 7; grid-column: 1;">25</div>
@@ -436,6 +436,10 @@ oil transfer and mixed media on rice paper.
                 popupImg.style.cursor = 'grab';
             }
         });
+        document.addEventListener('DOMContentLoaded', function() {
+        let touchDragActive = false;
+        let dragTimeout = null;
+
         // Touch support for pinch zoom and pan
         let lastTouchDist = null, lastTouchMid = null;
         popupImg.addEventListener('touchstart', function(e) {
@@ -558,6 +562,5 @@ oil transfer and mixed media on rice paper.
     });
     </script>
 
-</body>
 </body>
 </html>
