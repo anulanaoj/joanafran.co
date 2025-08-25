@@ -26,8 +26,6 @@
             --menu-font-size: 0.7em;
             --menu-font-family:"Rubik", sans-serif;
             --menu-color: #8f3434;
-            --menu-color-light: #b6b6b6;
-            --menu-color-black: #7e7e7e;
         }
         .fixed-menu {
             position: fixed;
@@ -39,7 +37,7 @@
             z-index: 1000;
             display: grid;
             grid-template-columns: 10vw ;
-            grid-template-rows: repeat(20, 1fr);
+            grid-template-rows: repeat(21, 1fr);
             gap: 0;
             align-items:flex-start;
         }
@@ -156,7 +154,8 @@
             border: none;
             cursor: pointer;
             z-index: 10;
-        }.text-column {  
+        }
+        .text-column {  
             position: fixed;
             float: left;
             width: 30vw;
@@ -187,7 +186,7 @@
                 min-width: 0;
                 height: auto;
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(20, 1fr);
+                grid-template-rows: repeat(21, 1fr);
                 font-size: 1.2em;
                 margin-left: 0;
                 column-gap: 1%;
@@ -204,12 +203,12 @@
                 cursor: pointer;
             }
             #menu-retract-btn {
-        display: inline-block !important;
-    }
-    .fixed-menu:not(.menu-open) #menu-retract-btn {
-        display: none !important;
-    }
-        }
+            display: inline-block !important;
+            }
+            .fixed-menu:not(.menu-open) #menu-retract-btn {
+            display: none !important;
+            }
+            }
         @media (max-width: 600px) {
             .fixed-menu {
                 display: grid !important;
@@ -218,7 +217,7 @@
                 min-width: 0;
                 height: auto;
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(20, 1fr);
+                grid-template-rows: repeat(21, 1fr);
                 font-size: 1.2em;
                 margin-left: 0;
                 column-gap: 0%;
@@ -261,26 +260,28 @@
             &#8592;
         </button>
     </div>
-        <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="bodyoutilned.html">outlined bodies</a>
-        <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
-        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
-        <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="lines.html">with lines on the floor</a>
-        <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="ireflect.html">i reflect</a>
-        <div class="menu-item light" style="grid-row: 7; grid-column: 1;">25</div>
-        <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="idliketotell.html">id like to tell</a>
-        <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="asabody.html">as a body</a>
-        <a class="menu-item" style="grid-row: 10; grid-column: 1;" href="withandinstone.html">with and in stone</a>
-        <a class="menu-item" style="grid-row: 11; grid-column: 1;" href="studionotes.html">studio notes</a>
-        <div class="menu-item light" style="grid-row: 12; grid-column: 1;">24</div>
-        <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
-        <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="untitled.html">untitled</a>
-        <a class="menu-item" style="grid-row: 15; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
-        <a class="menu-item" style="grid-row: 16; grid-column: 1;" href="square_habited.html">square_habited</a>
-        <div class="menu-item light" style="grid-row: 17; grid-column: 1;">23</div>
-        <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="ofinsideof.html">of inside of</a>
-        <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="makingpart21.html">making part</a>
-        <div class="menu-item light" style="grid-row: 20; grid-column: 1;">21</div>
-    </nav>    <div class="text-column">
+        <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="outlinedbodies.html">outlined bodies</a>
+        <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="twoutlinedbodies.html">two outlined bodies</a>
+        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
+        <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
+        <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="lines.html">with lines on the floor</a>
+        <a class="menu-item" style="grid-row: 7; grid-column: 1;" href="ireflect.html">i reflect</a>
+        <div class="menu-item light" style="grid-row: 8; grid-column: 1;">25</div>
+        <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="idliketotell.html">id like to tell</a>
+        <a class="menu-item" style="grid-row: 10; grid-column: 1;" href="asabody.html">as a body</a>
+        <a class="menu-item" style="grid-row: 11; grid-column: 1;" href="withandinstone.html">with and in stone</a>
+        <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="studionotes.html">studio notes</a>
+        <div class="menu-item light" style="grid-row: 13; grid-column: 1;">24</div>
+        <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
+        <a class="menu-item" style="grid-row: 15; grid-column: 1;" href="untitled.html">untitled</a>
+        <a class="menu-item" style="grid-row: 16; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
+        <a class="menu-item" style="grid-row: 17; grid-column: 1;" href="square_habited.html">square_habited</a>
+        <div class="menu-item light" style="grid-row: 18; grid-column: 1;">23</div>
+        <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="ofinsideof.html">of inside of</a>
+        <a class="menu-item" style="grid-row: 20; grid-column: 1;" href="makingpart21.html">making part</a>
+        <div class="menu-item light" style="grid-row: 21; grid-column: 1;">21</div>
+    </nav>      
+    <div class="text-column">
     <p><i>as a body</i> <br>
                 in <a href="https://sign2.nl/websign/" style="text-decoration: none;" target="_blank" rel="noopener">
                     Stichting Sign,</a> Groningen NL, 2024
