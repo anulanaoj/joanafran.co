@@ -90,12 +90,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 30%;
+            width: 35vw;
             padding: 0em;
             margin-top: 1vh;
-            margin-left: 20%;
+            margin-left: 15vw;
             float: left;
             margin-bottom: 10%;
+            z-index: 2;
+            position: relative;
         }
         .continuous-column img {
             width: 100%;
@@ -108,12 +110,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 30%;
+            width: 35vw;
             padding: 0em;
             margin-top: 20vh;
-            margin-left: 2%;
+            margin-left: 2vw;
             float: left;
             margin-bottom: 10%;
+            z-index: 2;
+            position: relative;
         }
         .continuous-column-side img {
             width: 100%;
@@ -130,7 +134,7 @@
             right: 5%;
             width: 50vw;
             height: 100vh;
-            z-index: 2000;
+            z-index: 10000;
             align-items: center;
             justify-content: center;
             pointer-events: none; /* Prevent blocking clicks when not active */
@@ -150,6 +154,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            z-index: 10001;
         }
         #enlarged-image-popup img {
             max-width: 100%;
@@ -158,13 +163,7 @@
             margin: 0 auto;
             cursor: grab;
             user-select: none;
-        }
-        #enlarged-image-popup img.zoomed {
-            max-width: none;
-            max-height: none;
-            width: auto;
-            height: auto;
-            cursor: grab;
+            z-index: 10001;
         }
         #enlarged-image-popup .close-btn {
             position: absolute;
@@ -175,7 +174,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            z-index: 10;
+            z-index: 10002;
         }.text-column {  
             position: fixed;
             float: left;
@@ -186,7 +185,7 @@
             font-family:"Rubik", sans-serif;
             font-size: 0.7em;
             color: #2f2f2f;
-            z-index: 2;
+            z-index: 10;
             text-align: justify;
         }
         .text-column a {
@@ -254,6 +253,11 @@
                 cursor: pointer;
             }
             .continuous-column {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 0vh;
+            }
+            .continuous-column-side {
                 width: 100%;
                 margin-left: 0;
                 margin-top: 0vh;
@@ -334,18 +338,15 @@ oil transfer and mixed media on rice paper.
     </div>
 </div>
             
-        </div>
-
     <script>
     // Show enlarged image as popup overlay with smooth zoom and pan inside a 50vw x 100vh box
     document.addEventListener('DOMContentLoaded', function() {
-        const thumbs = document.querySelectorAll('.continuous-column img');
+        // Use images from both columns
+        const thumbs = document.querySelectorAll('.continuous-column img, .continuous-column-side img');
         const popup = document.getElementById('enlarged-image-popup');
         const popupImg = document.getElementById('enlarged-img');
         const closeBtn = document.querySelector('#enlarged-image-popup .close-btn');
         let zoom = 1;
-        // Prevent default browser drag on popup image
-        popupImg.addEventListener('dragstart', function(e) { e.preventDefault(); });
         let minZoom = 1;
         let maxZoom = 6;
         let imgX = 0, imgY = 0;
@@ -361,9 +362,7 @@ oil transfer and mixed media on rice paper.
             setTransform();
         }
         function clampPan() {
-            // Clamp panning so image stays inside the box
             const box = popupImg.parentElement.getBoundingClientRect();
-            const imgRect = popupImg.getBoundingClientRect();
             const scaledWidth = popupImg.naturalWidth * zoom;
             const scaledHeight = popupImg.naturalHeight * zoom;
             const maxX = Math.max(0, (scaledWidth - box.width) / 2);
@@ -385,7 +384,6 @@ oil transfer and mixed media on rice paper.
             popupImg.src = '';
             resetZoom();
         });
-        // Close popup when clicking outside the image
         popup.addEventListener('click', function(e) {
             if (e.target === popup) {
                 popup.classList.remove('active');
@@ -393,12 +391,10 @@ oil transfer and mixed media on rice paper.
                 resetZoom();
             }
         });
-        // Smooth zoom with mouse wheel
         popupImg.addEventListener('wheel', function(e) {
             e.preventDefault();
             let delta = e.deltaY < 0 ? 0.15 : -0.15;
             let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom + delta));
-            // Zoom to mouse position
             const rect = popupImg.getBoundingClientRect();
             const offsetX = e.clientX - rect.left - rect.width / 2;
             const offsetY = e.clientY - rect.top - rect.height / 2;
@@ -410,12 +406,10 @@ oil transfer and mixed media on rice paper.
                 setTransform();
             }
         });
-        // Double click to reset zoom
         popupImg.addEventListener('dblclick', function(e) {
             e.stopPropagation();
             resetZoom();
         });
-        // Drag to pan
         popupImg.addEventListener('mousedown', function(e) {
             isDragging = true;
             startX = e.clientX - imgX;
@@ -435,11 +429,10 @@ oil transfer and mixed media on rice paper.
                 popupImg.style.cursor = 'grab';
             }
         });
-        document.addEventListener('DOMContentLoaded', function() {
+
+        // Touch drag and pinch zoom
         let touchDragActive = false;
         let dragTimeout = null;
-
-        // Touch support for pinch zoom and pan
         let lastTouchDist = null, lastTouchMid = null;
         popupImg.addEventListener('touchstart', function(e) {
             if (e.touches.length === 2) {
@@ -454,7 +447,6 @@ oil transfer and mixed media on rice paper.
                 touchDragActive = false;
                 if (dragTimeout) clearTimeout(dragTimeout);
             } else if (e.touches.length === 1) {
-                // Only start drag after tap-and-hold (200ms)
                 dragTimeout = setTimeout(function() {
                     touchDragActive = true;
                     isDragging = true;
@@ -477,7 +469,6 @@ oil transfer and mixed media on rice paper.
                 };
                 let scaleChange = newDist / lastTouchDist;
                 let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom * scaleChange));
-                // Zoom to midpoint
                 const rect = popupImg.getBoundingClientRect();
                 const offsetX = mid.x - rect.left - rect.width / 2;
                 const offsetY = mid.y - rect.top - rect.height / 2;
@@ -512,7 +503,6 @@ oil transfer and mixed media on rice paper.
             popupImg.style.cursor = 'grab';
         }, { passive: false });
 
-        // Prevent scrolling the page while interacting with the image
         popupImg.addEventListener('touchmove', function(e) {
             if (popup.classList.contains('active')) {
                 e.preventDefault();
