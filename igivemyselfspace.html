@@ -120,6 +120,18 @@
             pointer-events: auto; /* Ensure images are clickable */
             z-index: 1; /* Make sure images are above other elements in the column */
         }
+        .continuous-column-side video {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            max-width: 100%;
+            margin-bottom: 0em;
+            margin-top: 10vh;
+            cursor: pointer;
+            pointer-events: auto; /* Ensure videos are clickable */
+            z-index: 1; /* Make sure videos are above other elements in the column */
+        }
         #enlarged-image-popup {
             display: none;
             position: fixed;
@@ -256,6 +268,11 @@
                 margin-left: 0;
                 margin-top: 0vh;
             }
+            .continuous-column-side {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 0vh;
+            }
             .text-column {
                 position: relative;
                 width: 70vw;
@@ -317,6 +334,7 @@
     <img src="interactingwithcotton/i give myself space-7.png" alt="">
 </div>
 <div class="continuous-column-side">
+    <video src="interactingwithcotton/7.mp4" controls></video>
     <img src="interactingwithcotton/iwc-1.png" alt="">
     <img src="interactingwithcotton/iwc-2.png" alt="">
     <img src="interactingwithcotton/iwc-3.png" alt="">
@@ -564,6 +582,96 @@
                 }
             });
         }
+    });
+
+    // Simplify video appearance: hide controls, overlay custom play button, remove dark bottom bar, add fullscreen button
+    document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('.continuous-column-side video');
+        videos.forEach(function(video) {
+            video.controls = false;
+
+            // Create custom play button overlay
+            const playBtn = document.createElement('div');
+            playBtn.style.position = 'absolute';
+            playBtn.style.left = '50%';
+            playBtn.style.top = '50%';
+            playBtn.style.transform = 'translate(-50%, -50%)';
+            playBtn.style.width = '60px';
+            playBtn.style.height = '60px';
+            playBtn.style.background = 'rgba(255,255,255,0.7)';
+            playBtn.style.borderRadius = '50%';
+            playBtn.style.display = 'flex';
+            playBtn.style.alignItems = 'center';
+            playBtn.style.justifyContent = 'center';
+            playBtn.style.cursor = 'pointer';
+            playBtn.style.zIndex = '2';
+            playBtn.innerHTML = '<svg width="32" height="32" viewBox="0 0 32 32"><polygon points="10,7 26,16 10,25" fill="#8f3434"/></svg>';
+
+            // Create fullscreen button
+            const fullscreenBtn = document.createElement('div');
+            fullscreenBtn.style.position = 'absolute';
+            fullscreenBtn.style.right = '10px';
+            fullscreenBtn.style.bottom = '10px';
+            fullscreenBtn.style.width = '32px';
+            fullscreenBtn.style.height = '32px';
+            fullscreenBtn.style.background = 'rgba(255,255,255,0.7)';
+            fullscreenBtn.style.borderRadius = '50%';
+            fullscreenBtn.style.display = 'flex';
+            fullscreenBtn.style.alignItems = 'center';
+            fullscreenBtn.style.justifyContent = 'center';
+            fullscreenBtn.style.cursor = 'pointer';
+            fullscreenBtn.style.zIndex = '2';
+            fullscreenBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18"><rect x="2" y="2" width="14" height="14" rx="0" stroke="#8f3434" stroke-width="2" fill="none"/></svg>';
+
+            // Wrap video in relative container
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'relative';
+            wrapper.style.display = 'inline-block';
+            wrapper.style.width = video.style.width || video.width ? video.width + 'px' : '100%';
+            wrapper.style.height = video.style.height || video.height ? video.height + 'px' : 'auto';
+            video.parentNode.insertBefore(wrapper, video);
+            wrapper.appendChild(video);
+            wrapper.appendChild(playBtn);
+            wrapper.appendChild(fullscreenBtn);
+
+            // Hide play button when playing
+            function updateBtn() {
+                playBtn.style.display = video.paused ? 'flex' : 'none';
+            }
+            video.addEventListener('play', updateBtn);
+            video.addEventListener('pause', updateBtn);
+            video.addEventListener('ended', updateBtn);
+            updateBtn();
+
+            // Play video on button click
+            playBtn.addEventListener('click', function() {
+                video.play();
+            });
+
+            // Also play/pause on video click
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+
+            // Fullscreen logic
+            fullscreenBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            });
+
+            // Remove dark overlay if any (for some browsers)
+            video.style.background = 'none';
+        });
     });
     </script>
 
