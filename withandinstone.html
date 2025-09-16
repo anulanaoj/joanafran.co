@@ -36,7 +36,7 @@
             background: transparent;
             z-index: 1000;
             display: grid;
-            grid-template-columns: 10vw ;
+            grid-template-columns: 15vw;
             grid-template-rows: repeat(1, 1fr);
             gap: 0;
             align-items:flex-start;
@@ -49,13 +49,15 @@
             cursor: pointer;
             background: transparent;
             transition: color 0.2s;
-            line-height: 1;
+            line-height: 1,5;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             box-sizing: border-box;
             margin-top: 0em;
+            text-decoration: none; /* remove underline */
         }
+        
         .fixed-menu  {
             color: var(--menu-color-light);
             justify-content: flex-start;
@@ -68,7 +70,7 @@
             justify-content: flex-start;
             align-items: flex-start;
             padding-right: 0%;
-            margin-top: -0.5em;
+            margin-top: 0em;
             padding-top: 0;
             pointer-events: none;
             font-size: 0.5em;
@@ -148,9 +150,10 @@
         }
         #enlarged-image-popup .popup-content {
             position: relative;
-            padding: 0;
-            width: 48vw;
-            height: 96vh;
+            margin-top: 7vh;
+            margin-left: 3vw;
+            width: 30vw;
+            height: auto;
             max-width: 100%;
             max-height: 100%;
             display: flex;
@@ -173,16 +176,17 @@
             height: auto;
             cursor: grab;
         }
-        #enlarged-image-popup .close-btn {
+       #enlarged-image-popup .close-btn {
             position: absolute;
-            top: 0.5em;
-            right: 0.7em;
-            font-size: 2em;
-            color: #333;
+            top: -2.2em;
+            right: -1em;
+            font-size: 0.7em;
+            color: #a21c1c;
             background: none;
             border: none;
             cursor: pointer;
             z-index: 10;
+            padding: 0.7em 1em;
         }.text-column {  
             position: fixed;
             float: left;
@@ -289,6 +293,10 @@
                 z-index: 1000;
             }
         }
+        body.popup-active .text-column,
+    body.popup-active .fixed-menu {
+        display: none !important;
+    }
     </style>
 </head>
 <body>
@@ -299,27 +307,28 @@
             &#8592;
         </button>
     </div>
-        <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="outlinedbodies.html">outlined bodies</a>
-        <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="twooutlinedbodies.html">two outlined bodies</a>
-        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
-        <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
-        <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="lines.html">with lines on the floor</a>
-        <a class="menu-item" style="grid-row: 7; grid-column: 1;" href="ireflect.html">i reflect</a>
-        <div class="menu-item light" style="grid-row: 8; grid-column: 1;">25</div>
-        <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="idliketotell.html">id like to tell</a>
-        <a class="menu-item" style="grid-row: 10; grid-column: 1;" href="asabody.html">as a body</a>
-        <a class="menu-item" style="grid-row: 11; grid-column: 1;" href="withandinstone.html">with and in stone</a>
-        <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="studionotes.html">studio notes</a>
-        <div class="menu-item light" style="grid-row: 13; grid-column: 1;">24</div>
-        <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
-        <a class="menu-item" style="grid-row: 15; grid-column: 1;" href="untitled.html">untitled</a>
-        <a class="menu-item" style="grid-row: 16; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
-        <a class="menu-item" style="grid-row: 17; grid-column: 1;" href="square_habited.html">square_habited</a>
-        <div class="menu-item light" style="grid-row: 18; grid-column: 1;">23</div>
-        <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="ofinsideof.html">of inside of</a>
-        <a class="menu-item" style="grid-row: 20; grid-column: 1;" href="makingpart21.html">making part</a>
-        <div class="menu-item light" style="grid-row: 21; grid-column: 1;">21</div>
-    </nav>      
+        <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="ovulcaodassetecidades.html">o vulcão das sete cidades</a>
+        <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="outlinedbodies.html">outlined bodies</a>
+        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="twooutlinedbodies.html">two outlined bodies</a>
+        <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
+        <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
+        <a class="menu-item" style="grid-row: 7; grid-column: 1;" href="lines.html">with lines on the floor</a>
+        <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="ireflect.html">i reflect</a>
+        <div class="menu-item light" style="grid-row: 9; grid-column: 1;">25</div>
+        <a class="menu-item" style="grid-row: 11; grid-column: 1;" href="idliketotell.html">id like to tell</a>
+        <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="asabody.html">as a body</a>
+        <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="withandinstone.html">with and in stone</a>
+        <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="studionotes.html">studio notes</a>
+        <div class="menu-item light" style="grid-row: 15; grid-column: 1;">24</div>
+        <a class="menu-item" style="grid-row: 16; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
+        <a class="menu-item" style="grid-row: 17; grid-column: 1;" href="untitled.html">untitled</a>
+        <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
+        <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="square_habited.html">square_habited</a>
+        <div class="menu-item light" style="grid-row: 20; grid-column: 1;">23</div>
+        <a class="menu-item" style="grid-row: 21; grid-column: 1;" href="ofinsideof.html">of inside of</a>
+        <a class="menu-item" style="grid-row: 22; grid-column: 1;" href="makingpart21.html">making part</a>
+        <div class="menu-item light" style="grid-row: 23; grid-column: 1;">21</div>
+    </nav> 
     <div class="text-column">
     <p><i>with and in stone</i> <br>in tenerife <br>
         <br>wanting to come closer to the stone, when looking for some lost vulnerability, with the help of Bogdan<br><br>
@@ -362,30 +371,37 @@
 
 
 <div id="enlarged-image-popup">
-    <div class="popup-content">
-        <button class="close-btn" aria-label="Close">&times;</button>
-        <img src="" alt="Enlarged" id="enlarged-img">
+        <div class="popup-content">
+            <button class="close-btn" aria-label="Close">close</button>
+            <img src="" alt="Enlarged" id="enlarged-img">
+        </div>
     </div>
 </div>
 
     <script>
+   // Enable lazy loading for images only on screens 900px and below
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth <= 900) {
+            document.querySelectorAll('.continuous-column img, .continuous-column-side img').forEach(function(img) {
+                img.setAttribute('loading', 'lazy');
+            });
+        }
+    });
+
     // Show enlarged image as popup overlay with smooth zoom and pan inside a 50vw x 100vh box
     document.addEventListener('DOMContentLoaded', function() {
-        function setupImagePopup() {
-            const thumbs = document.querySelectorAll('.continuous-column img');
+        // Only enable popup logic for screens wider than 900px
+        if (window.innerWidth > 900) {
+            const thumbs = document.querySelectorAll('.continuous-column img, .continuous-column-side img');
             const popup = document.getElementById('enlarged-image-popup');
             const popupImg = document.getElementById('enlarged-img');
             const closeBtn = document.querySelector('#enlarged-image-popup .close-btn');
             let zoom = 1;
-            // Prevent default browser drag on popup image
             popupImg.addEventListener('dragstart', function(e) { e.preventDefault(); });
             let minZoom = 1;
             let maxZoom = 6;
             let imgX = 0, imgY = 0;
             let isDragging = false, startX = 0, startY = 0;
-            let touchDragActive = false;
-            let dragTimeout = null;
-            let lastTouchDist = null, lastTouchMid = null;
 
             function setTransform() {
                 popupImg.style.transform = `translate(${imgX}px,${imgY}px) scale(${zoom})`;
@@ -397,9 +413,7 @@
                 setTransform();
             }
             function clampPan() {
-                // Clamp panning so image stays inside the box
                 const box = popupImg.parentElement.getBoundingClientRect();
-                const imgRect = popupImg.getBoundingClientRect();
                 const scaledWidth = popupImg.naturalWidth * zoom;
                 const scaledHeight = popupImg.naturalHeight * zoom;
                 const maxX = Math.max(0, (scaledWidth - box.width) / 2);
@@ -408,35 +422,37 @@
                 imgY = Math.max(-maxY, Math.min(maxY, imgY));
             }
 
-            // Remove previous click listeners to avoid duplicates
+            function showPopup() {
+                popup.classList.add('active');
+                document.body.classList.add('popup-active');
+            }
+            function hidePopup() {
+                popup.classList.remove('active');
+                popupImg.src = '';
+                resetZoom();
+                document.body.classList.remove('popup-active');
+            }
+
             thumbs.forEach(img => {
-                img.onclick = null;
                 img.addEventListener('click', function() {
                     popupImg.src = img.src;
                     popupImg.alt = img.alt;
                     resetZoom();
-                    popup.classList.add('active');
+                    showPopup();
                 });
             });
             closeBtn.addEventListener('click', function() {
-                popup.classList.remove('active');
-                popupImg.src = '';
-                resetZoom();
+                hidePopup();
             });
-            // Close popup when clicking outside the image
             popup.addEventListener('click', function(e) {
                 if (e.target === popup) {
-                    popup.classList.remove('active');
-                    popupImg.src = '';
-                    resetZoom();
+                    hidePopup();
                 }
             });
-            // Smooth zoom with mouse wheel
             popupImg.addEventListener('wheel', function(e) {
                 e.preventDefault();
                 let delta = e.deltaY < 0 ? 0.15 : -0.15;
                 let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom + delta));
-                // Zoom to mouse position
                 const rect = popupImg.getBoundingClientRect();
                 const offsetX = e.clientX - rect.left - rect.width / 2;
                 const offsetY = e.clientY - rect.top - rect.height / 2;
@@ -448,12 +464,10 @@
                     setTransform();
                 }
             });
-            // Double click to reset zoom
             popupImg.addEventListener('dblclick', function(e) {
                 e.stopPropagation();
                 resetZoom();
             });
-            // Drag to pan
             popupImg.addEventListener('mousedown', function(e) {
                 isDragging = true;
                 startX = e.clientX - imgX;
@@ -473,7 +487,9 @@
                     popupImg.style.cursor = 'grab';
                 }
             });
-            // Touch support for pinch zoom and pan
+            let lastTouchDist = null, lastTouchMid = null;
+            let touchDragActive = false;
+            let dragTimeout = null;
             popupImg.addEventListener('touchstart', function(e) {
                 if (e.touches.length === 2) {
                     lastTouchDist = Math.hypot(
@@ -487,7 +503,6 @@
                     touchDragActive = false;
                     if (dragTimeout) clearTimeout(dragTimeout);
                 } else if (e.touches.length === 1) {
-                    // Only start drag after tap-and-hold (200ms)
                     dragTimeout = setTimeout(function() {
                         touchDragActive = true;
                         isDragging = true;
@@ -510,7 +525,6 @@
                     };
                     let scaleChange = newDist / lastTouchDist;
                     let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom * scaleChange));
-                    // Zoom to midpoint
                     const rect = popupImg.getBoundingClientRect();
                     const offsetX = mid.x - rect.left - rect.width / 2;
                     const offsetY = mid.y - rect.top - rect.height / 2;
@@ -545,14 +559,12 @@
                 popupImg.style.cursor = 'grab';
             }, { passive: false });
 
-            // Prevent scrolling the page while interacting with the image
             popupImg.addEventListener('touchmove', function(e) {
                 if (popup.classList.contains('active')) {
                     e.preventDefault();
                 }
             }, { passive: false });
         }
-        setupImagePopup();
     });
     
     // Hamburger menu toggle for mobile (use first menu item as button)
