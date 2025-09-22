@@ -19,7 +19,6 @@
 
 html, body {
     background-color: #fff;
-    overflow: hidden;
     height: 100%;
     margin: 0;
     font-family: var(--menu-font-family);
@@ -148,7 +147,7 @@ html, body {
 @media (max-width: 56em) { /* ~900px */
     .fixed-menu {
         position: relative;
-        width: 90%;
+        width: 100%;
         height: auto;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, 1fr);
@@ -177,12 +176,20 @@ html, body {
         height: auto;
         display: block;
     }
+
+    body {
+        overflow-x: hidden; /* Prevent horizontal scroll, allow vertical scroll */
+    }
+
+    html {
+        overflow-x: hidden;
+    }
 }
 
 @media (max-width: 37.5em) { /* ~600px */
     .fixed-menu {
         grid-template-rows: repeat(1, 1fr);
-        margin-bottom: 3em;
+        margin-bottom: 1em;
     }
 
     .text-column {
@@ -199,6 +206,43 @@ html, body {
         max-width: 100vw;
         height: auto;
         display: block;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+}
+@media (max-width: 37.5em) { /* ~600px */
+    .fixed-menu {
+        grid-template-rows: repeat(1, 1fr);
+        margin-bottom: 3em;
+        width: 95%;
+    }
+
+    .continuous-column {
+        width: 100%;
+        margin: 0;
+    }
+
+    .text-column {
+        width: 95%;
+        margin: 2em auto;
+        font-size: 1em;
+        min-height: auto;
+        float: none; /* stack vertically */
+        text-align: left;
+    }
+
+    .draggable-img {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%); /* center image */
+        top: 0;
+        margin: 1em 0;
     }
 }
 </style>

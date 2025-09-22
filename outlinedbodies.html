@@ -187,7 +187,7 @@
     }
 
     /* Phones/tablets up to 56.25em (~900px), portrait only */
-    @media (max-width: 56.25em) and (orientation: portrait) {
+   @media (max-width: 56.25em) and (orientation: portrait) {
       .fixed-menu {
         display: grid !important;
         position: relative;
@@ -244,6 +244,42 @@
       }
     }
 
+    @media (max-width: 56.25em), (max-width: 37.5em) {
+      html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        position: static !important;
+        left: 0 !important;
+      }
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .text-column,
+      .continuous-column,
+      .continuous-column-side {
+        position: relative !important;
+        left: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        margin: 0 0 1em 0 !important;
+        font-size: 0.8em !important;
+        float: none !important;
+        box-sizing: border-box;
+        padding: 10% !important;
+        overflow-x: visible;
+      }
+      .continuous-column img,
+      .continuous-column-side img {
+        max-width: 100vw !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        height: auto;
+        display: block;
+      }
+    }
+
     body.popup-active .text-column,
     body.popup-active .fixed-menu {
       display: none !important;
@@ -290,17 +326,17 @@
             <span class="hover-ontouch">from On Touch,</span><br>What I will call, for now, exercises of delineating oneself on a surface, as a form of direct reflection – as a shadow is – that makes possible the seeing of the body as a space occupying form, outside of the unforgiving first person perspective. To see yourself from outside through a delineating of your physical body is never to see yourself from outside, but it certainly gives clues to it.
                 </a>
                 <br><br> </p>
-</div>
-        <div class="continuous-column">
-            <img src="outlinedbodies/ontouch_2025-1.jpg" alt="Outlined 1">
-            <img src="outlinedbodies/ontouch_2025-2.jpg" alt="Outlined 2">
-            <img src="outlinedbodies/ontouch_2025-3.jpg" alt="Outlined 3">
-            <img src="outlinedbodies/ontouch_2025-4.jpg" alt="Outlined 4">
-            <img src="outlinedbodies/ontouch_2025-5.jpg" alt="Outlined 5">
-            <img src="outlinedbodies/ontouch_2025-6.jpg" alt="Outlined 6">
-            <img src="outlinedbodies/ontouch_2025-7.jpg" alt="Outlined 7">
-        </div>
-        <div class="continuous-column-side">
+    </div>
+    <div class="continuous-column">
+        <img src="outlinedbodies/ontouch_2025-1.jpg" alt="Outlined 1">
+        <img src="outlinedbodies/ontouch_2025-2.jpg" alt="Outlined 2">
+        <img src="outlinedbodies/ontouch_2025-3.jpg" alt="Outlined 3">
+        <img src="outlinedbodies/ontouch_2025-4.jpg" alt="Outlined 4">
+        <img src="outlinedbodies/ontouch_2025-5.jpg" alt="Outlined 5">
+        <img src="outlinedbodies/ontouch_2025-6.jpg" alt="Outlined 6">
+        <img src="outlinedbodies/ontouch_2025-7.jpg" alt="Outlined 7">
+    </div>
+    <div class="continuous-column-side">
 <img src="outlinedbodies/outlinedbodies2025-01.png" alt="Outlined 1">
 <img src="outlinedbodies/outlinedbodies2025-02.png" alt="Outlined 2">
 <img src="outlinedbodies/outlinedbodies2025-03.png" alt="Outlined 3">
@@ -316,15 +352,15 @@
 <img src="outlinedbodies/outlinedbodies2025-13.png" alt="Outlined 13">
 <img src="outlinedbodies/outlinedbodies2025-14.png" alt="Outlined 14">
 <img src="outlinedbodies/outlinedbodies2025-15.png" alt="Outlined 15">
-        </div>
-        <div id="enlarged-image-popup">
-        <div class="popup-content">
-            <button class="close-btn" aria-label="Close">close</button>
-            <img src="" alt="Enlarged" id="enlarged-img">
-        </div>
     </div>
-            
-    <script>
+    <div id="enlarged-image-popup">
+    <div class="popup-content">
+        <button class="close-btn" aria-label="Close">close</button>
+        <img src="" alt="Enlarged" id="enlarged-img">
+    </div>
+</div>
+        
+<script>
    // Enable lazy loading for images only on screens 900px and below
     document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth <= 900) {
@@ -538,7 +574,7 @@
                     if (!menu.classList.contains('menu-open')) {
                         e.preventDefault();
                         menu.classList.add('menu-open');
-                    }
+                      }
                     // If already open, allow navigation to href
                 }
             });
