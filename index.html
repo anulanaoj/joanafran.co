@@ -1,443 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Google+Sans+Code:ital,wght@0,787;1,787&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,opsz,wdth,wght@0,18..144,106,300..900;1,18..144,106,300..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wdth,wght,GRAD@0,8..144,103.3,406,-50;1,8..144,103.3,406,-50&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet"></head> <style>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --menu-width: 10em;
+    --menu-font-size: 0.7em;
+    --menu-font-family: "Rubik", sans-serif;
+    --menu-color: #7d8f08;
+    --menu-color-light: #b6b6b6;
+}
 
 html, body {
-            background-color: #ffffff;
-            overflow: hidden;
-            height: 100%;
-        }
-       .menu-item-year {
-            position: absolute;
-            right: 0.4em;
-            bottom: 0.2em;
-            font-size: 1em;
-            color: var(--menu-color-light);
-            pointer-events: none;
-        }
-        .menu-item {
-            position: relative;
-        }
-       :root {
-            --menu-width: 10vw;
-            --menu-height:auto;
-            --menu-font-size: 0.7em;
-            --menu-font-family:"Rubik", sans-serif;
-            --menu-color: #7d8f08;
-            --menu-color-light: #b6b6b6;
-            --menu-color-black: #7e7e7e;
-        }
-        .fixed-menu {
-            position: fixed;
-            top: 2%;
-            left: 1%;
-            width: var(--menu-width);
-            height: var(--menu-height);
-            background: transparent;
-            z-index: 1000;
-            display: grid;
-            grid-template-columns: 15vw;
-            grid-template-rows: repeat(1, 1fr);
-            gap: 0;
-            align-items:flex-start;
-        }
-        .fixed-menu .menu-item {
-            color: var(--menu-color);
-            font-size: var(--menu-font-size);
-            font-family: var(--menu-font-family);
-            font-weight: 400;
-            cursor: pointer;
-            background: transparent;
-            transition: color 0.2s;
-            line-height: 1,5;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            box-sizing: border-box;
-            margin-top: 0em;
-            text-decoration: none; /* remove underline */
-        }
-        
-        .fixed-menu  {
-            color: var(--menu-color-light);
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding-right: 0%;
-            margin-top: 0em;
-        }
-        .menu-item.light {
-            color: var(--menu-color-light);
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding-right: 0%;
-            margin-top: 0em;
-            padding-top: 0;
-            pointer-events: none;
-            font-size: 0.5em;
-        }
-        .fixed-menu .menu-item:focus,
-        .fixed-menu .menu-item[style*="grid-column: 1;"] {
-            color: #322b2b;
-        }
-        .fixed-menu .menu-item:hover:not(.light),
-        .fixed-menu .menu-item:focus:not(.light) {
-            color: #a08409;
-            outline: 1px dotted #aaa;
-        }
-        .continuous-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 20%;
-            padding: 0em;
-            margin-top: 10%;
-            margin-left: 10%;
-            float: left;
-            margin-bottom: 10%;
-        }
-        .continuous-column img {
-            width: 100%;
-            max-width: 100%;
-            margin-bottom: 0em;
-            cursor: pointer;
-        }
-        
-        .text-column {
-            position: relative;
-            float: left;
-            width: 30vw;
-            min-height: 80vh;
-            margin-top: 0vh;
-            margin-left: 20vw;
-            font-family:"Rubik", sans-serif;
-            font-size: 0.7em;
-            color: #3f3f3f;
-            text-align: justify;
-        }
-        .text-column a {
-            margin: 0;
-            padding: 0;
-            line-height: 1.5;
-            color: black;
-            font-family:"Rubik", sans-serif;
-            text-decoration: none;
-        }
-        .text-column#cv-box {
+    background-color: #fff;
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    font-family: var(--menu-font-family);
+}
+
+.menu-item-year {
+    position: absolute;
+    right: 0.4em;
+    bottom: 0.2em;
+    font-size: 1em;
+    color: var(--menu-color-light);
+    pointer-events: none;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.fixed-menu {
+    position: fixed;
+    top: 2%;
+    left: 1%;
+    width: var(--menu-width);
+    background: transparent;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: 15em;
+    grid-template-rows: repeat(1, 1fr);
+    align-items: flex-start;
+    gap: 0;
+    padding-right: 0;
+}
+
+.fixed-menu .menu-item {
+    color: var(--menu-color);
+    font-size: var(--menu-font-size);
+    font-weight: 400;
+    cursor: pointer;
+    background: transparent;
+    transition: color 0.2s;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0;
+    text-decoration: none;
+}
+
+.menu-item.light {
+    color: var(--menu-color-light);
+    pointer-events: none;
+    font-size: 0.5em;
+    padding: 0;
+}
+
+.fixed-menu .menu-item:hover:not(.light),
+.fixed-menu .menu-item:focus:not(.light) {
+    color: #a08409;
+    outline: 1px dotted #aaa;
+}
+
+.continuous-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    padding: 0;
+    margin: 10% 0 10% 10%;
+    float: left;
+}
+
+.continuous-column img {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.text-column {
+    position: relative;
+    float: left;
+    width: 30em;
+    min-height: 80vh;
+    margin-left: 20em;
+    font-size: 0.7em;
+    color: #3f3f3f;
+    text-align: justify;
+}
+
+.text-column a {
+    color: black;
+    text-decoration: none;
+}
+
+#cv-box {
     position: absolute;
     top: 6vh;
-    left: 45vw;
-    width: 30vw;
+    left: 45em;
+    width: 30em;
     min-height: 40vh;
-    background: #ffffff00;
+    background: transparent;
     z-index: 200;
-    padding: 2em 2em 1em 2em;
+    padding: 2em;
     font-size: 0.7em;
     display: none;
-    }
-        .draggable-img {
+}
+
+.draggable-img {
+    position: relative;
+    z-index: 100;
+    cursor: grab;
+    user-select: none;
+    width: 40em;
+    left: -30.5%;
+    top: 27vh;
+    transition: transform 0.1s;
+    max-width: 100vw;
+    height: auto;
+    /* Ensure image doesn't overflow on small screens */
+    box-sizing: border-box;
+    display: block;
+}
+
+/* --- Small screens: portrait & landscape --- */
+@media (max-width: 56em) { /* ~900px */
+    .fixed-menu {
         position: relative;
-        z-index: 100;
-        cursor: grab;
-        user-select: none;
-        width: 40vw;
-        left: -30.5%;
-        top: 27vh;
-        
+        width: 90%;
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        font-size: 1.2em;
+        margin-left: 0;
     }
-    .draggable-img:active {
-        cursor: grabbing;
+
+    .continuous-column {
+        width: 100%;
+        margin: 0;
     }
-        @media (max-width: 900px) {
-            .fixed-menu {
-                display: grid !important;
-                position: relative;
-                width: 90vw;
-                min-width: 0;
-                height: auto;
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 1fr);
-                font-size: 1.2em;
-                margin-left: 0;
-                column-gap: 1%;
-            }
-            .fixed-menu.menu-open {
-                display: grid !important;
-            }
-            .continuous-column {
-                width: 100%;
-                margin-left: 0;
-                margin-top: 0vh;
-            }
-            .text-column {
-                position: relative;
-                width: 70vw;
-                height: auto;
-                min-height: 0vh;
-                margin-top: 10vh;
-                margin-bottom: 5vh;
-                margin-left: 1vw;
-                font-size: 0.8em;
-                z-index: 1000;
-            }
-            .draggable-img {
-                position: relative;
-                z-index: 100;
-                cursor: grab;
-                user-select: none;
-                width: 25vw;
-                left: -50%;
-                top: 40vh;
-            }
-            .draggable-img:active {
-                cursor: grabbing;
-                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-            }
-        }
-        @media (max-width: 600px) {
-            .fixed-menu {
-                display: grid !important;
-                position: relative;
-                width: 90vw;
-                min-width: 0;
-                height: auto;
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(1, 1fr);
-                font-size: 1.2em;
-                margin-left: 0;
-                column-gap: 1%;
-                margin-bottom: 5vh;
-            }
-            .fixed-menu.menu-open {
-                display: grid !important;
-            }
-            .continuous-column {
-                width: 100%;
-                margin-left: 0;
-                margin-top: 0vh;
-            }
-            .text-column {
-                position: relative;
-                width: 70vw;
-                height: auto;
-                min-height: 0vh;
-                margin-top: 0vh;
-                margin-bottom: 5vh;
-                margin-left: 1vw;
-                font-size: 0.8em;
-                z-index: 1000;
-            }
-            .draggable-img {
-                position: relative;
-                z-index: 100;
-                cursor: grab;
-                user-select: none;
-                width: 25vw;
-                left: -50%;
-                top: 40vh;
-            }
-            .draggable-img:active {
-                cursor: grabbing;
-                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-            }
-        }
-    </style>
+
+    .text-column {
+        width: 70%;
+        margin: 5em 1em 2em 1em;
+        font-size: 0.9em;
+        min-height: auto;
+    }
+
+    .draggable-img {
+        width: 90vw;
+        left: 0;
+        top: 2em;
+        margin: 0 auto;
+        max-width: 100vw;
+        height: auto;
+        display: block;
+    }
+}
+
+@media (max-width: 37.5em) { /* ~600px */
+    .fixed-menu {
+        grid-template-rows: repeat(1, 1fr);
+        margin-bottom: 3em;
+    }
+
+    .text-column {
+        width: 90%;
+        margin: 3em 0.5em 2em 0.5em;
+        font-size: 1em;
+    }
+
+    .draggable-img {
+        width: 98vw;
+        left: 0;
+        top: 1em;
+        margin: 0 auto;
+        max-width: 100vw;
+        height: auto;
+        display: block;
+    }
+}
+</style>
 </head>
+
 <body>
-   <nav class="fixed-menu" id="main-menu">
-        <div style="display: flex; align-items: center; grid-row: 1; grid-column: 1;">
-        <a class="menu-item" id="menu-show-btn" href="index.html" style="cursor:pointer; flex: 1 1 auto;">joana franco</a>
-        <button id="menu-retract-btn" aria-label="Retract menu" style="display:none; background:none; border:none; font-size:1.5em; cursor:pointer; margin-left:0.3em; color:var(--menu-color);">
-            &#8592;
-        </button>
+<nav class="fixed-menu" id="main-menu">
+    <div style="display:flex; align-items:center; grid-row:1; grid-column:1;">
+        <a class="menu-item" id="menu-show-btn" href="index.html" style="flex:1 1 auto;">joana franco</a>
+        <button id="menu-retract-btn" aria-label="Retract menu" style="display:none; background:none; border:none; font-size:1.5em; cursor:pointer; margin-left:0.3em; color:var(--menu-color);">&#8592;</button>
     </div>
-        <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="ovulcaodassetecidades.html">o vulcão das sete cidades</a>
-        <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="outlinedbodies.html">outlined bodies</a>
-        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="twooutlinedbodies.html">two outlined bodies</a>
-        <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
-        <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
-        <a class="menu-item" style="grid-row: 7; grid-column: 1;" href="lines.html">with lines on the floor</a>
-        <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="ireflect.html">i reflect</a>
-        <div class="menu-item light" style="grid-row: 9; grid-column: 1;">25</div>
-        <a class="menu-item" style="grid-row: 11; grid-column: 1;" href="idliketotell.html">id like to tell</a>
-        <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="asabody.html">as a body</a>
-        <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="withandinstone.html">with and in stone</a>
-        <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="studionotes.html">studio notes</a>
-        <div class="menu-item light" style="grid-row: 15; grid-column: 1;">24</div>
-        <a class="menu-item" style="grid-row: 16; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
-        <a class="menu-item" style="grid-row: 17; grid-column: 1;" href="untitled.html">untitled</a>
-        <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
-        <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="square_habited.html">square_habited</a>
-        <div class="menu-item light" style="grid-row: 20; grid-column: 1;">23</div>
-        <a class="menu-item" style="grid-row: 21; grid-column: 1;" href="ofinsideof.html">of inside of</a>
-        <a class="menu-item" style="grid-row: 22; grid-column: 1;" href="makingpart21.html">making part</a>
-        <div class="menu-item light" style="grid-row: 23; grid-column: 1;">21</div>
-    </nav>  
-            <div class="text-column">
-                <p> pt-nl, 2001<br>
-                    contact.joanafranco@gmail.com <br>
-                    <a href="#" id="cv-toggle-btn" style="color: grey; text-decoration: underline;">cv</a> <br><br>
-                    i, while counting the i's, am working with perception and consequences thereof. I give to you what I wish to return to myself one day, and think of ways to make clear we are one, through contrasts that lie, saying we are two. <br> where two opposites meet is where I'd like to be. <br><br> currently working with the portuguese words <i>eu dou-te-me</i>, (<i>i give you to me</i>)
-                </p>
-                <p> <a style="color: #973e3e; text-decoration: underline;" href="#">my search for a non-physical medium will be here, soon. </a></p>
-                <p> <a href="ontouch/on_touch.html" style="color: #973e3e; text-decoration: underline;">research On Touch,</a></p>
+    <a class="menu-item" style="grid-row:2; grid-column:1;" href="ovulcaodassetecidades.html">o vulcão das sete cidades</a>
+    <a class="menu-item" style="grid-row:3; grid-column:1;" href="outlinedbodies.html">outlined bodies</a>
+    <a class="menu-item" style="grid-row:4; grid-column:1;" href="twooutlinedbodies.html">two outlined bodies</a>
+    <a class="menu-item" style="grid-row:5; grid-column:1;" href="gothoughmegothroughyou.html">go through me go through you</a>
+    <a class="menu-item" style="grid-row:6; grid-column:1;" href="igivemyselfspace.html">i give myself space</a>
+    <a class="menu-item" style="grid-row:7; grid-column:1;" href="lines.html">with lines on the floor</a>
+    <a class="menu-item" style="grid-row:8; grid-column:1;" href="ireflect.html">i reflect</a>
+    <div class="menu-item light" style="grid-row:9; grid-column:1;">25</div>
+    <a class="menu-item" style="grid-row:11; grid-column:1;" href="idliketotell.html">id like to tell</a>
+    <a class="menu-item" style="grid-row:12; grid-column:1;" href="asabody.html">as a body</a>
+    <a class="menu-item" style="grid-row:13; grid-column:1;" href="withandinstone.html">with and in stone</a>
+    <a class="menu-item" style="grid-row:14; grid-column:1;" href="studionotes.html">studio notes</a>
+    <div class="menu-item light" style="grid-row:15; grid-column:1;">24</div>
+    <a class="menu-item" style="grid-row:16; grid-column:1;" href="assumingmaterialform.html">assuming material form</a>
+    <a class="menu-item" style="grid-row:17; grid-column:1;" href="untitled.html">untitled</a>
+    <a class="menu-item" style="grid-row:18; grid-column:1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
+    <a class="menu-item" style="grid-row:19; grid-column:1;" href="square_habited.html">square_habited</a>
+    <div class="menu-item light" style="grid-row:20; grid-column:1;">23</div>
+    <a class="menu-item" style="grid-row:21; grid-column:1;" href="ofinsideof.html">of inside of</a>
+    <a class="menu-item" style="grid-row:22; grid-column:1;" href="makingpart21.html">making part</a>
+    <div class="menu-item light" style="grid-row:23; grid-column:1;">21</div>
+</nav>
 
-            </div>
-            <img src="luz.jpg" alt="" id="draggable-img" class="draggable-img">
+<div class="text-column">
+    <p>pt-nl, 2001<br>
+    contact.joanafranco@gmail.com<br>
+    <a href="#" id="cv-toggle-btn" style="color: grey; text-decoration: underline;">cv</a><br><br>
+    i, while counting the i's, am working with perception and consequences thereof. I give to you what I wish to return to myself one day, and think of ways to make clear we are one, through contrasts that lie, saying we are two.<br>
+    where two opposites meet is where I'd like to be.<br><br>
+    currently working with the portuguese words <i>eu dou-te-me</i>, (<i>i give you to me</i>)</p>
 
-            
-
-            <div class="text-column" id="cv-box" style="display:none;">
-                <p>education<br><br>
-                        2019-2021. Royal Academy of Art, The Hague<br>
-                        2021-2023. AkiArtez Academy of Art and Design, Enschede<br>
-                        2023-2025. Frank Mohr Institute, Groningen<br><br>
-                        exhibitions<br><br>
-                        <em>individual</em><br>
-                        2021. Of Inside Of, Cultural Institute of Ponta Delgada, Açores<br><br>
-                        <em>collective</em><br>
-                        2025. MAFAD final exhibition, NP3 . Re:Search:Gallery, Groningen <br>
-                        2025. RE:Store #4, NP3 . Re:Search:Gallery, Groningen <br>
-                        2025. RE:Store #3, NP3 . Re:Search:Gallery, Groningen <br>
-                        2025. RE:Store #1, NP3 . Re:Search:Gallery, Groningen <br>
-                        2024. Sometimes It Snows in April, Galerie Pouloeuff, Naarden<br>
-                        2023. Alter House Opening, I’m Studio, Amsterdam<br>
-                        2023. Fresh Cacao, De Cacao Fabriek, Helmond<br>
-                        2023. Bachelor's graduation ('Assuming Material Form'), AKI ArtEZ, Enschede<br>
-                        2023. RMTxAKI, Rijksmuseum Twenthe, Enschede<br>
-                        2021. Wind Polinators, SoZa, The Hague<br>
-                        2020. We Never Say Never, VAGA, Ponta Delgada<br>
-                        <br>       
-                        publications<br>
-                        2025. Metropolis M, Graduation Magazine, Eva Waterbolk - <a href="https://metropolism.com/nl/feature/out-now-metropolis-m-nummer-4-carriere-extra-graduation-magazine-2025/" target="_blank" style="color: grey;">https://metropolism.com/nl/feature/out-now-metropolis-m-nummer-4-carriere-extra-graduation-magazine-2025/</a><br>
-                        2024. Liter 112, Maarten Buser - <a href="https://leesliter.nl/2024/05/08/liter-112/" target="_blank" style="color: grey;">https://leesliter.nl/2024/05/08/liter-112/</a><br>
-                        2024. De Lage Landen, Maarten Buser - <a href="https://www.de-lage-landen.com/article/joana-franco-wil-de-afstand-tussen-de-wereld-en-haar-lichaam-opheffen/" target="_blank" style="color: grey;">https://www.de-lage-landen.com/article/joana-franco-wil-de-afstand-tussen-de-wereld-en-haar-lichaam-opheffen/</a><br><br>                        
-                        awards<br>
-                        2019. (Residency) Young Creators Award 2020, Walk&Talk Azores<br>
-                        2023. Nominated Carat Lucas Gassel-Prijs<br>
-                    </p> 
+    <p><a style="color: #973e3e; text-decoration: underline;" href="#">my search for a non-physical medium will be here, soon.</a></p>
+    <p><a href="ontouch/on_touch.html" style="color: #973e3e; text-decoration: underline;">research On Touch,</a></p>
 </div>
+<div class="continuous-column">
+    <img src="luz.jpg" alt="" id="draggable-img" class="draggable-img">
+</div>
+
+<div class="text-column" id="cv-box">
+    <p>
+        education<br><br>
+        2019-2021. Royal Academy of Art, The Hague<br>
+        2021-2023. AkiArtez Academy of Art and Design, Enschede<br>
+        2023-2025. Frank Mohr Institute, Groningen<br><br>
+        exhibitions<br><br>
+        <em>individual</em><br>
+        2021. Of Inside Of, Cultural Institute of Ponta Delgada, Açores<br><br>
+        <em>collective</em><br>
+        2025. MAFAD final exhibition, NP3 . Re:Search:Gallery, Groningen <br>
+        2025. RE:Store #4, NP3 . Re:Search:Gallery, Groningen <br>
+        2025. RE:Store #3, NP3 . Re:Search:Gallery, Groningen <br>
+        2025. RE:Store #1, NP3 . Re:Search:Gallery, Groningen <br>
+        2024. Sometimes It Snows in April, Galerie Pouloeuff, Naarden<br>
+        2023. Alter House Opening, I’m Studio, Amsterdam<br>
+        2023. Fresh Cacao, De Cacao Fabriek, Helmond<br>
+        2023. Bachelor's graduation ('Assuming Material Form'), AKI ArtEZ, Enschede<br>
+        2023. RMTxAKI, Rijksmuseum Twenthe, Enschede<br>
+        2021. Wind Polinators, SoZa, The Hague<br>
+        2020. We Never Say Never, VAGA, Ponta Delgada<br><br>
+        publications<br>
+        2025. Metropolis M, Graduation Magazine, Eva Waterbolk - <a href="https://metropolism.com/nl/feature/out-now-metropolis-m-nummer-4-carriere-extra-graduation-magazine-2025/" target="_blank" style="color: grey;">link</a><br>
+        2024. Liter 112, Maarten Buser - <a href="https://leesliter.nl/2024/05/08/liter-112/" target="_blank" style="color: grey;">link</a><br>
+        2024. De Lage Landen, Maarten Buser - <a href="https://www.de-lage-landen.com/article/joana-franco-wil-de-afstand-tussen-de-wereld-en-haar-lichaam-opheffen/" target="_blank" style="color: grey;">link</a><br><br>
+        awards<br>
+        2019. (Residency) Young Creators Award 2020, Walk&Talk Azores<br>
+        2023. Nominated Carat Lucas Gassel-Prijs
+    </p>
+</div>
+
 <script>
 // Toggle CV box
-document.addEventListener('DOMContentLoaded', function() {
-    var cvBtn = document.getElementById('cv-toggle-btn');
-    var cvBox = document.getElementById('cv-box');
+document.addEventListener('DOMContentLoaded', () => {
+    const cvBtn = document.getElementById('cv-toggle-btn');
+    const cvBox = document.getElementById('cv-box');
     if (cvBtn && cvBox) {
-        cvBtn.addEventListener('click', function(e) {
+        cvBtn.addEventListener('click', e => {
             e.preventDefault();
-            if (cvBox.style.display === 'none' || cvBox.style.display === '') {
-                cvBox.style.display = 'block';
-            } else {
-                cvBox.style.display = 'none';
-            }
+            cvBox.style.display = cvBox.style.display === 'block' ? 'none' : 'block';
         });
     }
 });
 
-// Make image draggable and zoomable (mouse wheel + pinch)
-document.addEventListener('DOMContentLoaded', function() {
+// Draggable and zoomable image
+document.addEventListener('DOMContentLoaded', () => {
     const img = document.getElementById('draggable-img');
+    if (!img) return;
+
     let isDragging = false, startX = 0, startY = 0, imgX = 0, imgY = 0;
     let zoom = 1, minZoom = 0.5, maxZoom = 4;
-    let lastTouchDist = null, lastTouchMid = null;
+    let lastTouchDist = null;
 
-    if (img) {
-        img.style.position = 'relative';
-        img.style.zIndex = 100;
-        img.style.cursor = 'grab';
-        img.style.transition = 'transform 0.1s';
-
-        function setTransform() {
-            img.style.transform = `translate(${imgX}px, ${imgY}px) scale(${zoom})`;
-        }
-
-        img.addEventListener('mousedown', function(e) {
-            isDragging = true;
-            startX = e.clientX - imgX;
-            startY = e.clientY - imgY;
-            img.style.cursor = 'grabbing';
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', function(e) {
-            if (!isDragging) return;
-            imgX = e.clientX - startX;
-            imgY = e.clientY - startY;
-            setTransform();
-        });
-
-        document.addEventListener('mouseup', function() {
-            if (isDragging) {
-                isDragging = false;
-                img.style.cursor = 'grab';
-            }
-        });
-
-        // Mouse wheel zoom (centered, no jump)
-        img.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            let delta = e.deltaY < 0 ? 0.1 : -0.1;
-            let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom + delta));
-            zoom = newZoom;
-            setTransform();
-        });
-
-        // Double click to reset zoom and position
-        img.addEventListener('dblclick', function(e) {
-            zoom = 1;
-            imgX = 0;
-            imgY = 0;
-            setTransform();
-        });
-
-        // Touch support for drag and pinch zoom (centered, no jump)
-        img.addEventListener('touchstart', function(e) {
-            if (e.touches.length === 2) {
-                lastTouchDist = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
-            } else if (e.touches.length === 1) {
-                isDragging = true;
-                startX = e.touches[0].clientX - imgX;
-                startY = e.touches[0].clientY - imgY;
-                img.style.cursor = 'grabbing';
-            }
-        }, { passive: false });
-
-        img.addEventListener('touchmove', function(e) {
-            if (e.touches.length === 2 && lastTouchDist !== null) {
-                let newDist = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
-                let scaleChange = newDist / lastTouchDist;
-                let newZoom = Math.max(minZoom, Math.min(maxZoom, zoom * scaleChange));
-                zoom = newZoom;
-                setTransform();
-                lastTouchDist = newDist;
-                e.preventDefault();
-            } else if (e.touches.length === 1 && isDragging) {
-                imgX = e.touches[0].clientX - startX;
-                imgY = e.touches[0].clientY - startY;
-                setTransform();
-            }
-        }, { passive: false });
-
-        img.addEventListener('touchend', function(e) {
-            if (e.touches.length < 2) {
-                lastTouchDist = null;
-            }
-            isDragging = false;
-            img.style.cursor = 'grab';
-        });
+    function setTransform() {
+        img.style.transform = `translate(${imgX}px, ${imgY}px) scale(${zoom})`;
     }
+
+    img.addEventListener('mousedown', e => {
+        isDragging = true;
+        startX = e.clientX - imgX;
+        startY = e.clientY - imgY;
+        img.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        imgX = e.clientX - startX;
+        imgY = e.clientY - startY;
+        setTransform();
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        img.style.cursor = 'grab';
+    });
+
+    img.addEventListener('wheel', e => {
+        e.preventDefault();
+        zoom = Math.max(minZoom, Math.min(maxZoom, zoom + (e.deltaY < 0 ? 0.1 : -0.1)));
+        setTransform();
+    });
+
+    img.addEventListener('dblclick', () => {
+        zoom = 1; imgX = 0; imgY = 0; setTransform();
+    });
+
+    img.addEventListener('touchstart', e => {
+        if (e.touches.length === 2) {
+            lastTouchDist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+        } else if (e.touches.length === 1) {
+            isDragging = true;
+            startX = e.touches[0].clientX - imgX;
+            startY = e.touches[0].clientY - imgY;
+            img.style.cursor = 'grabbing';
+        }
+    }, { passive: false });
+
+    img.addEventListener('touchmove', e => {
+        if (e.touches.length === 2 && lastTouchDist) {
+            let newDist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            zoom = Math.max(minZoom, Math.min(maxZoom, zoom * newDist / lastTouchDist));
+            lastTouchDist = newDist;
+            setTransform();
+            e.preventDefault();
+        } else if (e.touches.length === 1 && isDragging) {
+            imgX = e.touches[0].clientX - startX;
+            imgY = e.touches[0].clientY - startY;
+            setTransform();
+        }
+    }, { passive: false });
+
+    img.addEventListener('touchend', e => {
+        if (e.touches.length < 2) lastTouchDist = null;
+        isDragging = false;
+        img.style.cursor = 'grab';
+    });
 });
 </script>
 </body>
