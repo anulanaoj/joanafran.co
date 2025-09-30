@@ -10,7 +10,7 @@
 
 <style>
 :root {
-    --menu-width: 10em;
+    --menu-width: 15em;
     --menu-font-size: 0.7em;
     --menu-font-family: "Rubik", sans-serif;
     --menu-color: #7d8f08;
@@ -35,13 +35,14 @@ html, body {
 
 .menu-item {
     position: relative;
+    width: var(--menu-width);
 }
 
 .fixed-menu {
     position: fixed;
     top: 2%;
     left: 1%;
-    width: var(--menu-width);
+    
     background: transparent;
     z-index: 1000;
     display: grid;
