@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>assuming material form. 2023</title>
+  <title>outlined hands, 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Google+Sans+Code:ital,wght@0,787;1,787&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,opsz,wdth,wght@0,18..144,106,300..900;1,18..144,106,300..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wdth,wght,GRAD@0,8..144,103.3,406,-50;1,8..144,103.3,406,-50&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -99,7 +99,11 @@
       margin: 20vh 0 10% 2%;
       float: left;
     }
-
+    .continuous-column-side img {
+      width: 100%;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
     .continuous-column-side video {
       display: block;
       width: 100%;
@@ -281,7 +285,7 @@
   </style>
 </head>
 <body>
-    <nav class="fixed-menu" id="main-menu">
+<nav class="fixed-menu" id="main-menu">
         <div style="display: flex; align-items: center; grid-row: 1; grid-column: 1;">
         <a class="menu-item" id="menu-show-btn" href="index.html" style="cursor:pointer; flex: 1 1 auto;">joana franco</a>
         <button id="menu-retract-btn" aria-label="Retract menu" style="display:none; background:none; border:none; font-size:1.5em; cursor:pointer; margin-left:0.3em; color:var(--menu-color);">
@@ -310,40 +314,37 @@
         <a class="menu-item" style="grid-row: 22; grid-column: 1;" href="ofinsideof.html">of inside of</a>
         <a class="menu-item" style="grid-row: 23; grid-column: 1;" href="makingpart21.html">making part</a>
         <div class="menu-item light" style="grid-row: 24; grid-column: 1;">21</div>
-    </nav>   
+    </nav> 
     <div class="text-column">
-    <p><i>assuming material form</i><br>
-in AkiArtez <br><br>
-oil transfer and mixed media on rice paper
-</p>
-</div>
-<div class="continuous-column" style="z-index:1; position:relative;">
-<img src="amf/amf.2023-1.jpg" alt="">
-<img src="amf/amf.2023-2.jpg" alt="">
-<img src="amf/amf.2023-3.jpg" alt="">
-<img src="amf/amf.2023-4.jpg" alt="">
-<img src="amf/amf.2023-5.jpg" alt="">
-<img src="amf/amf.2023-6.jpg" alt="">
-<img src="amf/amf.2023-7.jpg" alt="">
-<img src="amf/amf.2023-8.jpg" alt="">
-</div>
-<div id="enlarged-image-popup">
+    <p><i>outlined hands</i> <br><br>
+        <br>297x420mm, sanguine/ charcoal/ ballpoint pen on paper<br><br>
+    </p></div>
+    <div class="continuous-column">
+        <img src="outlinedhands/handoutline (1).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (2).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (3).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (4).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (5).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (6).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (7).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (8).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (9).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (10).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (11).jpg" alt="outlined drawing of a hand">
+        <img src="outlinedhands/handoutline (12).jpg" alt="outlined drawing of a hand">
+        
+    
+        </div>
+    
+    <div id="enlarged-image-popup">
         <div class="popup-content">
             <button class="close-btn" aria-label="Close">close</button>
             <img src="" alt="Enlarged" id="enlarged-img">
         </div>
     </div>
-            
-    <script>
-    // Enable lazy loading for images only on screens 900px and below
-    document.addEventListener('DOMContentLoaded', function() {
-        if (window.innerWidth <= 900) {
-            document.querySelectorAll('.continuous-column img, .continuous-column-side img').forEach(function(img) {
-                img.setAttribute('loading', 'lazy');
-            });
-        }
-    });
 
+
+    <script>
    // Enable lazy loading for images only on screens 900px and below
     document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth <= 900) {
@@ -570,8 +571,7 @@ oil transfer and mixed media on rice paper
                 }
             });
         }
-    }); 
+    });
     </script>
-
-</body>
+    </body>
 </html>
