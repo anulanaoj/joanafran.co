@@ -13,17 +13,33 @@
     --menu-width: 15em;
     --menu-font-size: 0.7em;
     --menu-font-family: "Rubik", sans-serif;
-    --menu-color: #7d8f08;
+    --menu-color: #1c1c1c;
     --menu-color-light: #b6b6b6;
 }
 
 html, body {
-    background-color: #fff;
     height: 100%;
     margin: 0;
     font-family: var(--menu-font-family);
 }
-
+.backgroundimage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 1; /* Fix: use a value between 0 and 1 */
+}
+.backgroundimage img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
 .menu-item-year {
     position: absolute;
     right: 0.4em;
@@ -103,7 +119,7 @@ html, body {
     position: relative;
     float: left;
     width: 30em;
-    min-height: 80vh;
+    min-height: 50vh;
     margin-left: 20em;
     font-size: 0.7em;
     color: #3f3f3f;
@@ -131,21 +147,59 @@ html, body {
     font-size: 0.7em;
     display: none;
 }
+.menu-image-flexgrid {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  height: auto;
+  margin: 0em auto 0 auto;
+  padding: 0;
+  background: none;
+  border: none;
+}
+.menu-image-row {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  height: 20vh;
+  margin: 0;
+  padding-bottom: 5%;
+  background: none;
+  border: none;
+  flex-wrap: wrap;
+}
+.menu-image-row a {
+  flex: 1 1 0;
+  height: 100%;
+  margin: 0;
+  padding: 05%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.menu-image-row img {
+  width: auto;
+  height: 60%;
+  object-fit: cover;
+  display: block;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
 
-.draggable-img {
-    position: relative;
-    z-index: 100;
-    cursor: grab;
-    user-select: none;
-    width: 40em;
-    left: -30.5%;
-    top: 27vh;
-    transition: transform 0.1s;
+/* Responsive for small screens */
+@media (max-width: 600px) {
+  .menu-image-flexgrid {
+    width: 98vw;
     max-width: 100vw;
-    height: auto;
-    /* Ensure image doesn't overflow on small screens */
-    box-sizing: border-box;
-    display: block;
+  }
+  .menu-image-row {
+    min-height: 100px;
+    height: 20vh;
+    max-height: 220px;
+  }
 }
 
 /* --- Small screens: portrait & landscape --- */
@@ -241,19 +295,14 @@ html, body {
         float: none; /* stack vertically */
         text-align: left;
     }
-
-    .draggable-img {
-        width: 90%;
-        left: 50%;
-        transform: translateX(-50%); /* center image */
-        top: 0;
-        margin: 1em 0;
-    }
 }
 </style>
 </head>
 
 <body>
+<div class="backgroundimage">
+    <img src="luz.jpg" alt="background">
+</div>
 <nav class="fixed-menu" id="main-menu">
     <div style="display:flex; align-items:center; grid-row:1; grid-column:1;">
         <a class="menu-item" id="menu-show-btn" href="index.html" style="flex:1 1 auto;">joana franco</a>
@@ -284,7 +333,6 @@ html, body {
         <a class="menu-item" style="grid-row: 23; grid-column: 1;" href="makingpart21.html">making part</a>
         <div class="menu-item light" style="grid-row: 24; grid-column: 1;">21</div>
     </nav> 
-
 <div class="text-column">
     <p>pt-nl, 2001<br>
     contact.joanafranco@gmail.com<br>
@@ -296,9 +344,9 @@ html, body {
     <p><a style="color: #973e3e; text-decoration: underline;" href="#">my search for a non-physical medium will be here, soon.</a></p>
     <p><a href="ontouch/on_touch.html" style="color: #973e3e; text-decoration: underline;">research On Touch,</a></p>
 </div>
-<div class="continuous-column">
-    <img src="luz.jpg" alt="" id="draggable-img" class="draggable-img">
-</div>
+
+<!-- Add grid of images from menu pages -->
+<div class="menu-image-flexgrid" id="menu-image-flexgrid"></div>
 
 <div class="text-column" id="cv-box">
     <p>
@@ -342,88 +390,19 @@ document.addEventListener('DOMContentLoaded', () => {
             cvBox.style.display = cvBox.style.display === 'block' ? 'none' : 'block';
         });
     }
-});
 
-// Draggable and zoomable image
-document.addEventListener('DOMContentLoaded', () => {
-    const img = document.getElementById('draggable-img');
-    if (!img) return;
-
-    let isDragging = false, startX = 0, startY = 0, imgX = 0, imgY = 0;
-    let zoom = 1, minZoom = 0.5, maxZoom = 4;
-    let lastTouchDist = null;
-
-    function setTransform() {
-        img.style.transform = `translate(${imgX}px, ${imgY}px) scale(${zoom})`;
-    }
-
-    img.addEventListener('mousedown', e => {
-        isDragging = true;
-        startX = e.clientX - imgX;
-        startY = e.clientY - imgY;
-        img.style.cursor = 'grabbing';
-        e.preventDefault();
-    });
-
-    document.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        imgX = e.clientX - startX;
-        imgY = e.clientY - startY;
-        setTransform();
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        img.style.cursor = 'grab';
-    });
-
-    img.addEventListener('wheel', e => {
-        e.preventDefault();
-        zoom = Math.max(minZoom, Math.min(maxZoom, zoom + (e.deltaY < 0 ? 0.1 : -0.1)));
-        setTransform();
-    });
-
-    img.addEventListener('dblclick', () => {
-        zoom = 1; imgX = 0; imgY = 0; setTransform();
-    });
-
-    img.addEventListener('touchstart', e => {
-        if (e.touches.length === 2) {
-            lastTouchDist = Math.hypot(
-                e.touches[0].clientX - e.touches[1].clientX,
-                e.touches[0].clientY - e.touches[1].clientY
-            );
-        } else if (e.touches.length === 1) {
-            isDragging = true;
-            startX = e.touches[0].clientX - imgX;
-            startY = e.touches[0].clientY - imgY;
-            img.style.cursor = 'grabbing';
-        }
-    }, { passive: false });
-
-    img.addEventListener('touchmove', e => {
-        if (e.touches.length === 2 && lastTouchDist) {
-            let newDist = Math.hypot(
-                e.touches[0].clientX - e.touches[1].clientX,
-                e.touches[0].clientY - e.touches[1].clientY
-            );
-            zoom = Math.max(minZoom, Math.min(maxZoom, zoom * newDist / lastTouchDist));
-            lastTouchDist = newDist;
-            setTransform();
+    // Archive toggle
+    const archiveBtn = document.getElementById('archive-toggle-btn');
+    const archiveSection = document.getElementById('archive-section');
+    if (archiveBtn && archiveSection) {
+        archiveBtn.addEventListener('click', e => {
             e.preventDefault();
-        } else if (e.touches.length === 1 && isDragging) {
-            imgX = e.touches[0].clientX - startX;
-            imgY = e.touches[0].clientY - startY;
-            setTransform();
-        }
-    }, { passive: false });
-
-    img.addEventListener('touchend', e => {
-        if (e.touches.length < 2) lastTouchDist = null;
-        isDragging = false;
-        img.style.cursor = 'grab';
-    });
+            archiveSection.style.display = archiveSection.style.display === 'block' ? 'none' : 'block';
+        });
+    }
 });
+
+
 </script>
 </body>
 </html>

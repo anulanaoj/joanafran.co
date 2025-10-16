@@ -18,12 +18,28 @@
 }
 
 html, body {
-    background-color: #fff;
     height: 100%;
     margin: 0;
     font-family: var(--menu-font-family);
 }
-
+.backgroundimage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 1; /* Fix: use a value between 0 and 1 */
+}
+.backgroundimage img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
 .menu-item-year {
     position: absolute;
     right: 0.4em;
@@ -279,19 +295,14 @@ html, body {
         float: none; /* stack vertically */
         text-align: left;
     }
-
-    .draggable-img {
-        width: 90%;
-        left: 50%;
-        transform: translateX(-50%); /* center image */
-        top: 0;
-        margin: 1em 0;
-    }
 }
 </style>
 </head>
 
 <body>
+<div class="backgroundimage">
+    <img src="luz.jpg" alt="background">
+</div>
 <nav class="fixed-menu" id="main-menu">
     <div style="display:flex; align-items:center; grid-row:1; grid-column:1;">
         <a class="menu-item" id="menu-show-btn" href="index.html" style="flex:1 1 auto;">joana franco</a>
@@ -322,7 +333,6 @@ html, body {
         <a class="menu-item" style="grid-row: 23; grid-column: 1;" href="makingpart21.html">making part</a>
         <div class="menu-item light" style="grid-row: 24; grid-column: 1;">21</div>
     </nav> 
-
 <div class="text-column">
     <p>pt-nl, 2001<br>
     contact.joanafranco@gmail.com<br>
@@ -392,130 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Draggable and zoomable image
-document.addEventListener('DOMContentLoaded', () => {
-    const img = document.getElementById('draggable-img');
-    if (!img) return;
 
-    let isDragging = false, startX = 0, startY = 0, imgX = 0, imgY = 0;
-    let zoom = 1, minZoom = 0.5, maxZoom = 4;
-    let lastTouchDist = null;
-
-    function setTransform() {
-        img.style.transform = `translate(${imgX}px, ${imgY}px) scale(${zoom})`;
-    }
-
-    img.addEventListener('mousedown', e => {
-        isDragging = true;
-        startX = e.clientX - imgX;
-        startY = e.clientY - imgY;
-        img.style.cursor = 'grabbing';
-        e.preventDefault();
-    });
-
-    document.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        imgX = e.clientX - startX;
-        imgY = e.clientY - startY;
-        setTransform();
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        img.style.cursor = 'grab';
-    });
-
-    img.addEventListener('wheel', e => {
-        e.preventDefault();
-        zoom = Math.max(minZoom, Math.min(maxZoom, zoom + (e.deltaY < 0 ? 0.1 : -0.1)));
-        setTransform();
-    });
-
-    img.addEventListener('dblclick', () => {
-        zoom = 1; imgX = 0; imgY = 0; setTransform();
-    });
-
-    img.addEventListener('touchstart', e => {
-        if (e.touches.length === 2) {
-            lastTouchDist = Math.hypot(
-                e.touches[0].clientX - e.touches[1].clientX,
-                e.touches[0].clientY - e.touches[1].clientY
-            );
-        } else if (e.touches.length === 1) {
-            isDragging = true;
-            startX = e.touches[0].clientX - imgX;
-            startY = e.touches[0].clientY - imgY;
-            img.style.cursor = 'grabbing';
-        }
-    }, { passive: false });
-
-    img.addEventListener('touchmove', e => {
-        if (e.touches.length === 2 && lastTouchDist) {
-            let newDist = Math.hypot(
-                e.touches[0].clientX - e.touches[1].clientX,
-                e.touches[0].clientY - e.touches[1].clientY
-            );
-            zoom = Math.max(minZoom, Math.min(maxZoom, zoom * newDist / lastTouchDist));
-            lastTouchDist = newDist;
-            setTransform();
-            e.preventDefault();
-        } else if (e.touches.length === 1 && isDragging) {
-            imgX = e.touches[0].clientX - startX;
-            imgY = e.touches[0].clientY - startY;
-            setTransform();
-        }
-    }, { passive: false });
-
-    img.addEventListener('touchend', e => {
-        if (e.touches.length < 2) lastTouchDist = null;
-        isDragging = false;
-        img.style.cursor = 'grab';
-    });
-});
-
-const menuPages = [
-  { page: "ovulcaodassetecidades.html", img: "ovulcaodassetecidades/setecidades-01.jpg" },
-  { page: "outlinedhands.html", img: "outlinedhands/handoutline (6).jpg" },
-  { page: "outlinedbodies.html", img: "outlinedbodies/outlinedbodies2025-05.png" },
-  { page: "twooutlinedbodies.html", img: "twooutlinedbodies/untitled.2025-4.jpg" },
-  { page: "gothroughmegothroughyou.html", img: "gtmgty/gothroughmegothroughyou_2025-05.jpg" },
-  { page: "igivemyselfspace.html", img: "interactingwithcotton/i give myself space-5.png" },
-  { page: "lines.html", img: "lines/lines-2.jpg" },
-  { page: "ireflect.html", img: "perceivedoutlinesand/perceived space on sand1-07.jpg" },
-  { page: "idliketotell.html", img: "idliketotell/idliketotell2025-01.png" },
-  { page: "asabody.html", img: "asabody/plussign low quality -25.jpg" },
-  { page: "withandinstone.html", img: "makingpart24/interacting trf-10.jpg" },
-  { page: "studionotes.html", img: "studionotes24/8.png" },
-  { page: "assumingmaterialform.html", img: "amf/amf.2023-6.jpg" },
-  { page: "untitled.html", img: "makingpart23/makingpart.2023-6.jpg" },
-  { page: "visitcardpostcard1.html", img: "vcandpostcard1/3.png" },
-  { page: "square_habited.html", img: "square_habited/6.png" },
-  { page: "ofinsideof.html", img: "ofinsideof/W_T21_JoanaFrancoFinais_MarianaLopes_10.jpg" },
-  { page: "makingpart21.html", img: "makingpart21/makingpart.2023-2.jpg" }
-];
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Dynamically calculate images per row based on row width
-  const grid = document.getElementById('menu-image-flexgrid');
-  if (grid) {
-    grid.innerHTML = "";
-    // Estimate image width (in px) for calculation, fallback to 200px if not available
-    const rowWidth = grid.offsetWidth || 800;
-    const minImgWidth = 100;
-    const imagesPerRow = Math.max(1, Math.floor(rowWidth / minImgWidth));
-    for (let i = 0; i < menuPages.length; i += imagesPerRow) {
-      const row = document.createElement('div');
-      row.className = 'menu-image-row';
-      menuPages.slice(i, i + imagesPerRow).forEach(item => {
-        const a = document.createElement('a');
-        a.href = item.page;
-        a.innerHTML = `<img src="${item.img}" alt="" loading="lazy">`;
-        row.appendChild(a);
-      });
-      grid.appendChild(row);
-    }
-  }
-});
 </script>
 </body>
 </html>
