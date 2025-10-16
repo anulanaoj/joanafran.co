@@ -42,10 +42,11 @@ html, body {
     position: fixed;
     top: 2%;
     left: 1%;
+    
     background: transparent;
     z-index: 1000;
     display: grid;
-    grid-template-columns: 10em;
+    grid-template-columns: 15em;
     grid-template-rows: repeat(1, 1fr);
     align-items: flex-start;
     gap: 0;
@@ -130,6 +131,23 @@ html, body {
     font-size: 0.7em;
     display: none;
 }
+
+.draggable-img {
+    position: relative;
+    z-index: 100;
+    cursor: grab;
+    user-select: none;
+    width: 40em;
+    left: -30.5%;
+    top: 27vh;
+    transition: transform 0.1s;
+    max-width: 100vw;
+    height: auto;
+    /* Ensure image doesn't overflow on small screens */
+    box-sizing: border-box;
+    display: block;
+}
+
 /* --- Small screens: portrait & landscape --- */
 @media (max-width: 56em) { /* ~900px */
     .fixed-menu {
@@ -153,6 +171,17 @@ html, body {
         font-size: 0.9em;
         min-height: auto;
     }
+
+    .draggable-img {
+        width: 90vw;
+        left: 0;
+        top: 2em;
+        margin: 0 auto;
+        max-width: 100vw;
+        height: auto;
+        display: block;
+    }
+
     body {
         overflow-x: hidden; /* Prevent horizontal scroll, allow vertical scroll */
     }
@@ -173,6 +202,17 @@ html, body {
         margin: 3em 0.5em 2em 0.5em;
         font-size: 1em;
     }
+
+    .draggable-img {
+        width: 98vw;
+        left: 0;
+        top: 1em;
+        margin: 0 auto;
+        max-width: 100vw;
+        height: auto;
+        display: block;
+    }
+
     body {
         overflow-x: hidden;
     }
@@ -201,6 +241,14 @@ html, body {
         float: none; /* stack vertically */
         text-align: left;
     }
+
+    .draggable-img {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%); /* center image */
+        top: 0;
+        margin: 1em 0;
+    }
 }
 </style>
 </head>
@@ -220,23 +268,19 @@ html, body {
         <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="lines.html">with lines on the floor</a>
         <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="ireflect.html">i reflect</a>
         <div class="menu-item light" style="grid-row: 10; grid-column: 1;">25</div>
-        <a class="menu-item" id="archive-toggle-btn" style="grid-row: 11; grid-column: 1; cursor:pointer;">archive</a>
-        <div id="archive-section" style="display:none;">
-            <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="idliketotell.html">id like to tell</a>
-            <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="asabody.html">as a body</a>
-            <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="withandinstone.html">with and in stone</a>
-            <a class="menu-item" style="grid-row: 15; grid-column: 1;" href="studionotes.html">studio notes</a>
-            <div class="menu-item light" style="grid-row: 16; grid-column: 1;">24</div>
-            <a class="menu-item" style="grid-row: 17; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
-            <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="untitled.html">untitled</a>
-            <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
-            <a class="menu-item" style="grid-row: 20; grid-column: 1;" href="square_habited.html">square_habited</a>
-            <div class="menu-item light" style="grid-row: 21; grid-column: 1;">23</div>
-            <a class="menu-item" style="grid-row: 22; grid-column: 1;" href="ofinsideof.html">of inside of</a>
-            <a class="menu-item" style="grid-row: 23; grid-column: 1;" href="makingpart21.html">making part</a>
-            <div class="menu-item light" style="grid-row: 24; grid-column: 1;">21</div>
-            <!-- You can add more archive items here if needed -->
-        </div>
+        <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="idliketotell.html">id like to tell</a>
+        <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="asabody.html">as a body</a>
+        <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="withandinstone.html">with and in stone</a>
+        <a class="menu-item" style="grid-row: 15; grid-column: 1;" href="studionotes.html">studio notes</a>
+        <div class="menu-item light" style="grid-row: 16; grid-column: 1;">24</div>
+        <a class="menu-item" style="grid-row: 17; grid-column: 1;" href="assumingmaterialform.html">assuming material form</a>
+        <a class="menu-item" style="grid-row: 18; grid-column: 1;" href="untitled.html">untitled</a>
+        <a class="menu-item" style="grid-row: 19; grid-column: 1;" href="visitcardpostcard1.html">postcard and visit card #1</a>
+        <a class="menu-item" style="grid-row: 20; grid-column: 1;" href="square_habited.html">square_habited</a>
+        <div class="menu-item light" style="grid-row: 21; grid-column: 1;">23</div>
+        <a class="menu-item" style="grid-row: 22; grid-column: 1;" href="ofinsideof.html">of inside of</a>
+        <a class="menu-item" style="grid-row: 23; grid-column: 1;" href="makingpart21.html">making part</a>
+        <div class="menu-item light" style="grid-row: 24; grid-column: 1;">21</div>
     </nav> 
 
 <div class="text-column">
@@ -250,8 +294,13 @@ html, body {
     <p><a style="color: #973e3e; text-decoration: underline;" href="#">my search for a non-physical medium will be here, soon.</a></p>
     <p><a href="ontouch/on_touch.html" style="color: #973e3e; text-decoration: underline;">research On Touch,</a></p>
 </div>
+<div class="continuous-column">
+    <img src="luz.jpg" alt="" id="draggable-img" class="draggable-img">
+</div>
+
 <div class="text-column" id="cv-box">
     <p>
+        education<br><br>
         2019-2021. Royal Academy of Art, The Hague<br>
         2021-2023. AkiArtez Academy of Art and Design, Enschede<br>
         2023-2025. Frank Mohr Institute, Groningen<br><br>
@@ -271,7 +320,7 @@ html, body {
         2021. Wind Polinators, SoZa, The Hague<br>
         2020. We Never Say Never, VAGA, Ponta Delgada<br><br>
         publications<br>
-        2025. Metropolis M, Eva Waterbolk - <a href="https://metropolism.com/nl/feature/out-now-metropolis-m-nummer-4-carriere-extra-graduation-magazine-2025/" target="_blank" style="color: grey;">link</a><br>
+        2025. Metropolis M, Graduation Magazine, Eva Waterbolk - <a href="https://metropolism.com/nl/feature/out-now-metropolis-m-nummer-4-carriere-extra-graduation-magazine-2025/" target="_blank" style="color: grey;">link</a><br>
         2024. Liter 112, Maarten Buser - <a href="https://leesliter.nl/2024/05/08/liter-112/" target="_blank" style="color: grey;">link</a><br>
         2024. De Lage Landen, Maarten Buser - <a href="https://www.de-lage-landen.com/article/joana-franco-wil-de-afstand-tussen-de-wereld-en-haar-lichaam-opheffen/" target="_blank" style="color: grey;">link</a><br><br>
         awards<br>
@@ -279,7 +328,9 @@ html, body {
         2023. Nominated Carat Lucas Gassel-Prijs
     </p>
 </div>
+
 <script>
+// Toggle CV box
 document.addEventListener('DOMContentLoaded', () => {
     const cvBtn = document.getElementById('cv-toggle-btn');
     const cvBox = document.getElementById('cv-box');
@@ -290,18 +341,87 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Draggable and zoomable image
 document.addEventListener('DOMContentLoaded', () => {
-    const archiveBtn = document.getElementById('archive-toggle-btn');
-    const archiveSection = document.getElementById('archive-section');
-    if (archiveBtn && archiveSection) {
-        archiveBtn.addEventListener('click', e => {
-            e.preventDefault();
-            archiveSection.style.display = archiveSection.style.display === 'block' ? 'none' : 'block';
-        });
+    const img = document.getElementById('draggable-img');
+    if (!img) return;
+
+    let isDragging = false, startX = 0, startY = 0, imgX = 0, imgY = 0;
+    let zoom = 1, minZoom = 0.5, maxZoom = 4;
+    let lastTouchDist = null;
+
+    function setTransform() {
+        img.style.transform = `translate(${imgX}px, ${imgY}px) scale(${zoom})`;
     }
+
+    img.addEventListener('mousedown', e => {
+        isDragging = true;
+        startX = e.clientX - imgX;
+        startY = e.clientY - imgY;
+        img.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        imgX = e.clientX - startX;
+        imgY = e.clientY - startY;
+        setTransform();
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        img.style.cursor = 'grab';
+    });
+
+    img.addEventListener('wheel', e => {
+        e.preventDefault();
+        zoom = Math.max(minZoom, Math.min(maxZoom, zoom + (e.deltaY < 0 ? 0.1 : -0.1)));
+        setTransform();
+    });
+
+    img.addEventListener('dblclick', () => {
+        zoom = 1; imgX = 0; imgY = 0; setTransform();
+    });
+
+    img.addEventListener('touchstart', e => {
+        if (e.touches.length === 2) {
+            lastTouchDist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+        } else if (e.touches.length === 1) {
+            isDragging = true;
+            startX = e.touches[0].clientX - imgX;
+            startY = e.touches[0].clientY - imgY;
+            img.style.cursor = 'grabbing';
+        }
+    }, { passive: false });
+
+    img.addEventListener('touchmove', e => {
+        if (e.touches.length === 2 && lastTouchDist) {
+            let newDist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            zoom = Math.max(minZoom, Math.min(maxZoom, zoom * newDist / lastTouchDist));
+            lastTouchDist = newDist;
+            setTransform();
+            e.preventDefault();
+        } else if (e.touches.length === 1 && isDragging) {
+            imgX = e.touches[0].clientX - startX;
+            imgY = e.touches[0].clientY - startY;
+            setTransform();
+        }
+    }, { passive: false });
+
+    img.addEventListener('touchend', e => {
+        if (e.touches.length < 2) lastTouchDist = null;
+        isDragging = false;
+        img.style.cursor = 'grab';
+    });
 });
 </script>
-</body>
-</html>
 </body>
 </html>

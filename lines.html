@@ -13,6 +13,19 @@
       background-color: #fff;
     }
 
+    .hover-ontouch {
+      transition: color 0.2s, background 0.2s;
+      color: #6e331e;
+      background: none;
+      font-weight: normal;
+      display: none;
+    }
+    .hover-link:hover .hover-ontouch {
+      color: #a21c1c;
+      background: #f9f6f5;
+      display: inline;
+    }
+
     :root {
       --menu-width: 10vw;
       --menu-font-size: 0.7em;
@@ -301,14 +314,16 @@
         </button>
     </div>
         <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="ovulcaodassetecidades.html">o vulcão das sete cidades</a>
-        <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="outlinedhands.html"> outlined hands</a>
-        <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="outlinedbodies.html">outlined bodies</a>
-        <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="twooutlinedbodies.html">two outlined bodies</a>
-        <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
-        <a class="menu-item" style="grid-row: 7; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
-        <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="lines.html">with lines on the floor</a>
-        <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="ireflect.html">i reflect</a>
-        <div class="menu-item light" style="grid-row: 10; grid-column: 1;">25</div>
+    <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="outlinedhands.html"> outlined hands</a>
+    <a class="menu-item" style="grid-row: 4; grid-column: 1;" href="outlinedbodies.html">outlined bodies</a>
+    <a class="menu-item" style="grid-row: 5; grid-column: 1;" href="twooutlinedbodies.html">two outlined bodies</a>
+    <a class="menu-item" style="grid-row: 6; grid-column: 1;" href="gothoughmegothroughyou.html">go through me go through you</a>
+    <a class="menu-item" style="grid-row: 7; grid-column: 1;" href="igivemyselfspace.html">i give myself space</a>
+    <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="lines.html">with lines on the floor</a>
+    <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="ireflect.html">i reflect</a>
+    <div class="menu-item light" style="grid-row: 10; grid-column: 1;">25</div>
+    <a class="menu-item" id="archive-toggle-btn" style="grid-row: 11; grid-column: 1; cursor:pointer; color: #ae5714;">archive</a>
+    <div id="archive-section" style="display:none;">
         <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="idliketotell.html">id like to tell</a>
         <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="asabody.html">as a body</a>
         <a class="menu-item" style="grid-row: 14; grid-column: 1;" href="withandinstone.html">with and in stone</a>
@@ -350,6 +365,26 @@
         </div>
 
     <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const cvBtn = document.getElementById('cv-toggle-btn');
+    const cvBox = document.getElementById('cv-box');
+    if (cvBtn && cvBox) {
+        cvBtn.addEventListener('click', e => {
+            e.preventDefault();
+            cvBox.style.display = cvBox.style.display === 'block' ? 'none' : 'block';
+        });
+    }
+
+    // Archive toggle
+    const archiveBtn = document.getElementById('archive-toggle-btn');
+    const archiveSection = document.getElementById('archive-section');
+    if (archiveBtn && archiveSection) {
+        archiveBtn.addEventListener('click', e => {
+            e.preventDefault();
+            archiveSection.style.display = archiveSection.style.display === 'block' ? 'none' : 'block';
+        });
+    }
+});
     document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth <= 900) {
             document.querySelectorAll('.continuous-column img, .continuous-column-side img').forEach(function(img) {
