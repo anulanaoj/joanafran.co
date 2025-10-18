@@ -473,47 +473,6 @@
             archiveSection.style.display = archiveSection.style.display === 'block' ? 'none' : 'block';
         });
     }
-
-    const menuPages = [
-      { page: "ovulcaodassetecidades.html", img: "ovulcaodassetecidades/setecidades-01.jpg" },
-      { page: "outlinedhands.html", img: "outlinedhands/handoutline (6).jpg" },
-      { page: "outlinedbodies.html", img: "outlinedbodies/outlinedbodies2025-05.png" },
-      { page: "twooutlinedbodies.html", img: "twooutlinedbodies/untitled.2025-4.jpg" },
-      { page: "gothroughmegothroughyou.html", img: "gtmgty/gothroughmegothroughyou_2025-05.jpg" },
-      { page: "igivemyselfspace.html", img: "interactingwithcotton/i give myself space-5.png" },
-      { page: "lines.html", img: "lines/lines-2.jpg" },
-      { page: "ireflect.html", img: "perceivedoutlinesand/perceived space on sand1-07.jpg" },
-      { page: "idliketotell.html", img: "idliketotell/idliketotell2025-01.png" },
-      { page: "asabody.html", img: "asabody/plussign low quality -25.jpg" },
-      { page: "withandinstone.html", img: "makingpart24/interacting trf-10.jpg" },
-      { page: "studionotes.html", img: "studionotes24/8.png" },
-      { page: "assumingmaterialform.html", img: "amf/amf.2023-6.jpg" },
-      { page: "untitled.html", img: "makingpart23/makingpart.2023-6.jpg" },
-      { page: "visitcardpostcard1.html", img: "vcandpostcard1/3.png" },
-      { page: "square_habited.html", img: "square_habited/6.png" },
-      { page: "ofinsideof.html", img: "ofinsideof/W_T21_JoanaFrancoFinais_MarianaLopes_10.jpg" },
-      { page: "makingpart21.html", img: "makingpart21/makingpart.2023-2.jpg" }
-    ];
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Render images in rows, each row 30% height, 60% width, images keep aspect ratio
-      const grid = document.getElementById('menu-image-flexgrid');
-      if (grid) {
-        grid.innerHTML = "";
-        const imagesPerRow = 5;
-        for (let i = 0; i < menuPages.length; i += imagesPerRow) {
-          const row = document.createElement('div');
-          row.className = 'menu-image-row';
-          menuPages.slice(i, i + imagesPerRow).forEach(item => {
-            const a = document.createElement('a');
-            a.href = item.page;
-            a.innerHTML = `<img src="${item.img}" alt="" loading="lazy">`;
-            row.appendChild(a);
-          });
-          grid.appendChild(row);
-        }
-      }
-    });
   </script>
 </body>
 </html>
