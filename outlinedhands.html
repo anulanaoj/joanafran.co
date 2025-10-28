@@ -30,7 +30,7 @@
       --menu-width: 10vw;
       --menu-font-size: 0.7em;
       --menu-font-family: "Rubik", sans-serif;
-      --menu-color: #8f3434;
+      --menu-color: #282828;
     }
 
     .menu-item {
@@ -197,66 +197,24 @@
       font-family: "Rubik", sans-serif;
       text-decoration: none;
     }
+    
+    #menu-show-btn {
+      cursor: pointer;
+      flex: 1 1 auto;
+    }
+
+    #menu-retract-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 0.3em;
+      color: var(--menu-color);
+    }
 
     /* Phones/tablets up to 56.25em (~900px), portrait only */
     @media (max-width: 56.25em) and (orientation: portrait) {
-      .fixed-menu {
-        display: grid !important;
-        position: relative;
-        width: 90vw;
-        grid-template-columns: 1fr;
-        font-size: 1.2em;
-        margin-left: 0;
-      }
-
-      .fixed-menu.menu-open {
-        display: grid !important;
-      }
-
-      .fixed-menu:not(.menu-open) .menu-item:not(#menu-show-btn) {
-        display: none !important;
-      }
-
-      .fixed-menu:not(.menu-open) .menu-item#menu-show-btn {
-        display: flex !important;
-        cursor: pointer;
-      }
-
-      #menu-retract-btn {
-        display: inline-block !important;
-      }
-
-      .fixed-menu:not(.menu-open) #menu-retract-btn {
-        display: none !important;
-      }
-    }
-
-    /* Phones up to 37.5em (~600px), landscape */
-    @media (max-width: 37.5em) and (orientation: landscape) {
-      .fixed-menu {
-        display: grid !important;
-        position: relative;
-        width: 90vw;
-        grid-template-columns: 1fr;
-        font-size: 1em;
-        margin-left: 0;
-      }
-
-      .continuous-column {
-        width: 100%;
-        margin: 0;
-      }
-
-      .text-column {
-        position: relative;
-        width: 70vw;
-        margin: 0 0 5vh 10vw;
-        font-size: 0.8em;
-        z-index: 1000;
-      }
-    }
-
-    @media (max-width: 56.25em), (max-width: 37.5em) {
       html, body {
         overflow-x: hidden !important;
         width: 100% !important;
@@ -267,6 +225,14 @@
       body {
         margin: 0 !important;
         padding: 0 !important;
+      }
+      .fixed-menu {
+        display: grid !important;
+        position: relative;
+        width: 90vw;
+        grid-template-columns: 1fr;
+        font-size: 1.2em;
+        margin-left: 0;
       }
       .text-column,
       .continuous-column,
@@ -290,20 +256,117 @@
         height: auto;
         display: block;
       }
+      .fixed-menu.menu-open {
+        display: grid !important;
+      }
+
+      .fixed-menu:not(.menu-open) .menu-item:not(#menu-show-btn) {
+        display: none !important;
+      }
+
+      .fixed-menu:not(.menu-open) .menu-item#menu-show-btn {
+        display: flex !important;
+        cursor: pointer;
+      }
+
+      #menu-retract-btn {
+        display: inline-block !important;
+      }
+
+      .fixed-menu:not(.menu-open) #menu-retract-btn {
+        display: none !important;
+      }
+      
+    #menu-show-btn {
+      cursor: pointer;
+      flex: 1 1 auto;
+    }
+
+    #menu-retract-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 0.3em;
+      color: var(--menu-color);
+    }
+    }
+
+    /* Phones up to 37.5em (~600px), landscape */
+    @media (max-width: 37.5em) and (orientation: landscape) {
+      html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        position: static !important;
+        left: 0 !important;
+      }
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .fixed-menu {
+        display: grid !important;
+        position: relative;
+        width: 90vw;
+        grid-template-columns: 1fr;
+        font-size: 1em;
+        margin-left: 0;
+      }
+      .text-column,
+      .continuous-column,
+      .continuous-column-side {
+        position: relative !important;
+        left: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        margin: 0 0 1em 0 !important;
+        font-size: 0.8em !important;
+        float: none !important;
+        box-sizing: border-box;
+        padding: 10% !important;
+        overflow-x: visible;
+      }
+      .continuous-column img,
+      .continuous-column-side img {
+        max-width: 100vw !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        height: auto;
+        display: block;
+      }
+      
+      #menu-retract-btn {
+        display: none !important;
+      }
     }
     body.popup-active .text-column,
     body.popup-active .fixed-menu {
       display: none !important;
     }
+
+    #menu-show-btn {
+      cursor: pointer;
+      flex: 1 1 auto;
+    }
+
+    #menu-retract-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 0.3em;
+      color: var(--menu-color);
+    }
   </style>
 </head>
 <body>
 <nav class="fixed-menu" id="main-menu">
-        <div style="display: flex; align-items: center; grid-row: 1; grid-column: 1;">
-        <a class="menu-item" id="menu-show-btn" href="index.html" style="cursor:pointer; flex: 1 1 auto;">joana franco</a>
-        <button id="menu-retract-btn" aria-label="Retract menu" style="display:none; background:none; border:none; font-size:1.5em; cursor:pointer; margin-left:0.3em; color:var(--menu-color);">
-            &#8592;
-        </button>
+    <div style="display: flex; align-items: center; grid-row: 1; grid-column: 1;">
+        <a class="menu-item" id="menu-show-btn" href="index.html">joana franco</a>
+        <button id="menu-retract-btn" aria-label="Retract menu">&#9675;</button>
     </div>
         <a class="menu-item" style="grid-row: 2; grid-column: 1;" href="ovulcaodassetecidades.html">o vulcão das sete cidades</a>
     <a class="menu-item" style="grid-row: 3; grid-column: 1;" href="outlinedhands.html"> outlined hands</a>
@@ -314,7 +377,7 @@
     <a class="menu-item" style="grid-row: 8; grid-column: 1;" href="lines.html">with lines on the floor</a>
     <a class="menu-item" style="grid-row: 9; grid-column: 1;" href="ireflect.html">i reflect</a>
     <div class="menu-item light" style="grid-row: 10; grid-column: 1;">25</div>
-    <a class="menu-item" id="archive-toggle-btn" style="grid-row: 11; grid-column: 1; cursor:pointer; color: #ae5714;">archive</a>
+    <a class="menu-item" id="archive-toggle-btn" style="grid-row: 11; grid-column: 1; cursor:pointer;">archive</a>
     <div id="archive-section" style="display:none;">
         <a class="menu-item" style="grid-row: 12; grid-column: 1;" href="idliketotell.html">id like to tell</a>
         <a class="menu-item" style="grid-row: 13; grid-column: 1;" href="asabody.html">as a body</a>
@@ -603,7 +666,7 @@
                     if (!menu.classList.contains('menu-open')) {
                         e.preventDefault();
                         menu.classList.add('menu-open');
-                    }
+                      }
                     // If already open, allow navigation to href
                 }
             });

@@ -119,11 +119,13 @@
     }
     .continuous-column-side video {
       display: block;
-      width: 100%;
-      margin: 10vh auto 0;
+      width: 31%;
+      margin: 0vh auto 0;
       cursor: pointer;
       pointer-events: auto;
       z-index: 1;
+      position: fixed;
+      top: 30vh;
     }
 
     #enlarged-image-popup {
@@ -340,63 +342,64 @@
         
 <div class="continuous-column">
     <img src="interactingwithcotton/i give myself space-1.png" alt="">
-    <img src="interactingwithcotton/i give myself space-2.png" alt="">
     <img src="interactingwithcotton/i give myself space-3.png" alt="">
-    <img src="interactingwithcotton/i give myself space-4.png" alt="">
-    <img src="interactingwithcotton/i give myself space-5.png" alt="">
-    <img src="interactingwithcotton/i give myself space-6.png" alt="">
-    <img src="interactingwithcotton/i give myself space-7.png" alt="">
-</div>
-<div class="continuous-column-side">
-    <video src="interactingwithcotton/7.mp4" controls></video>
-    <img src="interactingwithcotton/iwc-1.png" alt="">
-    <img src="interactingwithcotton/iwc-2.png" alt="">
-    <img src="interactingwithcotton/iwc-3.png" alt="">
-    <img src="interactingwithcotton/iwc-4.png" alt="">
-    <img src="interactingwithcotton/iwc-5.png" alt="">
-    <img src="interactingwithcotton/iwc-6.png" alt="">
-    <img src="interactingwithcotton/iwc-8.png" alt="">
+    ///<br><br>
+<img src="interactingwithcotton/iwc-8.png" alt="">
     <img src="interactingwithcotton/iwc-9.png" alt="">
-    <img src="interactingwithcotton/iwc-10.png" alt="">
-    <img src="interactingwithcotton/iwc-11.png" alt="">
-    <img src="interactingwithcotton/iwc-12.png" alt="">
-    <img src="interactingwithcotton/iwc-13.png" alt="">
     <img src="interactingwithcotton/iwc-14.png" alt="">
-    <img src="interactingwithcotton/iwc-15.png" alt="">
-    <img src="interactingwithcotton/iwc-16.png" alt="">
     <img src="interactingwithcotton/iwc-17.png" alt="">
-</div>
-        
-</div>
-        <div id="enlarged-image-popup">
-        <div class="popup-content">
-            <button class="close-btn" aria-label="Close">close</button>
-            <img src="" alt="Enlarged" id="enlarged-img">
-        </div>
-    </div>
-            
-        </div>
+  </div>
+<div class="continuous-column-side">
+                <video src="interactingwithcotton/7.mp4" controls autoplay muted playsinline preload="auto"></video>
 
-    <script>
+</div>
+
+</div>
+         <div id="enlarged-image-popup">
+         <div class="popup-content">
+             <button class="close-btn" aria-label="Close">close</button>
+             <img src="" alt="Enlarged" id="enlarged-img">
+         </div>
+     </div>
+             
+         </div>
+ 
+     <script>
       document.addEventListener('DOMContentLoaded', () => {
-    const cvBtn = document.getElementById('cv-toggle-btn');
-    const cvBox = document.getElementById('cv-box');
-    if (cvBtn && cvBox) {
-        cvBtn.addEventListener('click', e => {
-            e.preventDefault();
-            cvBox.style.display = cvBox.style.display === 'block' ? 'none' : 'block';
-        });
-    }
-
-    // Archive toggle
-    const archiveBtn = document.getElementById('archive-toggle-btn');
-    const archiveSection = document.getElementById('archive-section');
-    if (archiveBtn && archiveSection) {
-        archiveBtn.addEventListener('click', e => {
-            e.preventDefault();
-            archiveSection.style.display = archiveSection.style.display === 'block' ? 'none' : 'block';
-        });
-    }
+     const cvBtn = document.getElementById('cv-toggle-btn');
+     const cvBox = document.getElementById('cv-box');
+     if (cvBtn && cvBox) {
+         cvBtn.addEventListener('click', e => {
+             e.preventDefault();
+             cvBox.style.display = cvBox.style.display === 'block' ? 'none' : 'block';
+         });
+     }
+ 
+     // Archive toggle
+     const archiveBtn = document.getElementById('archive-toggle-btn');
+     const archiveSection = document.getElementById('archive-section');
+     if (archiveBtn && archiveSection) {
+         archiveBtn.addEventListener('click', e => {
+             e.preventDefault();
+             archiveSection.style.display = archiveSection.style.display === 'block' ? 'none' : 'block';
+         });
+     }
+ });
+ // Ensure autoplay starts in browsers that may require a play() call (fallback)
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        const vid = document.querySelector('.continuous-column-side video');
+        if (vid) {
+            // Attempt to play; if blocked, mute and try again
+            const playPromise = vid.play();
+            if (playPromise && typeof playPromise.then === 'function') {
+                playPromise.catch(() => {
+                    vid.muted = true;
+                    vid.play().catch(()=>{ /* ignore */ });
+                });
+            }
+        }
+    } catch (e) { /* ignore */ }
 });
    // Enable lazy loading for images only on screens 900px and below
     document.addEventListener('DOMContentLoaded', function() {

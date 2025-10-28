@@ -9,13 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --menu-width: 15em;
-    --menu-font-size: 0.7em;
-    --menu-font-family: "Rubik", sans-serif;
-    --menu-color: #1c1c1c;
-    --menu-color-light: #b6b6b6;
-}
+
 
 html, body {
     height: 100%;
@@ -39,6 +33,13 @@ html, body {
     height: 100vh;
     object-fit: cover;
     display: block;
+}
+:root {
+    --menu-width: 15em;
+    --menu-font-size: 0.7em;
+    --menu-font-family: "Rubik", sans-serif;
+    --menu-color: #1c1c1c;
+    --menu-color-light: #b6b6b6;
 }
 .menu-item-year {
     position: absolute;
@@ -124,6 +125,8 @@ html, body {
     font-size: 0.7em;
     color: #3f3f3f;
     text-align: justify;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .text-column a {
@@ -144,47 +147,6 @@ html, body {
     background: #ffffff00;
     z-index: 2000;
     font-size: 0.9em;
-}
-.menu-image-flexgrid {
-  display: flex;
-  flex-direction: column;
-  width: 70vw;
-  height: auto;
-  margin: 0em auto 0 auto;
-  padding: 0;
-  background: none;
-  border: none;
-}
-.menu-image-row {
-  display: flex;
-  flex-direction: row;
-  width: 50vw;
-  height: 20vh;
-  margin: 0;
-  padding-bottom: 5%;
-  background: none;
-  border: none;
-  flex-wrap: wrap;
-}
-.menu-image-row a {
-  flex: 1 1 0;
-  height: 100%;
-  margin: 0;
-  padding: 05%;
-  background: none;
-  border: none;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-}
-.menu-image-row img {
-  width: auto;
-  height: 60%;
-  object-fit: cover;
-  display: block;
-  background: none;
-  border: none;
-  box-shadow: none;
 }
 #cv-toggle-btn {
   cursor: pointer;
@@ -239,13 +201,15 @@ html, body {
     }
 
     .text-column {
-        width: 95%;
-        margin: 2em auto;
-        font-size: 1.4em; /* Increased font size */
+        width: 100%;
+        margin: 0em auto;
+        font-size: 1.5em; /* Increased font size */
         min-height: auto;
         float: none; /* stack vertically */
         text-align: left;
         color: #ffffff;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
     .text-column a {
         display: inline;
@@ -277,15 +241,17 @@ html, body {
     }
 
     .text-column {
-        width: 95%;
-        margin: 2em auto;
-        font-size: 1.4em; /* Increased font size */
+        width: 80%;
+        margin: 0.4em;
         min-height: auto;
         float: none; /* stack vertically */
         text-align: left;
         color: #efefef;
         -webkit-text-stroke: 0.1px #757575;
-        
+    }
+    .text-column p {
+        line-height: 1.4em;
+        font-size: 1em;
     }
     .text-column a {
         display: inline;
