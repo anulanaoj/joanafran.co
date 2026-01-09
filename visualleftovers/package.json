@@ -1,0 +1,21 @@
+{
+  "name": "squareimagearchive",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "generate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anulanaoj/squareimagearchive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "exifr": "^7.1.3",
+    "sharp": "^0.34.5"
+  }
+}

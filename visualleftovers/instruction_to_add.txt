@@ -1,0 +1,2 @@
+when adding new images, open terminal and run:
+node generate.js
