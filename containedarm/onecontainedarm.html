@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>one contained arm</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Create main container
+    const maincontainer = document.createElement('div');
+    maincontainer.className = 'maincontainer';
+    maincontainer.style.maxWidth = '100vw';
+    maincontainer.style.maxHeight = '100vh';
+    maincontainer.style.display = 'flex';
+    maincontainer.style.flexDirection = 'column';
+    maincontainer.style.alignItems = 'center';
+    maincontainer.style.justifyContent = 'center';
+    maincontainer.style.position = 'relative';
+    maincontainer.style.background = '#ffffff00';
+    maincontainer.style.overflow = 'hidden';
+    maincontainer.style.fontFamily = 'sans-serif';
+    maincontainer.style.fontWeight = '100';
+    maincontainer.style.fontSize = '0.7em';
+
+    // Create zoom container
+    const container = document.createElement('div');
+    container.id = 'container';
+    container.style.width = '60%';
+    container.style.height = '100%';
+    container.style.position = 'relative';
+    container.style.overflow = 'hidden';
+    container.style.display = 'flex';
+    container.style.alignItems = 'center';
+    container.style.justifyContent = 'center';
+    container.style.background = 'none';
+    container.style.border = 'none';
+    container.style.touchAction = 'none';
+
+    // Create image
+    const img = document.createElement('img');
+    img.id = 'zoom-img';
+    img.src = 'arm1_4.jpg';
+    img.draggable = false;
+    img.style.maxWidth = 'none';
+    img.style.maxHeight = 'none';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.display = 'block';
+    img.style.pointerEvents = 'none';
+    img.style.userSelect = 'none';
+    img.style.objectFit = 'contain';
+
+    container.appendChild(img);
+    maincontainer.appendChild(container);
+    document.body.appendChild(maincontainer);
+
+    // --- Touch support for drag and pinch (mobile/tablet) ---
+    function isSmallScreen() {
+      return window.innerWidth <= 900;
+    }
+
+    let lastTouch = null;
+    let pinchStartDist = null;
+    let pinchStartScale = null;
+    let pinchStartOffset = null;
+    let pinchCenter = null;
+
+    function getTouchDist(t1, t2) {
+      const dx = t2.clientX - t1.clientX;
+      const dy = t2.clientY - t1.clientY;
+      return Math.sqrt(dx*dx + dy*dy);
+    }
+
+    function getTouchCenter(t1, t2) {
+      return {
+        x: (t1.clientX + t2.clientX) / 2,
+        y: (t1.clientY + t2.clientY) / 2
+      };
+    }
+
+    container.addEventListener('touchstart', function(e) {
+      if (!isSmallScreen()) return;
+      if (e.touches.length === 1) {
+        isDragging = true;
+        dragStart.x = e.touches[0].clientX;
+        dragStart.y = e.touches[0].clientY;
+        lastOffset.x = offsetX;
+        lastOffset.y = offsetY;
+      } else if (e.touches.length === 2) {
+        isDragging = false;
+        pinchStartDist = getTouchDist(e.touches[0], e.touches[1]);
+        pinchStartScale = scale;
+        pinchStartOffset = {x: offsetX, y: offsetY};
+        pinchCenter = getTouchCenter(e.touches[0], e.touches[1]);
+      }
+    }, { passive: false });
+
+    container.addEventListener('touchmove', function(e) {
+      if (!isSmallScreen()) return;
+      if (e.touches.length === 1 && isDragging) {
+        const dx = e.touches[0].clientX - dragStart.x;
+        const dy = e.touches[0].clientY - dragStart.y;
+        offsetX = lastOffset.x + dx;
+        offsetY = lastOffset.y + dy;
+        updateTransform();
+      } else if (e.touches.length === 2 && pinchStartDist !== null) {
+        const newDist = getTouchDist(e.touches[0], e.touches[1]);
+        let newScale = pinchStartScale * (newDist / pinchStartDist);
+        newScale = Math.max(minScale, Math.min(maxScale, newScale));
+        // Pinch zoom around the center
+        const newCenter = getTouchCenter(e.touches[0], e.touches[1]);
+        const gx = (pinchCenter.x - pinchStartOffset.x) / pinchStartScale;
+        const gy = (pinchCenter.y - pinchStartOffset.y) / pinchStartScale;
+        scale = newScale;
+        offsetX = pinchCenter.x - gx * scale;
+        offsetY = pinchCenter.y - gy * scale;
+        updateTransform();
+      }
+      e.preventDefault();
+    }, { passive: false });
+
+    container.addEventListener('touchend', function(e) {
+      if (!isSmallScreen()) return;
+      if (e.touches.length === 0) {
+        isDragging = false;
+        pinchStartDist = null;
+        pinchStartScale = null;
+        pinchStartOffset = null;
+        pinchCenter = null;
+      }
+    });
+
+    // --- Prevent zooming the general page (Ctrl/Cmd + wheel and pinch) ---
+    window.addEventListener('wheel', function(e) {
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    window.addEventListener('gesturestart', function(e) {
+      e.preventDefault();
+    });
+    window.addEventListener('gesturechange', function(e) {
+      e.preventDefault();
+    });
+    window.addEventListener('gestureend', function(e) {
+      e.preventDefault();
+    });
+
+    // --- Zoom & Pan Script for single image ---
+    let scale = 0.8; // initial zoom
+    const minScale = 0.1, maxScale = 2.5;
+    let offsetX = 0, offsetY = 0;
+    let isDragging = false, dragStart = {x: 0, y: 0}, lastOffset = {x: offsetX, y: offsetY};
+
+    function updateTransform() {
+      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    }
+    updateTransform();
+
+    // Mouse wheel for zoom
+    container.addEventListener('wheel', (e) => {
+      if (e.ctrlKey || e.metaKey) return; // Ignore browser zoom
+      e.preventDefault();
+      const rect = container.getBoundingClientRect();
+      // Calculate diagonal anchor: interpolate y from 0 (top) to height (bottom) as x goes from 0 to width
+      let t = (e.clientX - rect.left) / rect.width;
+      t = Math.max(0, Math.min(1, t));
+      const anchorX = 0; // always left edge
+      const anchorY = t * rect.height; // from top to bottom as mouse moves right
+      const zoomIntensity = 0.08;
+      let oldScale = scale;
+      let newScale = scale;
+      if (e.deltaY < 0) newScale = Math.min(maxScale, scale + zoomIntensity);
+      else newScale = Math.max(minScale, scale - zoomIntensity);
+      if (newScale !== oldScale) {
+        // Calculate the position in the image before scaling
+        const gx = (anchorX - offsetX) / oldScale;
+        const gy = (anchorY - offsetY) / oldScale;
+        scale = newScale;
+        // Adjust offset so the point under the anchor stays under the anchor
+        offsetX = anchorX - gx * scale;
+        offsetY = anchorY - gy * scale;
+        updateTransform();
+      }
+    }, { passive: false });
+
+    // Drag to pan
+    container.addEventListener('mousedown', e => {
+      isDragging = true;
+      container.style.cursor = 'grabbing';
+      dragStart.x = e.clientX;
+      dragStart.y = e.clientY;
+      lastOffset.x = offsetX;
+      lastOffset.y = offsetY;
+      e.preventDefault(); // Prevent default behavior
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const dx = e.clientX - dragStart.x;
+      const dy = e.clientY - dragStart.y;
+      offsetX = lastOffset.x + dx;
+      offsetY = lastOffset.y + dy;
+      updateTransform();
+      e.preventDefault(); // Prevent default behavior
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      container.style.cursor = 'grab';
+    });
+
+    window.addEventListener('resize', () => {
+      updateTransform();
+    });
+  </script>
+</body>
+</html>
