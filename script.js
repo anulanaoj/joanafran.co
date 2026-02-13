@@ -131,4 +131,20 @@ document.addEventListener('DOMContentLoaded', function() {
       popupBox.classList.toggle('hidden');
     });
   }
+
+  const nameTrigger = document.getElementById('name-hover-trigger');
+  const hoverImage = document.getElementById('hover-image');
+
+  if (nameTrigger && hoverImage) {
+    nameTrigger.addEventListener('mouseenter', () => {
+      const rect = nameTrigger.getBoundingClientRect();
+      hoverImage.style.left = `${rect.left}px`;
+      hoverImage.style.top = `${rect.bottom + window.scrollY}px`;
+      hoverImage.style.display = 'block';
+    });
+
+    nameTrigger.addEventListener('mouseleave', () => {
+      hoverImage.style.display = 'none';
+    });
+  }
 });

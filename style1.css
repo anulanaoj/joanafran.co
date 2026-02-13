@@ -98,6 +98,14 @@ body {
 .dropdown-content .italic { font-style: italic; }
 .dropdown-content.show { display: block; position: absolute; }
 
+#hover-image {
+  width: 30vw;
+  height: auto;
+  margin-left: 40vw;
+  margin-top: -40vh;
+  z-index: 100;
+}
+
 #popup-box {
     position: absolute;
     bottom: 150%; /* Position it right above the footer */
