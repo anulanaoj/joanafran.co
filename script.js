@@ -122,4 +122,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  const visitorsNoteLink = document.getElementById('visitors-note');
+  const popupBox = document.getElementById('popup-box');
+
+  if (visitorsNoteLink && popupBox) {
+    visitorsNoteLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      popupBox.classList.toggle('hidden');
+    });
+  }
 });
