@@ -136,9 +136,8 @@ body {
 .intro-text { margin-bottom: 0px; max-width: 100%; font-size: 1.5em; }
 .body-of-work { grid-template-columns: repeat(1, 1fr); width: 90vw; margin-left: auto; margin-right: auto; }
 .body-of-work img, .body-of-work video { width: 100%; height: auto; margin: 0 auto 0em; display: block; }
-
-.nav { position: absolute; top: 40em; right: 10vw; font-size: 0.8em; line-height: 1.5; text-align: right; color: #202020; z-index: 100; }
-
+.intro-text img { width: 100%; height: auto; margin-top: 5em; }
+.nav { position: absolute; top: 50em; right: 10vw; font-size: 0.8em; line-height: 1.5; text-align: right; color: #202020; z-index: 100; }
 .nav a { color: #202020; text-decoration: none; border-bottom: 1px solid transparent; }
 .nav a:hover { cursor: pointer; }
 .dropbtn { background-color: #ffffff00; color: #202020; right: 0em; font-size: 2em; border: none; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; }

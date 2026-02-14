@@ -269,7 +269,14 @@ body {
   object-fit: contain;
   background: transparent;
 }
-
+#video {
+  width: 80%;
+  height: auto;
+  max-height: auto;
+  display: block;
+  object-fit: contain;
+  background: transparent;
+}
 .carousel-controls-video {
   position: absolute;
   top: 50%;
