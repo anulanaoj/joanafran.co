@@ -99,7 +99,7 @@ body {
 .btn { background-color: #ffffff00; color: #202020; right: 5em; font-size: 1em; border: none; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; }
 .btn:hover, .btn:focus { background-color: #d71811; color: #ffffff; }
 
-.nav { position: fixed; top: 5.5em; right: 10vw; font-size: 1.5em; line-height: 1.5; text-align: right; color: #202020; z-index: 100; }
+.nav { position: fixed; top: 5.5em; right: 10vw; font-size: 1.3em; line-height: 1.5; text-align: right; color: #202020; z-index: 100; }
 .nav a { color: #202020; text-decoration: none; border-bottom: 1px solid transparent; }
 .nav a:hover { cursor: pointer; }
 .dropbtn { background-color: #ffffff00; color: #202020; right: 5em; font-size: 1em; border: none; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; }
@@ -145,19 +145,19 @@ body {
 .intro-text { margin-bottom: 0px; max-width: 100%; font-size: 1.5em; }
 .body-of-work { grid-template-columns: repeat(1, 1fr); width: 90vw; margin-left: auto; margin-right: auto; }
 .body-of-work img, .body-of-work video { width: 100%; height: auto; margin: 0 auto 0em; display: block; }
-.intro-text img { width: 100%; height: auto; margin-top: 5em; }
+.intro-text img { width: 100%; height: auto; margin-top: 7em; }
 
 .btn { background-color: #ffffff00; color: #202020; right: 0em; font-size: 2em; border: none; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; }
 .btn:hover, .btn:focus { background-color: #d71811; color: #ffffff; }
 
-.nav { position: absolute; top: 50em; right: 10vw; font-size: 0.8em; line-height: 1.5; text-align: right; color: #202020; z-index: 100; }
+.nav { position: absolute; top: 50em; right: 10vw; font-size: 0.8em; line-height: 1.5; text-align: right; color: #202020; z-index: 100;  }
 .nav a { color: #202020; text-decoration: none; border-bottom: 1px solid transparent; }
 .nav a:hover { cursor: pointer; }
 .dropbtn { background-color: #ffffff00; color: #202020; right: 0em; font-size: 2em; border: none; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; }
 .dropbtn:hover, .dropbtn:focus { background-color: #d71811; color: #ffffff; }
 .dropdown { position: relative; display: inline-block; }
-.dropdown-content { display: none; position: static; left: 0; min-width: auto; z-index: 5; border-top: none; margin-top: 0px; padding: 0; transition: position 0.2s, margin-bottom 0s;text-decoration: none; }
-.dropdown-content a { color: #202020; text-decoration: none !important; display: block; font-size: 2em; font-family: inherit; transition: background 0.2s, color 0.2s; pointer-events: auto; }
+.dropdown-content { background-color: #ffffff; display: none; position: static; left: 0; min-width: auto; z-index: 5; border-top: none; margin-top: 0px; padding: 0; transition: position 0.2s, margin-bottom 0s;text-decoration: none; }
+.dropdown-content a {background-color: #ffffff; color: #202020; text-decoration: none !important; display: block; font-size: 2em; font-family: inherit; transition: background 0.2s, color 0.2s; pointer-events: auto; }
 .dropdown-content a:last-child { border-bottom: none; }
 .dropdown-content a:hover { color: #d71811; text-decoration: none !important; }
 .dropdown-content .italic { font-style: italic; }
