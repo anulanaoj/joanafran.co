@@ -16,7 +16,7 @@ jobs:
           node-version: 18
 
       - run: npm install || true
-      - run: node generate.js
+      - run: node visualleftovers/generate.js
 
       - run: |
           git config user.name github-actions
