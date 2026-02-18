@@ -1,0 +1,43 @@
+name: Generate Image Thumbnails
+
+on:
+  push:
+    paths:
+      - 'visualleftovers/images/full/**'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          cd visualleftovers
+          npm install
+      
+      - name: Run generate.js
+        run: |
+          cd visualleftovers
+          node generate.js
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add visualleftovers/images/thumbs/
+          git add visualleftovers/images.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Auto-generate thumbnails and update images.json"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
