@@ -42,7 +42,7 @@ body {
 }
 
 .grid-item {
-    border: 1px solid #ffffff00;
+    border: 1px solid #63262600;
     padding: 15px;
     overflow: auto;
 }
@@ -132,6 +132,7 @@ a:visited {
     }
     .grid-right {
         order: -1;
+        left: 0%;
     }
     .grid-item {
         width: 100%;
