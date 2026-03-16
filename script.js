@@ -29,6 +29,74 @@
 		});
 	}
 
+	// --- Zoom overlay ---
+	const zoomOverlay = document.createElement("div");
+	zoomOverlay.className = "zoom-overlay";
+
+	const prevBtn = document.createElement("button");
+	prevBtn.className = "zoom-arrow zoom-arrow--prev";
+	prevBtn.textContent = "previous";
+	prevBtn.setAttribute("aria-label", "Previous image");
+
+	const nextBtn = document.createElement("button");
+	nextBtn.className = "zoom-arrow zoom-arrow--next";
+	nextBtn.textContent = "next";
+	nextBtn.setAttribute("aria-label", "Next image");
+
+	const zoomImg = document.createElement("img");
+	zoomImg.alt = "zoomed image";
+
+	zoomOverlay.appendChild(prevBtn);
+	zoomOverlay.appendChild(zoomImg);
+	zoomOverlay.appendChild(nextBtn);
+	document.body.appendChild(zoomOverlay);
+
+	let zoomIndex = 0;
+
+	function getGalleryImages() {
+		return Array.from(document.querySelectorAll(".project-image")).filter(el => el.tagName === "IMG");
+	}
+
+	function showZoomIndex(index) {
+		const imgs = getGalleryImages();
+		if (!imgs.length) return;
+		zoomIndex = ((index % imgs.length) + imgs.length) % imgs.length;
+		zoomImg.src = imgs[zoomIndex].src;
+	}
+
+	prevBtn.addEventListener("click", (e) => {
+		e.stopPropagation();
+		showZoomIndex(zoomIndex - 1);
+	});
+
+	nextBtn.addEventListener("click", (e) => {
+		e.stopPropagation();
+		showZoomIndex(zoomIndex + 1);
+	});
+
+	zoomOverlay.addEventListener("click", (e) => {
+		if (e.target === zoomOverlay) {
+			zoomOverlay.classList.remove("active");
+		}
+	});
+
+	document.addEventListener("keydown", (e) => {
+		if (!zoomOverlay.classList.contains("active")) return;
+		if (e.key === "Escape") zoomOverlay.classList.remove("active");
+		if (e.key === "ArrowLeft") showZoomIndex(zoomIndex - 1);
+		if (e.key === "ArrowRight") showZoomIndex(zoomIndex + 1);
+	});
+
+	document.addEventListener("click", (e) => {
+		if (e.target.classList.contains("project-image") && e.target.tagName === "IMG") {
+			e.preventDefault();
+			const imgs = getGalleryImages();
+			zoomIndex = imgs.indexOf(e.target);
+			zoomImg.src = e.target.src;
+			zoomOverlay.classList.add("active");
+		}
+	});
+
 	// --- Project gallery ---
 	if (typeof projectData !== "undefined") {
 		const buttons = document.querySelectorAll(".menu-button");

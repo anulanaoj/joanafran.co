@@ -103,6 +103,66 @@ body {
     object-fit: contain;
 }
 
+/* Zoom overlay */
+.zoom-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    cursor: zoom-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.zoom-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.zoom-overlay img {
+    max-width: 80vw;
+    max-height: 90vh;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+.zoom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 20px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    user-select: none;
+    z-index: 10001;
+}
+
+.zoom-arrow:hover {
+    opacity: 1;
+}
+
+.zoom-arrow--prev {
+    left: 10px;
+}
+
+.zoom-arrow--next {
+    right: 10px;
+}
+
+.project-image {
+    cursor: zoom-in;
+}
+
 /* Minimal scrollbar */
 ::-webkit-scrollbar {
     display: none;
