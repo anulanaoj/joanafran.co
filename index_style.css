@@ -10,7 +10,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #f3f3f3;
+    background-color: #fefefe;
 }
 
 :root {
@@ -54,7 +54,7 @@ body {
 
 .grid-right {
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 3fr 1fr;
+    grid-template-rows: 1fr 5fr 1fr;
 }
 
 .menu-one {
@@ -76,6 +76,12 @@ body {
 }
 .text {
     color: rgb(66, 66, 66);
+}
+.hover-text {
+    display: none;
+}
+.text:hover .hover-text {
+    display: inline;
 }
 .text-image {
     height: 100%;
