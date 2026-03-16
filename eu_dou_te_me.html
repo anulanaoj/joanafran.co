@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>eu dou-te-me</title>
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <main class="page-layout">
+                <section class="grid-container grid-left">
+                        <div class="grid-item">
+                                <nav class="project-menu" aria-label="Projects">
+                                        <button class="menu-button" data-project="igtyygtm">i give to you you give to me</button>
+                                </nav>
+                        </div>
+                        <div class="grid-item">
+                                <div id="project-info" class="project-info"></div>
+                        </div>
+                        <div class="grid-item">
+                                <div id="project-info-images" class="project-info-images"></div>
+                        </div>
+                </section>
+
+                <section class="grid-container grid-right">
+                        <div class="grid-item image-frame"><div id="project-gallery" class="project-gallery"></div></div>
+                </section>
+        </main>
+        <a href="index.html" class="back-button"><img src="back.icon.png" alt="Back"></a>
+
+        <script>
+                const projectData = {
+                       igtyygtm: {
+                                info: "",
+                        images: [
+                                "igtyygtm/igtyygtm-1.jpg",
+                                "igtyygtm/igtyygtm-2.jpg",
+                                "igtyygtm/igtyygtm-3.jpg"
+                        ]
+                }
+                
+                };
+        </script>
+        <script src="script.js"></script>
+</body>
+</html>

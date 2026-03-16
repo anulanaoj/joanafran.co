@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>on the internet</title>
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <main class="page-layout">
+                <section class="grid-container grid-left">
+                        <div class="grid-item">
+                                <nav class="project-menu" aria-label="Projects">
+                                        <button class="menu-button" data-project="oti">on the internet</button>
+                                
+                                </nav>
+                        </div>
+                        <div class="grid-item">
+                                <div id="project-info" class="project-info"></div>
+                        </div>
+                        <div class="grid-item">
+                                <div id="project-info-images" class="project-info-images"></div>
+                        </div>
+                </section>
+
+                <section class="grid-container grid-right">
+                        <div class="grid-item image-frame"><div id="project-gallery" class="project-gallery"></div></div>
+                </section>
+        </main>
+        <a href="index.html" class="back-button"><img src="back.icon.png" alt="Back"></a>
+
+        <script>
+                const projectData = {
+                        oti: { 
+                                info: "internet fun",
+                                previews: [
+                                        { image: "containedarm/arm1_4.jpg", url: "containedarm/onecontainedarm.html" },
+                                        { image: "id_like_to_tell_paper/2024onpaper-01.png", url: "id_like_to_tell_paper/id_like_to_tell_paper.html" },
+                                        { image: "shouffleme/armcomposition 1 (1).png", url: "shouffleme/shouffleme.html" }
+                                ]
+                        }
+                };
+                const autoRenderProject = "oti";
+        </script>
+        <script src="script.js"></script>
+</body>
+</html>

@@ -1,150 +1,112 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const video = document.querySelector('.video-fullwidth');
-  const firstPage = document.querySelector('.page');
-  if (video && firstPage) {
-    function updateVideoSticky() {
-      const rect = firstPage.getBoundingClientRect();
-      // Only show video if the first page is still visible in the viewport
-      if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        video.classList.add('sticky');
-      } else {
-        video.classList.remove('sticky');
-      }
-    }
-    updateVideoSticky();
-    window.addEventListener('scroll', updateVideoSticky);
-    window.addEventListener('resize', updateVideoSticky);
-  }
+// Shared site script
+// Initializes automatically based on which elements exist on the page.
 
-  // Helper function for initializing a carousel
-  function initCarousel(carouselSelector, trackSelector, slideSelector, prevBtnSelector, nextBtnSelector) {
-    document.querySelectorAll(carouselSelector).forEach(function(carousel) {
-      const track = carousel.querySelector(trackSelector);
-      const slides = Array.from(carousel.querySelectorAll(slideSelector));
-      const prevNumButton = carousel.querySelector(prevBtnSelector);
-      const nextNumButton = carousel.querySelector(nextBtnSelector);
-      let currentIndex = 0;
+(function () {
+	// --- Index hover preview ---
+	const previewImage = document.getElementById("preview-image");
+	const menuLinks = document.querySelectorAll(
+		".menu-one a[data-hover-image], .menu-two a[data-hover-image], .menu-three a[data-hover-image], .hover-trigger[data-hover-image]"
+	);
 
-      function updateSlide(position) {
-        if (carousel.classList.contains('vertical')) {
-          track.style.transform = `translateY(-${position * 100}%)`;
-        } else {
-          track.style.transform = `translateX(-${position * 100}%)`;
-        }
-        if (prevNumButton && nextNumButton) {
-          const leftIndex = (currentIndex - 1 + slides.length) % slides.length;
-          const rightIndex = (currentIndex + 1) % slides.length;
-          prevNumButton.textContent = (leftIndex + 1).toString();
-          nextNumButton.textContent = (rightIndex + 1).toString();
-        }
-      }
+	if (previewImage && menuLinks.length > 0) {
+		const defaultSrc = previewImage.getAttribute("src") || "";
 
-      if (nextNumButton) {
-        nextNumButton.addEventListener('click', () => {
-          currentIndex = (currentIndex + 1) % slides.length;
-          updateSlide(currentIndex);
-        });
-      }
+		menuLinks.forEach((link) => {
+			const hoverSrc = link.getAttribute("data-hover-image");
 
-      if (prevNumButton) {
-        prevNumButton.addEventListener('click', () => {
-          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-          updateSlide(currentIndex);
-        });
-      }
+			link.addEventListener("mouseenter", () => {
+				if (hoverSrc) previewImage.src = hoverSrc;
+			});
+			link.addEventListener("mouseleave", () => {
+				previewImage.src = defaultSrc;
+			});
+			link.addEventListener("focus", () => {
+				if (hoverSrc) previewImage.src = hoverSrc;
+			});
+			link.addEventListener("blur", () => {
+				previewImage.src = defaultSrc;
+			});
+		});
+	}
 
-      updateSlide(currentIndex);
-    });
-  }
-  
-  // Initialize all carousels (except video)
-  initCarousel('.carousel:not(.carousel-video)', '.carousel-track', '.carousel-slide', '.carousel-controls .prev-num', '.carousel-controls .next-num');
-  
-  // Initialize video carousel
-  initCarousel('.carousel-video', '.carousel-track-video', '.carousel-slide-video', '.carousel-controls-video .prev-num', '.carousel-controls-video .next-num');
+	// --- Project gallery ---
+	if (typeof projectData !== "undefined") {
+		const buttons = document.querySelectorAll(".menu-button");
+		const infoBox = document.getElementById("project-info");
+		const infoImagesBox = document.getElementById("project-info-images");
+		const gallery = document.getElementById("project-gallery");
 
-  // --- Move this code out of a nested DOMContentLoaded ---
-  // Add video controls to all .tile-video containers, below the video
-  document.querySelectorAll('.tile-video').forEach(container => {
-    const video = container.querySelector('video');
-    if (!video) return;
-    // Prevent duplicate controls
-    if (container.querySelector('.custom-video-controls')) return;
-    
-    // Remove old controls attribute
-    video.removeAttribute('controls');
-    
-    // Create custom controls
-    const controls = document.createElement('div');
-    controls.className = 'custom-video-controls';
-    controls.innerHTML = `
-      <button class="play-pause-btn">▶</button>
-      <div class="video-timeline">
-        <div class="video-progress"></div>
-      </div>
-    `;
-    
-    // Insert controls after the video element
-    video.insertAdjacentElement('afterend', controls);
-    
-    const playBtn = controls.querySelector('.play-pause-btn');
-    const timeline = controls.querySelector('.video-timeline');
-    const progress = controls.querySelector('.video-progress');
-    
-    // Play/Pause toggle
-    playBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (video.paused) {
-        video.play();
-        playBtn.textContent = '❚❚';
-      } else {
-        video.pause();
-        playBtn.textContent = '▶';
-      }
-    });
-    
-    // Update progress bar
-    video.addEventListener('timeupdate', () => {
-      const percent = (video.currentTime / video.duration) * 100;
-      progress.style.width = percent + '%';
-    });
-    
-    // Click timeline to seek
-    timeline.addEventListener('click', (e) => {
-      const rect = timeline.getBoundingClientRect();
-      const pos = (e.clientX - rect.left) / rect.width;
-      video.currentTime = pos * video.duration;
-    });
-    
-    // Reset play button when video ends
-    video.addEventListener('ended', () => {
-      playBtn.textContent = '▶';
-    });
-  });
+		function renderProject(projectKey) {
+			const project = projectData[projectKey];
+			if (!project) return;
 
-  const visitorsNoteLink = document.getElementById('visitors-note');
-  const popupBox = document.getElementById('popup-box');
+			infoBox.innerHTML = "";
+			if (project.info) {
+				project.info.split("\n\n").forEach((paragraph) => {
+					const text = document.createElement("p");
+					text.textContent = paragraph;
+					infoBox.appendChild(text);
+				});
+			}
 
-  if (visitorsNoteLink && popupBox) {
-    visitorsNoteLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      popupBox.classList.toggle('hidden');
-    });
-  }
+			infoImagesBox.innerHTML = "";
+			if (project.infoImages) {
+				project.infoImages.forEach((src, i) => {
+					const img = document.createElement("img");
+					img.className = "info-image";
+					img.src = src;
+					img.alt = `info image ${i + 1}`;
+					infoImagesBox.appendChild(img);
+				});
+			}
 
-  const nameTrigger = document.getElementById('name-hover-trigger');
-  const hoverImage = document.getElementById('hover-image');
+			buttons.forEach((button) => {
+				button.classList.toggle("active", button.dataset.project === projectKey);
+			});
 
-  if (nameTrigger && hoverImage) {
-    nameTrigger.addEventListener('mouseenter', () => {
-      const rect = nameTrigger.getBoundingClientRect();
-      hoverImage.style.left = `${rect.left}px`;
-      hoverImage.style.top = `${rect.bottom + window.scrollY}px`;
-      hoverImage.style.display = 'block';
-    });
+			gallery.innerHTML = "";
+			if (project.previews) {
+				project.previews.forEach((preview, index) => {
+					const link = document.createElement("a");
+					link.href = preview.url;
+					link.target = "_blank";
+					const image = document.createElement("img");
+					image.className = "project-image";
+					image.src = preview.image;
+					image.alt = `preview ${index + 1}`;
+					link.appendChild(image);
+					gallery.appendChild(link);
+				});
+			} else if (project.images) {
+				project.images.forEach((source, index) => {
+					if (source.endsWith(".mp4")) {
+						const video = document.createElement("video");
+						video.className = "project-image";
+						video.src = source;
+						video.autoplay = true;
+						video.loop = true;
+						video.muted = true;
+						video.playsInline = true;
+						gallery.appendChild(video);
+					} else {
+						const image = document.createElement("img");
+						image.className = "project-image";
+						image.src = source;
+						image.alt = `${projectKey} image ${index + 1}`;
+						gallery.appendChild(image);
+					}
+				});
+			}
+		}
 
-    nameTrigger.addEventListener('mouseleave', () => {
-      hoverImage.style.display = 'none';
-    });
-  }
-});
+		buttons.forEach((button) => {
+			button.addEventListener("click", () => {
+				renderProject(button.dataset.project);
+			});
+		});
+
+		if (typeof autoRenderProject !== "undefined") {
+			renderProject(autoRenderProject);
+		}
+	}
+})();

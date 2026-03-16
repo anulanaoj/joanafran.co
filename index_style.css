@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f3f3f3;
+}
+
+:root {
+    --left-col-1: 5vw;
+    --left-col-2: 16vw;
+    --left-col-3: 10vw;
+    --left-col-4: 15vw;
+    --left-col-5: 10vw;
+
+    --left-row-1: 11vh;
+    --left-row-2: 20vh;
+    --left-row-3: 20vh;
+    --left-row-4: 8vh;
+    --left-row-5: 1fr;
+}
+
+.page-layout {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 50vw 50vw;
+}
+
+.grid-container {
+    display: grid;
+    width: 50vw;
+    height: 100vh;
+    line-height: 1.5em;
+}
+
+.grid-item {
+    border: 1px solid #ffffff00;
+    padding: 15px;
+    overflow: auto;
+}
+
+.grid-left {
+    grid-template-columns: var(--left-col-1) var(--left-col-2) var(--left-col-3) var(--left-col-4) var(--left-col-5);
+    grid-template-rows: var(--left-row-1) var(--left-row-2) var(--left-row-3) var(--left-row-4) var(--left-row-5);
+}
+
+.grid-right {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 3fr 1fr;
+}
+
+.menu-one {
+    cursor: pointer;
+
+    color: rgb(66, 66, 66);
+}
+.menu-two {
+    cursor: pointer;
+    color: rgb(66, 66, 66);
+}
+.menu-three {
+    cursor: pointer;
+    color: rgb(66, 66, 66);
+}
+.menu-four {
+    cursor: pointer;
+    color: rgb(66, 66, 66);
+}
+.text {
+    color: rgb(66, 66, 66);
+}
+.text-image {
+    height: 100%;
+}
+.text-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: #d53c00;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #000000;
+}
+@media screen and (max-width: 1000px) {
+    body {
+        overflow: auto;
+        height: auto;
+    }
+    .page-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+    .grid-container {
+        width: 100%;
+        height: auto;
+    }
+    .grid-left, .grid-right {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .grid-left {
+        display: flex;
+        flex-direction: column;
+    }
+    .grid-left .grid-item {
+        padding: 5px 15px;
+    }
+    .grid-left .grid-item:first-child {
+        order: 1;
+    }
+    .grid-right {
+        order: -1;
+    }
+    .grid-item {
+        width: 100%;
+    }
+    .info-image {
+        max-width: 100%;
+    }
+}
