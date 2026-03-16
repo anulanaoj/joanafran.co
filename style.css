@@ -131,6 +131,18 @@ body {
     user-select: none;
 }
 
+.zoom-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zoom-media video {
+    max-width: 80vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
 .zoom-arrow {
     position: absolute;
     top: 50%;

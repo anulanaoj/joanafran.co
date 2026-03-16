@@ -29,7 +29,8 @@
 		});
 	}
 
-	// --- Zoom overlay ---
+	// --- Zoom overlay (only on pages with gallery images) ---
+	if (typeof projectData !== "undefined") {
 	const zoomOverlay = document.createElement("div");
 	zoomOverlay.className = "zoom-overlay";
 
@@ -43,25 +44,40 @@
 	nextBtn.textContent = "next";
 	nextBtn.setAttribute("aria-label", "Next image");
 
-	const zoomImg = document.createElement("img");
-	zoomImg.alt = "zoomed image";
+	const zoomMedia = document.createElement("div");
+	zoomMedia.className = "zoom-media";
 
 	zoomOverlay.appendChild(prevBtn);
-	zoomOverlay.appendChild(zoomImg);
+	zoomOverlay.appendChild(zoomMedia);
 	zoomOverlay.appendChild(nextBtn);
 	document.body.appendChild(zoomOverlay);
 
 	let zoomIndex = 0;
 
-	function getGalleryImages() {
-		return Array.from(document.querySelectorAll(".project-image")).filter(el => el.tagName === "IMG");
+	function getGalleryMedia() {
+		return Array.from(document.querySelectorAll(".project-image")).filter(el => el.tagName === "IMG" || el.tagName === "VIDEO");
 	}
 
 	function showZoomIndex(index) {
-		const imgs = getGalleryImages();
-		if (!imgs.length) return;
-		zoomIndex = ((index % imgs.length) + imgs.length) % imgs.length;
-		zoomImg.src = imgs[zoomIndex].src;
+		const items = getGalleryMedia();
+		if (!items.length) return;
+		zoomIndex = ((index % items.length) + items.length) % items.length;
+		const source = items[zoomIndex];
+		zoomMedia.innerHTML = "";
+		if (source.tagName === "VIDEO") {
+			const video = document.createElement("video");
+			video.src = source.src;
+			video.controls = true;
+			video.autoplay = true;
+			video.loop = true;
+			video.playsInline = true;
+			zoomMedia.appendChild(video);
+		} else {
+			const img = document.createElement("img");
+			img.src = source.src;
+			img.alt = "zoomed image";
+			zoomMedia.appendChild(img);
+		}
 	}
 
 	prevBtn.addEventListener("click", (e) => {
@@ -88,14 +104,15 @@
 	});
 
 	document.addEventListener("click", (e) => {
-		if (e.target.classList.contains("project-image") && e.target.tagName === "IMG") {
+		if (e.target.classList.contains("project-image") && (e.target.tagName === "IMG" || e.target.tagName === "VIDEO")) {
 			e.preventDefault();
-			const imgs = getGalleryImages();
-			zoomIndex = imgs.indexOf(e.target);
-			zoomImg.src = e.target.src;
+			const items = getGalleryMedia();
+			zoomIndex = items.indexOf(e.target);
+			showZoomIndex(zoomIndex);
 			zoomOverlay.classList.add("active");
 		}
 	});
+	} // end zoom overlay guard
 
 	// --- Project gallery ---
 	if (typeof projectData !== "undefined") {
