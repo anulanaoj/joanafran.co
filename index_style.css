@@ -20,7 +20,7 @@ body {
     --left-col-4: 15vw;
     --left-col-5: 10vw;
 
-    --left-row-1: 11vh;
+    --left-row-1: 20vh;
     --left-row-2: 20vh;
     --left-row-3: 20vh;
     --left-row-4: 8vh;
@@ -55,6 +55,8 @@ body {
 .grid-right {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 5fr 1fr;
+    position: relative;
+    left: -5em;
 }
 
 .menu-one {
@@ -87,13 +89,13 @@ body {
     height: 100%;
 }
 .text-image img {
-    width: 100%;
+    width: 90%;
     height: 100%;
     object-fit: cover;
 }
 
 a {
-    color: #d53c00;
+    color: #1f1f1f;
     text-decoration: none;
 }
 
