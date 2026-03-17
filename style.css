@@ -94,13 +94,9 @@ body {
     left: 15px;
     z-index: 9999;
     display: block;
-}
-
-.back-button img {
-    display: block;
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
+    font-size: 0.8em;
+    color: red;
+    text-decoration: none;
 }
 
 /* Zoom overlay */

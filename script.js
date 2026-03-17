@@ -30,7 +30,7 @@
 	}
 
 	// --- Zoom overlay (only on pages with gallery images) ---
-	if (typeof projectData !== "undefined") {
+	if (typeof projectData !== "undefined" && typeof noZoom === "undefined") {
 	const zoomOverlay = document.createElement("div");
 	zoomOverlay.className = "zoom-overlay";
 
