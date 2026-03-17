@@ -15,10 +15,9 @@ body {
 
 :root {
     --left-col-1: 5vw;
-    --left-col-2: 16vw;
-    --left-col-3: 10vw;
-    --left-col-4: 15vw;
-    --left-col-5: 10vw;
+    --left-col-2: 15vw;
+    --left-col-3: 25vw;
+    --left-col-4: 5vw;
 
     --left-row-1: 20vh;
     --left-row-2: 20vh;
@@ -42,21 +41,19 @@ body {
 }
 
 .grid-item {
-    border: 1px solid #63262600;
+    border: 1px solid #6c484800;
     padding: 15px;
     overflow: auto;
 }
 
 .grid-left {
-    grid-template-columns: var(--left-col-1) var(--left-col-2) var(--left-col-3) var(--left-col-4) var(--left-col-5);
+    grid-template-columns: var(--left-col-1) var(--left-col-2) var(--left-col-3) var(--left-col-4);
     grid-template-rows: var(--left-row-1) var(--left-row-2) var(--left-row-3) var(--left-row-4) var(--left-row-5);
 }
 
 .grid-right {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 5fr 1fr;
-    position: relative;
-    left: -5em;
 }
 
 .menu-one {
@@ -77,7 +74,7 @@ body {
     color: rgb(66, 66, 66);
 }
 .text {
-    color: rgb(66, 66, 66);
+    color: rgb(139, 173, 14);
 }
 .hover-text {
     display: none;
@@ -95,13 +92,10 @@ body {
 }
 
 a {
-    color: #1f1f1f;
+    color: #cf0e0e;
     text-decoration: none;
 }
 
-a:visited {
-    color: #000000;
-}
 @media screen and (max-width: 1000px) {
     body {
         overflow: auto;

@@ -5,7 +5,7 @@
 	// --- Index hover preview ---
 	const previewImage = document.getElementById("preview-image");
 	const menuLinks = document.querySelectorAll(
-		".menu-one a[data-hover-image], .menu-two a[data-hover-image], .menu-three a[data-hover-image], .hover-trigger[data-hover-image]"
+		".menu-one a[data-hover-image], .menu-two a[data-hover-image], .menu-three a[data-hover-image], .menu-four a[data-hover-image], .hover-trigger[data-hover-image]"
 	);
 
 	if (previewImage && menuLinks.length > 0) {
