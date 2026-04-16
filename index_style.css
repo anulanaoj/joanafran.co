@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
+    font-family: 'Roboto Serif', serif;
+    font-size: 0.8em;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -15,15 +15,14 @@ body {
 
 :root {
     --left-col-1: 5vw;
-    --left-col-2: 15vw;
-    --left-col-3: 25vw;
-    --left-col-4: 5vw;
+    --left-col-2: 10vw;
+    --left-col-3: 16vw;
+    --left-col-4: 19vw;
 
     --left-row-1: 20vh;
-    --left-row-2: 20vh;
-    --left-row-3: 20vh;
-    --left-row-4: 8vh;
-    --left-row-5: 1fr;
+    --left-row-2: 15vh;
+    --left-row-3: 25vh;
+    --left-row-4: 40vh;
 }
 
 .page-layout {
@@ -41,14 +40,14 @@ body {
 }
 
 .grid-item {
-    border: 1px solid #6c484800;
+    border: 1px solid #ffffff;
     padding: 15px;
     overflow: auto;
 }
 
 .grid-left {
     grid-template-columns: var(--left-col-1) var(--left-col-2) var(--left-col-3) var(--left-col-4);
-    grid-template-rows: var(--left-row-1) var(--left-row-2) var(--left-row-3) var(--left-row-4) var(--left-row-5);
+    grid-template-rows: var(--left-row-1) var(--left-row-2) var(--left-row-3) var(--left-row-4);
 }
 
 .grid-right {
@@ -69,12 +68,15 @@ body {
     cursor: pointer;
     color: rgb(66, 66, 66);
 }
+.menu-three a[data-hover-iframe] {
+    cursor: none;
+}
 .menu-four {
     cursor: pointer;
     color: rgb(66, 66, 66);
 }
 .text {
-    color: rgb(139, 173, 14);
+    color: rgb(42, 42, 42);
 }
 .hover-text {
     display: none;
@@ -90,9 +92,38 @@ body {
     height: 100%;
     object-fit: cover;
 }
+#preview-image {
+    border: 1px solid #101010;
+}
+#preview-iframe {
+    display: none;
+    width: 90%;
+    height: 100%;
+    border: 1px solid #222222;
+    overflow: auto;
+}
+#preview-iframe.active {
+    display: block;
+}
+#preview-text {
+    display: none;
+    width: 90%;
+    height: 100%;
+    overflow: auto;
+    padding: 15px;
+    border: 1px solid #101010;
+    font-size: 0.9em;
+    line-height: 1.6em;
+}
+#preview-text.active {
+    display: block;
+}
+.cv-link {
+    cursor: pointer;
+}
 
 a {
-    color: #cf0e0e;
+    color: #3e3e3e;
     text-decoration: none;
 }
 

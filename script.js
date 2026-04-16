@@ -4,27 +4,157 @@
 (function () {
 	// --- Index hover preview ---
 	const previewImage = document.getElementById("preview-image");
+	const previewIframe = document.getElementById("preview-iframe");
 	const menuLinks = document.querySelectorAll(
-		".menu-one a[data-hover-image], .menu-two a[data-hover-image], .menu-three a[data-hover-image], .menu-four a[data-hover-image], .hover-trigger[data-hover-image]"
+		".menu-one a[data-hover-image], .menu-two a[data-hover-image], .menu-three a[data-hover-image], .menu-three a[data-hover-iframe], .menu-four a[data-hover-image], .hover-trigger[data-hover-image]"
 	);
 
 	if (previewImage && menuLinks.length > 0) {
 		const defaultSrc = previewImage.getAttribute("src") || "";
+		let iframeLocked = false;
+
+		// Custom "click click" cursor for iframe links
+		const cursorLabel = document.createElement("span");
+		cursorLabel.textContent = "click click";
+		cursorLabel.style.cssText = "position:fixed;pointer-events:none;z-index:9999;font-size:0.8em;font-family:Arial,sans-serif;color:rgb(66,66,66);display:none;";
+		document.body.appendChild(cursorLabel);
+
+		const iframeLinks = document.querySelectorAll("a[data-hover-iframe]");
+		iframeLinks.forEach((link) => {
+			link.addEventListener("mouseenter", () => { cursorLabel.style.display = "block"; });
+			link.addEventListener("mouseleave", () => { cursorLabel.style.display = "none"; });
+			link.addEventListener("mousemove", (e) => {
+				cursorLabel.style.left = (e.clientX + 12) + "px";
+				cursorLabel.style.top = (e.clientY + 2) + "px";
+			});
+		});
+
+		function showIframe(src) {
+			if (!previewIframe) return;
+			previewIframe.src = src;
+			previewIframe.classList.add("active");
+			previewImage.style.display = "none";
+		}
+
+		function hideIframe() {
+			if (!previewIframe || iframeLocked) return;
+			previewIframe.classList.remove("active");
+			previewIframe.src = "";
+			previewImage.style.display = "";
+		}
 
 		menuLinks.forEach((link) => {
 			const hoverSrc = link.getAttribute("data-hover-image");
+			const iframeSrc = link.getAttribute("data-hover-iframe");
+
+			if (iframeSrc) {
+				link.addEventListener("click", (e) => {
+					e.preventDefault();
+					iframeLocked = true;
+					showIframe(iframeSrc);
+				});
+			}
 
 			link.addEventListener("mouseenter", () => {
-				if (hoverSrc) previewImage.src = hoverSrc;
+				if (iframeSrc) {
+					showIframe(iframeSrc);
+				} else if (hoverSrc) {
+					if (iframeLocked) {
+						iframeLocked = false;
+					}
+					hideIframe();
+					previewImage.src = hoverSrc;
+				}
 			});
 			link.addEventListener("mouseleave", () => {
-				previewImage.src = defaultSrc;
+				if (!iframeLocked) {
+					hideIframe();
+					previewImage.src = defaultSrc;
+				}
 			});
 			link.addEventListener("focus", () => {
-				if (hoverSrc) previewImage.src = hoverSrc;
+				if (iframeSrc) {
+					showIframe(iframeSrc);
+				} else if (hoverSrc) {
+					if (iframeLocked) {
+						iframeLocked = false;
+					}
+					hideIframe();
+					previewImage.src = hoverSrc;
+				}
 			});
 			link.addEventListener("blur", () => {
-				previewImage.src = defaultSrc;
+				if (!iframeLocked) {
+					hideIframe();
+					previewImage.src = defaultSrc;
+				}
+			});
+		});
+	}
+
+	// --- CV preview ---
+	const cvLink = document.getElementById("cv-link");
+	const previewText = document.getElementById("preview-text");
+	if (cvLink && previewText && previewImage) {
+		const cvContent = `<b>Education</b><br>
+2019-2021. Royal Academy of Art, The Hague<br>
+2021-2023. AkiArtez Academy of Art and Design, Enschede<br>
+2023-2025. Frank Mohr Institute, Groningen<br><br>
+
+<b>Exhibitions</b><br><br>
+<i>Individual</i><br>
+2021. Of Inside Of, Cultural Institute of Ponta Delgada, A\u00e7ores<br><br>
+
+<i>Collective</i><br>
+2025. Frank Mohr Institute graduation show (On Touch,), NP3 . Re:Search:Gallery, Groningen<br>
+2025. RE:Store #4, NP3 . Re:Search:Gallery, Groningen<br>
+2025. RE:Store #3, NP3 . Re:Search:Gallery, Groningen<br>
+2025. RE:Store #1, NP3 . Re:Search:Gallery, Groningen<br>
+2024. Sometimes It Snows in April, Galerie Pouloeuff, Naarden<br>
+2023. Alter House Opening, I'm Studio, Amsterdam<br>
+2023. Fresh Cacao, De Cacao Fabriek, Helmond<br>
+2023. AKI graduation show ('Assuming Material Form'), AKI ArtEZ, Enschede<br>
+2023. RMTxAKI, Rijksmuseum Twenthe, Enschede<br>
+2021. Wind Polinators, SoZa, The Hague<br>
+2020. We Never Say Never, VAGA, Ponta Delgada<br><br>
+
+<b>Articles</b><br>
+2025. Metropolis M, Graduation Magazine, Eva Waterbolk<br>
+2024. Liter 112, Maarten Buser<br>
+2024. De Lage Landen, Maarten Buser<br><br>
+
+<b>Awards</b><br>
+2023. Nominated Carat Lucas Gassel-Prijs<br>
+2019. (Residency) Young Creators Award, Walk&Talk Azores`;
+
+		let cvVisible = false;
+
+		cvLink.addEventListener("click", () => {
+			if (cvVisible) {
+				previewText.classList.remove("active");
+				previewText.innerHTML = "";
+				previewImage.style.display = "";
+				cvVisible = false;
+			} else {
+				previewImage.style.display = "none";
+				if (previewIframe) {
+					previewIframe.classList.remove("active");
+					previewIframe.src = "";
+				}
+				previewText.innerHTML = cvContent;
+				previewText.classList.add("active");
+				cvVisible = true;
+			}
+		});
+
+		// Hide CV when hovering other menu items
+		menuLinks.forEach((link) => {
+			link.addEventListener("mouseenter", () => {
+				if (cvVisible) {
+					previewText.classList.remove("active");
+					previewText.innerHTML = "";
+					cvVisible = false;
+				}
 			});
 		});
 	}
@@ -150,7 +280,13 @@
 			});
 
 			gallery.innerHTML = "";
-			if (project.previews) {
+			if (project.iframe) {
+				const iframe = document.createElement("iframe");
+				iframe.src = project.iframe;
+				iframe.className = "project-iframe";
+				iframe.title = "project preview";
+				gallery.appendChild(iframe);
+			} else if (project.previews) {
 				project.previews.forEach((preview, index) => {
 					const link = document.createElement("a");
 					link.href = preview.url;
