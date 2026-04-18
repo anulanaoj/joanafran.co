@@ -16,7 +16,7 @@
 		// Custom "click click" cursor for iframe links
 		const cursorLabel = document.createElement("span");
 		cursorLabel.textContent = "click click";
-		cursorLabel.style.cssText = "position:fixed;pointer-events:none;z-index:9999;font-size:0.8em;font-family:Arial,sans-serif;color:rgb(66,66,66);display:none;";
+		cursorLabel.style.cssText = "position:fixed;pointer-events:none;z-index:9999;font-size:0.8em;font-family:'Libertinus Mono',monospace;color:rgb(66,66,66);display:none;";
 		document.body.appendChild(cursorLabel);
 
 		const iframeLinks = document.querySelectorAll("a[data-hover-iframe]");
@@ -325,6 +325,35 @@
 				renderProject(button.dataset.project);
 			});
 		});
+
+		// --- Index page: project links in main menu ---
+		const projectLinks = document.querySelectorAll(".menu-one a[data-project], .menu-two a[data-project]");
+		const indexProjectView = document.getElementById("index-project-view");
+		const gridRight = document.querySelector(".grid-right");
+
+		if (projectLinks.length > 0 && indexProjectView) {
+			projectLinks.forEach(link => {
+				link.addEventListener("click", (e) => {
+					e.preventDefault();
+					const projectKey = link.dataset.project;
+					if (!projectData[projectKey]) return;
+
+					const wasActive = link.classList.contains("active");
+					projectLinks.forEach(l => l.classList.remove("active"));
+
+					if (wasActive) {
+						indexProjectView.style.display = "none";
+						if (gridRight) gridRight.style.display = "";
+						return;
+					}
+
+					link.classList.add("active");
+					if (gridRight) gridRight.style.display = "none";
+					indexProjectView.style.display = "block";
+					renderProject(projectKey);
+				});
+			});
+		}
 
 		if (typeof autoRenderProject !== "undefined") {
 			renderProject(autoRenderProject);

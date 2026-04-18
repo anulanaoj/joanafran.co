@@ -5,8 +5,9 @@
 }
 
 body {
-    font-family: 'Roboto Serif', serif;
+    font-family: merriweather, monospace;
     font-size: 0.8em;
+    font-weight: normal;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
