@@ -2,6 +2,80 @@
 // Initializes automatically based on which elements exist on the page.
 
 (function () {
+	const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+
+	// --- Mobile: open iframe links and CV in slide-up panel ---
+	if (isMobile) {
+		const slidePanel = document.getElementById("slide-panel");
+		const slidePanelContent = document.getElementById("slide-panel-content");
+
+		if (slidePanel && slidePanelContent) {
+			let sTouchStartY = 0;
+			let sTouchCurrentY = 0;
+			let sIsDragging = false;
+
+			function openSlidePanel(html) {
+				slidePanelContent.innerHTML = html;
+				slidePanel.style.display = "block";
+				requestAnimationFrame(() => slidePanel.classList.add("slide-up"));
+				document.body.style.overflow = "hidden";
+			}
+
+			function closeSlidePanel() {
+				slidePanel.classList.remove("slide-up");
+				slidePanel.style.transform = "";
+				document.body.style.overflow = "";
+				slidePanel.addEventListener("transitionend", function handler() {
+					slidePanel.style.display = "none";
+					slidePanelContent.innerHTML = "";
+					slidePanel.removeEventListener("transitionend", handler);
+				});
+			}
+
+			slidePanel.addEventListener("touchstart", (e) => {
+				if (slidePanel.scrollTop <= 0) {
+					sTouchStartY = e.touches[0].clientY;
+					sIsDragging = true;
+				}
+			}, { passive: true });
+
+			slidePanel.addEventListener("touchmove", (e) => {
+				if (!sIsDragging) return;
+				sTouchCurrentY = e.touches[0].clientY;
+				const diff = sTouchCurrentY - sTouchStartY;
+				if (diff > 0) {
+					slidePanel.style.transition = "none";
+					slidePanel.style.transform = `translateY(${diff}px)`;
+				}
+			}, { passive: true });
+
+			slidePanel.addEventListener("touchend", () => {
+				if (!sIsDragging) return;
+				sIsDragging = false;
+				slidePanel.style.transition = "";
+				const diff = sTouchCurrentY - sTouchStartY;
+				if (diff > 120) {
+					closeSlidePanel();
+				} else {
+					slidePanel.style.transform = "";
+					slidePanel.classList.add("slide-up");
+				}
+				sTouchStartY = 0;
+				sTouchCurrentY = 0;
+			}, { passive: true });
+
+			// Intercept iframe links (visual leftovers, shouffle me)
+			document.querySelectorAll("a[data-hover-iframe]").forEach(link => {
+				link.addEventListener("click", (e) => {
+					e.preventDefault();
+					const src = link.getAttribute("href");
+					openSlidePanel(`<iframe src="${src}" title="${link.textContent}"></iframe>`);
+				});
+			});
+
+		}
+	}
+
 	// --- Index hover preview ---
 	const previewImage = document.getElementById("preview-image");
 	const previewIframe = document.getElementById("preview-iframe");
@@ -13,21 +87,23 @@
 		const defaultSrc = previewImage.getAttribute("src") || "";
 		let iframeLocked = false;
 
-		// Custom "click click" cursor for iframe links
-		const cursorLabel = document.createElement("span");
-		cursorLabel.textContent = "click click";
-		cursorLabel.style.cssText = "position:fixed;pointer-events:none;z-index:9999;font-size:0.8em;font-family:'Libertinus Mono',monospace;color:rgb(66,66,66);display:none;";
-		document.body.appendChild(cursorLabel);
+		// Custom "click click" cursor for iframe links (desktop only)
+		if (!isMobile) {
+			const cursorLabel = document.createElement("span");
+			cursorLabel.textContent = "click click";
+			cursorLabel.style.cssText = "position:fixed;pointer-events:none;z-index:9999;font-size:0.8em;font-family:'Libertinus Mono',monospace;color:rgb(66,66,66);display:none;";
+			document.body.appendChild(cursorLabel);
 
-		const iframeLinks = document.querySelectorAll("a[data-hover-iframe]");
-		iframeLinks.forEach((link) => {
-			link.addEventListener("mouseenter", () => { cursorLabel.style.display = "block"; });
-			link.addEventListener("mouseleave", () => { cursorLabel.style.display = "none"; });
-			link.addEventListener("mousemove", (e) => {
-				cursorLabel.style.left = (e.clientX + 12) + "px";
-				cursorLabel.style.top = (e.clientY + 2) + "px";
+			const iframeLinks = document.querySelectorAll("a[data-hover-iframe]");
+			iframeLinks.forEach((link) => {
+				link.addEventListener("mouseenter", () => { cursorLabel.style.display = "block"; });
+				link.addEventListener("mouseleave", () => { cursorLabel.style.display = "none"; });
+				link.addEventListener("mousemove", (e) => {
+					cursorLabel.style.left = (e.clientX + 12) + "px";
+					cursorLabel.style.top = (e.clientY + 2) + "px";
+				});
 			});
-		});
+		}
 
 		function showIframe(src) {
 			if (!previewIframe) return;
@@ -130,6 +206,17 @@
 		let cvVisible = false;
 
 		cvLink.addEventListener("click", () => {
+			if (isMobile) {
+				const slidePanel = document.getElementById("slide-panel");
+				const slidePanelContent = document.getElementById("slide-panel-content");
+				if (slidePanel && slidePanelContent) {
+					slidePanelContent.innerHTML = '<div style="line-height:1.6;">' + cvContent + '</div>';
+					slidePanel.style.display = "block";
+					requestAnimationFrame(() => slidePanel.classList.add("slide-up"));
+					document.body.style.overflow = "hidden";
+				}
+				return;
+			}
 			if (cvVisible) {
 				previewText.classList.remove("active");
 				previewText.innerHTML = "";
@@ -332,6 +419,76 @@
 		const gridRight = document.querySelector(".grid-right");
 
 		if (projectLinks.length > 0 && indexProjectView) {
+			// --- Mobile: slide-up panel with swipe-down to dismiss ---
+			if (isMobile) {
+				let touchStartY = 0;
+				let touchCurrentY = 0;
+				let isDragging = false;
+
+				function openPanel(projectKey) {
+					indexProjectView.style.display = "block";
+					renderProject(projectKey);
+					requestAnimationFrame(() => {
+						indexProjectView.classList.add("slide-up");
+					});
+					document.body.style.overflow = "hidden";
+				}
+
+				function closePanel() {
+					indexProjectView.classList.remove("slide-up");
+					indexProjectView.style.transform = "";
+					projectLinks.forEach(l => l.classList.remove("active"));
+					document.body.style.overflow = "";
+					indexProjectView.addEventListener("transitionend", function handler() {
+						indexProjectView.style.display = "none";
+						indexProjectView.removeEventListener("transitionend", handler);
+					});
+				}
+
+				indexProjectView.addEventListener("touchstart", (e) => {
+					if (indexProjectView.scrollTop <= 0) {
+						touchStartY = e.touches[0].clientY;
+						isDragging = true;
+					}
+				}, { passive: true });
+
+				indexProjectView.addEventListener("touchmove", (e) => {
+					if (!isDragging) return;
+					touchCurrentY = e.touches[0].clientY;
+					const diff = touchCurrentY - touchStartY;
+					if (diff > 0) {
+						indexProjectView.style.transition = "none";
+						indexProjectView.style.transform = `translateY(${diff}px)`;
+					}
+				}, { passive: true });
+
+				indexProjectView.addEventListener("touchend", () => {
+					if (!isDragging) return;
+					isDragging = false;
+					indexProjectView.style.transition = "";
+					const diff = touchCurrentY - touchStartY;
+					if (diff > 120) {
+						closePanel();
+					} else {
+						indexProjectView.style.transform = "";
+						indexProjectView.classList.add("slide-up");
+					}
+					touchStartY = 0;
+					touchCurrentY = 0;
+				}, { passive: true });
+
+				projectLinks.forEach(link => {
+					link.addEventListener("click", (e) => {
+						e.preventDefault();
+						const projectKey = link.dataset.project;
+						if (!projectData[projectKey]) return;
+						projectLinks.forEach(l => l.classList.remove("active"));
+						link.classList.add("active");
+						openPanel(projectKey);
+					});
+				});
+			} else {
+			// --- Desktop: toggle in right column ---
 			projectLinks.forEach(link => {
 				link.addEventListener("click", (e) => {
 					e.preventDefault();
@@ -353,6 +510,7 @@
 					renderProject(projectKey);
 				});
 			});
+			} // end mobile/desktop branch
 		}
 
 		if (typeof autoRenderProject !== "undefined") {
