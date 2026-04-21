@@ -10,7 +10,7 @@
 		const manifestPath = archiveGallery.getAttribute("data-auto-manifest");
 
 		if (manifestPath) {
-			fetch(manifestPath)
+			fetch(manifestPath, { cache: "no-store" })
 				.then((response) => {
 					if (!response.ok) {
 						throw new Error("Could not load archive image manifest");
