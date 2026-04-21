@@ -4,6 +4,67 @@
 (function () {
 	const isMobile = window.matchMedia("(max-width: 1000px)").matches;
 
+	// --- Archive works: auto-gallery from generated manifest ---
+	const archiveGallery = document.querySelector(".gallery[data-auto-manifest]");
+	if (archiveGallery) {
+		const manifestPath = archiveGallery.getAttribute("data-auto-manifest");
+
+		if (manifestPath) {
+			fetch(manifestPath)
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error("Could not load archive image manifest");
+					}
+					return response.json();
+				})
+				.then((manifest) => {
+					const folder = typeof manifest?.folder === "string" ? manifest.folder : "";
+					const images = Array.isArray(manifest?.images) ? [...manifest.images] : [];
+
+					for (let i = images.length - 1; i > 0; i -= 1) {
+						const j = Math.floor(Math.random() * (i + 1));
+						[images[i], images[j]] = [images[j], images[i]];
+					}
+
+					archiveGallery.innerHTML = "";
+					if (!images.length) {
+						archiveGallery.innerHTML = '<p class="gallery-empty">No images yet in archive_images.</p>';
+						return;
+					}
+
+					images.forEach((name, index) => {
+						const figure = document.createElement("figure");
+						figure.className = "gallery-item";
+
+						const alignments = ["start", "center", "end"];
+						const align = alignments[Math.floor(Math.random() * alignments.length)];
+						const widthPercent = 26 + Math.floor(Math.random() * 11);
+						const offsetPercent = Math.floor(Math.random() * 12);
+
+						figure.style.width = `${widthPercent}%`;
+						figure.style.justifySelf = align;
+						figure.style.marginLeft = "";
+						figure.style.marginRight = "";
+						if (align === "start") {
+							figure.style.marginLeft = `${offsetPercent}%`;
+						} else if (align === "end") {
+							figure.style.marginRight = `${offsetPercent}%`;
+						}
+
+						const img = document.createElement("img");
+						img.src = folder ? `${folder}/${name}` : name;
+						img.alt = `Archive work ${index + 1}`;
+
+						figure.appendChild(img);
+						archiveGallery.appendChild(figure);
+					});
+				})
+				.catch(() => {
+					archiveGallery.innerHTML = '<p class="gallery-empty">Could not load archive-images.json.</p>';
+				});
+		}
+	}
+
 	// --- Mobile: open iframe links and CV in slide-up panel ---
 	if (isMobile) {
 		const slidePanel = document.getElementById("slide-panel");
@@ -94,13 +155,28 @@
 			cursorLabel.style.cssText = "position:fixed;pointer-events:none;z-index:9999;font-size:0.8em;font-family:'Libertinus Mono',monospace;color:rgb(66,66,66);display:none;";
 			document.body.appendChild(cursorLabel);
 
-			const iframeLinks = document.querySelectorAll("a[data-hover-iframe]");
-			iframeLinks.forEach((link) => {
+			const clickClickTargets = document.querySelectorAll("a[data-hover-iframe], #cv-link");
+			clickClickTargets.forEach((link) => {
 				link.addEventListener("mouseenter", () => { cursorLabel.style.display = "block"; });
 				link.addEventListener("mouseleave", () => { cursorLabel.style.display = "none"; });
 				link.addEventListener("mousemove", (e) => {
 					cursorLabel.style.left = (e.clientX + 12) + "px";
 					cursorLabel.style.top = (e.clientY + 2) + "px";
+				});
+			});
+
+			const newTabCursorLabel = document.createElement("span");
+			newTabCursorLabel.textContent = "opens in new tab";
+			newTabCursorLabel.style.cssText = "position:fixed;pointer-events:none;z-index:9999;font-size:0.8em;font-family:'Libertinus Mono',monospace;color:rgb(66,66,66);display:none;";
+			document.body.appendChild(newTabCursorLabel);
+
+			const newTabLinks = document.querySelectorAll("a[data-new-tab-label='true']");
+			newTabLinks.forEach((link) => {
+				link.addEventListener("mouseenter", () => { newTabCursorLabel.style.display = "block"; });
+				link.addEventListener("mouseleave", () => { newTabCursorLabel.style.display = "none"; });
+				link.addEventListener("mousemove", (e) => {
+					newTabCursorLabel.style.left = (e.clientX + 12) + "px";
+					newTabCursorLabel.style.top = (e.clientY + 2) + "px";
 				});
 			});
 		}

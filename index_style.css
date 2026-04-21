@@ -56,12 +56,27 @@ body {
     width: 50vw;
 }
 
+.grid-right .grid-item:first-child {
+    overflow: visible;
+}
+
 .text {
     color: rgb(93, 93, 93);
     width: 85%;
+    position: relative;
+    z-index: 2;
 }
 .hover-text {
     display: none;
+    position: absolute;
+    top: 1.6em;
+    left: 0;
+    max-width: 105%;
+    z-index: 3;
+    background: #fefefe;
+    padding: 0 0.14em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 .text:hover .hover-text {
     display: inline;

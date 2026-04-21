@@ -1,0 +1,60 @@
+.info {
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 0.8em;
+    margin-top: 1.25em;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25em;
+    padding: 1.25em;
+}
+
+.gallery-item {
+    width: 30%;
+    overflow: hidden;
+    justify-self: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Keep one image per row and stagger horizontal position/edge distance */
+.gallery-item:nth-child(6n+1) {
+    width: 30%;
+    justify-self: start;
+    margin-left: 4%;
+}
+
+.gallery-item:nth-child(6n+2) {
+    width: 30%;
+    justify-self: end;
+    margin-right: 6%;
+}
+
+.gallery-item:nth-child(6n+3) {
+    width: 30%;
+    justify-self: center;
+}
+
+.gallery-item:nth-child(6n+4) {
+    width: 30%;
+    justify-self: end;
+    margin-right: 11%;
+}
+
+.gallery-item:nth-child(6n+5) {
+    width: 30%;
+    justify-self: start;
+    margin-left: 9%;
+}
+
+.gallery-item:nth-child(6n+6) {
+    width: 30%;
+    justify-self: center;
+}
