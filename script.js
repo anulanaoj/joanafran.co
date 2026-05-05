@@ -67,6 +67,38 @@
 
 	// --- Mobile: open iframe links and CV in slide-up panel ---
 	if (isMobile) {
+		const mobilePreview = document.getElementById("preview-image");
+		if (mobilePreview) {
+			mobilePreview.src = "retrato_foto_AnaCabral.jpg";
+		}
+
+		// Wrap menu items in a collapsible container with a toggle
+		const menuOneItem = document.querySelector(".grid-left .grid-item:has(.menu-one)");
+		const menuThreeItem = document.querySelector(".grid-left .grid-item:has(.menu-three)");
+		const imageItem = document.querySelector(".grid-right .grid-item:nth-child(2)");
+		if (menuOneItem && menuThreeItem) {
+			const wrapper = document.createElement("div");
+			wrapper.className = "mobile-menus-wrapper";
+			menuOneItem.parentNode.insertBefore(wrapper, menuOneItem);
+			wrapper.appendChild(menuOneItem);
+			wrapper.appendChild(menuThreeItem);
+
+			const toggle = document.createElement("div");
+			toggle.className = "mobile-menu-toggle";
+			toggle.textContent = "selected work";
+
+			if (imageItem) {
+				imageItem.after(toggle);
+				toggle.after(wrapper);
+			} else {
+				wrapper.parentNode.insertBefore(toggle, wrapper);
+			}
+
+			toggle.addEventListener("click", () => {
+				wrapper.classList.toggle("open");
+			});
+		}
+
 		const slidePanel = document.getElementById("slide-panel");
 		const slidePanelContent = document.getElementById("slide-panel-content");
 
