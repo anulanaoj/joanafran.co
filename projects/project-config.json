@@ -1,0 +1,287 @@
+{
+  "projects": {
+    "project-1": {
+      "title": "making part",
+      "meta": "2021, <br> being together with the landscape, attempting to be part of it as a stone is.",
+      "sections": [
+        {
+          "label": "",
+          "type": "grid",
+          "path": "projects/1"
+        }
+      ]
+    },
+    "project-2": {
+      "title": "de dentro de",
+      "meta": "2021,<br>under the purview of Walk&Talk Arts Festival, Instituto Cultural de Ponta Delgada, São Miguel<br>installation, 300x300x300cm, guache on stretched cotton<br>documented by Mariana Lopes",
+      "sections": [
+        
+        {
+          "label": "",
+          "type": "single",
+          "media": [
+            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_1.jpg"
+          ]
+        },
+        {
+          "type": "carousel",
+          "description": "<br><br><br>Entre o espaço e o lugar existe um corpo<br><br>Apesar da relação de sinonímia que, muitas vezes, se impõe aos vocábulos espaço e lugar, a distância entre ambos é longa e complexa.  É certo que no espaço, seja ele mais ou menos circunscrito, se podem encontrar conformidades métricas, disformidades, predisposições simétricas, isomorfismos, ordenações de perspectiva inusuais, singularidades arquitectónicas, contudo, estas características não conseguem explicar a energia do lugar. O lugar insinua-se nas emoções, nas sensações, nos afectos e afecções que surgem da presença relacional entre um corpo e um determinado espaço.  Em de dentro de, Joana Franco faz uso do seu corpo, como matéria e possibilidade, para ensaiar acções, gestos e composições, que documenta para depois transformar e reconfigurar imageticamente. Nestes ensaios, que partem da representação e confirmação subjectiva, constrói-se um elo indissociável entre o individual e o espacial. <br>A obra é, por isso, a confirmação do ser a partir do estar. Estes dois predicados assumem-se, na sua simultaneidade e convergência, enquanto eixos elementares dos gestos criativos da artista. Não será um acaso o facto de em diversas línguas – tomem-se como exemplos (óbvios) o francês e o inglês – ser e estar coincidam semanticamente. O conhecimento e intenção plástica do corpo são (con)figurados pela acção performativa, num território que surge enquanto instância de reflexão: reflexo do corpo e consciência crítica do seu movimento. A artista constrói e habita um lugar que (a) incorpora, através de inscrições que são continuidade emocional, sensorial, plástica e afectiva da sua presença.<br>Uma estrutura cúbica – um ninho ou refúgio uterino – é construída por Joana Franco sobre um campo visual binómico interior/exterior, positivo/negativo que exige um ser e estar simultâneos. Cria-se uma conexão entre o dentro e o fora deste cubo a partir de uma experiência viva e vivida pela artista que habitou esta estrutura, durante vários dias. Nesse período, este espaço funcionou enquanto área e matéria de execução, permitindo a formulação de uma linguagem visual que traduz o intangível da experiência criativa. A inscrição e acção do seu corpo nas diversas superfícies do cubo manifesta-se num espectro plástico múltiplo que convoca o vídeo, a fotografia, a escultura-instalação, o desenho e a pintura, montante e a jusante da obra. <br>De dentro de propõe uma experiência fenomenológica dos sentidos, em que a relação entre corpo e espaço constitui um lugar.  O lugar é espaço liberto dos limites da materialidade física, contendo uma potência transformante e libertadora. A obra acontece numa ordem de empatia que não resulta da adição aritmética de elementos visuais e acções performativas: cada termo multiplica o anterior. Todas as suas dimensões são convocadas para, num estranho equilíbrio, se produzir um significado conjunto. É, assim, que no (re)conhecimento de um corpo que habita, Joana Franco percorre a distância entre o espaço e o lugar. <br><br>Ana Cristina Cachola<br>Julho de 2021",
+
+          "media": [
+            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_2.jpg",
+            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_3.jpg",
+            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_4.jpg"
+          ]
+        }
+      ]
+    },
+    "project-3": {
+      "title": "body in",
+      "meta": "2024<br>+SIGN, Groningen.<br>occupying an empty project space.", 
+      "sections": [
+        {
+          "label": "",
+          "type": "single",
+          "description": "<br><br>a special thank you to Marie-Jeanne & Ron for allowing their space to be occupied, as i interpreted a body<br>as an object<br>as an artwork.",
+          "media": [
+            "projects/3/plussign low quality -1.jpg"
+          ]
+        }
+      ]
+    },
+    "project-5": {
+      "title": "painting 23-25",
+      "meta": "",
+      "sections": [
+        {
+          "label": "entranha-me, 2024",
+          "description": "",
+          "type": "grid",
+          "media": [
+            "projects/5/ingrainme-1.png",
+            "projects/5/ingrainme-3.png",
+            "projects/5/ingrainme-4.png",
+            "projects/5/ingrainme-10.png",
+            "projects/5/ingrainme-12.png",
+            "projects/5/ingrainme-13.png",
+            "projects/5/ingrainme-17.png",
+            "projects/5/ingrainme-18.png",
+            "projects/5/ingrainme-19.png",
+            "projects/5/ingrainme-21.png",
+            "projects/5/ingrainme-22.png",
+            "projects/5/ingrainme-23.png",
+            "projects/5/ingrainme-24.png",
+            "projects/5/ingrainme-25.png",
+            "projects/5/ingrainme-27.png",
+            "projects/5/ingrainme-28.png",
+            "projects/5/ingrainme-30.png",
+            "projects/5/ingrainme-31.png"
+          ]
+        },
+        {
+          "label": "id like to tell, 2023-24",
+          "type": "grid",
+          "media": [
+            "projects/6/idliketotell-1.png",
+            "projects/6/idliketotell-2.png",
+            "projects/6/idliketotell-3.png",
+            "projects/6/idliketotell-4.png",
+            "projects/6/idliketotell-6.png"
+          ]
+        }
+      ]
+    },
+    "project-7": {
+      "title": "o vulcão das sete cidades",
+      "meta": "São Miguel<br>2025<br>impersonating a volcano, documented with the help of Ana.",
+      "sections": [
+        {
+          "label": "",
+          "type": "grid",
+          "media": [
+            "projects/7/setecidades-1.jpg",
+            "projects/7/setecidades-2.jpg",
+            "projects/7/setecidades-3.jpg",
+            "projects/7/setecidades-4.jpg",
+            "projects/7/setecidades-5.jpg",
+            "projects/7/setecidades-6.jpg",
+            "projects/7/setecidades-7.jpg",
+            "projects/7/setecidades-8.jpg",
+            "projects/7/setecidades-9.jpg",
+            "projects/7/setecidades-10.jpg",
+            "projects/7/setecidades-11.jpg",
+            "projects/7/setecidades-12.jpg",
+            "projects/7/setecidades-13.jpg",
+            "projects/7/setecidades-14.jpg",
+            "projects/7/setecidades-15.jpg"
+          ]
+        }
+      ]
+    },
+    "project-8": {
+      "title": "i give myself space",
+      "meta": "Re:Search:Gallery, Groningen.<br>2025<br>before exhibiting, i've asked if it would be possible to be present in the space for some time with the intention of befriending the room grew to one of behaving with it, and the material, cotton, of the work i would later there exhibit.<br><br>",
+      "sections": [
+        {
+          "label": "",
+          "type": "grid",
+          "media": [
+            "projects/8/researchgallery-1.jpg",
+            "projects/8/researchgallery-2.jpg",
+            "projects/8/researchgallery-3.jpg",
+            "projects/8/researchgallery-4.jpg",
+            "projects/8/researchgallery-5.jpg",
+            "projects/8/researchgallery-6.jpg",
+            "projects/8/researchgallery-7.jpg",
+            "projects/8/researchgallery-8.jpg",
+            "projects/8/researchgallery-9.jpg"
+          ]
+        }
+      ]
+    },
+    "project-9": {
+      "title": "on touch,",
+      "meta":"" ,
+      "sections": [
+        {          
+          "description": "<br><br>unsure if some illness has reached me, if I am more awake to bodily sensations or if my mind copes with some external nuisance not yet recognized.<br><br>It is an ant farm sensation, I worry of my circulation.<br><br>Efforts in the studio.<br><br>What I will call, for now, exercises of delineating oneself on a surface, as a form of direct reflection – as a shadow is – that makes possible the seeing of the body as a space occupying form, outside of the unforgiving first person perspective. To see yourself from outside through a delineating of your physical body is never to see yourself from outside, but it certainly gives clues to it.",
+          "label": "finger outlines, ballpoint pen",
+          "type": "grid",      
+
+          "media": [
+            "projects/9/fingeroutlines-1.jpg",
+            "projects/9/fingeroutlines-2.jpg",
+            "projects/9/fingeroutlines-3.jpg",
+            "projects/9/fingeroutlines-4.jpg",
+            "projects/9/fingeroutlines-5.jpg",
+            "projects/9/fingeroutlines-6.jpg",
+            "projects/9/fingeroutlines-7.jpg",
+            "projects/9/fingeroutlines-8.jpg",
+            "projects/9/fingeroutlines-9.jpg",
+            "projects/9/fingeroutlines-10.jpg",
+            "projects/9/fingeroutlines-11.jpg",
+            "projects/9/fingeroutlines-12.jpg",
+            "projects/9/fingeroutlines-13.jpg",
+            "projects/9/fingeroutlines-14.jpg",
+            "projects/9/fingeroutlines-15.jpg",
+            "projects/9/fingeroutlines-16.jpg",
+            "projects/9/fingeroutlines-17.jpg",
+            "projects/9/fingeroutlines-18.jpg",
+            "projects/9/fingeroutlines-19.jpg",
+            "projects/9/fingeroutlines-20.jpg",
+            "projects/9/fingeroutlines-21.jpg",
+            "projects/9/fingeroutlines-22.jpg",
+            "projects/9/fingeroutlines-23.jpg",
+            "projects/9/fingeroutlines-24.jpg"
+      ]
+        },
+        {
+          "label": "hand outlines, permanent marker",
+          "type": "grid",
+          "media": [
+            "projects/9/marker-1.jpg",
+            "projects/9/marker-2.jpg",
+            "projects/9/marker-3.jpg",
+            "projects/9/marker-4.jpg",
+            "projects/9/marker-5.jpg",
+            "projects/9/marker-6.jpg",
+            "projects/9/marker-7.jpg",
+            "projects/9/marker-8.jpg",
+            "projects/9/marker-9.jpg",
+            "projects/9/marker-10.jpg"
+          ]
+        }
+      ]
+    },
+    "project-10": {
+      "title": "go through me go through you",
+      "meta": "Re:Search:Gallery, Groningen<br>2025<br>installation, 4x aprox. 100x150cm, soft pastel on cotton",
+      "sections": [
+        {
+          "label": "",
+          "type": "grid",
+          "media": [
+            "projects/10/gothroughmegothroughyou_2025-1.jpg",
+            "projects/10/gothroughmegothroughyou_2025-2.jpg",
+            "projects/10/gothroughmegothroughyou_2025-3.jpg"
+            ]
+        },
+        {
+            "label": "",
+            "type": "grid",          
+            "description": "<br><br>is a series of drawings taking the place of curtain, requiring interaction, touch, from who wishes to enter a new space. the drawings are excuses for contact. the body, touching the fabric outlined by a pencil, is feeling its borders. interpreting itself as present. the place of contact is one of contrast: where one is made aware of themselves through difference with their counter-actant. this is an in-between space, which holds the exchange between what is out and what is in. seen in passages that dictate change in environment.",
+
+            "media": [
+            "projects/10/gothroughmegothroughyou_2025-4.jpg",
+            "projects/10/gothroughmegothroughyou_2025-5.jpg"
+          ]
+        }
+      ]
+    },
+    "project-11": {
+      "title": "two outlined bodies",
+      "meta": "Re:Search:Gallery, Groningen<br>2025<br>installation, 200x500cm, pigment on cotton",
+      "sections": [
+        {
+          "label": "",
+          "type": "single",
+          "media": [
+            "projects/11/two_outlined_bodies-2-1.jpg"
+          ]
+        },
+        {
+          "label": "",
+          "type": "carousel",
+          "media": [
+            "projects/11/two_outlined_bodies-2.jpg",
+            "projects/11/two_outlined_bodies-3.jpg",
+            "projects/11/two_outlined_bodies-4.jpg"
+          ]
+        }
+      ]
+    },
+    "project-14": {
+      "title": "selected video pieces 05.2026",
+      "sections": [
+        {
+          "label": "",
+          "type": "carousel",
+          "media": [
+            "projects/14/Timeline 1_01_00_40_42-3-4-5.png",
+            "projects/14/Timeline 1_01_00_40_42-3-4.png",
+            "projects/14/Timeline 1_01_01_30_27-7.png"
+          ]
+        },
+        {
+          "label": "",
+          "type": "carousel",
+          "media": [
+            "projects/14/Timeline 1_01_04_17_14-3.png",
+            "projects/14/Timeline 1_01_05_58_04-5.png",
+            "projects/14/Timeline 1_01_08_49_32-6.png"
+          ]
+        }
+      ]
+    },
+    "project-15": {
+      "title": "a minha terceira perna e um braço",
+      "meta": "",
+      "sections": [
+        {
+          "label": "",
+          "type": "grid",
+          "media": [
+
+          ]
+        },
+        {
+            "label": "",
+            "type": "grid",
+            "media": [
+            
+          ]
+        }
+      ]
+    }
+  }
+}
