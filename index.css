@@ -6,8 +6,8 @@
 }
 @font-face {
   font-family: 'averiaserif';
-  src: url('fonts/averiaserif-light.ttf') format('truetype');
-  font-weight: lighter;
+  src: url('fonts/AveriaSerif-Light.ttf') format('truetype');
+  font-weight: 300;
   font-style: normal;
 }
 @font-face {
@@ -19,7 +19,7 @@
 body {
     font-family: 'averiaserif', sans-serif;
     font-size: 0.8em;
-    font-weight: normal;
+    font-weight: 300;
     width: 100vw;
     min-height: 100vh;
     overflow-x: hidden;
@@ -432,6 +432,9 @@ body.initial-text-hidden .containertwo {
 }
 
 @media (max-width: 880px) {
+    body.nav-section-open .page-background {
+    opacity: 0;
+}
     .containerone {
         flex-direction: column;
     }

@@ -11,7 +11,12 @@ function setupSectionToggles() {
 	function openSection(section) {
 		const isActive = section.classList.contains('active');
 		allSections.forEach(s => s.classList.remove('active'));
-		if (!isActive) section.classList.add('active');
+		if (!isActive) {
+			section.classList.add('active');
+			document.body.classList.add('nav-section-open');
+		} else {
+			document.body.classList.remove('nav-section-open');
+		}
 	}
 
 	if (aboutLink && aboutSection) {
