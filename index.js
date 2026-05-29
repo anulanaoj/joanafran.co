@@ -310,7 +310,7 @@ function renderProjectSection(section, mediaIndex) {
 			});
 		}
 
-		if (sectionType === 'carousel' && refreshCarouselControls) {
+		if (refreshCarouselControls) {
 			const updateOnMediaReady = () => {
 				refreshCarouselControls();
 			};
@@ -331,13 +331,13 @@ function renderProjectSection(section, mediaIndex) {
 		}
 	});
 
-	if (sectionType === 'carousel' && refreshCarouselControls) {
+	if (refreshCarouselControls) {
 		requestAnimationFrame(() => {
 			refreshCarouselControls();
 		});
 	}
 
-	if (sectionType === 'carousel' && mediaFiles.length <= 1) {
+	if ((sectionType === 'carousel' || sectionType === 'grid') && mediaFiles.length <= 1) {
 		const controls = sectionElement.querySelectorAll('.carousel-control');
 		controls.forEach((control) => {
 			control.disabled = true;
@@ -353,6 +353,18 @@ function renderProjectSection(section, mediaIndex) {
 	}
 
 	return sectionElement;
+}
+
+function mergeProjectSectionsForMobile(sections) {
+	if (!window.matchMedia('(max-width: 880px)').matches) return sections;
+	const hasSingle = sections.some(s => (s.type || 'grid') === 'single');
+	if (!hasSingle || sections.length <= 1) return sections;
+
+	const allMedia = [];
+	sections.forEach(s => {
+		if (Array.isArray(s.media)) allMedia.push(...s.media);
+	});
+	return [{ label: '', type: 'carousel', media: allMedia }];
 }
 
 function renderProject(projectId, projectConfig, mediaIndex) {
@@ -375,9 +387,22 @@ function renderProject(projectId, projectConfig, mediaIndex) {
 	}
 
 	if (projectConfig.meta) {
+		const infoToggle = document.createElement('button');
+		infoToggle.type = 'button';
+		infoToggle.className = 'project-info-toggle';
+		infoToggle.textContent = 'info';
+
 		const meta = document.createElement('p');
 		meta.className = 'project-meta';
+		meta.hidden = true;
 		meta.innerHTML = projectConfig.meta;
+
+		infoToggle.addEventListener('click', () => {
+			meta.hidden = !meta.hidden;
+			infoToggle.classList.toggle('active', !meta.hidden);
+		});
+
+		projectHeader.appendChild(infoToggle);
 		projectHeader.appendChild(meta);
 	}
 
@@ -385,7 +410,8 @@ function renderProject(projectId, projectConfig, mediaIndex) {
 		projectContainer.appendChild(projectHeader);
 	}
 
-	const sections = Array.isArray(projectConfig.sections) ? projectConfig.sections : [];
+	const rawSections = Array.isArray(projectConfig.sections) ? projectConfig.sections : [];
+	const sections = mergeProjectSectionsForMobile(rawSections);
 	sections.forEach((section) => {
 		projectContainer.appendChild(renderProjectSection(section, mediaIndex));
 	});

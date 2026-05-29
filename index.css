@@ -57,7 +57,8 @@ body.menu-accessed .page-background {
 .project-section-title,
 .project-section-description,
 .project-section-caption,
-.carousel-control {
+.carousel-control,
+.project-info-toggle {
     transition: color 0.45s ease;
 }
 
@@ -74,7 +75,8 @@ body.menu-accessed .project-meta,
 body.menu-accessed .project-section-title,
 body.menu-accessed .project-section-description,
 body.menu-accessed .project-section-caption,
-body.menu-accessed .carousel-control {
+body.menu-accessed .carousel-control,
+body.menu-accessed .project-info-toggle {
     color: #000000;
 }
 
@@ -341,6 +343,27 @@ body.initial-text-hidden .containertwo {
     margin: 0 auto;
 }
 
+.project-info-toggle {
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+}
+
+.project-info-toggle:hover,
+.project-info-toggle:focus-visible {
+    text-decoration: underline;
+    outline: none;
+}
+
+.project-info-toggle.active {
+    text-decoration: underline;
+}
+
 .carousel-controls {
     display: flex;
     flex-direction: row;
@@ -453,7 +476,24 @@ body.initial-text-hidden .containertwo {
     }
 
     .layout-grid .project-media {
-        grid-template-columns: 1fr;
+        grid-template-columns: unset;
+        grid-auto-flow: column;
+        grid-auto-columns: 85vw;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        width: 100%;
+    }
+
+    .layout-grid .project-media::-webkit-scrollbar {
+        display: none;
+    }
+
+    .layout-grid .project-media > * {
+        scroll-snap-align: start;
     }
 
     .layout-carousel .project-media {
