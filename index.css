@@ -6,7 +6,7 @@
 }
 @font-face {
   font-family: 'averiaserif';
-  src: url('../fonts/averiaserif-light.ttf') format('truetype');
+  src: url('fonts/averiaserif-light.ttf') format('truetype');
   font-weight: lighter;
   font-style: normal;
 }
@@ -450,6 +450,12 @@ body.initial-text-hidden .containertwo {
 
     .containerone__textleft__menu {
         width: 100%;
+        flex-direction: column;
+        gap: 0.2em;
+    }
+
+    .containerone__textleft__menu p br {
+        display: none;
     }
 
     .selected-work-list {
@@ -508,8 +514,37 @@ body.initial-text-hidden .containertwo {
         width: 2.2em;
         height: 2.2em;
     }
+    .project-section-description {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    width: 70vw;
+    margin-left: 2vw;
+    font-family: averiaserif, serif;
+}
+    .project-info-toggle {
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color:#db006d!important;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
 }
 
+.project-info-toggle:hover,
+.project-info-toggle:focus-visible {
+    text-decoration: underline;
+    outline: none;
+    color:#db006d!important;
+}
+
+.project-info-toggle.active {
+    text-decoration: underline;  /* shown when meta is visible */
+    color:#db006d!important;
+}
+}
 
 
 

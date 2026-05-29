@@ -6,24 +6,32 @@ function setupSectionToggles() {
 	const researchSection = document.getElementById('research-section');
 	const selectedWorkSection = document.getElementById('selected-work-section');
 
+	const allSections = [aboutSection, researchSection, selectedWorkSection].filter(Boolean);
+
+	function openSection(section) {
+		const isActive = section.classList.contains('active');
+		allSections.forEach(s => s.classList.remove('active'));
+		if (!isActive) section.classList.add('active');
+	}
+
 	if (aboutLink && aboutSection) {
 		aboutLink.addEventListener('click', function(e) {
 			e.preventDefault();
-			aboutSection.classList.toggle('active');
+			openSection(aboutSection);
 		});
 	}
 
 	if (researchLink && researchSection) {
 		researchLink.addEventListener('click', function(e) {
 			e.preventDefault();
-			researchSection.classList.toggle('active');
+			openSection(researchSection);
 		});
 	}
 
 	if (selectedWorkLink && selectedWorkSection) {
 		selectedWorkLink.addEventListener('click', function(e) {
 			e.preventDefault();
-			selectedWorkSection.classList.toggle('active');
+			openSection(selectedWorkSection);
 		});
 	}
 }
