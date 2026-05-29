@@ -9,13 +9,13 @@ function setupSectionToggles() {
 	const allSections = [aboutSection, researchSection, selectedWorkSection].filter(Boolean);
 
 	function openSection(section) {
-		const isActive = section.classList.contains('active');
-		allSections.forEach(s => s.classList.remove('active'));
-		if (!isActive) {
-			section.classList.add('active');
-			document.body.classList.add('nav-section-open');
+		const isMobile = window.matchMedia('(max-width: 880px)').matches;
+		if (isMobile) {
+			const isActive = section.classList.contains('active');
+			allSections.forEach(s => s.classList.remove('active'));
+			if (!isActive) section.classList.add('active');
 		} else {
-			document.body.classList.remove('nav-section-open');
+			section.classList.toggle('active');
 		}
 	}
 
