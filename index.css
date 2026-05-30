@@ -322,6 +322,12 @@ body.initial-text-hidden .containertwo {
     cursor: zoom-in;
 }
 
+@media (max-width: 880px) {
+    .clickable-media {
+        cursor: default;
+    }
+}
+
 .layout-grid .project-media {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -432,6 +438,7 @@ body.initial-text-hidden .containertwo {
 
 .lightbox-overlay {
     position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
     inset: 0;
     background: #ffffff;
     z-index: 1000;
@@ -446,19 +453,32 @@ body.initial-text-hidden .containertwo {
 }
 
 .lightbox-content {
-    width: min(96vw, 1200px);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
 }
 
 .lightbox-controls {
     justify-content: flex-end;
+    align-self: flex-end;
+    flex-shrink: 0;
+    width: 100%;
 }
 
 .lightbox-media {
     width: 100%;
-    max-height: 86vh;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 0;
+    min-width: 0;
+    flex: 1 1 0px;
     object-fit: contain;
 }
 
@@ -592,6 +612,49 @@ body.initial-text-hidden .containertwo {
 .project-info-toggle.active {
     text-decoration: underline;  /* shown when meta is visible */
     color:#db006d!important;
+}
+.lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
+    background: #ffffff;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2em;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+}
+
+.lightbox-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+.lightbox-controls {
+    justify-content: flex-end;
+    align-self: flex-end;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.lightbox-media {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 0;
+    min-width: 0;
+    flex: 1 1 0px;
+    object-fit: contain;
 }
 }
 

@@ -238,6 +238,11 @@ function closeImageLightbox() {
 }
 
 function openImageLightbox(files, index) {
+	// Disable lightbox on mobile devices
+	if (window.innerWidth <= 880) {
+		return;
+	}
+
 	if (!Array.isArray(files) || files.length === 0) {
 		return;
 	}
@@ -453,13 +458,14 @@ function renderProjectSection(section, mediaIndex) {
 
 function mergeProjectSectionsForMobile(sections) {
 	if (!window.matchMedia('(max-width: 880px)').matches) return sections;
-	const hasSingle = sections.some(s => (s.type || 'grid') === 'single');
-	if (!hasSingle || sections.length <= 1) return sections;
-
+	
 	const allMedia = [];
 	sections.forEach(s => {
 		if (Array.isArray(s.media)) allMedia.push(...s.media);
 	});
+
+	if (allMedia.length === 0) return sections;
+
 	return [{ label: '', type: 'carousel', media: allMedia }];
 }
 
