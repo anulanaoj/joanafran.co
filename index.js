@@ -8,14 +8,27 @@ function setupSectionToggles() {
 
 	const allSections = [aboutSection, researchSection, selectedWorkSection].filter(Boolean);
 
+	function syncMobileNavSectionState() {
+		const isMobile = window.matchMedia('(max-width: 880px)').matches;
+		if (!isMobile) {
+			document.body.classList.remove('nav-section-open');
+			return;
+		}
+
+		const hasActiveSection = allSections.some((section) => section.classList.contains('active'));
+		document.body.classList.toggle('nav-section-open', hasActiveSection);
+	}
+
 	function openSection(section) {
 		const isMobile = window.matchMedia('(max-width: 880px)').matches;
 		if (isMobile) {
 			const isActive = section.classList.contains('active');
 			allSections.forEach(s => s.classList.remove('active'));
 			if (!isActive) section.classList.add('active');
+			syncMobileNavSectionState();
 		} else {
 			section.classList.toggle('active');
+			document.body.classList.remove('nav-section-open');
 		}
 	}
 
@@ -583,6 +596,7 @@ function setupHomeReset() {
 		}
 
 		document.body.classList.remove('menu-accessed');
+		document.body.classList.remove('nav-section-open');
 		closeImageLightbox();
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
