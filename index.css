@@ -520,9 +520,12 @@ body.initial-text-hidden .containertwo {
         grid-auto-flow: column;
         grid-auto-columns: 85vw;
         overflow-x: auto;
+        overflow-y: hidden;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
         overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pinch-zoom;
         scrollbar-width: none;
         -ms-overflow-style: none;
         width: 100%;
@@ -538,6 +541,16 @@ body.initial-text-hidden .containertwo {
 
     .layout-carousel .project-media {
         grid-auto-columns: 100%;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pinch-zoom;
+    }
+
+    .layout-grid .project-media img,
+    .layout-carousel .project-media img,
+    .layout-grid .project-media video,
+    .layout-carousel .project-media video {
+        touch-action: pan-x pinch-zoom;
     }
 
 

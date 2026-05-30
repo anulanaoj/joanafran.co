@@ -161,7 +161,7 @@ function getAllOpenProjectImages() {
 	const imageExtensions = new Set(['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif']);
 	const images = [];
 	document.querySelectorAll('.containertwo.active img.clickable-media').forEach(img => {
-		const src = img.currentSrc || img.src || img.getAttribute('src');
+		const src = img.getAttribute('src');
 		if (src) {
 			const ext = src.split('.').pop().toLowerCase().split('?')[0].split('#')[0];
 			if (imageExtensions.has(ext)) {
@@ -170,6 +170,47 @@ function getAllOpenProjectImages() {
 		}
 	});
 	return images;
+}
+
+function bindImageTapToLightbox(mediaElement) {
+	let startX = 0;
+	let startY = 0;
+	let suppressClick = false;
+	const swipeThreshold = 10;
+
+	mediaElement.addEventListener('touchstart', (event) => {
+		const touch = event.touches[0];
+		if (!touch) {
+			return;
+		}
+
+		startX = touch.clientX;
+		startY = touch.clientY;
+		suppressClick = false;
+	}, { passive: true });
+
+	mediaElement.addEventListener('touchmove', (event) => {
+		const touch = event.touches[0];
+		if (!touch) {
+			return;
+		}
+
+		if (Math.abs(touch.clientX - startX) > swipeThreshold || Math.abs(touch.clientY - startY) > swipeThreshold) {
+			suppressClick = true;
+		}
+	}, { passive: true });
+
+	mediaElement.addEventListener('click', () => {
+		if (suppressClick) {
+			suppressClick = false;
+			return;
+		}
+
+		const allImages = getAllOpenProjectImages();
+		const src = mediaElement.getAttribute('src');
+		const clickedIndex = allImages.indexOf(src);
+		openImageLightbox(allImages, clickedIndex >= 0 ? clickedIndex : 0);
+	});
 }
 
 function updateImageLightboxView() {
@@ -362,12 +403,7 @@ function renderProjectSection(section, mediaIndex) {
 
 		if (mediaElement.tagName === 'IMG') {
 			mediaElement.classList.add('clickable-media');
-			mediaElement.addEventListener('click', () => {
-				const allImages = getAllOpenProjectImages();
-				const src = mediaElement.currentSrc || mediaElement.src || mediaElement.getAttribute('src');
-				const clickedIndex = allImages.indexOf(src);
-				openImageLightbox(allImages, clickedIndex >= 0 ? clickedIndex : 0);
-			});
+			bindImageTapToLightbox(mediaElement);
 		}
 
 		if (refreshCarouselControls) {
