@@ -299,6 +299,25 @@ body.initial-text-hidden .containertwo {
     display: block;
 }
 
+.project-media-outer {
+    position: relative;
+    display: block;
+}
+
+.scroll-hint {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    color: #000;
+    z-index: 5;
+    pointer-events: none;
+    font-family: 'altehaasgrotesk', sans-serif;
+}
+
 .clickable-media {
     cursor: zoom-in;
 }
@@ -352,6 +371,18 @@ body.initial-text-hidden .containertwo {
     cursor: pointer;
     padding: 0;
     text-align: left;
+}
+
+@media (min-width: 881px) {
+    .project-info-toggle {
+        display: none;
+    }
+    .project-meta {
+        display: block !important;
+    }
+    .scroll-hint {
+        display: none;
+    }
 }
 
 .project-info-toggle:hover,
@@ -508,6 +539,8 @@ body.initial-text-hidden .containertwo {
     .layout-carousel .project-media {
         grid-auto-columns: 100%;
     }
+
+
 
     .carousel-container {
         width: min(92vw, 520px);

@@ -144,6 +144,21 @@ function getImageFiles(files) {
 	});
 }
 
+function getAllOpenProjectImages() {
+	const imageExtensions = new Set(['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif']);
+	const images = [];
+	document.querySelectorAll('.containertwo.active img.clickable-media').forEach(img => {
+		const src = img.currentSrc || img.src || img.getAttribute('src');
+		if (src) {
+			const ext = src.split('.').pop().toLowerCase().split('?')[0].split('#')[0];
+			if (imageExtensions.has(ext)) {
+				images.push(src);
+			}
+		}
+	});
+	return images;
+}
+
 function updateImageLightboxView() {
 	if (!imageLightboxState.overlay || !imageLightboxState.media) {
 		return;
@@ -186,8 +201,9 @@ function setupImageLightbox() {
 	overlay.innerHTML = `
 		<div class="lightbox-content">
 			<div class="carousel-controls lightbox-controls">
-				<button type="button" class="carousel-control" aria-label="Previous image">&lt;</button>
-				<button type="button" class="carousel-control" aria-label="Next image">&gt;</button>
+				<button type="button" class="carousel-control lightbox-back-btn" aria-label="Close lightbox">&#x2715;</button>
+				<button type="button" class="carousel-control lightbox-prev-btn" aria-label="Previous image">&lt;</button>
+				<button type="button" class="carousel-control lightbox-next-btn" aria-label="Next image">&gt;</button>
 			</div>
 			<img class="lightbox-media" alt="enlarged project media">
 		</div>
@@ -195,14 +211,19 @@ function setupImageLightbox() {
 
 	document.body.appendChild(overlay);
 
-	const prevButton = overlay.querySelector('.carousel-control:nth-child(1)');
-	const nextButton = overlay.querySelector('.carousel-control:nth-child(2)');
+	const backButton = overlay.querySelector('.lightbox-back-btn');
+	const prevButton = overlay.querySelector('.lightbox-prev-btn');
+	const nextButton = overlay.querySelector('.lightbox-next-btn');
 	const media = overlay.querySelector('.lightbox-media');
 
 	imageLightboxState.overlay = overlay;
 	imageLightboxState.prevButton = prevButton;
 	imageLightboxState.nextButton = nextButton;
 	imageLightboxState.media = media;
+
+	backButton.addEventListener('click', () => {
+		closeImageLightbox();
+	});
 
 	prevButton.addEventListener('click', () => {
 		if (imageLightboxState.index > 0) {
@@ -295,7 +316,19 @@ function renderProjectSection(section, mediaIndex) {
 			refreshCarouselControls();
 		});
 	} else {
-		sectionElement.appendChild(mediaWrapper);
+		if (sectionType === 'grid') {
+			const mediaOuter = document.createElement('div');
+			mediaOuter.className = 'project-media-outer';
+			const scrollHint = document.createElement('div');
+			scrollHint.className = 'scroll-hint';
+			scrollHint.setAttribute('aria-hidden', 'true');
+			scrollHint.textContent = '›';
+			mediaOuter.appendChild(mediaWrapper);
+			mediaOuter.appendChild(scrollHint);
+			sectionElement.appendChild(mediaOuter);
+		} else {
+			sectionElement.appendChild(mediaWrapper);
+		}
 	}
 
 	if (section.description) {
@@ -317,9 +350,10 @@ function renderProjectSection(section, mediaIndex) {
 		if (mediaElement.tagName === 'IMG') {
 			mediaElement.classList.add('clickable-media');
 			mediaElement.addEventListener('click', () => {
-				const imageFiles = getImageFiles(mediaFiles);
-				const clickedIndex = imageFiles.indexOf(filePath);
-				openImageLightbox(imageFiles, clickedIndex >= 0 ? clickedIndex : 0);
+				const allImages = getAllOpenProjectImages();
+				const src = mediaElement.currentSrc || mediaElement.src || mediaElement.getAttribute('src');
+				const clickedIndex = allImages.indexOf(src);
+				openImageLightbox(allImages, clickedIndex >= 0 ? clickedIndex : 0);
 			});
 		}
 
@@ -470,14 +504,15 @@ function setupProjectToggles() {
 
             if (projectSection) {
 				document.body.classList.add('menu-accessed');
-                projectSection.classList.toggle('active');
-                if (projectSection.classList.contains('active')) {
-                    projectSection.querySelectorAll('.project-media').forEach(track => {
-                        if (typeof track._refreshCarouselControls === 'function') {
-                            requestAnimationFrame(() => track._refreshCarouselControls());
-                        }
-                    });
-                }
+                projectSection.classList.add('active');
+                projectSection.querySelectorAll('.project-media').forEach(track => {
+                    if (typeof track._refreshCarouselControls === 'function') {
+                        requestAnimationFrame(() => track._refreshCarouselControls());
+                    }
+                });
+                requestAnimationFrame(() => {
+                    projectSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
             }
         });
     });
