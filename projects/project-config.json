@@ -265,22 +265,41 @@
     },
     "project-12": {
       "title": "a minha terceira perna e um braço",
-      "meta": "",
+      "meta": "group exhibition \"We build our language with rocks\" in VAGA, São Miguel island.<br>2026<br>installation. wood, cotton, pigment and video projection.",
       "sections": [
         {
           "label": "",
           "type": "single",
+          "description": "<br><br>faço-me presente, pondo uma perna entre as minhas, efeito do acto delimitado pelo braço que me toca e ajuda haver-me,<br><br>dou-te o que me dás, assim somos. passa por mim eu passo por ti, imóvel de braços abertos; sou contigo e tu comigo, vemo-nos, tocamo-nos; o corpo dobra: multiplica e retrai; um bichinho da seda que se abre e veste.",
           "media": [
-
+            "projects/12/amtpeub-1.jpg"
           ]
         },
         {
             "label": "",
             "type": "carousel",
             "media": [
+            "projects/12/amtpeub-2.jpg",
+            "projects/12/amtpeub-3.jpg",
+            "projects/12/amtpeub-4.jpg",
+            "projects/12/amtpeub-5.jpg",
+            "projects/12/amtpeub-6.jpg",
+            "projects/12/amtpeub-7.jpg"
             
           ]
-        }
+        },
+          {
+              "label": "",
+              "type": "carousel",
+              "media": [
+              "projects/12/Timeline 1_01_01_44_28.png",
+              "projects/12/Timeline 1_01_02_29_43.png",
+              "projects/12/Timeline 1_01_03_26_09.png",
+              "projects/12/Timeline 1_01_04_39_09.png",
+              "projects/12/Timeline 1_01_08_29_46.png"
+              
+            ]
+          }
       ]
     }
   }
