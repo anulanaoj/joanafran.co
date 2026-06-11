@@ -263,20 +263,20 @@
         }
       ]
     },
-    "project-15": {
+    "project-12": {
       "title": "a minha terceira perna e um braço",
       "meta": "",
       "sections": [
         {
           "label": "",
-          "type": "grid",
+          "type": "single",
           "media": [
 
           ]
         },
         {
             "label": "",
-            "type": "grid",
+            "type": "carousel",
             "media": [
             
           ]
