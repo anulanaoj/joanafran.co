@@ -382,6 +382,22 @@ function renderProjectSection(section, mediaIndex) {
 			scrollHint.className = 'scroll-hint';
 			scrollHint.setAttribute('aria-hidden', 'true');
 			scrollHint.textContent = '›';
+
+			const hasFilledCaptions = Array.isArray(section.media) &&
+				section.media.some((e) => typeof e === 'object' && e.caption && e.caption.trim());
+
+			if (hasFilledCaptions) {
+				const infoBtn = document.createElement('button');
+				infoBtn.className = 'grid-info-toggle';
+				infoBtn.textContent = 'info';
+				infoBtn.setAttribute('aria-pressed', 'false');
+				infoBtn.addEventListener('click', () => {
+					const active = mediaOuter.classList.toggle('captions-visible');
+					infoBtn.setAttribute('aria-pressed', String(active));
+				});
+				mediaOuter.appendChild(infoBtn);
+			}
+
 			mediaOuter.appendChild(mediaWrapper);
 			mediaOuter.appendChild(scrollHint);
 			sectionElement.appendChild(mediaOuter);
@@ -401,10 +417,24 @@ function renderProjectSection(section, mediaIndex) {
 	const indexedMedia = declaredMedia.length > 0 ? [] : getMediaFromPath(section.path, mediaIndex);
 	const mediaFiles = declaredMedia.length > 0 ? declaredMedia : indexedMedia;
 
-	mediaFiles.forEach((filePath) => {
-		const altText = section.alt || section.label || 'project media';
+	mediaFiles.forEach((fileEntry) => {
+		const filePath = typeof fileEntry === 'object' ? fileEntry.src : fileEntry;
+		const imageCaption = typeof fileEntry === 'object' ? fileEntry.caption : null;
+		const altText = (typeof fileEntry === 'object' && fileEntry.alt) || section.alt || section.label || 'project media';
 		const mediaElement = createMediaElement(filePath, altText);
-		mediaWrapper.appendChild(mediaElement);
+
+		if (imageCaption) {
+			const figure = document.createElement('figure');
+			figure.className = 'media-figure';
+			const figcaption = document.createElement('figcaption');
+			figcaption.className = 'media-caption';
+			figcaption.innerHTML = imageCaption;
+			figure.appendChild(mediaElement);
+			figure.appendChild(figcaption);
+			mediaWrapper.appendChild(figure);
+		} else {
+			mediaWrapper.appendChild(mediaElement);
+		}
 
 		if (mediaElement.tagName === 'IMG') {
 			mediaElement.classList.add('clickable-media');

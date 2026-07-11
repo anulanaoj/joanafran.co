@@ -436,6 +436,44 @@ body.initial-text-hidden .containertwo {
     line-height: 1.5;
 }
 
+.media-figure {
+    display: flex;
+    flex-direction: column;
+}
+
+.media-caption {
+    display: none;
+    margin-top: 0.3em;
+    margin-bottom: 0.7em;
+    line-height: 1.5;
+    font-size: 0.85em;
+    opacity: 0.7;
+}
+
+.captions-visible .media-caption {
+    display: block;
+}
+
+.grid-info-toggle {
+    display: block;
+    margin-left: auto;
+    margin-bottom: 0.4em;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 0.85em;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+}
+
+.grid-info-toggle:hover,
+.grid-info-toggle[aria-pressed="true"] {
+    opacity: 1;
+}
+
 .lightbox-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;

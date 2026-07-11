@@ -20,7 +20,7 @@
           "label": "",
           "type": "single",
           "media": [
-            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_1.jpg"
+            { "src": "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_1.jpg", "caption": "" }
           ]
         },
         {
@@ -28,9 +28,9 @@
           "description": "<br><br><br>Entre o espaço e o lugar existe um corpo<br><br>Apesar da relação de sinonímia que, muitas vezes, se impõe aos vocábulos espaço e lugar, a distância entre ambos é longa e complexa.  É certo que no espaço, seja ele mais ou menos circunscrito, se podem encontrar conformidades métricas, disformidades, predisposições simétricas, isomorfismos, ordenações de perspectiva inusuais, singularidades arquitectónicas, contudo, estas características não conseguem explicar a energia do lugar. O lugar insinua-se nas emoções, nas sensações, nos afectos e afecções que surgem da presença relacional entre um corpo e um determinado espaço.  Em de dentro de, Joana Franco faz uso do seu corpo, como matéria e possibilidade, para ensaiar acções, gestos e composições, que documenta para depois transformar e reconfigurar imageticamente. Nestes ensaios, que partem da representação e confirmação subjectiva, constrói-se um elo indissociável entre o individual e o espacial. <br>A obra é, por isso, a confirmação do ser a partir do estar. Estes dois predicados assumem-se, na sua simultaneidade e convergência, enquanto eixos elementares dos gestos criativos da artista. Não será um acaso o facto de em diversas línguas – tomem-se como exemplos (óbvios) o francês e o inglês – ser e estar coincidam semanticamente. O conhecimento e intenção plástica do corpo são (con)figurados pela acção performativa, num território que surge enquanto instância de reflexão: reflexo do corpo e consciência crítica do seu movimento. A artista constrói e habita um lugar que (a) incorpora, através de inscrições que são continuidade emocional, sensorial, plástica e afectiva da sua presença.<br>Uma estrutura cúbica – um ninho ou refúgio uterino – é construída por Joana Franco sobre um campo visual binómico interior/exterior, positivo/negativo que exige um ser e estar simultâneos. Cria-se uma conexão entre o dentro e o fora deste cubo a partir de uma experiência viva e vivida pela artista que habitou esta estrutura, durante vários dias. Nesse período, este espaço funcionou enquanto área e matéria de execução, permitindo a formulação de uma linguagem visual que traduz o intangível da experiência criativa. A inscrição e acção do seu corpo nas diversas superfícies do cubo manifesta-se num espectro plástico múltiplo que convoca o vídeo, a fotografia, a escultura-instalação, o desenho e a pintura, montante e a jusante da obra. <br>De dentro de propõe uma experiência fenomenológica dos sentidos, em que a relação entre corpo e espaço constitui um lugar.  O lugar é espaço liberto dos limites da materialidade física, contendo uma potência transformante e libertadora. A obra acontece numa ordem de empatia que não resulta da adição aritmética de elementos visuais e acções performativas: cada termo multiplica o anterior. Todas as suas dimensões são convocadas para, num estranho equilíbrio, se produzir um significado conjunto. É, assim, que no (re)conhecimento de um corpo que habita, Joana Franco percorre a distância entre o espaço e o lugar. <br><br>Ana Cristina Cachola<br>Julho de 2021",
 
           "media": [
-            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_2.jpg",
-            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_3.jpg",
-            "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_4.jpg"
+            { "src": "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_2.jpg", "caption": "" },
+            { "src": "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_3.jpg", "caption": "" },
+            { "src": "projects/2/W_T21_JoanaFrancoFinais_MarianaLopes_4.jpg", "caption": "" }
           ]
         }
       ]
@@ -44,7 +44,7 @@
           "type": "single",
           "description": "<br><br>a special thank you to Marie-Jeanne & Ron for allowing their space to be occupied, as i interpreted a body<br>as an object<br>as an artwork.",
           "media": [
-            "projects/3/plussign low quality -1.jpg"
+            { "src": "projects/3/plussign low quality -1.jpg", "caption": "" }
           ]
         }
       ]
@@ -58,35 +58,35 @@
           "description": "",
           "type": "grid",
           "media": [
-            "projects/5/ingrainme-1.png",
-            "projects/5/ingrainme-3.png",
-            "projects/5/ingrainme-4.png",
-            "projects/5/ingrainme-10.png",
-            "projects/5/ingrainme-12.png",
-            "projects/5/ingrainme-13.png",
-            "projects/5/ingrainme-17.png",
-            "projects/5/ingrainme-18.png",
-            "projects/5/ingrainme-19.png",
-            "projects/5/ingrainme-21.png",
-            "projects/5/ingrainme-22.png",
-            "projects/5/ingrainme-23.png",
-            "projects/5/ingrainme-24.png",
-            "projects/5/ingrainme-25.png",
-            "projects/5/ingrainme-27.png",
-            "projects/5/ingrainme-28.png",
-            "projects/5/ingrainme-30.png",
-            "projects/5/ingrainme-31.png"
+            { "src": "projects/5/ingrainme-1.png", "caption": "" },
+            { "src": "projects/5/ingrainme-3.png", "caption": "" },
+            { "src": "projects/5/ingrainme-4.png", "caption": "" },
+            { "src": "projects/5/ingrainme-10.png", "caption": "" },
+            { "src": "projects/5/ingrainme-12.png", "caption": "" },
+            { "src": "projects/5/ingrainme-13.png", "caption": "" },
+            { "src": "projects/5/ingrainme-17.png", "caption": "" },
+            { "src": "projects/5/ingrainme-18.png", "caption": "" },
+            { "src": "projects/5/ingrainme-19.png", "caption": "" },
+            { "src": "projects/5/ingrainme-21.png", "caption": "" },
+            { "src": "projects/5/ingrainme-22.png", "caption": "" },
+            { "src": "projects/5/ingrainme-23.png", "caption": "" },
+            { "src": "projects/5/ingrainme-24.png", "caption": "" },
+            { "src": "projects/5/ingrainme-25.png", "caption": "" },
+            { "src": "projects/5/ingrainme-27.png", "caption": "" },
+            { "src": "projects/5/ingrainme-28.png", "caption": "" },
+            { "src": "projects/5/ingrainme-30.png", "caption": "" },
+            { "src": "projects/5/ingrainme-31.png", "caption": "" }
           ]
         },
         {
           "label": "id like to tell, 2023-24",
           "type": "grid",
           "media": [
-            "projects/6/idliketotell-1.png",
-            "projects/6/idliketotell-2.png",
-            "projects/6/idliketotell-3.png",
-            "projects/6/idliketotell-4.png",
-            "projects/6/idliketotell-6.png"
+            { "src": "projects/6/idliketotell-1.png", "caption": "" },
+            { "src": "projects/6/idliketotell-2.png", "caption": "" },
+            { "src": "projects/6/idliketotell-3.png", "caption": "" },
+            { "src": "projects/6/idliketotell-4.png", "caption": "" },
+            { "src": "projects/6/idliketotell-6.png", "caption": "" }
           ]
         }
       ]
@@ -99,21 +99,21 @@
           "label": "",
           "type": "grid",
           "media": [
-            "projects/7/setecidades-1.jpg",
-            "projects/7/setecidades-2.jpg",
-            "projects/7/setecidades-3.jpg",
-            "projects/7/setecidades-4.jpg",
-            "projects/7/setecidades-5.jpg",
-            "projects/7/setecidades-6.jpg",
-            "projects/7/setecidades-7.jpg",
-            "projects/7/setecidades-8.jpg",
-            "projects/7/setecidades-9.jpg",
-            "projects/7/setecidades-10.jpg",
-            "projects/7/setecidades-11.jpg",
-            "projects/7/setecidades-12.jpg",
-            "projects/7/setecidades-13.jpg",
-            "projects/7/setecidades-14.jpg",
-            "projects/7/setecidades-15.jpg"
+            { "src": "projects/7/setecidades-1.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-2.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-3.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-4.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-5.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-6.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-7.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-8.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-9.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-10.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-11.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-12.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-13.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-14.jpg", "caption": "" },
+            { "src": "projects/7/setecidades-15.jpg", "caption": "" }
           ]
         }
       ]
@@ -126,15 +126,15 @@
           "label": "",
           "type": "grid",
           "media": [
-            "projects/8/researchgallery-1.jpg",
-            "projects/8/researchgallery-2.jpg",
-            "projects/8/researchgallery-3.jpg",
-            "projects/8/researchgallery-4.jpg",
-            "projects/8/researchgallery-5.jpg",
-            "projects/8/researchgallery-6.jpg",
-            "projects/8/researchgallery-7.jpg",
-            "projects/8/researchgallery-8.jpg",
-            "projects/8/researchgallery-9.jpg"
+            { "src": "projects/8/researchgallery-1.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-2.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-3.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-4.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-5.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-6.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-7.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-8.jpg", "caption": "" },
+            { "src": "projects/8/researchgallery-9.jpg", "caption": "" }
           ]
         }
       ]
@@ -149,46 +149,46 @@
           "type": "grid",      
 
           "media": [
-            "projects/9/fingeroutlines-1.jpg",
-            "projects/9/fingeroutlines-2.jpg",
-            "projects/9/fingeroutlines-3.jpg",
-            "projects/9/fingeroutlines-4.jpg",
-            "projects/9/fingeroutlines-5.jpg",
-            "projects/9/fingeroutlines-6.jpg",
-            "projects/9/fingeroutlines-7.jpg",
-            "projects/9/fingeroutlines-8.jpg",
-            "projects/9/fingeroutlines-9.jpg",
-            "projects/9/fingeroutlines-10.jpg",
-            "projects/9/fingeroutlines-11.jpg",
-            "projects/9/fingeroutlines-12.jpg",
-            "projects/9/fingeroutlines-13.jpg",
-            "projects/9/fingeroutlines-14.jpg",
-            "projects/9/fingeroutlines-15.jpg",
-            "projects/9/fingeroutlines-16.jpg",
-            "projects/9/fingeroutlines-17.jpg",
-            "projects/9/fingeroutlines-18.jpg",
-            "projects/9/fingeroutlines-19.jpg",
-            "projects/9/fingeroutlines-20.jpg",
-            "projects/9/fingeroutlines-21.jpg",
-            "projects/9/fingeroutlines-22.jpg",
-            "projects/9/fingeroutlines-23.jpg",
-            "projects/9/fingeroutlines-24.jpg"
+            { "src": "projects/9/fingeroutlines-1.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-2.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-3.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-4.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-5.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-6.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-7.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-8.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-9.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-10.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-11.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-12.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-13.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-14.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-15.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-16.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-17.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-18.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-19.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-20.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-21.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-22.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-23.jpg", "caption": "" },
+            { "src": "projects/9/fingeroutlines-24.jpg", "caption": "" }
       ]
         },
         {
           "label": "hand outlines, permanent marker",
           "type": "grid",
           "media": [
-            "projects/9/marker-1.jpg",
-            "projects/9/marker-2.jpg",
-            "projects/9/marker-3.jpg",
-            "projects/9/marker-4.jpg",
-            "projects/9/marker-5.jpg",
-            "projects/9/marker-6.jpg",
-            "projects/9/marker-7.jpg",
-            "projects/9/marker-8.jpg",
-            "projects/9/marker-9.jpg",
-            "projects/9/marker-10.jpg"
+            { "src": "projects/9/marker-1.jpg", "caption": "" },
+            { "src": "projects/9/marker-2.jpg", "caption": "" },
+            { "src": "projects/9/marker-3.jpg", "caption": "" },
+            { "src": "projects/9/marker-4.jpg", "caption": "" },
+            { "src": "projects/9/marker-5.jpg", "caption": "" },
+            { "src": "projects/9/marker-6.jpg", "caption": "" },
+            { "src": "projects/9/marker-7.jpg", "caption": "" },
+            { "src": "projects/9/marker-8.jpg", "caption": "" },
+            { "src": "projects/9/marker-9.jpg", "caption": "" },
+            { "src": "projects/9/marker-10.jpg", "caption": "" }
           ]
         }
       ]
@@ -201,9 +201,9 @@
           "label": "",
           "type": "grid",
           "media": [
-            "projects/10/gothroughmegothroughyou_2025-1.jpg",
-            "projects/10/gothroughmegothroughyou_2025-2.jpg",
-            "projects/10/gothroughmegothroughyou_2025-3.jpg"
+            { "src": "projects/10/gothroughmegothroughyou_2025-1.jpg", "caption": "" },
+            { "src": "projects/10/gothroughmegothroughyou_2025-2.jpg", "caption": "" },
+            { "src": "projects/10/gothroughmegothroughyou_2025-3.jpg", "caption": "" }
             ]
         },
         {
@@ -212,8 +212,8 @@
             "description": "<br><br>is a series of drawings taking the place of curtain, requiring interaction, touch, from who wishes to enter a new space. the drawings are excuses for contact. the body, touching the fabric outlined by a pencil, is feeling its borders. interpreting itself as present. the place of contact is one of contrast: where one is made aware of themselves through difference with their counter-actant. this is an in-between space, which holds the exchange between what is out and what is in. seen in passages that dictate change in environment.",
 
             "media": [
-            "projects/10/gothroughmegothroughyou_2025-4.jpg",
-            "projects/10/gothroughmegothroughyou_2025-5.jpg"
+            { "src": "projects/10/gothroughmegothroughyou_2025-4.jpg", "caption": "" },
+            { "src": "projects/10/gothroughmegothroughyou_2025-5.jpg", "caption": "" }
           ]
         }
       ]
@@ -226,16 +226,16 @@
           "label": "",
           "type": "single",
           "media": [
-            "projects/11/two_outlined_bodies-2-1.jpg"
+            { "src": "projects/11/two_outlined_bodies-2-1.jpg", "caption": "" }
           ]
         },
         {
           "label": "",
           "type": "carousel",
           "media": [
-            "projects/11/two_outlined_bodies-2.jpg",
-            "projects/11/two_outlined_bodies-3.jpg",
-            "projects/11/two_outlined_bodies-4.jpg"
+            { "src": "projects/11/two_outlined_bodies-2.jpg", "caption": "" },
+            { "src": "projects/11/two_outlined_bodies-3.jpg", "caption": "" },
+            { "src": "projects/11/two_outlined_bodies-4.jpg", "caption": "" }
           ]
         }
       ]
@@ -247,18 +247,18 @@
           "label": "",
           "type": "carousel",
           "media": [
-            "projects/14/Timeline 1_01_00_40_42-3-4-5.png",
-            "projects/14/Timeline 1_01_00_40_42-3-4.png",
-            "projects/14/Timeline 1_01_01_30_27-7.png"
+            { "src": "projects/14/Timeline 1_01_00_40_42-3-4-5.png", "caption": "" },
+            { "src": "projects/14/Timeline 1_01_00_40_42-3-4.png", "caption": "" },
+            { "src": "projects/14/Timeline 1_01_01_30_27-7.png", "caption": "" }
           ]
         },
         {
           "label": "",
           "type": "carousel",
           "media": [
-            "projects/14/Timeline 1_01_04_17_14-3.png",
-            "projects/14/Timeline 1_01_05_58_04-5.png",
-            "projects/14/Timeline 1_01_08_49_32-6.png"
+            { "src": "projects/14/Timeline 1_01_04_17_14-3.png", "caption": "" },
+            { "src": "projects/14/Timeline 1_01_05_58_04-5.png", "caption": "" },
+            { "src": "projects/14/Timeline 1_01_08_49_32-6.png", "caption": "" }
           ]
         }
       ]
@@ -272,20 +272,19 @@
           "type": "single",
           "description": "<br><br>faço-me presente, pondo uma perna entre as minhas, efeito do acto delimitado pelo braço que me toca e ajuda haver-me,<br><br>dou-te o que me dás, assim somos. passa por mim eu passo por ti, imóvel de braços abertos; sou contigo e tu comigo, vemo-nos, tocamo-nos; o corpo dobra: multiplica e retrai; um bichinho da seda que se abre e veste.",
           "media": [
-            "projects/12/amtpeub-1.jpg"
+            { "src": "projects/12/amtpeub-1.jpg", "caption": "" }
           ]
         },
         {
             "label": "",
             "type": "carousel",
             "media": [
-            "projects/12/amtpeub-2.jpg",
-            "projects/12/amtpeub-3.jpg",
-            "projects/12/amtpeub-4.jpg",
-            "projects/12/amtpeub-5.jpg",
-            "projects/12/amtpeub-6.jpg",
-            "projects/12/amtpeub-7.jpg"
-            
+            { "src": "projects/12/amtpeub-2.jpg", "caption": "" },
+            { "src": "projects/12/amtpeub-3.jpg", "caption": "" },
+            { "src": "projects/12/amtpeub-4.jpg", "caption": "" },
+            { "src": "projects/12/amtpeub-5.jpg", "caption": "" },
+            { "src": "projects/12/amtpeub-6.jpg", "caption": "" },
+            { "src": "projects/12/amtpeub-7.jpg", "caption": "" }
           ]
         },
           {
@@ -300,6 +299,29 @@
               
             ]
           }
+      ]
+    },
+    "project-15": {
+      "title": "2026",
+      "sections": [
+        {
+          "label": "(hands)",
+          "type": "grid",
+          "media": [
+            { "src": "projects/15/small.jpg", "caption": "something dances above my head (hands), 35,5x45cm, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-2.jpg", "caption": "tickletickle (hands), 40x50cm, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-3.jpg", "caption": "no! (arms), 39,5x48cm, pigment, colorantand ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-4.jpg", "caption": "untitled (hands), 27x19cm, pigment, colorant, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-5.jpg", "caption": "anénomas (hands), 17,5x25cm, pigment, colorant and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-6.jpg", "caption": "anénomas (hands), 17,5x25cm, pigment, colorant and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-7.jpg", "caption": "untitled (hands), 20,5x41cm, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-8.jpg", "caption": "bird (hands), 25x23cm, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-9.jpg", "caption": "untitled (hands), 34x25cm, pigment, colorant and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-10.jpg", "caption": "o calhau (hands), 19,5x32cm, pigment, colorant and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-11.jpg", "caption": "untitled (hands), dyptich, 40x33cm, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/small-12.jpg", "caption": "untitled (hands), 34,5x23,5cm, pigment and ballpoint pen on cotton on wood" }
+          ]
+        }
       ]
     }
   }
