@@ -321,6 +321,16 @@
             { "src": "projects/15/small-11.jpg", "caption": "untitled (hands), dyptich, 40x33cm, pigment and ballpoint pen on cotton on wood" },
             { "src": "projects/15/small-12.jpg", "caption": "untitled (hands), 34,5x23,5cm, pigment and ballpoint pen on cotton on wood" }
           ]
+        },
+        {
+          "label": "(hug)",
+          "type": "grid",
+          "media": [
+            { "src": "projects/15/mayhune-1.jpg", "caption": "abraços (hug), 122x43.5cm, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/mayhune-2.jpg", "caption": "abraços (hug), 122x43.5cm, pigment and ballpoint pen on cotton on wood" },
+            { "src": "projects/15/mayhune-3.jpg", "caption": "abraços (hug), 122x43.5cm, pigment and ballpoint pen on cotton on wood" }
+            
+          ]
         }
       ]
     }
