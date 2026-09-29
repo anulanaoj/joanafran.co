@@ -622,7 +622,7 @@ window.projectConfig = {
     },
     "project-15": {
       "title": "",
-      "meta": "2026, Villa de Bank, Enschede<br>funded through Creative Europe’s Individual Mobility Fund",
+      "meta": "2026, Villa de Bank, Enschede",
       "sections": [
         {
           "label": "",
@@ -663,6 +663,8 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+          "description": "<br><br>This work was produced with the financial assistance of the European Union. The views expressed herein can in no way be taken to reflect the official opinion of the European Union.",
+          "descriptionAlignLeft": true,
           "keepGridOnMobile": true,
           "media": [
             { "src": "projects/15/Screenshot 2026-09-25 132152.png", "caption": "", "link": "https://youtu.be/9jj1bomIxeE" },
@@ -676,6 +678,14 @@ window.projectConfig = {
             { "src": "projects/15/Screenshot 2026-09-27 200132.png", "caption": "", "link": "https://youtu.be/PJvvr5OMgfk" },
             { "src": "projects/15/Screenshot 2026-09-27 200524.png", "caption": "", "link": "https://youtu.be/H5I4GCl4d2c" },
             { "src": "projects/15/Screenshot 2026-09-27 200626.png", "caption": "", "link": "https://youtu.be/NxM02X6_LZs" }
+          ]
+        },
+        {
+          "label": "",
+          "type": "single",
+          "marginTop": "-5em",
+          "media": [
+            { "src": "projects/15/Logo_horizontal_black.png", "caption": "", "width": "20%" }
           ]
         }
         

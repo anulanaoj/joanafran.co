@@ -277,6 +277,11 @@ body.menu-accessed .selected-work-item.active {
     display: block;
 }
 
+.project-section-description.align-left {
+    margin-left: 0;
+    width: min(65vw, 1200px);
+}
+
 .project-media {
     width: 100%;
 }

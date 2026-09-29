@@ -335,6 +335,9 @@ function renderProjectSection(section, mediaIndex) {
 	if (hasGridDestinations) {
 		sectionElement.classList.add('has-grid-destinations');
 	}
+	if (section.marginTop) {
+		sectionElement.style.marginTop = section.marginTop;
+	}
 
 	if (section.label) {
 		const heading = document.createElement('h3');
@@ -447,6 +450,9 @@ function renderProjectSection(section, mediaIndex) {
 	if (section.description) {
 		const description = document.createElement('p');
 		description.className = 'project-section-description';
+		if (section.descriptionAlignLeft) {
+			description.classList.add('align-left');
+		}
 		description.innerHTML = section.description;
 		sectionElement.appendChild(description);
 	}
@@ -475,6 +481,10 @@ function renderProjectSection(section, mediaIndex) {
 			const gridPath = typeof fileEntry === 'object' && fileEntry.grid ? fileEntry.grid : '';
 			const altText = (typeof fileEntry === 'object' && fileEntry.alt) || section.alt || section.label || 'project media';
 			const mediaElement = createMediaElement(filePath, altText);
+
+			if (typeof fileEntry === 'object' && fileEntry.width) {
+				mediaElement.style.width = fileEntry.width;
+			}
 
 			if (imageCaption) {
 				const figure = document.createElement('figure');

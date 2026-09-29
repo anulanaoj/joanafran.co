@@ -642,6 +642,12 @@
         },
         {
           "label": "",
+          "type": "single",          "marginTop": "-5em",          "media": [
+            { "src": "projects/15/Logo_horizontal_black.png", "caption": "", "width": "50%" }
+          ]
+        },
+        {
+          "label": "",
           "type": "text",
           "description": ""
         }
