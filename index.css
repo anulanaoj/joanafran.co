@@ -352,6 +352,10 @@ body.menu-accessed .selected-work-item.active {
     width: 65vw;
 }
 
+.layout-grid.has-grid-destinations .project-media img {
+    height: 180px;
+}
+
 .layout-single .project-media {
     max-width: min(100%, 65vw);
 }

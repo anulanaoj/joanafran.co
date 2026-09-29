@@ -332,6 +332,9 @@ function renderProjectSection(section, mediaIndex) {
 		typeof entry === 'object' && entry.grid
 	);
 	sectionElement.className = `project-section layout-${sectionType}${section.keepGridOnMobile ? ' keep-grid-on-mobile' : ''}`;
+	if (hasGridDestinations) {
+		sectionElement.classList.add('has-grid-destinations');
+	}
 
 	if (section.label) {
 		const heading = document.createElement('h3');
