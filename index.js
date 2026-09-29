@@ -172,7 +172,7 @@ function getAllOpenProjectImages() {
 	return images;
 }
 
-function bindImageTapToLightbox(mediaElement) {
+function bindImageTapToLightbox(mediaElement, allowMobile = false) {
 	let startX = 0;
 	let startY = 0;
 	let suppressClick = false;
@@ -209,7 +209,7 @@ function bindImageTapToLightbox(mediaElement) {
 		const allImages = getAllOpenProjectImages();
 		const src = mediaElement.getAttribute('src');
 		const clickedIndex = allImages.indexOf(src);
-		openImageLightbox(allImages, clickedIndex >= 0 ? clickedIndex : 0);
+		openImageLightbox(allImages, clickedIndex >= 0 ? clickedIndex : 0, allowMobile);
 	});
 }
 
@@ -237,9 +237,8 @@ function closeImageLightbox() {
 	document.body.classList.remove('lightbox-open');
 }
 
-function openImageLightbox(files, index) {
-	// Disable lightbox on mobile devices
-	if (window.innerWidth <= 880) {
+function openImageLightbox(files, index, allowMobile = false) {
+	if (window.innerWidth <= 880 && !allowMobile) {
 		return;
 	}
 
@@ -518,7 +517,7 @@ function renderProjectSection(section, mediaIndex) {
 					// images inside a grid-menu's destination grids stay static: no lightbox enlarge
 				} else {
 					mediaElement.classList.add('clickable-media');
-					bindImageTapToLightbox(mediaElement);
+					bindImageTapToLightbox(mediaElement, section.lightboxOnMobile === true);
 				}
 			}
 
@@ -803,22 +802,6 @@ function setupHomeReset() {
 	});
 }
 
-function setupInitialTextReveal() {
-	const revealText = () => {
-		window.setTimeout(() => {
-			document.body.classList.remove('initial-text-hidden');
-		}, 200);
-	};
-
-	if (document.readyState === 'complete') {
-		revealText();
-		return;
-	}
-
-	window.addEventListener('load', revealText, { once: true });
-}
-
-setupInitialTextReveal();
 setupSectionToggles();
 setupImageLightbox();
 initializeProjectRendering();

@@ -84,18 +84,6 @@ body.lightbox-open {
     overflow: hidden;
 }
 
-.containerone,
-.containertwo {
-    opacity: 1;
-    transition: opacity 0.45s ease;
-}
-
-body.initial-text-hidden .containerone,
-body.initial-text-hidden .containertwo {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .containerone {
     position: relative;
     display: flex;
@@ -164,7 +152,6 @@ body.initial-text-hidden .containertwo {
 }
 .containerone__about.active {
     display: flex;
-    animation: fade-in-content 0.45s ease;
 }
 .containerone__about p {
     font-size: 1em;
@@ -197,7 +184,6 @@ body.initial-text-hidden .containertwo {
 
 .archive-list.active {
     display: flex;
-    animation: fade-in-content 0.45s ease;
 }
 
 .selected-work-archive-toggle.active {
@@ -236,16 +222,6 @@ body.menu-accessed .selected-work-item.active {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    animation: fade-in-content 0.45s ease;
-}
-
-@keyframes fade-in-content {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 .project-container {
@@ -639,6 +615,10 @@ body.menu-accessed .selected-work-item.active {
         touch-action: auto;
     }
 
+    .layout-grid.keep-grid-on-mobile {
+        width: 100%;
+    }
+
     .layout-grid .project-media::-webkit-scrollbar {
         display: none;
     }
@@ -723,7 +703,6 @@ body.menu-accessed .selected-work-item.active {
 
 .lightbox-content {
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
     gap: 0.5em;

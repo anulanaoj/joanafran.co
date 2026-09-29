@@ -627,6 +627,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+                    "keepGridOnMobile": true,
+          "lightboxOnMobile": true,
+
           "media": [
             {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
             {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
@@ -635,7 +638,9 @@ window.projectConfig = {
         },
         {
           "label": "",
-          "type": "carousel",
+          "type": "grid",
+                    "keepGridOnMobile": true,
+
           "media": [
             { "src": "projects/15/books1.jpeg", "caption": ""},
             { "src": "projects/15/books2.jpeg", "caption": ""}
@@ -644,6 +649,7 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+          "keepGridOnMobile": true,
           "media": [
             { "src": "projects/15/1/1-2.jpg", "caption": "", "grid": "projects/15/1" },
             { "src": "projects/15/2/2-3.jpg", "caption": "", "grid": "projects/15/2" },
@@ -684,6 +690,8 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+                    "keepGridOnMobile": true,
+
           "description": "",
           "media": [
             {"src": "projects/16/Screenshot 2026-09-28 160322.png", "caption": "", "link": "https://youtu.be/gAoKnn9-vAc" },
