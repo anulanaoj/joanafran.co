@@ -259,6 +259,11 @@ body.menu-accessed .selected-work-item.active {
     margin-bottom: 0.6em;
 }
 
+.project-section-link-note {
+    font-size: 0.8em;
+    margin-bottom: 0.6em;
+}
+
 .project-section-description {
     font-size: 1em;
     line-height: 1.6;
@@ -280,6 +285,10 @@ body.menu-accessed .selected-work-item.active {
 .project-section-description.align-left {
     margin-left: 0;
     width: min(65vw, 1200px);
+}
+
+#project-15 .project-section-description {
+    font-size: 0.8em;
 }
 
 .project-media {
@@ -626,7 +635,7 @@ body.menu-accessed .selected-work-item.active {
         margin: 0;
     }
 
-    .carousel-controls {
+    .carousel-controls:not(.lightbox-controls) {
         display: none;
     }
 

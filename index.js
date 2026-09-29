@@ -303,6 +303,10 @@ function setupImageLightbox() {
 		}
 	});
 
+	media.addEventListener('click', () => {
+		closeImageLightbox();
+	});
+
 	document.addEventListener('keydown', (event) => {
 		if (!imageLightboxState.overlay || !imageLightboxState.overlay.classList.contains('active')) {
 			return;
@@ -344,6 +348,16 @@ function renderProjectSection(section, mediaIndex) {
 		heading.className = 'project-section-title';
 		heading.textContent = section.label;
 		sectionElement.appendChild(heading);
+	}
+
+	const hasLinkedMedia = sectionType === 'grid' && declaredMedia.some((entry) =>
+		typeof entry === 'object' && entry.link && entry.link.trim()
+	);
+	if (hasLinkedMedia) {
+		const linkNote = document.createElement('p');
+		linkNote.className = 'project-section-link-note';
+		linkNote.textContent = 'clicking the images underneath,shows a video on another tab';
+		sectionElement.appendChild(linkNote);
 	}
 
 	if (sectionType === 'text') {
