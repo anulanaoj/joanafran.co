@@ -328,13 +328,39 @@ function setupImageLightbox() {
 function renderProjectSection(section, mediaIndex) {
 	const sectionElement = document.createElement('section');
 	const sectionType = section.type || 'grid';
-	sectionElement.className = `project-section layout-${sectionType}`;
+	const declaredMedia = Array.isArray(section.media) ? section.media : [];
+	const hasGridDestinations = sectionType === 'grid' && declaredMedia.some((entry) =>
+		typeof entry === 'object' && entry.grid
+	);
+	sectionElement.className = `project-section layout-${sectionType}${section.keepGridOnMobile ? ' keep-grid-on-mobile' : ''}`;
 
 	if (section.label) {
 		const heading = document.createElement('h3');
 		heading.className = 'project-section-title';
 		heading.textContent = section.label;
 		sectionElement.appendChild(heading);
+	}
+
+	if (sectionType === 'text') {
+		const textSource = section.description || '';
+
+		if (textSource) {
+			const paragraphs = textSource
+				.split(/\n\s*\n|<br\s*\/?>\s*<br\s*\/?>/i)
+				.map((part) => part.trim())
+				.filter(Boolean);
+
+			if (paragraphs.length > 0) {
+				paragraphs.forEach((paragraphText) => {
+					const paragraph = document.createElement('p');
+					paragraph.className = 'project-section-description';
+					paragraph.innerHTML = paragraphText;
+					sectionElement.appendChild(paragraph);
+				});
+			}
+		}
+
+		return sectionElement;
 	}
 
 	const mediaWrapper = document.createElement('div');
@@ -378,6 +404,16 @@ function renderProjectSection(section, mediaIndex) {
 		if (sectionType === 'grid') {
 			const mediaOuter = document.createElement('div');
 			mediaOuter.className = 'project-media-outer';
+			if (hasGridDestinations) {
+				const backButton = document.createElement('button');
+				backButton.type = 'button';
+				backButton.className = 'grid-navigation-back';
+				backButton.textContent = 'back';
+				backButton.setAttribute('aria-label', 'Back to image menu');
+				backButton.hidden = true;
+				mediaOuter.appendChild(backButton);
+				sectionElement._gridNavigationBackButton = backButton;
+			}
 			const scrollHint = document.createElement('div');
 			scrollHint.className = 'scroll-hint';
 			scrollHint.setAttribute('aria-hidden', 'true');
@@ -413,54 +449,105 @@ function renderProjectSection(section, mediaIndex) {
 		sectionElement.appendChild(description);
 	}
 
-	const declaredMedia = Array.isArray(section.media) ? section.media : [];
 	const indexedMedia = declaredMedia.length > 0 ? [] : getMediaFromPath(section.path, mediaIndex);
 	const mediaFiles = declaredMedia.length > 0 ? declaredMedia : indexedMedia;
-
-	mediaFiles.forEach((fileEntry) => {
-		const filePath = typeof fileEntry === 'object' ? fileEntry.src : fileEntry;
-		const imageCaption = typeof fileEntry === 'object' ? fileEntry.caption : null;
-		const altText = (typeof fileEntry === 'object' && fileEntry.alt) || section.alt || section.label || 'project media';
-		const mediaElement = createMediaElement(filePath, altText);
-
-		if (imageCaption) {
-			const figure = document.createElement('figure');
-			figure.className = 'media-figure';
-			const figcaption = document.createElement('figcaption');
-			figcaption.className = 'media-caption';
-			figcaption.innerHTML = imageCaption;
-			figure.appendChild(mediaElement);
-			figure.appendChild(figcaption);
-			mediaWrapper.appendChild(figure);
-		} else {
-			mediaWrapper.appendChild(mediaElement);
+	const backButton = sectionElement._gridNavigationBackButton;
+	const renderMediaFiles = (files, isDestinationGrid = false) => {
+		mediaWrapper.replaceChildren();
+		if (backButton) {
+			backButton.hidden = !isDestinationGrid;
 		}
 
-		if (mediaElement.tagName === 'IMG') {
-			mediaElement.classList.add('clickable-media');
-			bindImageTapToLightbox(mediaElement);
+		if (files.length === 0 && isDestinationGrid) {
+			const emptyMessage = document.createElement('p');
+			emptyMessage.className = 'grid-navigation-empty';
+			emptyMessage.textContent = 'No images in this grid yet.';
+			mediaWrapper.appendChild(emptyMessage);
+			return;
 		}
 
-		if (refreshCarouselControls) {
-			const updateOnMediaReady = () => {
-				refreshCarouselControls();
-			};
+		files.forEach((fileEntry) => {
+			const filePath = typeof fileEntry === 'object' ? fileEntry.src : fileEntry;
+			const imageCaption = typeof fileEntry === 'object' ? fileEntry.caption : null;
+			const imageLink = typeof fileEntry === 'object' && fileEntry.link ? fileEntry.link.trim() : '';
+			const gridPath = typeof fileEntry === 'object' && fileEntry.grid ? fileEntry.grid : '';
+			const altText = (typeof fileEntry === 'object' && fileEntry.alt) || section.alt || section.label || 'project media';
+			const mediaElement = createMediaElement(filePath, altText);
+
+			if (imageCaption) {
+				const figure = document.createElement('figure');
+				figure.className = 'media-figure';
+				const figcaption = document.createElement('figcaption');
+				figcaption.className = 'media-caption';
+				figcaption.innerHTML = imageCaption;
+				figure.appendChild(mediaElement);
+				figure.appendChild(figcaption);
+				mediaWrapper.appendChild(figure);
+			} else {
+				mediaWrapper.appendChild(mediaElement);
+			}
 
 			if (mediaElement.tagName === 'IMG') {
-				if (mediaElement.complete) {
-					refreshCarouselControls();
+				if (hasGridDestinations) {
+					mediaElement.classList.add('protected-media');
+					mediaElement.draggable = false;
+					mediaElement.addEventListener('contextmenu', (event) => event.preventDefault());
+					mediaElement.addEventListener('dragstart', (event) => event.preventDefault());
+				}
+
+				if (gridPath) {
+					mediaElement.classList.add('grid-navigation-media');
+					mediaElement.setAttribute('role', 'button');
+					mediaElement.setAttribute('tabindex', '0');
+					const openDestinationGrid = () => {
+						renderMediaFiles(getMediaFromPath(gridPath, mediaIndex), true);
+					};
+					mediaElement.addEventListener('click', openDestinationGrid);
+					mediaElement.addEventListener('keydown', (event) => {
+						if (event.key === 'Enter' || event.key === ' ') {
+							event.preventDefault();
+							openDestinationGrid();
+						}
+					});
+				} else if (imageLink) {
+					mediaElement.classList.add('linked-media');
+					mediaElement.addEventListener('click', () => {
+						window.open(imageLink, '_blank', 'noopener');
+					});
+				} else if (hasGridDestinations) {
+					// images inside a grid-menu's destination grids stay static: no lightbox enlarge
 				} else {
-					mediaElement.addEventListener('load', updateOnMediaReady, { once: true });
-					mediaElement.addEventListener('error', updateOnMediaReady, { once: true });
+					mediaElement.classList.add('clickable-media');
+					bindImageTapToLightbox(mediaElement);
 				}
 			}
 
-			if (mediaElement.tagName === 'VIDEO') {
-				mediaElement.addEventListener('loadedmetadata', updateOnMediaReady, { once: true });
-				mediaElement.addEventListener('error', updateOnMediaReady, { once: true });
+			if (refreshCarouselControls) {
+				const updateOnMediaReady = () => {
+					refreshCarouselControls();
+				};
+
+				if (mediaElement.tagName === 'IMG') {
+					if (mediaElement.complete) {
+						refreshCarouselControls();
+					} else {
+						mediaElement.addEventListener('load', updateOnMediaReady, { once: true });
+						mediaElement.addEventListener('error', updateOnMediaReady, { once: true });
+					}
+				}
+
+				if (mediaElement.tagName === 'VIDEO') {
+					mediaElement.addEventListener('loadedmetadata', updateOnMediaReady, { once: true });
+					mediaElement.addEventListener('error', updateOnMediaReady, { once: true });
+				}
 			}
-		}
-	});
+		});
+	};
+
+	if (backButton) {
+		backButton.addEventListener('click', () => renderMediaFiles(mediaFiles));
+	}
+	renderMediaFiles(mediaFiles);
 
 	if (refreshCarouselControls) {
 		requestAnimationFrame(() => {
@@ -488,15 +575,48 @@ function renderProjectSection(section, mediaIndex) {
 
 function mergeProjectSectionsForMobile(sections) {
 	if (!window.matchMedia('(max-width: 880px)').matches) return sections;
-	
+
+	const isNavigableGrid = (section) => section && section.type === 'grid' &&
+		Array.isArray(section.media) && section.media.some((entry) =>
+			typeof entry === 'object' && entry.grid
+		);
+	const isPreservedGrid = (section) => isNavigableGrid(section) || section.keepGridOnMobile === true;
 	const allMedia = [];
-	sections.forEach(s => {
+	sections.forEach((s) => {
+		if (!s || s.type === 'text' || isPreservedGrid(s)) return;
 		if (Array.isArray(s.media)) allMedia.push(...s.media);
 	});
 
 	if (allMedia.length === 0) return sections;
 
-	return [{ label: '', type: 'carousel', media: allMedia }];
+	const merged = [];
+	let mediaMerged = false;
+
+	sections.forEach((section) => {
+		if (!section) return;
+
+		if (isPreservedGrid(section)) {
+			merged.push(section);
+			return;
+		}
+
+		if (section.type === 'text') {
+			merged.push(section);
+			return;
+		}
+
+		if (Array.isArray(section.media) && section.media.length > 0) {
+			if (!mediaMerged) {
+				merged.push({ label: '', type: 'carousel', media: allMedia });
+				mediaMerged = true;
+			}
+			return;
+		}
+
+		merged.push(section);
+	});
+
+	return merged;
 }
 
 function renderProject(projectId, projectConfig, mediaIndex) {
@@ -550,6 +670,10 @@ function renderProject(projectId, projectConfig, mediaIndex) {
 }
 
 async function loadProjectConfig() {
+	if (window.projectConfig && window.projectConfig.projects) {
+		return window.projectConfig;
+	}
+
 	try {
 		const response = await fetch('projects/project-config.json');
 		if (!response.ok) {
@@ -589,6 +713,11 @@ function setupProjectToggles() {
 
             if (projectSection) {
 				document.body.classList.add('menu-accessed');
+                document.querySelectorAll('.project-container.active').forEach(section => {
+                    if (section !== projectSection) section.classList.remove('active');
+                });
+                projectLinks.forEach(otherLink => otherLink.classList.remove('active'));
+                this.classList.add('active');
                 projectSection.classList.add('active');
                 projectSection.querySelectorAll('.project-media').forEach(track => {
                     if (typeof track._refreshCarouselControls === 'function') {

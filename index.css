@@ -6,7 +6,7 @@
 }
 @font-face {
   font-family: 'averiaserif';
-  src: url('fonts/AveriaSerif-Light.ttf') format('truetype');
+  src: url('fonts/AlteHaasGroteskRegular.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
@@ -213,13 +213,18 @@ body.initial-text-hidden .containertwo {
     line-height: 1.5em;
     color: inherit;
     text-decoration: none;
-    color: #020202c2;
+    
 }
 .selected-work-item:hover,
 .selected-work-item:focus-visible,
 .selected-work-item:target {
     text-decoration: underline;
     outline: none;
+    color: #f88294;
+}
+.selected-work-item.active,
+body.menu-accessed .selected-work-item.active {
+    color: #f88294;
 }
 .containertwo {
     display: none;
@@ -287,6 +292,15 @@ body.initial-text-hidden .containertwo {
     font-family: averiaserif, serif;
 }
 
+.layout-text .project-section-description {
+    width: min(78vw, 1200px);
+    margin-left: 0;
+    white-space: pre-line;
+    font-size: 0.96em;
+    line-height: 1.7;
+    display: block;
+}
+
 .project-media {
     width: 100%;
 }
@@ -322,8 +336,35 @@ body.initial-text-hidden .containertwo {
     cursor: zoom-in;
 }
 
+.linked-media {
+    cursor: pointer;
+}
+
+.grid-navigation-media {
+    cursor: pointer;
+}
+
+.grid-navigation-back {
+    position: absolute;
+    top: 0.4em;
+    left: 0.4em;
+    z-index: 6;
+    padding: 0.35em 0.55em;
+    border: 0;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    font: inherit;
+    cursor: pointer;
+}
+
+.grid-navigation-empty {
+    grid-column: 1 / -1;
+    padding: 2em 0;
+}
+
 @media (max-width: 880px) {
-    .clickable-media {
+    .clickable-media,
+    .grid-navigation-media {
         cursor: default;
     }
 }
@@ -422,7 +463,7 @@ body.initial-text-hidden .containertwo {
 
 .carousel-control:hover,
 .carousel-control:focus-visible {
-    background: rgba(206, 102, 17, 0.645);
+    background: rgb(255, 255, 255);
     outline: none;
 }
 
@@ -589,8 +630,21 @@ body.initial-text-hidden .containertwo {
         width: 100%;
     }
 
+    .layout-grid.keep-grid-on-mobile .project-media {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+        overflow: visible;
+        scroll-snap-type: none;
+        touch-action: auto;
+    }
+
     .layout-grid .project-media::-webkit-scrollbar {
         display: none;
+    }
+
+    .layout-grid.keep-grid-on-mobile .project-media > * {
+        scroll-snap-align: unset;
     }
 
     .layout-grid .project-media > * {
@@ -696,8 +750,6 @@ body.initial-text-hidden .containertwo {
 }
 }
 
-
-
-
-
-
+.layout-grid { margin-bottom: 7em; }
+.layout-single { margin-bottom: 7em; }
+.layout-carousel { margin-bottom: 7em; }
