@@ -486,6 +486,10 @@ function renderProjectSection(section, mediaIndex) {
 				mediaElement.style.width = fileEntry.width;
 			}
 
+			if (typeof fileEntry === 'object' && fileEntry.compactOnMobile) {
+				mediaElement.classList.add('menu-thumb-compact');
+			}
+
 			if (imageCaption) {
 				const figure = document.createElement('figure');
 				figure.className = 'media-figure';

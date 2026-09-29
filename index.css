@@ -637,6 +637,15 @@ body.menu-accessed .selected-work-item.active {
         touch-action: auto;
     }
 
+    .layout-grid.has-grid-destinations .project-media img {
+        height: auto;
+    }
+
+    .menu-thumb-compact {
+        width: 55%;
+        margin: 0 auto;
+    }
+
 
 
     .carousel-control {

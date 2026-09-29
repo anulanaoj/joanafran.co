@@ -657,7 +657,7 @@ window.projectConfig = {
             { "src": "projects/15/4/4-05.jpg", "caption": "", "grid": "projects/15/4" },
             { "src": "projects/15/5/5-06.jpg", "caption": "", "grid": "projects/15/5" },
             { "src": "projects/15/6/6-07.jpg", "caption": "", "grid": "projects/15/6" },
-            { "src": "projects/15/7/7-08.jpg", "caption": "", "grid": "projects/15/7" }
+            { "src": "projects/15/7/7-08.jpg", "caption": "", "grid": "projects/15/7", "compactOnMobile": true }
           ]
         },
         {
