@@ -493,6 +493,7 @@ function renderProjectSection(section, mediaIndex) {
 			const imageCaption = typeof fileEntry === 'object' ? fileEntry.caption : null;
 			const imageLink = typeof fileEntry === 'object' && fileEntry.link ? fileEntry.link.trim() : '';
 			const gridPath = typeof fileEntry === 'object' && fileEntry.grid ? fileEntry.grid : '';
+			const lightboxEnabled = !(typeof fileEntry === 'object' && fileEntry.lightbox === false);
 			const altText = (typeof fileEntry === 'object' && fileEntry.alt) || section.alt || section.label || 'project media';
 			const mediaElement = createMediaElement(filePath, altText);
 
@@ -544,7 +545,7 @@ function renderProjectSection(section, mediaIndex) {
 					mediaElement.addEventListener('click', () => {
 						window.open(imageLink, '_blank', 'noopener');
 					});
-				} else if (hasGridDestinations) {
+				} else if (hasGridDestinations || !lightboxEnabled) {
 					// images inside a grid-menu's destination grids stay static: no lightbox enlarge
 				} else {
 					mediaElement.classList.add('clickable-media');

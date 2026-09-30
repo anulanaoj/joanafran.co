@@ -622,21 +622,10 @@ window.projectConfig = {
     },
     "project-15": {
       "title": "",
-      "meta": "2026, Villa de Bank, Enschede",
+      "meta": "2026, Villa de Bank, Enschede <br><br><br><br>",
       "sections": [
-        {
-          "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-          "lightboxOnMobile": true,
-
-          "media": [
-            {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-29 120832.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-30 104021.png", "caption": ""}
-          ]
-        },
+        
+        
         {
           "label": "",
           "type": "grid",
@@ -659,6 +648,29 @@ window.projectConfig = {
             { "src": "projects/15/5/5-06.jpg", "caption": "", "grid": "projects/15/5" },
             { "src": "projects/15/6/6-07.jpg", "caption": "", "grid": "projects/15/6" },
             { "src": "projects/15/7/7-08.jpg", "caption": "", "grid": "projects/15/7", "compactOnMobile": true }
+          ]
+        },
+        {
+          "label": "",
+          "type": "grid",
+                    "keepGridOnMobile": true,
+          "lightboxOnMobile": true,
+          "media": [
+            {"src": "projects/15/book-1.jpg", "caption": ""},
+            {"src": "projects/15/book-2.jpg", "caption": ""},
+            {"src": "projects/15/book-3.jpg", "caption": ""}
+          ]
+        },
+        {
+          "label": "",
+          "type": "grid",
+                    "keepGridOnMobile": true,
+          "lightboxOnMobile": true,
+
+          "media": [
+            {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
+            {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
+            {"src": "projects/15/Screenshot 2026-09-30 104021.png", "caption": ""}
           ]
         },
         {
@@ -687,7 +699,7 @@ window.projectConfig = {
            "description": "<br><br>This work was produced with the financial assistance of the European Union. The views expressed herein can in no way be taken to reflect the official opinion of the European Union.",
           "descriptionAlignLeft": true,
           "media": [
-            { "src": "projects/15/Logo_horizontal_black.png", "caption": "", "width": "20%" }
+            { "src": "projects/15/Logo_horizontal_black.png", "caption": "", "width": "20%", "lightbox": false }
           ]
         }
         
