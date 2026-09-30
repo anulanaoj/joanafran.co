@@ -664,8 +664,7 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
-          "description": "<br><br>This work was produced with the financial assistance of the European Union. The views expressed herein can in no way be taken to reflect the official opinion of the European Union.",
-          "descriptionAlignLeft": true,
+         
           "keepGridOnMobile": true,
           "media": [
             { "src": "projects/15/Screenshot 2026-09-25 132152.png", "caption": "", "link": "https://youtu.be/9jj1bomIxeE" },
@@ -684,7 +683,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "single",
-          "marginTop": "-5em",
+          "marginTop": "10em",
+           "description": "<br><br>This work was produced with the financial assistance of the European Union. The views expressed herein can in no way be taken to reflect the official opinion of the European Union.",
+          "descriptionAlignLeft": true,
           "media": [
             { "src": "projects/15/Logo_horizontal_black.png", "caption": "", "width": "20%" }
           ]
