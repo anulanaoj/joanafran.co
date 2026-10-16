@@ -624,49 +624,20 @@ window.projectConfig = {
       "title": "",
       "meta": "2026, Villa de Bank, Enschede <br><br><br><br>",
       "sections": [
-        
         {
           "label": "",
-          "type": "carousel",
+          "type": "grid",
           "media": [
-            { "src": "projects/15/geral -02.jpg", "caption": ""},
-            { "src": "projects/15/geral -01.jpg", "caption": ""}
-          ]
-        },
-         {
-          "label": "",
-          "type": "carousel",
-          "media": [
-            
+            { "src": "projects/15/geral -01.jpg", "caption": ""},
             { "src": "projects/15/geral -03.jpg", "caption": ""},
             { "src": "projects/15/geral -04.jpg", "caption": ""},
             { "src": "projects/15/geral -05.jpg", "caption": ""},
             { "src": "projects/15/geral -06.jpg", "caption": ""},
-            { "src": "projects/15/geral -07.jpg", "caption": ""}
+            { "src": "projects/15/geral -07.jpg", "caption": ""},
+            { "src": "projects/15/geral -08.jpg", "caption": ""}
           ]
         },
-         {
-          "label": "",
-          "type": "carousel",
-          "media": [
-            
-            { "src": "projects/15/geral -08.jpg", "caption": ""},
-            { "src": "projects/15/geral -09.jpg", "caption": ""},
-            
-            { "src": "projects/15/geral -13.jpg", "caption": ""}
-          ]
-        },
-         {
-          "label": "",
-          "type": "carousel",
-          "media": [
-            { "src": "projects/15/geral -10.jpg", "caption": ""},
-            { "src": "projects/15/geral -11.jpg", "caption": ""},
-            { "src": "projects/15/geral -12.jpg", "caption": ""}
-          ]
-        },
-         
-          
+        
         {
           "label": "",
           "type": "grid",
