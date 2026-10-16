@@ -634,7 +634,11 @@ window.projectConfig = {
             { "src": "projects/15/geral -05.jpg", "caption": ""},
             { "src": "projects/15/geral -06.jpg", "caption": ""},
             { "src": "projects/15/geral -07.jpg", "caption": ""},
-            { "src": "projects/15/geral -08.jpg", "caption": ""}
+            { "src": "projects/15/geral -08.jpg", "caption": ""},
+            { "src": "projects/15/geral -13.jpg", "caption": ""},
+            { "src": "projects/15/geral -10.jpg", "caption": ""},
+            { "src": "projects/15/geral -11.jpg", "caption": ""},
+            { "src": "projects/15/geral -12.jpg", "caption": ""},
           ]
         },
         
