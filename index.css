@@ -291,6 +291,18 @@ body.menu-accessed .selected-work-item.active {
     font-size: 0.8em;
 }
 
+#project-15 .layout-grid .project-media {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+#project-15 .layout-grid .project-media img {
+    height: 220px;
+    width: auto;
+    object-fit: contain;
+}
+
 #project-15 .project-section:last-child {
     display: flex;
     flex-direction: column;
