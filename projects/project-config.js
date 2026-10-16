@@ -625,76 +625,48 @@ window.projectConfig = {
       "meta": "2026, Villa de Bank, Enschede <br><br><br><br>",
       "sections": [
         
-        
-         {
-          "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-                    "media": [ { "src": "projects/15/geral -01.jpg", "caption": ""},
-                               { "src": "projects/15/geral -02.jpg", "caption": ""},
-                               { "src": "projects/15/geral -16.jpg", "caption": ""},
-                               { "src": "projects/15/geral -15.jpg", "caption": ""},
-                               { "src": "projects/15/geral -14.jpg", "caption": ""}
-                              
-          ]
-        },
         {
           "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-
+          "type": "carousel",
+          "media": [
+            { "src": "projects/15/geral -02.jpg", "caption": ""},
+            { "src": "projects/15/geral -01.jpg", "caption": ""}
+          ]
+        },
+         {
+          "label": "",
+          "type": "carousel",
           "media": [
             
             { "src": "projects/15/geral -03.jpg", "caption": ""},
-            { "src": "projects/15/geral -17.jpg", "caption": ""},
             { "src": "projects/15/geral -04.jpg", "caption": ""},
-            { "src": "projects/15/geral -06.jpg", "caption": ""},
-            { "src": "projects/15/geral -18.jpg", "caption": ""},
-            { "src": "projects/15/geral -19.jpg", "caption": ""},
-            { "src": "projects/15/geral -20.jpg", "caption": ""},
-            { "src": "projects/15/geral -23.jpg", "caption": ""},
             { "src": "projects/15/geral -05.jpg", "caption": ""},
-            { "src": "projects/15/geral -07.jpg", "caption": ""},
-            { "src": "projects/15/geral -21.jpg", "caption": ""},
-            { "src": "projects/15/geral -22.jpg", "caption": ""},
-            { "src": "projects/15/geral -24.jpg", "caption": ""},
-            { "src": "projects/15/geral -25.jpg", "caption": ""}
-            
-
+            { "src": "projects/15/geral -06.jpg", "caption": ""},
+            { "src": "projects/15/geral -07.jpg", "caption": ""}
           ]
         },
-        {
+         {
           "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-
+          "type": "carousel",
           "media": [
-            
             
             { "src": "projects/15/geral -08.jpg", "caption": ""},
             { "src": "projects/15/geral -09.jpg", "caption": ""},
-            { "src": "projects/15/geral -26.jpg", "caption": ""},
-            { "src": "projects/15/geral -13.jpg", "caption": ""},
-            { "src": "projects/15/geral -27.jpg", "caption": ""},
-            { "src": "projects/15/geral -28.jpg", "caption": ""}
-
+            
+            { "src": "projects/15/geral -13.jpg", "caption": ""}
           ]
         },
-        {
+         {
           "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-
+          "type": "carousel",
           "media": [
-            
-          
             { "src": "projects/15/geral -10.jpg", "caption": ""},
             { "src": "projects/15/geral -11.jpg", "caption": ""},
-            { "src": "projects/15/geral -29.jpg", "caption": ""},
-            { "src": "projects/15/geral -30.jpg", "caption": ""},
             { "src": "projects/15/geral -12.jpg", "caption": ""}
           ]
         },
+         
+          
         {
           "label": "",
           "type": "grid",
