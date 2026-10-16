@@ -638,7 +638,7 @@ window.projectConfig = {
             { "src": "projects/15/geral -13.jpg", "caption": ""},
             { "src": "projects/15/geral -10.jpg", "caption": ""},
             { "src": "projects/15/geral -11.jpg", "caption": ""},
-            { "src": "projects/15/geral -12.jpg", "caption": ""},
+            { "src": "projects/15/geral -12.jpg", "caption": ""}
           ]
         },
         
