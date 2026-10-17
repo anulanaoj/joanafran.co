@@ -480,6 +480,7 @@ function renderProjectSection(section, mediaIndex) {
 	const backButton = sectionElement._gridNavigationBackButton;
 	const renderMediaFiles = (files, isDestinationGrid = false) => {
 		mediaWrapper.replaceChildren();
+		sectionElement.classList.toggle('showing-destination', isDestinationGrid);
 		if (backButton) {
 			backButton.hidden = !isDestinationGrid;
 		}

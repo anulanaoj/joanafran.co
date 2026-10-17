@@ -204,6 +204,15 @@ window.generatedProjectMediaIndex = {
     "projects/15/3/3-43.jpg",
     "projects/15/3/3-44.jpg"
   ],
+  "projects/15/34": [
+    "projects/15/34/geral -34.jpg",
+    "projects/15/34/geral -35.jpg",
+    "projects/15/34/geral -36.jpg",
+    "projects/15/34/geral -37.jpg",
+    "projects/15/34/geral -38.jpg",
+    "projects/15/34/geral -39.jpg",
+    "projects/15/34/geral -40.jpg"
+  ],
   "projects/15/4": [
     "projects/15/4/4-01.jpg",
     "projects/15/4/4-02.jpg",
@@ -242,6 +251,22 @@ window.generatedProjectMediaIndex = {
     "projects/15/4/4-35.jpg",
     "projects/15/4/4-36.jpg",
     "projects/15/4/4-37.jpg"
+  ],
+  "projects/15/41": [
+    "projects/15/41/geral -41.jpg",
+    "projects/15/41/geral -42.jpg",
+    "projects/15/41/geral -43.jpg",
+    "projects/15/41/geral -44.jpg",
+    "projects/15/41/geral -45.jpg",
+    "projects/15/41/geral -46.jpg",
+    "projects/15/41/geral -47.jpg",
+    "projects/15/41/geral -48.jpg",
+    "projects/15/41/geral -49.jpg",
+    "projects/15/41/geral -50.jpg",
+    "projects/15/41/geral -51.jpg",
+    "projects/15/41/geral -52.jpg",
+    "projects/15/41/geral -53.jpg",
+    "projects/15/41/geral -54.jpg"
   ],
   "projects/15/5": [
     "projects/15/5/5-01.jpg",

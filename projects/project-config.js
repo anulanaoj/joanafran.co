@@ -7,6 +7,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "path": "projects/1"
         }
       ]
@@ -26,7 +29,10 @@ window.projectConfig = {
           ]
         },
         {
-          "type": "carousel",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "description": "<br><br><br>Entre o espaço e o lugar existe um corpo<br><br>Apesar da relação de sinonímia que, muitas vezes, se impõe aos vocábulos espaço e lugar, a distância entre ambos é longa e complexa.  É certo que no espaço, seja ele mais ou menos circunscrito, se podem encontrar conformidades métricas, disformidades, predisposições simétricas, isomorfismos, ordenações de perspectiva inusuais, singularidades arquitectónicas, contudo, estas características não conseguem explicar a energia do lugar. O lugar insinua-se nas emoções, nas sensações, nos afectos e afecções que surgem da presença relacional entre um corpo e um determinado espaço.  Em de dentro de, Joana Franco faz uso do seu corpo, como matéria e possibilidade, para ensaiar acções, gestos e composições, que documenta para depois transformar e reconfigurar imageticamente. Nestes ensaios, que partem da representação e confirmação subjectiva, constrói-se um elo indissociável entre o individual e o espacial. <br>A obra é, por isso, a confirmação do ser a partir do estar. Estes dois predicados assumem-se, na sua simultaneidade e convergência, enquanto eixos elementares dos gestos criativos da artista. Não será um acaso o facto de em diversas línguas – tomem-se como exemplos (óbvios) o francês e o inglês – ser e estar coincidam semanticamente. O conhecimento e intenção plástica do corpo são (con)figurados pela acção performativa, num território que surge enquanto instância de reflexão: reflexo do corpo e consciência crítica do seu movimento. A artista constrói e habita um lugar que (a) incorpora, através de inscrições que são continuidade emocional, sensorial, plástica e afectiva da sua presença.<br>Uma estrutura cúbica – um ninho ou refúgio uterino – é construída por Joana Franco sobre um campo visual binómico interior/exterior, positivo/negativo que exige um ser e estar simultâneos. Cria-se uma conexão entre o dentro e o fora deste cubo a partir de uma experiência viva e vivida pela artista que habitou esta estrutura, durante vários dias. Nesse período, este espaço funcionou enquanto área e matéria de execução, permitindo a formulação de uma linguagem visual que traduz o intangível da experiência criativa. A inscrição e acção do seu corpo nas diversas superfícies do cubo manifesta-se num espectro plástico múltiplo que convoca o vídeo, a fotografia, a escultura-instalação, o desenho e a pintura, montante e a jusante da obra. <br>De dentro de propõe uma experiência fenomenológica dos sentidos, em que a relação entre corpo e espaço constitui um lugar.  O lugar é espaço liberto dos limites da materialidade física, contendo uma potência transformante e libertadora. A obra acontece numa ordem de empatia que não resulta da adição aritmética de elementos visuais e acções performativas: cada termo multiplica o anterior. Todas as suas dimensões são convocadas para, num estranho equilíbrio, se produzir um significado conjunto. É, assim, que no (re)conhecimento de um corpo que habita, Joana Franco percorre a distância entre o espaço e o lugar. <br><br>Ana Cristina Cachola<br>Julho de 2021",
           "media": [
             {
@@ -70,6 +76,9 @@ window.projectConfig = {
           "label": "entranha-me, 2024",
           "description": "",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/5/ingrainme-1.png",
@@ -148,6 +157,9 @@ window.projectConfig = {
         {
           "label": "id like to tell, 2023-24",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/6/idliketotell-1.png",
@@ -180,6 +192,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/7/setecidades-1.jpg",
@@ -252,6 +267,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/8/researchgallery-1.jpg",
@@ -301,6 +319,9 @@ window.projectConfig = {
           "description": "<br><br>unsure if some illness has reached me, if I am more awake to bodily sensations or if my mind copes with some external nuisance not yet recognized.<br><br>It is an ant farm sensation, I worry of my circulation.<br><br>Efforts in the studio.<br><br>What I will call, for now, exercises of delineating oneself on a surface, as a form of direct reflection – as a shadow is – that makes possible the seeing of the body as a space occupying form, outside of the unforgiving first person perspective. To see yourself from outside through a delineating of your physical body is never to see yourself from outside, but it certainly gives clues to it.",
           "label": "finger outlines, ballpoint pen",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/9/fingeroutlines-1.jpg",
@@ -403,6 +424,9 @@ window.projectConfig = {
         {
           "label": "hand outlines, permanent marker",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/9/marker-1.jpg",
@@ -455,6 +479,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/10/gothroughmegothroughyou_2025-1.jpg",
@@ -473,6 +500,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "description": "<br><br>is a series of drawings taking the place of curtain, requiring interaction, touch, from who wishes to enter a new space. the drawings are excuses for contact. the body, touching the fabric outlined by a pencil, is feeling its borders. interpreting itself as present. the place of contact is one of contrast: where one is made aware of themselves through difference with their counter-actant. this is an in-between space, which holds the exchange between what is out and what is in. seen in passages that dictate change in environment.",
           "media": [
             {
@@ -503,7 +533,10 @@ window.projectConfig = {
         },
         {
           "label": "",
-          "type": "carousel",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/11/two_outlined_bodies-2.jpg",
@@ -526,7 +559,10 @@ window.projectConfig = {
       "sections": [
         {
           "label": "",
-          "type": "carousel",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/14/Timeline 1_01_00_40_42-3-4-5.png",
@@ -544,7 +580,10 @@ window.projectConfig = {
         },
         {
           "label": "",
-          "type": "carousel",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/14/Timeline 1_01_04_17_14-3.png",
@@ -579,7 +618,10 @@ window.projectConfig = {
         },
         {
           "label": "",
-          "type": "carousel",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             {
               "src": "projects/12/amtpeub-2.jpg",
@@ -609,7 +651,10 @@ window.projectConfig = {
         },
         {
           "label": "",
-          "type": "carousel",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             "projects/12/Timeline 1_01_01_44_28.png",
             "projects/12/Timeline 1_01_02_29_43.png",
@@ -625,7 +670,8 @@ window.projectConfig = {
       "meta": "",
       "sections": [
         {
-          "label": "2026, Villa de Bank, Enschede ",
+          "label": "2026, Villa de Bank, Enschede",
+          "description": "twenty-eight day period working and living at the villa, exploring the space between my, subsequently your, legs.",
           "type": "single",
           "keepGridOnMobile": true,
           "aboveHeader": true,
@@ -676,9 +722,6 @@ window.projectConfig = {
           "columns": 5,
 
           "media": [
-            {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-30 104021.png", "caption": ""},
             {"src": "projects/15/book-1.jpg", "caption": ""},
             {"src": "projects/15/book-2.jpg", "caption": ""},
             {"src": "projects/15/book-3.jpg", "caption": ""},
@@ -727,6 +770,17 @@ window.projectConfig = {
         },
         {
           "label": "",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
+          "media": [
+            { "src": "projects/15/34/geral -34.jpg", "caption": "", "grid": "projects/15/34" },
+            { "src": "projects/15/41/geral -41.jpg", "caption": "", "grid": "projects/15/41" }
+          ]
+        },
+        {
+          "label": "",
           "type": "single",
           "marginTop": "0em",
           "keepGridOnMobile": true,
@@ -748,8 +802,9 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
-                    "keepGridOnMobile": true,
-
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "description": "",
           "media": [
             {"src": "projects/16/Screenshot 2026-09-28 160322.png", "caption": "", "link": "https://youtu.be/gAoKnn9-vAc" },
