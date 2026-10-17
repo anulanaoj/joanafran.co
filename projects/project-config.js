@@ -627,13 +627,47 @@ window.projectConfig = {
         {
           "label": "",
           "type": "grid",
+                    "keepGridOnMobile": true,
+          "lightboxOnMobile": true,
+
           "media": [
+            {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
+            {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
+            {"src": "projects/15/Screenshot 2026-09-30 104021.png", "caption": ""}
+          ]
+        },
+        {
+          "label": "",
+          "type": "grid",
+                    "keepGridOnMobile": true,
+          "lightboxOnMobile": true,
+          "media": [
+            {"src": "projects/15/book-1.jpg", "caption": ""},
+            {"src": "projects/15/book-2.jpg", "caption": ""},
+            {"src": "projects/15/book-3.jpg", "caption": ""}
+          ]
+        },
+        {
+          "label": "",
+          "type": "grid",
+          "media": [
+            { "src": "projects/15/geral -31.jpg", "caption": "" },
             { "src": "projects/15/geral -01.jpg", "caption": ""},
+            { "src": "projects/15/geral -14.jpg", "caption": ""},
+            { "src": "projects/15/geral -16.jpg", "caption": ""},
             { "src": "projects/15/geral -03.jpg", "caption": ""},
+            { "src": "projects/15/geral -17.jpg", "caption": ""},
+            { "src": "projects/15/geral -18.jpg", "caption": ""},
             { "src": "projects/15/geral -04.jpg", "caption": ""},
             { "src": "projects/15/geral -05.jpg", "caption": ""},
-            { "src": "projects/15/geral -06.jpg", "caption": ""},
+            { "src": "projects/15/geral -20.jpg", "caption": ""},
+            { "src": "projects/15/geral -19.jpg", "caption": ""},
             { "src": "projects/15/geral -07.jpg", "caption": ""},
+            { "src": "projects/15/geral -24.jpg", "caption": "" },
+            { "src": "projects/15/geral -21.jpg", "caption": ""},
+            { "src": "projects/15/geral -22.jpg", "caption": ""},
+            { "src": "projects/15/geral -06.jpg", "caption": ""},
+            { "src": "projects/15/geral -09.jpg", "caption": ""},
             { "src": "projects/15/geral -08.jpg", "caption": ""},
             { "src": "projects/15/geral -13.jpg", "caption": ""},
             { "src": "projects/15/geral -10.jpg", "caption": ""},
@@ -666,29 +700,8 @@ window.projectConfig = {
             { "src": "projects/15/7/7-08.jpg", "caption": "", "grid": "projects/15/7", "compactOnMobile": true }
           ]
         },
-        {
-          "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-          "lightboxOnMobile": true,
-          "media": [
-            {"src": "projects/15/book-1.jpg", "caption": ""},
-            {"src": "projects/15/book-2.jpg", "caption": ""},
-            {"src": "projects/15/book-3.jpg", "caption": ""}
-          ]
-        },
-        {
-          "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-          "lightboxOnMobile": true,
-
-          "media": [
-            {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-30 104021.png", "caption": ""}
-          ]
-        },
+        
+        
         {
           "label": "",
           "type": "grid",
