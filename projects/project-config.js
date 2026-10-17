@@ -622,37 +622,27 @@ window.projectConfig = {
     },
     "project-15": {
       "title": "",
-      "meta": "2026, Villa de Bank, Enschede <br><br><br><br>",
+      "meta": "",
       "sections": [
         {
-          "label": "",
-          "type": "grid",
-                    "keepGridOnMobile": true,
-          "lightboxOnMobile": true,
-
+          "label": "2026, Villa de Bank, Enschede ",
+          "type": "single",
+          "keepGridOnMobile": true,
+          "aboveHeader": true,
           "media": [
-            {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
-            {"src": "projects/15/Screenshot 2026-09-30 104021.png", "caption": ""}
+            { "src": "projects/15/geral -31.jpg", "caption": "" }
           ]
         },
+       
+        
         {
           "label": "",
           "type": "grid",
-                    "keepGridOnMobile": true,
-          "lightboxOnMobile": true,
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
-            {"src": "projects/15/book-1.jpg", "caption": ""},
-            {"src": "projects/15/book-2.jpg", "caption": ""},
-            {"src": "projects/15/book-3.jpg", "caption": ""}
-          ]
-        },
-        {
-          "label": "",
-          "type": "grid",
-          "media": [
-            { "src": "projects/15/geral -31.jpg", "caption": "" },
-            { "src": "projects/15/geral -01.jpg", "caption": ""},
+            { "src": "projects/15/geral -01.jpg", "caption": ""},            
             { "src": "projects/15/geral -14.jpg", "caption": ""},
             { "src": "projects/15/geral -16.jpg", "caption": ""},
             { "src": "projects/15/geral -03.jpg", "caption": ""},
@@ -663,25 +653,35 @@ window.projectConfig = {
             { "src": "projects/15/geral -20.jpg", "caption": ""},
             { "src": "projects/15/geral -19.jpg", "caption": ""},
             { "src": "projects/15/geral -07.jpg", "caption": ""},
-            { "src": "projects/15/geral -24.jpg", "caption": "" },
-            { "src": "projects/15/geral -21.jpg", "caption": ""},
+            { "src": "projects/15/geral -24.jpg", "caption": ""},
             { "src": "projects/15/geral -22.jpg", "caption": ""},
             { "src": "projects/15/geral -06.jpg", "caption": ""},
             { "src": "projects/15/geral -09.jpg", "caption": ""},
+            { "src": "projects/15/geral -28.jpg", "caption": ""},
             { "src": "projects/15/geral -08.jpg", "caption": ""},
             { "src": "projects/15/geral -13.jpg", "caption": ""},
+            { "src": "projects/15/geral -33.jpg", "caption": ""},
             { "src": "projects/15/geral -10.jpg", "caption": ""},
             { "src": "projects/15/geral -11.jpg", "caption": ""},
-            { "src": "projects/15/geral -12.jpg", "caption": ""}
+            { "src": "projects/15/geral -12.jpg", "caption": ""},
+            { "src": "projects/15/geral -32.jpg", "caption": ""}
           ]
         },
-        
-        {
+         {
           "label": "",
           "type": "grid",
                     "keepGridOnMobile": true,
+          "lightboxOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
 
           "media": [
+            {"src": "projects/15/Screenshot 2026-09-29 120903.png", "caption": ""},
+            {"src": "projects/15/Screenshot 2026-09-29 120851.png", "caption": ""},
+            {"src": "projects/15/Screenshot 2026-09-30 104021.png", "caption": ""},
+            {"src": "projects/15/book-1.jpg", "caption": ""},
+            {"src": "projects/15/book-2.jpg", "caption": ""},
+            {"src": "projects/15/book-3.jpg", "caption": ""},
             { "src": "projects/15/books1.jpeg", "caption": ""},
             { "src": "projects/15/books2.jpeg", "caption": ""}
           ]
@@ -690,6 +690,8 @@ window.projectConfig = {
           "label": "",
           "type": "grid",
           "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             { "src": "projects/15/1/1-2.jpg", "caption": "", "grid": "projects/15/1" },
             { "src": "projects/15/2/2-3.jpg", "caption": "", "grid": "projects/15/2" },
@@ -707,6 +709,8 @@ window.projectConfig = {
           "type": "grid",
          
           "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 5,
           "media": [
             { "src": "projects/15/Screenshot 2026-09-25 132152.png", "caption": "", "link": "https://youtu.be/9jj1bomIxeE" },
             { "src": "projects/15/Screenshot 2026-09-27 195457.png", "caption": "", "link": "https://youtu.be/-xD4wmn7dlA" },
@@ -724,7 +728,8 @@ window.projectConfig = {
         {
           "label": "",
           "type": "single",
-          "marginTop": "10em",
+          "marginTop": "0em",
+          "keepGridOnMobile": true,
            "description": "<br><br>This work was produced with the financial assistance of the European Union. The views expressed herein can in no way be taken to reflect the official opinion of the European Union.",
           "descriptionAlignLeft": true,
           "media": [

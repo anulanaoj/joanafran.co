@@ -303,6 +303,36 @@ body.menu-accessed .selected-work-item.active {
     object-fit: contain;
 }
 
+@media (min-width: 881px) {
+    #project-15 .layout-grid.has-columns .project-media {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+        align-items: start;
+    }
+
+    #project-15 .layout-grid.has-columns .project-media img {
+        height: auto;
+        width: 100%;
+    }
+}
+
+#project-15 .layout-grid.square-grid .project-media {
+    gap: 0;
+}
+
+#project-15 .layout-grid.square-grid .project-media img {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+@media (min-width: 881px) {
+    #project-15 .layout-grid.has-columns.square-grid .project-media {
+        width: 50vw;
+    }
+}
+
 #project-15 .project-section:last-child {
     display: flex;
     flex-direction: column;
@@ -394,7 +424,7 @@ body.menu-accessed .selected-work-item.active {
 }
 
 .layout-single .project-media {
-    max-width: min(100%, 65vw);
+    max-width: min(100%, 50vw);
 }
 
 .layout-carousel .project-media {
@@ -562,10 +592,11 @@ body.menu-accessed .selected-work-item.active {
 }
 
 .lightbox-controls {
-    justify-content: flex-end;
-    align-self: flex-end;
+    justify-content: center;
+    align-self: center;
     flex-shrink: 0;
-    width: 100%;
+    width: auto;
+    gap: 0.6em;
 }
 
 .lightbox-media {
@@ -741,10 +772,11 @@ body.menu-accessed .selected-work-item.active {
 }
 
 .lightbox-controls {
-    justify-content: flex-end;
-    align-self: flex-end;
+    justify-content: center;
+    align-self: center;
     flex-shrink: 0;
-    width: 100%;
+    width: auto;
+    gap: 0.6em;
 }
 
 .lightbox-media {

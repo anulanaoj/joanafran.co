@@ -259,8 +259,8 @@ function setupImageLightbox() {
 	overlay.innerHTML = `
 		<div class="lightbox-content">
 			<div class="carousel-controls lightbox-controls">
-				<button type="button" class="carousel-control lightbox-back-btn" aria-label="Close lightbox">&#x2715;</button>
 				<button type="button" class="carousel-control lightbox-prev-btn" aria-label="Previous image">&lt;</button>
+				<button type="button" class="carousel-control lightbox-back-btn" aria-label="Close lightbox">&#x2715;</button>
 				<button type="button" class="carousel-control lightbox-next-btn" aria-label="Next image">&gt;</button>
 			</div>
 			<img class="lightbox-media" alt="enlarged project media">
@@ -335,9 +335,13 @@ function renderProjectSection(section, mediaIndex) {
 	const hasGridDestinations = sectionType === 'grid' && declaredMedia.some((entry) =>
 		typeof entry === 'object' && entry.grid
 	);
-	sectionElement.className = `project-section layout-${sectionType}${section.keepGridOnMobile ? ' keep-grid-on-mobile' : ''}`;
+	sectionElement.className = `project-section layout-${sectionType}${section.keepGridOnMobile ? ' keep-grid-on-mobile' : ''}${section.squareGrid ? ' square-grid' : ''}`;
 	if (hasGridDestinations) {
 		sectionElement.classList.add('has-grid-destinations');
+	}
+	if (Number.isInteger(section.columns) && section.columns > 0) {
+		sectionElement.classList.add('has-columns');
+		sectionElement.style.setProperty('--grid-columns', section.columns);
 	}
 	if (section.marginTop) {
 		sectionElement.style.marginTop = section.marginTop;
@@ -659,6 +663,13 @@ function renderProject(projectId, projectConfig, mediaIndex) {
 	projectContainer.innerHTML = '';
 	projectContainer.classList.add('project-container');
 
+	const rawSections = Array.isArray(projectConfig.sections) ? projectConfig.sections : [];
+	const sections = mergeProjectSectionsForMobile(rawSections);
+
+	sections.filter((section) => section.aboveHeader).forEach((section) => {
+		projectContainer.appendChild(renderProjectSection(section, mediaIndex));
+	});
+
 	const projectHeader = document.createElement('header');
 	projectHeader.className = 'project-header';
 
@@ -693,9 +704,7 @@ function renderProject(projectId, projectConfig, mediaIndex) {
 		projectContainer.appendChild(projectHeader);
 	}
 
-	const rawSections = Array.isArray(projectConfig.sections) ? projectConfig.sections : [];
-	const sections = mergeProjectSectionsForMobile(rawSections);
-	sections.forEach((section) => {
+	sections.filter((section) => !section.aboveHeader).forEach((section) => {
 		projectContainer.appendChild(renderProjectSection(section, mediaIndex));
 	});
 }
