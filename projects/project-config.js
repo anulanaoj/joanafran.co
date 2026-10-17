@@ -671,22 +671,33 @@ window.projectConfig = {
       "sections": [
         {
           "label": "2026, Villa de Bank, Enschede",
-          "description": "twenty-eight day period working and living at the villa, exploring the space between my, subsequently your, legs.",
+          "type": "grid",
+          "keepGridOnMobile": true,
+          "squareGrid": true,
+          "columns": 3,
+          "aboveHeader": true,
+          "media": [
+            { "src": "projects/15/geral -55.jpg", "caption": "" },
+            { "src": "projects/15/geral -56.jpg", "caption": "" }
+          ]
+        },
+        {
+          "label": "",
+          "description": "twenty-eight day period working and living at the villa, thinking of the space between my, subsequently your, legs.",
           "type": "single",
           "keepGridOnMobile": true,
           "aboveHeader": true,
           "media": [
+            
             { "src": "projects/15/geral -31.jpg", "caption": "" }
           ]
         },
-       
-        
         {
           "label": "",
           "type": "grid",
           "keepGridOnMobile": true,
           "squareGrid": true,
-          "columns": 5,
+          "columns": 7,
           "media": [
             { "src": "projects/15/geral -01.jpg", "caption": ""},            
             { "src": "projects/15/geral -14.jpg", "caption": ""},
@@ -719,7 +730,7 @@ window.projectConfig = {
                     "keepGridOnMobile": true,
           "lightboxOnMobile": true,
           "squareGrid": true,
-          "columns": 5,
+          "columns": 3,
 
           "media": [
             {"src": "projects/15/book-1.jpg", "caption": ""},
@@ -734,7 +745,7 @@ window.projectConfig = {
           "type": "grid",
           "keepGridOnMobile": true,
           "squareGrid": true,
-          "columns": 5,
+          "columns": 3,
           "media": [
             { "src": "projects/15/1/1-2.jpg", "caption": "", "grid": "projects/15/1" },
             { "src": "projects/15/2/2-3.jpg", "caption": "", "grid": "projects/15/2" },
@@ -753,7 +764,7 @@ window.projectConfig = {
          
           "keepGridOnMobile": true,
           "squareGrid": true,
-          "columns": 5,
+          "columns": 6,
           "media": [
             { "src": "projects/15/Screenshot 2026-09-25 132152.png", "caption": "", "link": "https://youtu.be/9jj1bomIxeE" },
             { "src": "projects/15/Screenshot 2026-09-27 195457.png", "caption": "", "link": "https://youtu.be/-xD4wmn7dlA" },
@@ -766,17 +777,6 @@ window.projectConfig = {
             { "src": "projects/15/Screenshot 2026-09-27 200132.png", "caption": "", "link": "https://youtu.be/PJvvr5OMgfk" },
             { "src": "projects/15/Screenshot 2026-09-27 200524.png", "caption": "", "link": "https://youtu.be/H5I4GCl4d2c" },
             { "src": "projects/15/Screenshot 2026-09-27 200626.png", "caption": "", "link": "https://youtu.be/NxM02X6_LZs" }
-          ]
-        },
-        {
-          "label": "",
-          "type": "grid",
-          "keepGridOnMobile": true,
-          "squareGrid": true,
-          "columns": 5,
-          "media": [
-            { "src": "projects/15/34/geral -34.jpg", "caption": "", "grid": "projects/15/34" },
-            { "src": "projects/15/41/geral -41.jpg", "caption": "", "grid": "projects/15/41" }
           ]
         },
         {
