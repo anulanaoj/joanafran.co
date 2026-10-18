@@ -328,6 +328,19 @@ function setupImageLightbox() {
 	});
 }
 
+function loadProjectPdfViewer(viewer) {
+	if (viewer.dataset.pdfLoaded) return;
+	viewer.dataset.pdfLoaded = 'true';
+
+	const pageCount = viewer.querySelector('.project-pdf-page-count');
+	import('./pdf-viewer.js')
+		.then(({ initializePdfViewer }) => initializePdfViewer(viewer, viewer.dataset.pdfSrc))
+		.catch((error) => {
+			pageCount.textContent = 'PDF viewer unavailable';
+			console.error('Could not initialize PDF viewer:', error);
+		});
+}
+
 function renderProjectSection(section, mediaIndex) {
 	const sectionElement = document.createElement('section');
 	const sectionType = section.type || 'grid';
@@ -382,6 +395,62 @@ function renderProjectSection(section, mediaIndex) {
 				});
 			}
 		}
+
+		return sectionElement;
+	}
+
+	if (sectionType === 'pdf') {
+		const pdfViewer = document.createElement('div');
+		pdfViewer.className = 'project-pdf project-pdf-viewer';
+		pdfViewer.setAttribute('role', 'region');
+		pdfViewer.setAttribute('aria-label', section.label || 'PDF viewer');
+		pdfViewer.dataset.pdfSrc = section.src;
+
+		const toolbar = document.createElement('div');
+		toolbar.className = 'project-pdf-toolbar';
+		toolbar.setAttribute('aria-label', 'PDF controls');
+
+		const previousButton = document.createElement('button');
+		previousButton.type = 'button';
+		previousButton.className = 'project-pdf-control';
+		previousButton.dataset.pdfAction = 'previous';
+		previousButton.textContent = 'previous';
+		previousButton.setAttribute('aria-label', 'Previous page');
+
+		const pageCount = document.createElement('span');
+		pageCount.className = 'project-pdf-page-count';
+		pageCount.textContent = 'Loading PDF';
+		pageCount.setAttribute('aria-live', 'polite');
+
+		const nextButton = document.createElement('button');
+		nextButton.type = 'button';
+		nextButton.className = 'project-pdf-control';
+		nextButton.dataset.pdfAction = 'next';
+		nextButton.textContent = 'next';
+		nextButton.setAttribute('aria-label', 'Next page');
+
+		const downloadLink = document.createElement('a');
+		downloadLink.className = 'project-pdf-control';
+		downloadLink.href = section.src;
+		downloadLink.download = '';
+		downloadLink.textContent = 'download';
+
+		toolbar.append(previousButton, pageCount, nextButton, downloadLink);
+
+		const pagesContainer = document.createElement('div');
+		pagesContainer.className = 'project-pdf-pages';
+		pagesContainer.setAttribute('aria-label', 'PDF pages');
+
+		pdfViewer.append(toolbar, pagesContainer);
+		sectionElement.appendChild(pdfViewer);
+
+		const pdfLink = document.createElement('a');
+		pdfLink.className = 'project-pdf-link';
+		pdfLink.href = section.src;
+		pdfLink.target = '_blank';
+		pdfLink.rel = 'noopener';
+		pdfLink.textContent = 'open pdf';
+		sectionElement.appendChild(pdfLink);
 
 		return sectionElement;
 	}
@@ -666,10 +735,24 @@ function renderProject(projectId, projectConfig, mediaIndex) {
 
 	const rawSections = Array.isArray(projectConfig.sections) ? projectConfig.sections : [];
 	const sections = mergeProjectSectionsForMobile(rawSections);
+	const appendSections = (selectedSections) => {
+		for (let i = 0; i < selectedSections.length; i += 1) {
+			const section = selectedSections[i];
+			if (section.layoutGroup && selectedSections[i + 1] &&
+				selectedSections[i + 1].layoutGroup === section.layoutGroup) {
+				const group = document.createElement('div');
+				group.className = 'project-section-group';
+				group.appendChild(renderProjectSection(section, mediaIndex));
+				i += 1;
+				group.appendChild(renderProjectSection(selectedSections[i], mediaIndex));
+				projectContainer.appendChild(group);
+			} else {
+				projectContainer.appendChild(renderProjectSection(section, mediaIndex));
+			}
+		}
+	};
 
-	sections.filter((section) => section.aboveHeader).forEach((section) => {
-		projectContainer.appendChild(renderProjectSection(section, mediaIndex));
-	});
+	appendSections(sections.filter((section) => section.aboveHeader));
 
 	const projectHeader = document.createElement('header');
 	projectHeader.className = 'project-header';
@@ -705,9 +788,7 @@ function renderProject(projectId, projectConfig, mediaIndex) {
 		projectContainer.appendChild(projectHeader);
 	}
 
-	sections.filter((section) => !section.aboveHeader).forEach((section) => {
-		projectContainer.appendChild(renderProjectSection(section, mediaIndex));
-	});
+	appendSections(sections.filter((section) => !section.aboveHeader));
 }
 
 async function loadProjectConfig() {
@@ -760,6 +841,7 @@ function setupProjectToggles() {
                 projectLinks.forEach(otherLink => otherLink.classList.remove('active'));
                 this.classList.add('active');
                 projectSection.classList.add('active');
+				projectSection.querySelectorAll('.project-pdf-viewer').forEach(loadProjectPdfViewer);
                 projectSection.querySelectorAll('.project-media').forEach(track => {
                     if (typeof track._refreshCarouselControls === 'function') {
                         requestAnimationFrame(() => track._refreshCarouselControls());

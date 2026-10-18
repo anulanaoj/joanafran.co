@@ -264,6 +264,93 @@ body.menu-accessed .selected-work-item.active {
     margin-bottom: 0.6em;
 }
 
+.layout-pdf {
+    margin-bottom: 2em;
+}
+
+.project-pdf {
+    display: block;
+    width: calc(100% - 10em);
+    height: calc(75vh - 10em);
+    min-width: 0;
+    min-height: 12em;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    color-scheme: light;
+}
+
+.project-pdf-pages {
+    position: absolute;
+    inset: 0;
+    overflow: auto;
+    padding: 3em 0.5em 0.5em;
+    background: #fff;
+    scrollbar-color: #aaa #fff;
+}
+
+.project-pdf-page {
+    position: relative;
+    margin: 0 auto 0.75em;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 0 1px #ddd;
+}
+
+.project-pdf-canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    max-width: none;
+}
+
+.project-pdf-text-layer {
+    color-scheme: only light;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    line-height: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    transform-origin: 0 0;
+    --min-font-size: 1;
+    --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+    z-index: 1;
+}
+
+.project-pdf-text-layer span,
+.project-pdf-text-layer br {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: text;
+    transform-origin: 0 0;
+    user-select: text;
+}
+
+.project-pdf-text-layer > :not(.markedContent),
+.project-pdf-text-layer .markedContent span:not(.markedContent) {
+    --font-height: 0;
+    font-size: calc(var(--text-scale-factor) * var(--font-height));
+    --scale-x: 1;
+    --rotate: 0deg;
+    transform: rotate(var(--rotate)) scaleX(var(--scale-x));
+}
+
+.project-pdf-text-layer .markedContent {
+    display: contents;
+}
+
+.project-pdf-text-layer ::selection {
+    background: rgb(0 100 255 / 25%);
+}
+
+.project-pdf-link {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.8em;
+}
+
 .project-section-description {
     font-size: 1em;
     line-height: 1.6;
@@ -812,3 +899,92 @@ body.menu-accessed .selected-work-item.active {
 .layout-grid { margin-bottom: 7em; }
 .layout-single { margin-bottom: 7em; }
 .layout-carousel { margin-bottom: 7em; }
+
+#project-15 .project-section-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 1.5em;
+    align-items: start;
+    margin-bottom: 7em;
+}
+
+#project-15 .project-section-group > .project-section {
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+#project-15 .project-section-group .layout-grid .project-media {
+    width: 100%;
+}
+
+#project-15 .project-section-group .project-pdf {
+    width: calc(100% - 10em);
+    height: calc(75vh - 10em);
+}
+
+.project-pdf-toolbar {
+    position: absolute;
+    z-index: 2;
+    top: 0.35em;
+    left: 0.35em;
+    right: 0.35em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.4em;
+    background: rgb(255 255 255 / 95%);
+    border: 1px solid #ddd;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.project-pdf-viewer:hover .project-pdf-toolbar,
+.project-pdf-viewer:focus-within .project-pdf-toolbar {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.project-pdf-control {
+    border: 0;
+    padding: 0.3em 0.5em;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    font-size: 0.75em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-pdf-control:hover,
+.project-pdf-control:focus-visible {
+    text-decoration: underline;
+}
+
+.project-pdf-control:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.project-pdf-page-count {
+    font-size: 0.75em;
+}
+
+@media (max-width: 880px) {
+    #project-15 .project-section-group {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1em;
+    }
+
+    #project-15 .project-section-group .project-pdf {
+        width: calc(100% - 10em);
+        height: calc(70vh - 10em);
+    }
+}
+
+@media (hover: none) {
+    .project-pdf-toolbar {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

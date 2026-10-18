@@ -727,6 +727,8 @@ window.projectConfig = {
          {
           "label": "",
           "type": "grid",
+          "description": "writings starting from february, ending in september, were compiled into a book. the space between my legs was chewed over through finding *or starting to find* my hand's way in writing.\n\nthe document is open to be accessed by anyone. if you'd like a physical copy and support my practice, do send me an email.",
+          "layoutGroup": "book-pdf",
                     "keepGridOnMobile": true,
           "lightboxOnMobile": true,
           "squareGrid": true,
@@ -739,6 +741,12 @@ window.projectConfig = {
             { "src": "projects/15/books1.jpeg", "caption": ""},
             { "src": "projects/15/books2.jpeg", "caption": ""}
           ]
+        },
+        {
+          "label": "",
+          "type": "pdf",
+          "layoutGroup": "book-pdf",
+          "src": "bookfile2026..pdf"
         },
         {
           "label": "",
