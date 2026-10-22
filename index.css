@@ -610,7 +610,7 @@ body.menu-accessed .selected-work-item.active {
     height: 2em;
     line-height: 1;
     font-family: 'altehaasgrotesk', sans-serif;
-    font-size: 1.1em;
+    font-size: 1em;
     cursor: pointer;
 }
 
