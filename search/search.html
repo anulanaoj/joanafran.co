@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>search</title>
+        <link rel="stylesheet" href="search.css">
+        <link rel="icon" href="../icon.png" type="image/png">
+</head>
+<body>
+    <a class="back-link" href="../index.html">back</a>
+    <div class="text">
+      <p style="font-weight: bold;">'s research updates</p>
+    </div>
+    <div class="list">
+        <p>2026</p>
+  <ul>
+    <li><a href="4/4.html">4</a></li>
+    <li><a href="3/3.html">3</a></li>
+    <li><a href="2/2.html">2</a></li>
+    <li><a href="1/1.html">1</a></li>
+  </ul>
+<div class="sideimage">
+    <img src="../search/IMG_5744.jpg" alt="side image">
+</div>
+<div class="preview" hidden>
+    <iframe title="preview"></iframe>
+</div>
+<script>
+    const links = document.querySelectorAll('.list li a');
+    const preview = document.querySelector('.preview');
+    const frame = preview.querySelector('iframe');
+    const sideimage = document.querySelector('.sideimage');
+    let activeLink = null;
+
+    function closePreview() {
+        preview.hidden = true;
+        sideimage.hidden = false;
+        frame.src = 'about:blank';
+        activeLink.classList.remove('active');
+        activeLink = null;
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            if (activeLink === link) {
+                closePreview();
+                return;
+            }
+            if (activeLink) activeLink.classList.remove('active');
+            activeLink = link;
+            link.classList.add('active');
+            frame.src = link.href;
+            preview.hidden = false;
+            sideimage.hidden = true;
+        });
+    });
+</script>
+</body>
+</html>
