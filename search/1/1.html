@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>#1 (newsletter)</title>
   <style>
     @font-face {
@@ -17,7 +18,15 @@
     body *:not(a):not(a *) {
       color: #000 !important;
     }
-  </style>
+    @media (max-width: 540px) {
+      html, body { width: 100%; overflow-x: hidden; }
+      body, body * { font-size: 12px !important; }
+      table, tbody, tr, td { display: block; width: auto !important; max-width: 100% !important; box-sizing: border-box; }
+      table[style*="table-layout"] td { display: inline-block; width: 49% !important; }
+      img { max-width: 100% !important; height: auto !important; }
+      td, p { overflow-wrap: anywhere; word-break: break-word; }
+      td { padding-left: 8px !important; padding-right: 8px !important; }
+    }  </style>
 </head>
 <body style="margin:0; padding:0; background:#ffffff;">
   <table width="100%" cellpadding="0" cellspacing="0">

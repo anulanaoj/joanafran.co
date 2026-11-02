@@ -64,8 +64,9 @@ body {
         position: relative;
     }
     .preview {
-        width: 80vw;
-        height: 70vh;
+        width: 100vw;
+        height: 100vh;
+        margin-left: -2em;
         right: 0;
         top: 0;
         bottom: auto;
